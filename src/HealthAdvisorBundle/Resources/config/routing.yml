@@ -1,0 +1,7 @@
+health_advisor_homepage:
+    path:     /
+    defaults: { _controller: HealthAdvisorBundle:Default:index }
+
+index_admin:
+    path:     /admin
+    defaults: { _controller: HealthAdvisorBundle:Admin_Template:index }
