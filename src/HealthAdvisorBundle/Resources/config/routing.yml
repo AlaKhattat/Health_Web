@@ -5,3 +5,18 @@ health_advisor_homepage:
 index_admin:
     path:     /admin
     defaults: { _controller: HealthAdvisorBundle:Admin_Template:index }
+afficher_aliment:
+    path:     /admin/afficherAliment
+    defaults: { _controller: HealthAdvisorBundle:Aliment:afficherAliment }
+ajouter_aliment:
+    path:     /admin/ajoutAliment
+    defaults: { _controller: HealthAdvisorBundle:Aliment:ajouterAliment }
+modifier_aliment:
+    path:     /admin/modifAliment
+    defaults: { _controller: HealthAdvisorBundle:Aliment:modifierAliment }
+supprimer_aliment:
+    path:     /admin/suppAliment
+    defaults: { _controller: HealthAdvisorBundle:Aliment:supprimerAliment }
+rechercher_aliment:
+    path:     /admin/rechercheAliment
+    defaults: { _controller: HealthAdvisorBundle:Aliment:rechercheAliment }

@@ -147,7 +147,7 @@ class Aliment
 
     public function explodeAliment($typAliment)
     {
-        return explode("|",$typAliment);
+        return explode(" ",$typAliment);
     }
     //this function take an array type aliment and return an array aliment name type
     public function totalNomAliment(Array  $aliments)
@@ -157,7 +157,6 @@ class Aliment
         {
             $totalNomAliments[$i]=$aliments[$i]->getNomAliment();
         }
-
     }
 
 

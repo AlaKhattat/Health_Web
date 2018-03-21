@@ -1,3 +1,7 @@
+health_advisor_aliment:
+    resource: "@HealthAdvisorBundle/Controller/AlimentController.php"
+    type:     annotation
+
 health_advisor:
     resource: "@HealthAdvisorBundle/Resources/config/routing.yml"
     prefix:   /
