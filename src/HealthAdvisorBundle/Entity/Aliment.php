@@ -17,6 +17,7 @@ class Aliment
      *
      * @ORM\Column(name="NOM_ALIMENT", type="string", length=255, nullable=false)
      * @ORM\Id
+     *
      */
     private $nomAliment;
 

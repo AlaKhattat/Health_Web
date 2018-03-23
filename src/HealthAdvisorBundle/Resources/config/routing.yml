@@ -20,3 +20,6 @@ supprimer_aliment:
 rechercher_aliment:
     path:     /admin/rechercheAliment
     defaults: { _controller: HealthAdvisorBundle:Aliment:rechercheAliment }
+afficher_outilBiennetre:
+    path:     /outils
+    defaults: { _controller: HealthAdvisorBundle:Biennetre:indexOutilBiennetre }
