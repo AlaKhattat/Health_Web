@@ -75,27 +75,24 @@
                                     <div class="widget widget-blogs">
                                         <h4 class="heading">Vos informations ICI</h4>
                                         {{ form_start(form) }}
-                                        <form method="get" action="#">
+                                        <form >
                                             <div class="form-group">
-                                                {{ form_widget(form.poids) }}
-                                                <input class="form-control" type="number" placeholder=" votre poids en Kg"  name="poids" required>
+                                                {{ form_widget(form.poids,{'attr':{'class':'form-control','placeholder':'votre poids en Kg'}}) }}
                                             </div>
                                             <div class="form-group">
-                                                <input class="form-control" type="number" placeholder=" votre taille en cm" name="taille" required>
+                                                {{ form_widget(form.taille,{'attr':{'class':'form-control','placeholder':'votre taille en cm'}}) }}
                                             </div>
                                             <div class="form-group">
                                                 <div class="btn-group bootstrap-select">
-                                                    <select class=""  title="Sexe"  name="sexe" required>
-                                                        <option>Homme</option>
-                                                        <option>Femme</option>
-                                                    </select>
+                                                    {{ form_widget(form.sexe,{'attr':{'class':'','title':'Sexe'}}) }}
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <input class="form-control" type="number" placeholder="votre age" required>
+                                                {{ form_widget(form.age,{'attr':{'class':'form-control','placeholder':'votre age'}}) }}
                                             </div>
                                             <div class="form-group">
-                                                <button type="submit" class="btn btn-black"><i class="fa fa-calculator"></i>Calculer</button>
+                                                {{ form_widget(form.Calculer,{'attr':{'class':'btn btn-black'}}) }}
+                                                <button type="submit" class="btn btn-black" ><i class="fa fa-calculator"></i>Calculer</button>
                                             </div>
                                         </form>
                                     </div>

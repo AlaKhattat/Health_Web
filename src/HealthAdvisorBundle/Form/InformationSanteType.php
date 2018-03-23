@@ -3,6 +3,9 @@
 namespace HealthAdvisorBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -13,7 +16,13 @@ class InformationSanteType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('taille')->add('poids')->add('age')->add('allergies')->add('maladies')->add('sexe')->add('login');
+        $builder
+            ->add('taille')
+            ->add('poids')
+            ->add('age')
+            ->add('sexe',ChoiceType::class,array('choices'
+                                                                =>array('Homme'=>'Homme','Femme'=>'Femme')))
+            ->add('Calculer',SubmitType::class);
     }/**
      * {@inheritdoc}
      */

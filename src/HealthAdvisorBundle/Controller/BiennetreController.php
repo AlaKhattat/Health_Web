@@ -15,33 +15,33 @@ use Symfony\Component\HttpFoundation\Request;
 
 class BiennetreController extends Controller
 {
-    public function indexOutilBiennetreAction()
+    public function indexOutilBiennetreAction(Request $request)
     {
         $informationSante = new Informationsante();
         $form = $this->createForm('HealthAdvisorBundle\Form\InformationSanteType', $informationSante);
-       return  $this->render("HealthAdvisorBundle:Default/Biennetre_front:outilsBiennetre.html.twig",
-                                 array('form' => $form->createView()) );
-    }
-
-
-    public function ajouterInfoSanteAction(Request $request)
-    {
-        $informationSante = new Informationsante();
-        $form = $this->createForm('HealthAdvisorBundle\Form\InformationSanteType', $informationSante);
+        var_dump($informationSante);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($informationSante);
             $em->flush();
-          /*a mediter encore */
-           // return $this->redirectToRoute('', array('login' => $informationSante->getLogin()));
+            /*a mediter encore */
+            // return $this->redirectToRoute('', array('login' => $informationSante->getLogin()));
         }
 
         return $this->render('HealthAdvisorBundle:Default/Biennetre_front:outilsBiennetre.html.twig', array(
             'informationSante' => $informationSante,
             'form' => $form->createView(),
         ));
+    }
+
+
+    public function ajouterInfoSanteAction(Request $request)
+    {
+        $informationSante = new Informationsante();
+      var_dump($informationSante);
+
     }
 
     public function afficherInfoSanteAction(Request $request)
