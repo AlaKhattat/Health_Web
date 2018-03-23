@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Medecins list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Specialite</th>
+                <th>Adresse</th>
+                <th>Diplome</th>
+                <th>Rating</th>
+                <th>Latp</th>
+                <th>Longp</th>
+                <th>Statutcompte</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for medecin in medecins %}
+            <tr>
+                <td><a href="{{ path('medecin_show', { 'login': medecin.login }) }}">{{ medecin.specialite }}</a></td>
+                <td>{{ medecin.adresse }}</td>
+                <td>{{ medecin.diplome }}</td>
+                <td>{{ medecin.rating }}</td>
+                <td>{{ medecin.latP }}</td>
+                <td>{{ medecin.longP }}</td>
+                <td>{{ medecin.statutCompte }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('medecin_show', { 'login': medecin.login }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('medecin_edit', { 'login': medecin.login }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('medecin_new') }}">Create a new medecin</a>
+        </li>
+    </ul>
+{% endblock %}

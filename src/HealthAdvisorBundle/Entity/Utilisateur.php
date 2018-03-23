@@ -14,10 +14,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Utilisateur extends BaseUser implements ParticipantInterface
 {
-
     /**
      * @ORM\Id
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer",name="id")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
@@ -27,6 +26,7 @@ class Utilisateur extends BaseUser implements ParticipantInterface
      * @ORM\Column(name="CIN", type="string", length=255, nullable=false,unique=true)
      */
     protected  $cin;
+
     /**
      * @var string
      *
@@ -233,7 +233,7 @@ class Utilisateur extends BaseUser implements ParticipantInterface
     }
 
     /**
-     * @return string
+     * @return int
      */
     public function getId()
     {
@@ -241,12 +241,14 @@ class Utilisateur extends BaseUser implements ParticipantInterface
     }
 
     /**
-     * @param string $id
+     * @param int $id
      */
     public function setId($id)
     {
         $this->id = $id;
     }
+
+
 
     /**
      * Get ville

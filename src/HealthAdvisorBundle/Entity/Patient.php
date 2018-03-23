@@ -40,7 +40,7 @@ class Patient
      *
      * @ORM\ManyToOne(targetEntity="Utilisateur")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="CIN_USER", referencedColumnName="CIN")
+     *   @ORM\JoinColumn(name="CIN_USER", referencedColumnName="id")
      * })
      */
     private $cinUser;
@@ -98,6 +98,134 @@ class Patient
         $this->idEvent = new \Doctrine\Common\Collections\ArrayCollection();
         $this->idRegime = new \Doctrine\Common\Collections\ArrayCollection();
         $this->idReponse = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * @return string
+     */
+    public function getLogin()
+    {
+        return $this->login;
+    }
+
+    /**
+     * @param string $login
+     */
+    public function setLogin($login)
+    {
+        $this->login = $login;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    /**
+     * @param string $password
+     */
+    public function setPassword($password)
+    {
+        $this->password = $password;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPhotoProfile()
+    {
+        return $this->photoProfile;
+    }
+
+    /**
+     * @param string $photoProfile
+     */
+    public function setPhotoProfile($photoProfile)
+    {
+        $this->photoProfile = $photoProfile;
+    }
+
+    /**
+     * @return \Utilisateur
+     */
+    public function getCinUser()
+    {
+        return $this->cinUser;
+    }
+
+    /**
+     * @param \Utilisateur $cinUser
+     */
+    public function setCinUser($cinUser)
+    {
+        $this->cinUser = $cinUser;
+    }
+
+    /**
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getIdArticle()
+    {
+        return $this->idArticle;
+    }
+
+    /**
+     * @param \Doctrine\Common\Collections\Collection $idArticle
+     */
+    public function setIdArticle($idArticle)
+    {
+        $this->idArticle = $idArticle;
+    }
+
+    /**
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getIdEvent()
+    {
+        return $this->idEvent;
+    }
+
+    /**
+     * @param \Doctrine\Common\Collections\Collection $idEvent
+     */
+    public function setIdEvent($idEvent)
+    {
+        $this->idEvent = $idEvent;
+    }
+
+    /**
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getIdRegime()
+    {
+        return $this->idRegime;
+    }
+
+    /**
+     * @param \Doctrine\Common\Collections\Collection $idRegime
+     */
+    public function setIdRegime($idRegime)
+    {
+        $this->idRegime = $idRegime;
+    }
+
+    /**
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getIdReponse()
+    {
+        return $this->idReponse;
+    }
+
+    /**
+     * @param \Doctrine\Common\Collections\Collection $idReponse
+     */
+    public function setIdReponse($idReponse)
+    {
+        $this->idReponse = $idReponse;
     }
 
 }

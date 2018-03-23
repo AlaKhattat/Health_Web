@@ -102,10 +102,7 @@ class ProfileFormType extends AbstractType
     {
         $builder
             ->add('username', null, array('label' => 'form.username', 'translation_domain' => 'FOSUserBundle'))
-            ->add('email', null, array('label' => 'form.email', 'translation_domain' => 'FOSUserBundle'))
-            ->add('ville')
-            ->add('pays')
-            ->add('num_tel')
+            ->add('email', EmailType::class, array('label' => 'form.email', 'translation_domain' => 'FOSUserBundle'))
         ;
     }
 }

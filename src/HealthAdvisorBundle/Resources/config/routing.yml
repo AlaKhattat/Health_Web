@@ -5,3 +5,6 @@ health_advisor_homepage:
 index_admin:
     path:     /admin
     defaults: { _controller: HealthAdvisorBundle:Admin_Template:index }
+index_medecin:
+    path:     /medecin
+    defaults: { _controller: HealthAdvisorBundle:Medecin:index }
