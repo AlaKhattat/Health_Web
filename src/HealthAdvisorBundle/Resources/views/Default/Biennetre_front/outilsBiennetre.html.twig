@@ -1,1 +1,139 @@
 {% extends 'HealthAdvisorBundle:Default:index.html.twig' %}
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+    {% block header %}
+        {{ parent() }}
+    {% endblock %}
+
+    <div class="page-header">
+        <div class="container">
+            <h1>Outils de biennetre</h1>
+            <div class="breadcrumb-2">
+                <ul class="breadcrumb">
+                    <li><a href="#">Home</a></li>
+                    <li class="active"><a href="#">Outils</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+    <div class="col-sm-12">
+        <h2 class="heading text-center"> Calculer votre IMC </h2>
+        <hr class="hr-1">
+    </div>
+        <div class="col-sm-12">
+            <div class="tabs-3">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active">
+                        <a href="#tabbody1" aria-controls="t3body1" role="tab" data-toggle="tab" aria-expanded="false">
+                            <i class="fa fa-calculator"></i>
+                            <strong>Calculer IMC</strong>
+                        </a>
+                    </li>
+                    <li role="presentation" class="">
+                        <a href="#t3body2" aria-controls="t3body2" role="tab" data-toggle="tab" aria-expanded="true">
+                            <i class="fa fa-balance-scale"></i>
+                            <strong>Calcul Poids Ideal</strong>
+                        </a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#t3body3" aria-controls="t3body3" role="tab" data-toggle="tab">
+                            <i class="fa fa-male"></i>
+                            <strong>Calculer Masse grasse</strong>
+                        </a>
+                    </li>
+
+                </ul>
+
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade in active" id="tabbody1">
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <div class="row">
+                                    <div class="col-sm-5">
+
+                                        <div>
+                                            <h3 class="doctor-desig" style="color: #00aeef">Indice de masse corporel(IMC)</h3>
+                                            <div class="doctor-detail">
+                                                <p class="justify">
+                                                    L'IMC est un indice comparatif sur une échelle de 70 points. Elle permet
+                                                    facilement d'etablir l'importance de votre poids pour votre santé
+                                                    <b>pour calculer IMC remplissez le formulaire avec vos donnée</b>
+                                                </p>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <aside class="sidebar ">
+                                    <div class="widget widget-blogs">
+                                        <h4 class="heading">Vos informations ICI</h4>
+                                        <form method="get" action="#">
+                                            <div class="form-group">
+                                                <input class="form-control" type="number" placeholder=" votre poids en Kg"  name="poids" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <input class="form-control" type="number" placeholder=" votre taille en cm" name="taille" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="btn-group bootstrap-select">
+                                                    <select class=""  title="Sexe"  name="sexe" required>
+                                                        <option>Homme</option>
+                                                        <option>Femme</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <input class="form-control" type="number" placeholder="votre age" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <button type="submit" class="btn btn-black"><i class="fa fa-calculator"></i>Calculer</button>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                </aside>
+                            </div>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="t3body2">
+                        <p>tab2 serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine. I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents.</p>
+                        <p>I should be incapable of drawing a single stroke at the present moment; and yet I feel that I never was a greater artist than now. When, while the lovely valley teems with vapour around me, and the meridian sun strikes the upper surface of the impenetrable foliage of my trees, and but a few stray gleams steal into the inner sanctuary, I throw myself down among the tall grass by the trickling stream; and, as I lie close to the earth, a thousand unknown plants are noticed by me.</p>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="t3body3">
+                        <p>tab3 serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine. I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents.</p>
+                        <p>I should be incapable of drawing a single stroke at the present moment; and yet I feel that I never was a greater artist than now. When, while the lovely valley teems with vapour around me, and the meridian sun strikes the upper surface of the impenetrable foliage of my trees, and but a few stray gleams steal into the inner sanctuary, I throw myself down among the tall grass by the trickling stream; and, as I lie close to the earth, a thousand unknown plants are noticed by me.</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JQuery Version 3.1.0 -->
+    <script src="{{asset('js/jquery.min.js') }}" type="text/javascript"></script>
+
+    <!-- Bootstrap Version 3.3.7 -->
+    <script src="{{ asset('js/bootstrap.min.js')}}" type="text/javascript"></script>
+
+    <!-- Count To JS -->
+    <script src="{{ asset('js/jquery.countTo.js') }}" type="text/javascript"></script>
+
+    <!-- Appear JS -->
+    <script src="{{asset('js/jquery.appear.js')}}" type="text/javascript"></script>
+
+    <!-- Owl Carousel 2.0.0 -->
+    <script src="{{ asset('js/owl.carousel.min.js') }}" type="text/javascript"></script>
+
+    <!-- BootStrap select -->
+    <script src="{{ asset('js/bootstrap-select.min.js') }}" type="text/javascript"></script>
+
+    <!-- Custom JS -->
+    <script src="{{ asset('js/script.js') }}" type="text/javascript"></script>
+
+{% endblock %}
