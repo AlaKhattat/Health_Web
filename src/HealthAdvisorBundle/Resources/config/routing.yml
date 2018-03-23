@@ -23,3 +23,9 @@ rechercher_aliment:
 afficher_outilBiennetre:
     path:     /outils
     defaults: { _controller: HealthAdvisorBundle:Biennetre:indexOutilBiennetre }
+ajouter_infoSante:
+    path:     /outils
+    defaults: { _controller: HealthAdvisorBundle:Biennetre:ajouterInfoSante }
+afficher_infoSante:
+    path:     /outils
+    defaults: { _controller: HealthAdvisorBundle:Biennetre:afficherInfoSante }

@@ -70,11 +70,14 @@
                                 </div>
                             </div>
                             <div class="col-sm-4">
+
                                 <aside class="sidebar ">
                                     <div class="widget widget-blogs">
                                         <h4 class="heading">Vos informations ICI</h4>
+                                        {{ form_start(form) }}
                                         <form method="get" action="#">
                                             <div class="form-group">
+                                                {{ form_widget(form.poids) }}
                                                 <input class="form-control" type="number" placeholder=" votre poids en Kg"  name="poids" required>
                                             </div>
                                             <div class="form-group">
@@ -96,7 +99,7 @@
                                             </div>
                                         </form>
                                     </div>
-
+                                    {{ form_end(form) }}
                                 </aside>
                             </div>
                         </div>

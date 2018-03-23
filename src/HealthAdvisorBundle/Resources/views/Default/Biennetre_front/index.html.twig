@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Informationsantes list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Taille</th>
+                <th>Poids</th>
+                <th>Age</th>
+                <th>Allergies</th>
+                <th>Maladies</th>
+                <th>Sexe</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for informationSante in informationSantes %}
+            <tr>
+                <td><a href="{{ path('outil_show', { 'login': informationSante.login }) }}">{{ informationSante.taille }}</a></td>
+                <td>{{ informationSante.poids }}</td>
+                <td>{{ informationSante.age }}</td>
+                <td>{{ informationSante.allergies }}</td>
+                <td>{{ informationSante.maladies }}</td>
+                <td>{{ informationSante.sexe }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('outil_show', { 'login': informationSante.login }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('outil_edit', { 'login': informationSante.login }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('outil_new') }}">Create a new informationSante</a>
+        </li>
+    </ul>
+{% endblock %}
