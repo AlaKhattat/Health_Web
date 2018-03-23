@@ -4,6 +4,7 @@ namespace HealthAdvisorBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Query\Expr\Math;
+use HealthAdvisorBundle\HealthAdvisorBundle;
 
 /**
  * InformationSante
@@ -56,11 +57,11 @@ class InformationSante
     private $sexe;
 
     /**
-     * @var \Patient
+     * @var HealthAdvisorBundle:Patient
      *
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="Patient")
+     * @ORM\OneToOne(targetEntity="Patient",cascade={"persist"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="login", referencedColumnName="LOGIN")
      * })
@@ -164,7 +165,7 @@ class InformationSante
     }
 
     /**
-     * @return \Patient
+     * @return HealthAdvisorBundle:Patient
      */
     public function getLogin()
     {
@@ -172,7 +173,7 @@ class InformationSante
     }
 
     /**
-     * @param \Patient $login
+     * @param HealthAdvisorBundle:Patient $login
      */
     public function setLogin($login)
     {

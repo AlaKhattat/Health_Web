@@ -10,6 +10,8 @@ namespace HealthAdvisorBundle\Controller;
 
 
 use HealthAdvisorBundle\Entity\InformationSante;
+use HealthAdvisorBundle\Entity\Patient;
+use HealthAdvisorBundle\Entity\Utilisateur;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -19,19 +21,32 @@ class BiennetreController extends Controller
     {
         $informationSante = new Informationsante();
         $form = $this->createForm('HealthAdvisorBundle\Form\InformationSanteType', $informationSante);
-        var_dump($informationSante);
+     //   var_dump($this->container->get('security.token_storage')->getToken()->getUsername());
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($informationSante);
-            $em->flush();
+
+            if($this->container->get('security.token_storage')->getToken()->getUsername()!=null)
+            {
+
+                $patient = new Patient();
+                /*$patient=$this->getDoctrine()->getRepository("HealthAdvisorBundle:Patient")
+                          ->find($this->container->get('security.token_storage')->getToken()->getUsername());*/
+                $patient->setCinUser($this->container->get('security.token_storage')->getToken()->getUser());
+                $patient->setLogin($this->container->get('security.token_storage')->getToken()->getUsername());
+                //var_dump($patient);
+                echo ("hh");
+                $informationSante->setLogin($patient);
+
+                $em->persist($informationSante);
+                $em->flush();
+            }
+
             /*a mediter encore */
             // return $this->redirectToRoute('', array('login' => $informationSante->getLogin()));
         }
 
         return $this->render('HealthAdvisorBundle:Default/Biennetre_front:outilsBiennetre.html.twig', array(
-            'informationSante' => $informationSante,
             'form' => $form->createView(),
         ));
     }

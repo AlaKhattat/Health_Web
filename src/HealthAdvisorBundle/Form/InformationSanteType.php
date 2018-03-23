@@ -17,12 +17,13 @@ class InformationSanteType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->setMethod("GET")
             ->add('taille')
             ->add('poids')
             ->add('age')
             ->add('sexe',ChoiceType::class,array('choices'
-                                                                =>array('Homme'=>'Homme','Femme'=>'Femme')))
-            ->add('Calculer',SubmitType::class);
+                                                                =>array('Homme'=>'Homme','Femme'=>'Femme')));
+
     }/**
      * {@inheritdoc}
      */
