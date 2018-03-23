@@ -13,4 +13,11 @@ class Admin_TemplateController extends Controller
         ));
     }
 
+    public function afficher_UsersAction()
+    {
+        $reposit=$this->getDoctrine()->getRepository("HealthAdvisorBundle:Utilisateur");
+        $list=$reposit->findAll();
+        return $this->render('@HealthAdvisor/Admin_Template/users_profile.html.twig',array('users'=>$list));
+    }
+
 }
