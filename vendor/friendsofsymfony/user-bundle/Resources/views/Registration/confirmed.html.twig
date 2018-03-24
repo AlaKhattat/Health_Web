@@ -7,14 +7,16 @@
     <h2 class="heading">
 
         {{ 'registration.confirmed'|trans({'%username%': user.username}) }}
+
     </h2>
     <p class="sub-heading">
+        <a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a>
+        <br>
+        <a href="#">continuer en tant que medecin</a>
+        <br>
+        <a href="{{ path('_new',{'id':user.id}) }}">continuer en tant que patient</a>
     {% if targetUrl %}
-     <a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a>
-        <br>
-       <a href="#">continuer en tant que medecin</a>
-        <br>
-     <a href="{{ path('_new',{'id':user.id}) }}">continuer en tant que patient</a>
+
     {% endif %}
     </p>
     </div>
