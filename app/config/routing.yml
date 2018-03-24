@@ -1,3 +1,7 @@
+health_advisor_utilisateur:
+    resource: "@HealthAdvisorBundle/Controller/UtilisateurController.php"
+    type:     annotation
+
 health_advisor_medecin:
     resource: "@HealthAdvisorBundle/Controller/MedecinController.php"
     type:     annotation

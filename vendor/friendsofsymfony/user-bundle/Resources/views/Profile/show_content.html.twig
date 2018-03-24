@@ -1,6 +1,21 @@
 {% trans_default_domain 'FOSUserBundle' %}
+<div class="col-sm-8 mt-20">
+    <h3 class="heading">Contact Us. <span class="color1">We love hearing from you.</span></h3>
+    <form id="main-contact-form">
+        <div class="fos_user_user_show">
 
-<div class="fos_user_user_show">
-    <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
-    <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <input class="form-control" type="text" value="{{ user.username }}" id="fname" name="fname" readonly>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <input class="form-control" type="text" value="{{ user.email }}" id="lname" name="lname" readonly>
+                </div>
+            </div>
+        </div>
+</div>
+    </form>
 </div>
