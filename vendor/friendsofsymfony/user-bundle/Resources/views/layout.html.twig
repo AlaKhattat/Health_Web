@@ -1,69 +1,33 @@
-{% extends "HealthAdvisorBundle:Default:index.html.twig" %}
-
-{% block head %}
+<!DOCTYPE html>
+<html>
     <head>
-        {{ parent() }}
+        <meta charset="UTF-8" />
     </head>
-{% endblock %}
-{% block body %}
-
-    {% block header %}
-        {{ parent() }}
-    {% endblock %}
-    <div class="page-header">
-        <div class="container">
-            <h1>Inscription</h1>
-            <div class="breadcrumb-2">
-                <ul class="breadcrumb">
-                    <li><a href="{{ path('health_advisor_homepage') }}">Home</a></li>
-                    <li class="active">Inscription</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="container mt-80 mb-60">
-        <div class="row">
-            <div class="col-sm-12">
-                <h2 class="heading text-center">Remplissez Les Champs Suivants</h2>
-                <hr class="hr-1">
-            </div>
-            <div>
-                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                    {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
-                    <a href="{{ path('fos_user_security_logout') }}">
-                        {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-                    </a>
-                {% else %}
-                    <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
-                {% endif %}
-            </div>
-
-            {% if app.request.hasPreviousSession %}
-                {% for type, messages in app.session.flashbag.all() %}
-                    {% for message in messages %}
-                        <div class="flash-{{ type }}">
-                            {{ message }}
-                        </div>
-                    {% endfor %}
-                {% endfor %}
+    <body>
+        <div>
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                <a href="{{ path('fos_user_security_logout') }}">
+                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                </a>
+            {% else %}
+                <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
             {% endif %}
-
-            <div class="col-sm-12">
-                <div class="slider-box-appointment">
-                    <div class="body">
-
-                        {% block fos_user_content %}
-                        {% endblock fos_user_content %}
-
-                    </div>
-                </div>
-            </div>
         </div>
-    </div>
 
-    {% block footer %}
-        {{ parent() }}
+        {% if app.request.hasPreviousSession %}
+            {% for type, messages in app.session.flashbag.all() %}
+                {% for message in messages %}
+                    <div class="flash-{{ type }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        {% endif %}
 
-    {% endblock %}
-{% endblock %}
+        <div>
+            {% block fos_user_content %}
+            {% endblock fos_user_content %}
+        </div>
+    </body>
+</html>

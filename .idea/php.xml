@@ -40,8 +40,8 @@
       <path value="$PROJECT_DIR$/vendor/twig/twig" />
       <path value="$PROJECT_DIR$/vendor/sensio/distribution-bundle" />
       <path value="$PROJECT_DIR$/vendor/sensio/generator-bundle" />
-      <path value="$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle" />
       <path value="$PROJECT_DIR$/vendor/friendsofsymfony/message-bundle" />
+      <path value="$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="5.5.0" />
