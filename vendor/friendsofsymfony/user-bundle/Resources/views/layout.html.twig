@@ -1,4 +1,14 @@
+
+{% extends 'HealthAdvisorBundle:Default:index.html.twig' %}
+{% block head %}
 <!DOCTYPE html>
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+    {% block header %}
+        {{ parent() }}
+    {% endblock %}
+
 <html>
     <head>
         <meta charset="UTF-8" />
@@ -31,3 +41,4 @@
         </div>
     </body>
 </html>
+{% endblock %}

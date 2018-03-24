@@ -1,3 +1,7 @@
+health_advisor_patient:
+    resource: "@HealthAdvisorBundle/Controller/PatientController.php"
+    type:     annotation
+    prefix: /patient
 health_advisor_medecin:
     resource: "@HealthAdvisorBundle/Controller/MedecinController.php"
     type:     annotation

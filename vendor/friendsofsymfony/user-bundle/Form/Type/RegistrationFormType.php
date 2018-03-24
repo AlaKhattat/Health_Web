@@ -48,10 +48,9 @@ class RegistrationFormType extends AbstractType
             ->add('prenom')
             ->add('ville')
             ->add('pays')
-            ->add('date_naiss',DateType::class,array('widget'=>'choice'))
-            ->add('sexe')
+            ->add('date_naiss')
+            ->add('sexe',ChoiceType::class,array('choices'=>array('Homme'=>'Homme','Femme')))
             ->add('num_tel')
-            ->add('roles')
             ->add('username', null, array('label' => 'form.username', 'translation_domain' => 'FOSUserBundle'))
             ->add('plainPassword', RepeatedType::class, array(
                 'type' => PasswordType::class,
@@ -64,9 +63,8 @@ class RegistrationFormType extends AbstractType
                 'first_options' => array('label' => 'form.password'),
                 'second_options' => array('label' => 'form.password_confirmation'),
                 'invalid_message' => 'fos_user.password.mismatch',
-            ))
+            ));
 
-        ;
     }
 
     /**
