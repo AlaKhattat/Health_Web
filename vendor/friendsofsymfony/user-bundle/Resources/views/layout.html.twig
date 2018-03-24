@@ -1,18 +1,13 @@
-
 {% extends 'HealthAdvisorBundle:Default:index.html.twig' %}
-{% block head %}
-<!DOCTYPE html>
-    {{ parent() }}
+
+    {% block head %}
+{{ parent() }}
 {% endblock %}
 {% block body %}
     {% block header %}
         {{ parent() }}
-    {% endblock %}
+        {% endblock %}
 
-<html>
-    <head>
-        <meta charset="UTF-8" />
-    </head>
     <body>
         <div>
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
@@ -34,11 +29,25 @@
                 {% endfor %}
             {% endfor %}
         {% endif %}
-
+        <div class="container mt-80">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="bgcolor1 p40">
+                        <div class="call-out-2 text-center">
+                            <i class="med-icon icon-i-ambulance"></i>
+                            <span class="call-us"><strong class="inverse text-capitalize font20">Emergency Assistance!</strong><br>1800-123-678</span>
+                        </div>
+                    </div>
+                </div>
         <div>
             {% block fos_user_content %}
             {% endblock fos_user_content %}
         </div>
+        </div>
+        </div>
+    {% block footer %}
+        {{ parent() }}
+        {% endblock %}
     </body>
-</html>
+
 {% endblock %}

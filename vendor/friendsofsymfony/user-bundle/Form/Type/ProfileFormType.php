@@ -101,8 +101,18 @@ class ProfileFormType extends AbstractType
     protected function buildUserForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('username', null, array('label' => 'form.username', 'translation_domain' => 'FOSUserBundle'))
             ->add('email', EmailType::class, array('label' => 'form.email', 'translation_domain' => 'FOSUserBundle'))
+            ->add('cin')
+            ->add('nom')
+            ->add('prenom')
+            ->add('ville')
+            ->add('pays')
+            ->add('date_naiss',DateType::class,array('widget'=>'choice'))
+            ->add('sexe')
+            ->add('num_tel')
+            ->add('roles')
+            ->add('username', null, array('label' => 'form.username', 'translation_domain' => 'FOSUserBundle'))
+
         ;
     }
 }

@@ -1245,7 +1245,7 @@
         </div>
     </div>
 </div>
-
+{% block script %}
 <!-- JQuery Version 3.1.0 -->
 <script src="{{ asset('js/jquery.min.js') }}" type="text/javascript"></script>
 
@@ -1269,6 +1269,7 @@
 
 <!-- Custom J-->
 <script src="{{ asset('js/script.js') }}" type="text/javascript"></script>
+    {% endblock %}
 {% endblock %}
 </body>
 

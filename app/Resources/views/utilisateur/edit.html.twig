@@ -1,0 +1,115 @@
+{% extends 'HealthAdvisorBundle:Default:index.html.twig' %}
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+    {% block header %}
+        {{ parent() }}
+    {% endblock %}
+
+
+    <div class="doctor-single mt-80 mb-60">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-5">
+                    <div class="doctor-img">
+                        <img src="{{ asset('images/doctor-single.jpg') }}" class="img-responsive" alt="">
+                    </div>
+                    <div class="doctor-contact">
+                        <ul class="contact-list">
+                            <li>
+                                <i class="fa fa-phone"></i> +1800-567-1234
+                            </li>
+                            <li>
+                                <i class="fa fa-envelope"></i> medwise@example.com
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-7">
+                    <div class="doctor-details">
+                        <h2 class="doctor-name"> Détails Profile </h2>
+                        <hr class="hr-1 left">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input class="form-control" value="{{ utilisateur.username }}" type="text"  id="fname" name="fname" readonly>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input class="form-control" value="{{ utilisateur.email }}" type="text"  id="email" name="email" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+
+                                <div class="form-group">
+                                    <input class="form-control" value="{{ utilisateur.nom }}" type="text"  id="fname" name="fname" readonly>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+
+                                <div class="form-group">
+                                    <input class="form-control" value="{{ utilisateur.prenom }}" type="text"  id="fname" name="fname" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+
+                                <div class="form-group">
+                                    <input class="form-control" value="{{ utilisateur.dateNaiss|date }}" type="text"  id="fname" name="fname" readonly>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+
+                                <div class="form-group">
+                                    <input class="form-control" value="{{ utilisateur.sexe }}" type="text"  id="fname" name="fname" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+
+                                <div class="form-group">
+                                    <input class="form-control" value="{{ utilisateur.pays }}" type="text"  id="fname" name="fname" readonly>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+
+                                <div class="form-group">
+                                    <input class="form-control" value="{{ utilisateur.ville }}" type="text"  id="fname" name="fname" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+
+                                <div class="form-group">
+                                    <input class="form-control" value="{{ utilisateur.cin }}" type="text"  id="fname" name="fname" readonly>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+
+                                <div class="form-group">
+                                    <input class="form-control" value="{{ utilisateur.numTel }}" type="text"  id="fname" name="fname" readonly>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p id="status"></p>
+                        <div class="form-group">
+                            <a href="{{ path('utilisateur_edit', { 'id': utilisateur.id }) }}">
+                                <button class="btn btn-primary" type="submit" name="submit"><i class="fa fa-edit"></i>Modifier</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% block footer %}
+        {{ parent() }}
+    {% endblock %}
+{% endblock %}
