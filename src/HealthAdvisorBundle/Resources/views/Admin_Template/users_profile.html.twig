@@ -59,6 +59,8 @@
                         <th>Ville</th>
                         <th>Pays</th>
                         <th>Numero Téléphone</th>
+                        <th>Role</th>
+                        <th>Action</th>
                     </tr>
                     </thead>
 
@@ -74,6 +76,8 @@
                         <td>{{ l.ville }}</td>
                         <td>{{ l.pays }}</td>
                         <td>{{ l.numTel }}</td>
+                        <td>{{ l.roles[0] }}</td>
+                        <td><a href="{{ path('admin_supprimer',{'id':l.id}) }}"><button type="button" class="btn btn-danger"><i class="fa fa-trash-o">  Supprimer</i></button></a></td>
                         {% endfor %}
                     </tr>
                     </tbody>
