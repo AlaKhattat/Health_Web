@@ -1,8 +1,73 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
-    {{ form_widget(form) }}
-    <div>
-        <input type="submit" value="{{ 'registration.submit'|trans }}" />
+
+
+
+
+<div class="slider-box-appointment">
+    <div class="header">
+        <h3 class="heading font-2 text-center">Incription</h3>
     </div>
-{{ form_end(form) }}
+    <hr class="hr-2">
+    <div class="body">
+        <div class="container">
+        <div class="col-md-4 col-lg-4 col-sm-4 col-xs-4"></div>
+        <div class="col-md-4 col-lg-4 col-sm-4 col-xs-4">
+        <form>
+            <div class="form-group">
+                {{ form_widget(form.email,{'attr':{'class':'form-control','placeholder':'Votre Email'}}) }}
+            </div>
+            <div class="form-group">
+                {{ form_widget(form.cin,{'attr':{'class':'form-control','placeholder':'Votre CIN'}}) }}
+            </div>
+            <div class="form-group">
+                {{ form_widget(form.nom,{'attr':{'class':'form-control','placeholder':'Votre Nom'}}) }}
+            </div>
+            <div class="form-group">
+                {{ form_widget(form.prenom,{'attr':{'class':'form-control','placeholder':'Votre Prenom'}}) }}
+            </div>
+            <div class="form-group">
+                {{ form_widget(form.pays,{'attr':{'class':'form-control','placeholder':'Votre Pays'}}) }}
+            </div>
+            <div class="form-group">
+                {{ form_widget(form.ville,{'attr':{'class':'form-control','placeholder':'Votre Ville'}}) }}
+            </div>
+            <div class="form-group">
+                {{ form_widget(form.date_naiss,{'attr':{ 'type':'date','class':'form-control date-select  ','placeholder':'Votre Date de naissance','id':'dp1521894888336'}}) }}
+            </div>
+            <div class="form-group">
+                {{ form_widget(form.sexe,{'attr':{'class':'form-control','Title':'Sexe'}}) }}
+            </div>
+            <div class="form-group">
+                {{ form_widget(form.num_tel,{'attr':{'class':'form-control','placeholder':'Votre Numero de telephone'}}) }}
+            </div>
+            <div class="form-group">
+                {{ form_widget(form.username,{'attr':{'class':'form-control','placeholder':'Votre login'} }) }}
+            </div>
+            <div class="form-group">
+                {{ form_widget(form.plainPassword.first,{'attr':{'class':'form-control','placeholder':'Votre mot de passe'} }) }}
+            </div>
+            <div class="form-group">
+                {{ form_widget(form.plainPassword.second,{'attr':{'class':'form-control','placeholder':'Repetez votre mot de passe'} }) }}
+            </div>
+            <p class="text-muted"></p>
+            <button class="btn btn-black btn-block" type="submit">S'inscrire</button>
+            {{ form_rest(form) }}
+        </form>
+        </div>
+        <div class="col-md-4 col-lg-4 col-sm-4 col-xs-4"></div>
+        </div>
+    </div>
+</div>
+<script src="{{ asset('js/jquery.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap-select.min.js') }}"></script>
+<script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+<script src="{{ asset('js/jquery.appear.js') }}"></script>
+<script src="{{ asset('js/jquery.countTo.js') }}"></script>
+<script src="{{ asset('js/jquery-ui.min.js') }}"></script>
+<script src="{{ asset('js/script.js') }}"></script>
+
+
+  {{ form_end(form) }}

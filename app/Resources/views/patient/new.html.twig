@@ -1,0 +1,55 @@
+{% extends 'HealthAdvisorBundle:Default:index.html.twig' %}
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+    {% block header %}
+        {{ parent() }}
+    {% endblock %}
+    <h1>Patient creation</h1>
+
+    {{ form_start(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('_index') }}">Back to the list</a>
+        </li>
+    </ul>
+    <div class="slider-box-appointment">
+        <div class="header">
+            <h3 class="heading font-2 text-center">Incription Patient</h3>
+        </div>
+        <hr class="hr-2">
+        <div class="body">
+            <div class="container">
+                <div class="col-md-4 col-lg-4 col-sm-4 col-xs-4"></div>
+                <div class="col-md-4 col-lg-4 col-sm-4 col-xs-4">
+                    <form>
+
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-5 col-lg-5 col-sm-5">
+                                    <label class="font-2 heading " style="color: white" >
+                                        Photo de profil
+                                    </label>
+                                </div>
+                                <div class="col-md-7 col-lg-7 col-sm-7">
+                                    {{ form_widget(form.photoProfile,{'attr':{'class':'form-control' } }) }}
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <p class="text-muted"></p>
+                        <button class="btn btn-black btn-block" type="submit">Valider</button>
+                        {{ form_rest(form) }}
+                    </form>
+                </div>
+                <div class="col-md-4 col-lg-4 col-sm-4 col-xs-4"></div>
+            </div>
+        </div>
+    </div>
+    {{ form_end(form) }}
+{% endblock %}

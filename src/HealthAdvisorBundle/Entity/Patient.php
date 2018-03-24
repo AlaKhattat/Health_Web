@@ -17,7 +17,7 @@ class Patient
      *
      * @ORM\Column(name="LOGIN", type="string", length=255, nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue(strategy="NONE")
      */
     private $login;
 
@@ -228,5 +228,100 @@ class Patient
         $this->idReponse = $idReponse;
     }
 
-}
 
+    /**
+     * Add idArticle
+     *
+     * @param \HealthAdvisorBundle\Entity\Article $idArticle
+     *
+     * @return Patient
+     */
+    public function addIdArticle(\HealthAdvisorBundle\Entity\Article $idArticle)
+    {
+        $this->idArticle[] = $idArticle;
+    
+        return $this;
+    }
+
+    /**
+     * Remove idArticle
+     *
+     * @param \HealthAdvisorBundle\Entity\Article $idArticle
+     */
+    public function removeIdArticle(\HealthAdvisorBundle\Entity\Article $idArticle)
+    {
+        $this->idArticle->removeElement($idArticle);
+    }
+
+    /**
+     * Add idEvent
+     *
+     * @param \HealthAdvisorBundle\Entity\Evennement $idEvent
+     *
+     * @return Patient
+     */
+    public function addIdEvent(\HealthAdvisorBundle\Entity\Evennement $idEvent)
+    {
+        $this->idEvent[] = $idEvent;
+    
+        return $this;
+    }
+
+    /**
+     * Remove idEvent
+     *
+     * @param \HealthAdvisorBundle\Entity\Evennement $idEvent
+     */
+    public function removeIdEvent(\HealthAdvisorBundle\Entity\Evennement $idEvent)
+    {
+        $this->idEvent->removeElement($idEvent);
+    }
+
+    /**
+     * Add idRegime
+     *
+     * @param \HealthAdvisorBundle\Entity\Regime $idRegime
+     *
+     * @return Patient
+     */
+    public function addIdRegime(\HealthAdvisorBundle\Entity\Regime $idRegime)
+    {
+        $this->idRegime[] = $idRegime;
+    
+        return $this;
+    }
+
+    /**
+     * Remove idRegime
+     *
+     * @param \HealthAdvisorBundle\Entity\Regime $idRegime
+     */
+    public function removeIdRegime(\HealthAdvisorBundle\Entity\Regime $idRegime)
+    {
+        $this->idRegime->removeElement($idRegime);
+    }
+
+    /**
+     * Add idReponse
+     *
+     * @param \HealthAdvisorBundle\Entity\ReponsesPossibles $idReponse
+     *
+     * @return Patient
+     */
+    public function addIdReponse(\HealthAdvisorBundle\Entity\ReponsesPossibles $idReponse)
+    {
+        $this->idReponse[] = $idReponse;
+    
+        return $this;
+    }
+
+    /**
+     * Remove idReponse
+     *
+     * @param \HealthAdvisorBundle\Entity\ReponsesPossibles $idReponse
+     */
+    public function removeIdReponse(\HealthAdvisorBundle\Entity\ReponsesPossibles $idReponse)
+    {
+        $this->idReponse->removeElement($idReponse);
+    }
+}

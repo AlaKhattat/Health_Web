@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Patient</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Login</th>
+                <td>{{ patient.login }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ patient.password }}</td>
+            </tr>
+            <tr>
+                <th>Photoprofile</th>
+                <td>{{ patient.photoProfile }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('_edit', { 'login': patient.login }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

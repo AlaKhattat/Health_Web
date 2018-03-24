@@ -41,7 +41,6 @@ class UserManager extends BaseUserManager
     public function __construct(PasswordUpdaterInterface $passwordUpdater, CanonicalFieldsUpdater $canonicalFieldsUpdater, ObjectManager $om, $class)
     {
         parent::__construct($passwordUpdater, $canonicalFieldsUpdater);
-
         $this->objectManager = $om;
         $this->class = $class;
     }
@@ -97,6 +96,20 @@ class UserManager extends BaseUserManager
      */
     public function updateUser(UserInterface $user, $andFlush = true)
     {
+
+        $str = "";
+        if($user->getDateNaiss() instanceof  \DateTime)
+        {
+
+        }
+        else
+        {
+            $tab = explode('/',$user->getDateNaiss());
+            $str=$tab[2]."-".$tab[1]."-".$tab[0];
+            echo $str;
+            $user->setDateNaiss(date_create_from_format('Y-m-d',$str));
+        }
+
         $this->updateCanonicalFields($user);
         $this->updatePassword($user);
 
