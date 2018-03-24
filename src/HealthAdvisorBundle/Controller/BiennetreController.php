@@ -28,12 +28,14 @@ class BiennetreController extends Controller
 
             if($this->container->get('security.token_storage')->getToken()->getUsername()!=null)
             {
-
+              var_dump($this->container->get('security.token_storage')->getToken());
                 $patient = new Patient();
                 /*$patient=$this->getDoctrine()->getRepository("HealthAdvisorBundle:Patient")
                           ->find($this->container->get('security.token_storage')->getToken()->getUsername());*/
                 $patient->setCinUser($this->container->get('security.token_storage')->getToken()->getUser());
-                $patient->setLogin($this->container->get('security.token_storage')->getToken()->getUsername());
+                var_dump($patient->getCinUser()->getId());
+                var_dump($patient->setLogin($patient->getCinUser()->getCin()));
+                $patient->setPassword($patient->getCinUser()->getPassword());
                 //var_dump($patient);
                 echo ("hh");
                 $informationSante->setLogin($patient);

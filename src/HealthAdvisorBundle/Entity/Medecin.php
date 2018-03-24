@@ -3,6 +3,7 @@
 namespace HealthAdvisorBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use HealthAdvisorBundle\HealthAdvisorBundle;
 
 /**
  * Medecin
@@ -62,7 +63,7 @@ class Medecin
     private $statutCompte;
 
     /**
-     * @var \Patient
+     * @var HealthAdvisorBundle:Patient
      *
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
