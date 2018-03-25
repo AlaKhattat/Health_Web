@@ -3,6 +3,8 @@
 namespace HealthAdvisorBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -16,9 +18,7 @@ class MedecinType extends AbstractType
         $builder
             ->add('specialite')
             ->add('adresse')
-            ->add('diplome')
-            ->add('rating')
-            ->add('statutCompte');
+            ->add('diplome',FileType::class);
     }/**
      * {@inheritdoc}
      */

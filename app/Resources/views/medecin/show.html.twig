@@ -41,11 +41,11 @@
             <a href="{{ path('medecin_index') }}">Back to the list</a>
         </li>
         <li>
-            <a href="{{ path('medecin_edit', { 'login': medecin.login }) }}">Edit</a>
+            <a href="{{ path('medecin_edit', { 'login': medecin.login.login }) }}">Edit</a>
         </li>
         <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+            <input type="submit" value="Delete">
             {{ form_end(delete_form) }}
         </li>
     </ul>
