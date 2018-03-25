@@ -7,7 +7,9 @@ use HealthAdvisorBundle\Entity\Patient;
 use HealthAdvisorBundle\Entity\Utilisateur;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Medecin controller.
@@ -55,9 +57,14 @@ class MedecinController extends Controller
                 $patient->setCinUser($utilisateur);
                 $medecin->setLogin($patient);
                 $medecin->setRating(0);
-                $medecin->setLatP(0);
-                $medecin->setLongP(0);
                 $medecin->setStatutCompte('INVALIDE');
+                /**
+                 * @var UploadedFile $file
+                 */
+                $file=$medecin->getDiplome();
+                $fileName=md5(uniqid()).'.'.$file->guessExtension();
+                $file->move($this->getParameter('diplome_url'),$fileName);
+                $medecin->setDiplome($fileName);
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($patient);
                 $em->flush();

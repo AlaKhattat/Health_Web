@@ -3,6 +3,7 @@
 namespace HealthAdvisorBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Medecin
@@ -28,7 +29,8 @@ class Medecin
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank(message="Choisir une image")
+     * @Assert\Image()
      * @ORM\Column(name="DIPLOME", type="string", length=255, nullable=false)
      */
     private $diplome;
