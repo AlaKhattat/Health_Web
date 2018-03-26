@@ -7,7 +7,9 @@ use HealthAdvisorBundle\Entity\Patient;
 use HealthAdvisorBundle\Entity\Utilisateur;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Medecin controller.
@@ -41,35 +43,42 @@ class MedecinController extends Controller
      */
     public function newAction(Request $request)
     {
-
         $medecin = new Medecin();
-        $form = $this->createForm('HealthAdvisorBundle\Form\MedecinType', $medecin);
+        $patient = new Patient();
+        $form = $this->createForm('HealthAdvisorBundle\Form\MedecinType',$medecin);
         $form->handleRequest($request);
-        $patient =new Patient();
-        $patient->setLogin("ala");
-        $utilisateur=$this->getDoctrine()->getRepository('HealthAdvisorBundle:Utilisateur')->findOneBy(array('id'=>'1'));
-        $patient->setCinUser($utilisateur);
-        $patient->setPassword('ala');
-        $medecin->setLogin($patient);
-
-
-        if ($form->isSubmitted()) {
-            var_dump('alalalalalala');
-            var_dump($utilisateur);
-            var_dump($medecin);
-            var_dump($patient);
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($utilisateur);
-            $em->persist($patient);
-            $em->persist($medecin);
-            $em->flush();
-
-            return $this->redirectToRoute('medecin_show', array('login' => $medecin->getLogin()));
+        if($request->get('id')!=null) {
+            $utilisateur = new Utilisateur();
+            $utilisateur = $this->getDoctrine()->getRepository('HealthAdvisorBundle:Utilisateur')->find($request->get('id'));
+            if ($form->isSubmitted()) {
+                $utilisateur->setRoles(array('ROLES'=>'MEDECIN'));
+                $patient->setLogin($utilisateur->getUsername());
+                $patient->setPassword($utilisateur->getPassword());
+                $patient->setCinUser($utilisateur);
+                $medecin->setLogin($patient);
+                $medecin->setRating(0);
+                $medecin->setStatutCompte('INVALIDE');
+                /**
+                 * @var UploadedFile $file
+                 */
+                $file=$medecin->getDiplome();
+                $fileName=md5(uniqid()).'.'.$file->guessExtension();
+                $file->move($this->getParameter('diplome_url'),$fileName);
+                $medecin->setDiplome($fileName);
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($patient);
+                $em->flush();
+                $em->persist($utilisateur);
+                $em->flush();
+                $em->persist($medecin);
+                $em->flush();
+                $login=$medecin->getLogin();
+                return $this->redirectToRoute('medecin_show', array('login' => $login->getLogin()));
+            }
         }
-
         return $this->render('medecin/new.html.twig', array(
             'medecin' => $medecin,
-            'form' => $form->createView(),
+            'form' => $form->createView()
         ));
     }
 
@@ -144,7 +153,7 @@ class MedecinController extends Controller
     private function createDeleteForm(Medecin $medecin)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('medecin_delete', array('login' => $medecin->getLogin())))
+            ->setAction($this->generateUrl('medecin_delete', array('login' => $medecin->getLogin()->getLogin())))
             ->setMethod('DELETE')
             ->getForm()
         ;

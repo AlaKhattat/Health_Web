@@ -12,7 +12,7 @@
     <p class="sub-heading">
         <a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a>
         <br>
-        <a href="#">continuer en tant que medecin</a>
+        <a href="{{ path('medecin_new',{'id':user.id}) }}">continuer en tant que medecin</a>
         <br>
         <a href="{{ path('_new',{'id':user.id}) }}">continuer en tant que patient</a>
     {% if targetUrl %}
