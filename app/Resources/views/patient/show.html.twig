@@ -1,36 +1,128 @@
-{% extends 'base.html.twig' %}
-
+{% extends 'HealthAdvisorBundle:Default:index.html.twig' %}
+{% block head %}
+    {{ parent() }}
+{% endblock %}
 {% block body %}
-    <h1>Patient</h1>
+    {% block header %}
+        {{ parent() }}
+    {% endblock %}
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Login</th>
-                <td>{{ patient.login }}</td>
-            </tr>
-            <tr>
-                <th>Password</th>
-                <td>{{ patient.password }}</td>
-            </tr>
-            <tr>
-                <th>Photoprofile</th>
-                <td>{{ patient.photoProfile }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="doctor-single mt-80 mb-60">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-5">
+                    <div class="doctor-img">
+                        {% if patient.cinUser.sexe is sameas("Homme") %}
+                            <img src="{{ asset('profilUtilisateur/hommeProfil.jpg') }}" class="img-responsive" alt="Image introuvable">
+                        {% else %}
+                            <img src="{{ asset('profilUtilisateur/femmeProfil.jpg') }}" class="img-responsive" alt="Image introuvable">
+                        {% endif %}
 
-    <ul>
-        <li>
-            <a href="{{ path('_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('_edit', { 'login': patient.login }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+                    </div>
+                    <div class="doctor-contact col-sm-11">
+                        <ul class="contact-list">
+                            <li>
+                                <i class="fa fa-phone"></i> {{ patient.cinUser.numTel }}
+                            </li>
+                            <li>
+                                <i class="fa fa-envelope"></i> {{ patient.cinUser.email }}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-7">
+                    <div class="doctor-details">
+                        {% if patient.cinUser.sexe is sameas("Homme") %}
+                            <h2 class="doctor-name">Mr.  {{ patient.cinUser.nom  }} {{ patient.cinUser.prenom }}</h2>
+                          {% else %}
+                              <h2 class="doctor-name">Mmme.  {{ patient.cinUser.nom  }} {{ patient.cinUser.prenom }}</h2>
+                        {% endif %}
+                        <h4 class="doctor-desig">{{ patient.login }}</h4>
+                        <ul class="doctor-edu">
+                            <li><i class="fa fa-phone"></i> {{ patient.cinUser.numTel }}</li>
+                            <li><i class="fa fa-birthday-cake"></i> {{ patient.cinUser.DateNaiss|date }}</li>
+                            <li><i class="fa fa-location-arrow"> </i> {{ patient.cinUser.pays }}</li>
+                            <li><i class="fa fa-location-arrow"> </i> {{ patient.cinUser.ville }}</li>
+                            <li><button type="button" class="fa fa-pencil fa-1x " style="background-color: transparent; border: none" id="btnmofi"></button> </li>
+                           <form method="get">
+                               <li>
+                                   <button type="submit" name="login" value="{{ patient.login }}" class="fa fa-remove fa-1x " formaction="{{ path('fos_user_profile_deletePatient')}}" style="background-color: transparent; border: none" id="btnmofi"></button>
+                               </li>
+                           </form>
+
+                        </ul>
+                        <hr class="hr-1 left">
+                        <form hidden id="formModif">
+                              <div class="form-group">
+                                <input class="form-control" type="text" placeholder="Votre login" name="login" value="{{ patient.login }}">
+                              </div>
+
+                                    <div class="form-group">
+                                        <input class="form-control" type="text" placeholder="Votre nom" name="nom" value="{{ patient.cinUser.nom }}">
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control" type="text" placeholder="Votre prenom" name="prenom" value="{{ patient.cinUser.prenom}}">
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control date-select" name="dateNaiss" value="{{ patient.cinUser.DateNaiss|date }}" type="text" placeholder="Your Date of Birth" id="dp1521894888336" >
+                                    </div>
+
+
+                                <div class="form-group">
+                                    <input class="form-control" type="text" name="pays" value="{{ patient.cinUser.pays }}" placeholder="Votre pays">
+                                </div>
+
+
+                                <div class="form-group">
+                                    <input class="form-control" type="text" name="ville" value="{{ patient.cinUser.ville }}" placeholder="Votre ville">
+                                </div>
+
+
+                                <div class="form-group">
+                                    <input class="form-control" type="text" name="tel" value="{{ patient.cinUser.numTel }}" placeholder="Votre numero de telephone">
+                                </div>
+
+
+                                <div class="form-group">
+                                    <input class="form-control " type="file" name="photo"  placeholder="Choisissez une photo">
+                                </div>
+
+                            <div class="form-group">
+                                <button class="btn btn-black" type="submit" name="modifier" value="modif"><i class="fa fa-paper-plane"></i> Modifier</button>
+                            </div>
+                        </form>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="clearfix"></div>
+
+        </div>
+
+        <div class="container mt-80">
+            <div class="row">
+                <div class="col-sm-7 mt-20">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap-select.min.js') }}"></script>
+    <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.appear.js') }}"></script>
+    <script src="{{ asset('js/jquery.countTo.js') }}"></script>
+    <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('js/script.js') }}"></script>
+    <script>
+            $(function () {
+                 $('#btnmofi').click(function () {
+                         $('#formModif').toggle();
+                 })
+            })
+    </script>
+
 {% endblock %}

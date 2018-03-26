@@ -49,7 +49,7 @@ class RegistrationFormType extends AbstractType
             ->add('ville')
             ->add('pays')
             ->add('date_naiss')
-            ->add('sexe',ChoiceType::class,array('choices'=>array('Homme'=>'Homme','Femme')))
+            ->add('sexe',ChoiceType::class,array('choices'=>array('Homme'=>'Homme','Femme'=>'Femme')))
             ->add('num_tel')
             ->add('username', null, array('label' => 'form.username', 'translation_domain' => 'FOSUserBundle'))
             ->add('plainPassword', RepeatedType::class, array(

@@ -19,7 +19,7 @@
         <tbody>
         {% for medecin in medecins %}
             <tr>
-                <td><a href="{{ path('medecin_show', { 'login': medecin.login }) }}">{{ medecin.specialite }}</a></td>
+                <td><a href="{{ path('medecin_show', { 'login': medecin.login.login }) }}">{{ medecin.specialite }}</a></td>
                 <td>{{ medecin.adresse }}</td>
                 <td>{{ medecin.diplome }}</td>
                 <td>{{ medecin.rating }}</td>
@@ -29,10 +29,10 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('medecin_show', { 'login': medecin.login }) }}">show</a>
+                            <a href="{{ path('medecin_show', { 'login': medecin.login.login }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('medecin_edit', { 'login': medecin.login }) }}">edit</a>
+                            <a href="{{ path('medecin_edit', { 'login': medecin.login.login }) }}">edit</a>
                         </li>
                     </ul>
                 </td>

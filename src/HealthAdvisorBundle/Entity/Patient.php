@@ -164,6 +164,8 @@ class Patient
         $this->cinUser = $cinUser;
     }
 
+
+
     /**
      * @return \Doctrine\Common\Collections\Collection
      */

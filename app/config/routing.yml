@@ -4,10 +4,15 @@ health_advisor_aliment:
     type:     annotation
 health_advisor_biennetre:
     resource: "@HealthAdvisorBundle/Controller/BiennetreController.php"
+
+
+health_advisor_biennetre:
+    resource: "@HealthAdvisorBundle/Controller/BiennetreController.php"
+    type:     annotation
 health_advisor_patient:
     resource: "@HealthAdvisorBundle/Controller/PatientController.php"
     type:     annotation
-    prefix: /patient
+    prefix:   /patient
 health_advisor_utilisateur:
     resource: "@HealthAdvisorBundle/Controller/UtilisateurController.php"
     type:     annotation
