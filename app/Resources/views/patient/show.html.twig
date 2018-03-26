@@ -1,6 +1,102 @@
-{% extends 'base.html.twig' %}
-
+{% extends 'HealthAdvisorBundle:Default:index.html.twig' %}
+{% block head %}
+    {{ parent() }}
+{% endblock %}
 {% block body %}
+    {% block header %}
+        {{ parent() }}
+    {% endblock %}
+    <div class="doctor-single mt-80 mb-60">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-5">
+                    <div class="doctor-img">
+                        <img src="images/doctor-single.jpg" class="img-responsive" alt="">
+                    </div>
+                    <div class="doctor-contact">
+                        <ul class="contact-list">
+                            <li>
+                                <i class="fa fa-phone"></i> {{ patient.cinUser.numTel }}
+                            </li>
+                            <li>
+                                <i class="fa fa-envelope"></i> {{ patient.cinUser.email }}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-7">
+                    <div class="doctor-details">
+                        {% if patient.cinUser.sexe is sameas("Homme") %}
+                            <h2 class="doctor-name">Mr.  {{ patient.cinUser.nom  }} {{ patient.cinUser.prenom }}</h2>
+                          {% else %}
+                              <h2 class="doctor-name">Mmme.  {{ patient.cinUser.nom  }} {{ patient.cinUser.prenom }}</h2>
+                        {% endif %}
+                        <h4 class="doctor-desig">{{ patient.login }}</h4>
+                        <ul class="doctor-edu">
+                            <li><i class="fa fa-phone"></i> {{ patient.cinUser.numTel }}</li>
+                            <li><i class="fa fa-birthday-cake"></i> {{ patient.cinUser.DateNaiss|date }}</li>
+                            <li><i class="fa fa-location-arrow"> </i> {{ patient.cinUser.pays }}</li>
+                            <li><i class="fa fa-location-arrow"> </i> {{ patient.cinUser.ville }}</li>
+                            <li><button type="button" class="fa fa-pencil fa-1x " style="background-color: transparent; border: none"></button> </li>
+                        </ul>
+                        <hr class="hr-1 left">
+                        <form>
+                            <div class="form-group">
+                                <input class="form-control" type="text" placeholder="Your Full Name">
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <input class="form-control" type="text" placeholder="Your Phone Number">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <input class="form-control" type="text" placeholder="Your Email ID">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <input class="form-control date-select" type="text" placeholder="Your Date of Birth">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <select>
+                                            <option>Select Appointment Slot</option>
+                                            <option>9:00 p.m. - 12:00 p.m.</option>
+                                            <option>12:00 p.m. - 4:00 p.m.</option>
+                                            <option>4:00 p.m. - 8:00 p.m.</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" rows="4" placeholder="Special Message to Doctor"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-black" type="submit"><i class="fa fa-paper-plane"></i> Book Appointment</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+            <div class="clearfix"></div>
+
+        </div>
+
+        <div class="container mt-80">
+            <div class="row">
+                <div class="col-sm-7 mt-20">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
     <h1>Patient</h1>
 
     <table>
