@@ -13,43 +13,69 @@ use HealthAdvisorBundle\Entity\InformationSante;
 use HealthAdvisorBundle\Entity\Patient;
 use HealthAdvisorBundle\Entity\Utilisateur;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
 
 class BiennetreController extends Controller
 {
     public function indexOutilBiennetreAction(Request $request)
     {
         $informationSante = new Informationsante();
+        $imc=0;
+        $interpretationIMC="";
         $form = $this->createForm('HealthAdvisorBundle\Form\InformationSanteType', $informationSante);
-     //   var_dump($this->container->get('security.token_storage')->getToken()->getUsername());
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
+       if($request->isXmlHttpRequest()) {
 
-            if($this->container->get('security.token_storage')->getToken()->getUsername()!=null)
-            {
-              var_dump($this->container->get('security.token_storage')->getToken());
-                $patient = new Patient();
-                /*$patient=$this->getDoctrine()->getRepository("HealthAdvisorBundle:Patient")
-                          ->find($this->container->get('security.token_storage')->getToken()->getUsername());*/
-                $patient->setCinUser($this->container->get('security.token_storage')->getToken()->getUser());
-                var_dump($patient->getCinUser()->getId());
-                var_dump($patient->setLogin($patient->getCinUser()->getCin()));
-                $patient->setPassword($patient->getCinUser()->getPassword());
-                //var_dump($patient);
-                echo ("hh");
-                $informationSante->setLogin($patient);
 
-                $em->persist($informationSante);
-                $em->flush();
-            }
+           $form->handleRequest($request);
 
-            /*a mediter encore */
-            // return $this->redirectToRoute('', array('login' => $informationSante->getLogin()));
-        }
+           if ($request->get('taille')!=null&&$request->get('age')!=null) {
+               $em = $this->getDoctrine()->getManager();
+               if ($this->container->get('security.token_storage')->getToken()->getUsername() != "anon.") {
+                   $patient = new Patient();
+                   $patient = $this->getDoctrine()->getRepository('HealthAdvisorBundle:Patient')->findOneBy(array('cinUser'=>$this->container->get('security.token_storage')->getToken()->getUser()));
+                   $informationSante = $this->getDoctrine()->getRepository('HealthAdvisorBundle:InformationSante')->find($patient->getLogin());
+                   if($informationSante==null)
+                   {
+                       $informationSante = new InformationSante();
+                   }
+                   $informationSante->setAge($request->get('age'));
+                   $informationSante->setPoids($request->get('poids'));
+                   $informationSante->setSexe($request->get('sexe'));
+                   $informationSante->setTaille($request->get('taille'));
+                   $informationSante->setLogin($patient);
+                   $em->persist($informationSante);
+                   $em->flush();
+                   $imc = $informationSante->calculIMC($informationSante);
+                   $interpretationIMC = $informationSante->interpreterIMC($imc);
+                   $serializer = new Serializer(array(new ObjectNormalizer()));
+                   $tableau = array("imc"=>$imc,"interpretation"=>$interpretationIMC);
+                   $resultat = $serializer->normalize($tableau);
+                   return new JsonResponse($resultat);
+               } else {
+                   $informationSante->setAge($request->get('age'));
+                   $informationSante->setPoids($request->get('poids'));
+                   $informationSante->setSexe($request->get('sexe'));
+                   $informationSante->setTaille($request->get('taille'));
+                   $imc = $informationSante->calculIMC($informationSante);
+                   $interpretationIMC = $informationSante->interpreterIMC($imc);
+                   $serializer = new Serializer(array( new ObjectNormalizer()));
+                   $tableau = array("imc"=>$imc,"interpretation"=>$interpretationIMC);
+                   $resultat = $serializer->normalize($tableau);
+                   return new JsonResponse($resultat);
+
+               }
+
+               /*a mediter encore */
+               // return $this->redirectToRoute('', array('login' => $informationSante->getLogin()));
+           }
+       }
+
 
         return $this->render('HealthAdvisorBundle:Default/Biennetre_front:outilsBiennetre.html.twig', array(
-            'form' => $form->createView(),
+            'form' => $form->createView(),'imc'=>$imc,'interpretationIMC'=>$interpretationIMC
         ));
     }
 

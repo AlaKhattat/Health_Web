@@ -187,7 +187,7 @@ class InformationSante
     public  function  calculIMC(InformationSante $info)
     {
         //IMC = poids(kg)/(taille*taille)m
-         $imc = $info->getPoids()/(pow(10,$info->getTaille()));
+         $imc = ($info->getPoids()/(($info->getTaille()*$info->getTaille())/100))*100;
          return round((round($imc *100)/100),2);
     }
     public  function  calculPoidIdeal(InformationSante $info)

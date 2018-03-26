@@ -61,14 +61,18 @@
                                                     L'IMC est un indice comparatif sur une échelle de 70 points. Elle permet
                                                     facilement d'etablir l'importance de votre poids pour votre santé
                                                     <b>pour calculer IMC remplissez le formulaire avec vos donnée</b>
+                                                     <div hidden class="infoIMC">
+                                                      <h2 class="doctor-desig" style='color: #00aeef;' id="imc">IMC : {{ imc }} </h2>
+                                                      <p class="" style='color: #00aeef' id="interpretationIMC"><span>{{ interpretationIMC }}</span></p>
+                                                     </div>
                                                 </p>
                                             </div>
 
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
+
                             <div class="col-sm-4">
 
                                 <aside class="sidebar ">
@@ -91,7 +95,7 @@
                                                 {{ form_widget(form.age,{'attr':{'class':'form-control','placeholder':'votre age'}}) }}
                                             </div>
                                             <div class="form-group">
-                                                <button type="submit" class="btn btn-black" ><i class="fa fa-calculator"></i>Calculer</button>
+                                                <button type="button" class="btn btn-black" id="btnCalculImc" ><i class="fa fa-calculator"></i>Calculer</button>
                                             </div>
                                             {{ form_rest(form) }}
                                         </form>
@@ -100,6 +104,14 @@
                                     {{ form_end(form) }}
                                 </aside>
                             </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4"></div>
+                            <div class="col-sm-4">
+
+                            </div>
+                            <div class="col-sm-4"></div>
                         </div>
                     </div>
                     <div role="tabpanel" class="tab-pane fade" id="t3body2">
@@ -137,4 +149,43 @@
     <!-- Custom JS -->
     <script src="{{ asset('js/script.js') }}" type="text/javascript"></script>
 
+    <script>
+        $(function () {
+            $("#btnCalculImc").click(
+                function () {
+                   var poids = $("#healthadvisorbundle_informationsante_poids").val();
+                   var taille = $("#healthadvisorbundle_informationsante_taille").val();
+                   var sexe = $("#healthadvisorbundle_informationsante_sexe").val();
+                   var age = $("#healthadvisorbundle_informationsante_age").val();
+                   var link = 'http://localhost'+'{{ path('afficher_outilBiennetre') }}';
+                   console.log(poids+" t "+taille+" s "+sexe+" a "+age);
+                   $.ajax({
+                       type:'GET',
+                       data: {'poids':poids,'taille':taille,'sexe':sexe,'age':age},
+                       url: link,
+                       success: function (data) {
+                           $('.infoIMC').css('display','block').fadeIn("slow");
+                           if(data.imc < 18.5)
+                           {
+                               $('#imc').text("IMC : "+data.imc).css('color','red');
+                               $('#interpretationIMC').text(data.interpretation).css('color','red');
+                           }
+                           else if(data.imc >= 18.5 && data.imc < 25)
+                           {
+                               $('#imc').text("IMC : "+data.imc).css('color','green');
+                               $('#interpretationIMC').text(data.interpretation).css('color','green');
+                           }
+                           else
+                           {
+                               $('#imc').text("IMC : "+data.imc).css('color','red');
+                               $('#interpretationIMC').text(data.interpretation).css('color','red');
+                           }
+
+                           console.log(data.imc);
+                       }
+                   })
+                }
+            )
+        })
+    </script>
 {% endblock %}
