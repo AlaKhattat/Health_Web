@@ -17,3 +17,15 @@ admin_users:
 admin_supprimer:
     path:     /admin/supprimer
     defaults: { _controller: HealthAdvisorBundle:Admin_Template:supprimer_User }
+ajoutEvt:
+    path:     /ajoutEvt
+    defaults: { _controller: HealthAdvisorBundle:Evennement:ajoutEvenement }
+listEvt:
+    path:     /listEvt
+    defaults: { _controller: HealthAdvisorBundle:Evennement:listEvt }
+deleteEvt:
+    path:     /deleteEvt/{id}
+    defaults: { _controller: HealthAdvisorBundle:Evennement:deleteEvt }
+modifEvt:
+    path:     /modifEvt/{id}
+    defaults: { _controller: HealthAdvisorBundle:Evennement:modifEvt }
