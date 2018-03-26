@@ -73,13 +73,47 @@ class PatientController extends Controller
      * @Route("/{login}", name="_show")
      * @Method("GET")
      */
-    public function showAction(Patient $patient)
+    public function showAction(Patient $patient,Request $request)
     {
         $deleteForm = $this->createDeleteForm($patient);
-
+        $patient2 = new Patient();
+        if($request->get('modifier')=="modif" )
+        {
+            $tab = explode('/',$request->get('dateNaiss'));
+            $str="";
+            if(sizeof($tab)>1) {
+                $str = $tab[2] . "-" . $tab[1] . "-" . $tab[0];
+            }
+            if(date_create_from_format('Y-m-d',$str)==null) {
+                $tab = explode(',', $request->get('dateNaiss'));
+                $str1 = $tab[0];
+                $str2 = $tab[1];
+                $str1Temp = explode(' ', $str1);
+                $str2Temp = explode(' ', $str2);
+                $strfinal = $str1Temp[1] . "-" . $str1Temp[0] . "-" . $str2Temp[1];
+                $date = \DateTime::createFromFormat('j-M-Y', $strfinal);
+            }
+            else{
+                $date = date_create_from_format('Y-m-d',$str);
+            }
+            $patient2 = $this->getDoctrine()->getRepository('HealthAdvisorBundle:Patient')->find($patient->getLogin());
+            $patient2->getCinUser()->setNom($request->get('nom'));
+            $patient2->getCinUser()->setPrenom($request->get('prenom'));
+            $patient2->getCinUser()->setNumTel($request->get('tel'));
+            $patient2->getCinUser()->setDateNaiss($date);
+            $patient2->getCinUser()->setPays($request->get('pays'));
+            $patient2->getCinUser()->setVille($request->get('ville'));
+            $patient2->setPhotoProfile($request->get('photo'));
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($patient2);
+            $em->flush();
+        }
+        $modifForm = $this->createForm('HealthAdvisorBundle\Form\PatientModifType',$patient2);
         return $this->render('patient/show.html.twig', array(
             'patient' => $patient,
+            'modif_form'=> $modifForm->createView(),
             'delete_form' => $deleteForm->createView(),
+
         ));
     }
 

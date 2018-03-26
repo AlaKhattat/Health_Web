@@ -6,14 +6,20 @@
     {% block header %}
         {{ parent() }}
     {% endblock %}
+
     <div class="doctor-single mt-80 mb-60">
         <div class="container">
             <div class="row">
                 <div class="col-sm-5">
                     <div class="doctor-img">
-                        <img src="images/doctor-single.jpg" class="img-responsive" alt="">
+                        {% if patient.cinUser.sexe is sameas("Homme") %}
+                            <img src="{{ asset('profilUtilisateur/hommeProfil.jpg') }}" class="img-responsive" alt="Image introuvable">
+                        {% else %}
+                            <img src="{{ asset('profilUtilisateur/femmeProfil.jpg') }}" class="img-responsive" alt="Image introuvable">
+                        {% endif %}
+
                     </div>
-                    <div class="doctor-contact">
+                    <div class="doctor-contact col-sm-11">
                         <ul class="contact-list">
                             <li>
                                 <i class="fa fa-phone"></i> {{ patient.cinUser.numTel }}
@@ -37,49 +43,51 @@
                             <li><i class="fa fa-birthday-cake"></i> {{ patient.cinUser.DateNaiss|date }}</li>
                             <li><i class="fa fa-location-arrow"> </i> {{ patient.cinUser.pays }}</li>
                             <li><i class="fa fa-location-arrow"> </i> {{ patient.cinUser.ville }}</li>
-                            <li><button type="button" class="fa fa-pencil fa-1x " style="background-color: transparent; border: none"></button> </li>
+                            <li><button type="button" class="fa fa-pencil fa-1x " style="background-color: transparent; border: none" id="btnmofi"></button> </li>
+                        {{ form_start(delete_form) }}   <li><button type="submit"  value="Delete" class="fa fa-remove fa-1x " style="background-color: transparent; border: none" id="btnmofi"></button> </li>   {{ form_end(delete_form) }}
+
                         </ul>
                         <hr class="hr-1 left">
-                        <form>
+                        <form hidden id="formModif">
+                              <div class="form-group">
+                                <input class="form-control" type="text" placeholder="Votre login" name="login" value="{{ patient.login }}">
+                              </div>
+
+                                    <div class="form-group">
+                                        <input class="form-control" type="text" placeholder="Votre nom" name="nom" value="{{ patient.cinUser.nom }}">
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control" type="text" placeholder="Votre prenom" name="prenom" value="{{ patient.cinUser.prenom}}">
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control date-select" name="dateNaiss" value="{{ patient.cinUser.DateNaiss|date }}" type="text" placeholder="Your Date of Birth" id="dp1521894888336" >
+                                    </div>
+
+
+                                <div class="form-group">
+                                    <input class="form-control" type="text" name="pays" value="{{ patient.cinUser.pays }}" placeholder="Votre pays">
+                                </div>
+
+
+                                <div class="form-group">
+                                    <input class="form-control" type="text" name="ville" value="{{ patient.cinUser.ville }}" placeholder="Votre ville">
+                                </div>
+
+
+                                <div class="form-group">
+                                    <input class="form-control" type="text" name="tel" value="{{ patient.cinUser.numTel }}" placeholder="Votre numero de telephone">
+                                </div>
+
+
+                                <div class="form-group">
+                                    <input class="form-control " type="file" name="photo"  placeholder="Choisissez une photo">
+                                </div>
+
                             <div class="form-group">
-                                <input class="form-control" type="text" placeholder="Your Full Name">
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="Your Phone Number">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="Your Email ID">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <input class="form-control date-select" type="text" placeholder="Your Date of Birth">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <select>
-                                            <option>Select Appointment Slot</option>
-                                            <option>9:00 p.m. - 12:00 p.m.</option>
-                                            <option>12:00 p.m. - 4:00 p.m.</option>
-                                            <option>4:00 p.m. - 8:00 p.m.</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <textarea class="form-control" rows="4" placeholder="Special Message to Doctor"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <button class="btn btn-black" type="submit"><i class="fa fa-paper-plane"></i> Book Appointment</button>
+                                <button class="btn btn-black" type="submit" name="modifier" value="modif"><i class="fa fa-paper-plane"></i> Modifier</button>
                             </div>
                         </form>
+
                     </div>
 
                 </div>
@@ -97,36 +105,20 @@
         </div>
     </div>
 
-    <h1>Patient</h1>
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap-select.min.js') }}"></script>
+    <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.appear.js') }}"></script>
+    <script src="{{ asset('js/jquery.countTo.js') }}"></script>
+    <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('js/script.js') }}"></script>
+    <script>
+            $(function () {
+                 $('#btnmofi').click(function () {
+                         $('#formModif').toggle();
+                 })
+            })
+    </script>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Login</th>
-                <td>{{ patient.login }}</td>
-            </tr>
-            <tr>
-                <th>Password</th>
-                <td>{{ patient.password }}</td>
-            </tr>
-            <tr>
-                <th>Photoprofile</th>
-                <td>{{ patient.photoProfile }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('_edit', { 'login': patient.login }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
 {% endblock %}
