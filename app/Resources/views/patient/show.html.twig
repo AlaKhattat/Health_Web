@@ -44,7 +44,11 @@
                             <li><i class="fa fa-location-arrow"> </i> {{ patient.cinUser.pays }}</li>
                             <li><i class="fa fa-location-arrow"> </i> {{ patient.cinUser.ville }}</li>
                             <li><button type="button" class="fa fa-pencil fa-1x " style="background-color: transparent; border: none" id="btnmofi"></button> </li>
-                        {{ form_start(delete_form) }}   <li><button type="submit"  value="Delete" class="fa fa-remove fa-1x " style="background-color: transparent; border: none" id="btnmofi"></button> </li>   {{ form_end(delete_form) }}
+                           <form method="get">
+                               <li>
+                                   <button type="submit" name="login" value="{{ patient.login }}" class="fa fa-remove fa-1x " formaction="{{ path('fos_user_profile_deletePatient')}}" style="background-color: transparent; border: none" id="btnmofi"></button>
+                               </li>
+                           </form>
 
                         </ul>
                         <hr class="hr-1 left">
