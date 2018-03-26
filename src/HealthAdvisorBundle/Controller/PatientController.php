@@ -48,7 +48,6 @@ class PatientController extends Controller
             $utilisateur = new Utilisateur();
 
             $utilisateur = $this->getDoctrine()->getRepository('HealthAdvisorBundle:Utilisateur')->find($request->get('id'));
-            var_dump($utilisateur);
             if ($form->isSubmitted() && $form->isValid()) {
                 $utilisateur->setRoles(array('ROLES'=>'PATIENT'));
 
