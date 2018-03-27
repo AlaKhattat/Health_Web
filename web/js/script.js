@@ -331,7 +331,7 @@ function bootstrapSelect(){
 function dateSelect(){
     $('.date-select').datepicker({
         showOn: "button",
-        buttonImage: "images/datepicker/calendar.png"
+        buttonImage: "../images/datepicker/calendar.png"
         }
     );
 }
