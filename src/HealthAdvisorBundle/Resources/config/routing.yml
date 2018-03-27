@@ -8,6 +8,9 @@ index_admin:
 index_medecin:
     path:     /medecin
     defaults: { _controller: HealthAdvisorBundle:Medecin:index }
+ajout_patient:
+    path:     /patient/{}
+    defaults: { _controller: HealthAdvisorBundle:Patient:new }
 admin_users:
     path:     /admin/afficher_users
     defaults: { _controller: HealthAdvisorBundle:Admin_Template:afficher_Users }
