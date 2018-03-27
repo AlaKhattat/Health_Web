@@ -11,4 +11,9 @@ class DefaultController extends Controller
         return $this->render('HealthAdvisorBundle:Default:index.html.twig');
     }
 
+    public function GeolocalisationAction()
+    {
+        return $this->render('@HealthAdvisor/Geolocalisation/index.html.twig');
+    }
+
 }
