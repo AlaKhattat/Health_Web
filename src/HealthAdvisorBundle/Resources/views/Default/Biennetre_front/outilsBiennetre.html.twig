@@ -81,27 +81,28 @@
                                             <div class="form-group  has-feedback divPoids" >
                                                 <label class="control-label">Poids</label>
                                                 {{ form_widget(form.poids,{'attr':{'class':'form-control','placeholder':'votre poids en Kg'}}) }}
-                                                <span class="glyphicon glyphicon-ok  form-control-feedback spanPoids"  style="display: none;margin-top: 5px"> </span>
-                                                <span class="help-block helpPoids"  style="display: none"></span>
+                                                <span class="glyphicon glyphicon-ok  form-control-feedback "  style="display: none;margin-top: 5px"> </span>
+                                                <span class="help-block "  style="display: none"></span>
                                             </div>
                                             <div class="form-group has-feedback divTaille" >
                                                 <label class="control-label">Taille</label>
                                                 {{ form_widget(form.taille,{'attr':{'class':'form-control','placeholder':'votre taille en cm'}}) }}
-                                                <span class="glyphicon glyphicon-ok  form-control-feedback  spanTaille"   style="display: none;margin-top: 5px"> </span>
-                                                <span class="help-block" id="helpTaille" style="display: none"></span>
+                                                <span class="glyphicon glyphicon-ok  form-control-feedback  "   style="display: none;margin-top: 5px"> </span>
+                                                <span class="help-block" id="" style="display: none"></span>
                                             </div>
                                             <div class="form-group has-feedback divSexe" >
+
                                                 <label class="control-label">Sexe</label>
                                                 <div class="btn-group bootstrap-select">
                                                     {{ form_widget(form.sexe,{'attr':{'class':'','title':'Sexe'}}) }}
                                                 </div>
-                                                <span class="help-block" id="helpSexe" style="display: none"></span>
+                                                <span class="help-block" id="" style="display: none"></span>
                                             </div>
-                                            <div class="form-group has-feedback" id="divAge">
+                                            <div class="form-group has-feedback divAge" >
                                                 <label class="control-label">Age</label>
                                                 {{ form_widget(form.age,{'attr':{'class':'form-control','placeholder':'votre age'}}) }}
-                                                <span class="glyphicon glyphicon-ok  form-control-feedback "  id="spanAge" style="display: none;margin-top: 5px"> </span>
-                                                <span class="help-block" id="helpAge" style="display: none"></span>
+                                                <span class="glyphicon glyphicon-ok  form-control-feedback "  id="" style="display: none;margin-top: 5px"> </span>
+                                                <span class="help-block" id="" style="display: none"></span>
                                             </div>
                                             <div class="form-group">
                                                 <button type="button" class="btn btn-black" id="btnCalculImc"  ><i class="fa fa-calculator"></i>Calculer</button>
@@ -154,13 +155,13 @@
                                     {{ form_start(formPoidIdeal) }}
                                     <form METHOD="get">
 
-                                        <div class="form-group has-feedback " id="divTaille">
+                                        <div class="form-group has-feedback divTailleIdeal" >
                                             <label class="control-label">Taille</label>
                                             {{ form_widget(formPoidIdeal.taille,{'attr':{'class':'form-control','placeholder':'votre taille en cm'}}) }}
                                             <span class="glyphicon glyphicon-ok  form-control-feedback "  id="spanTaille" style="display: none;margin-top: 5px"> </span>
                                             <span class="help-block" id="helpTaille" style="display: none"></span>
                                         </div>
-                                        <div class="form-group has-feedback" id="divSexe">
+                                        <div class="form-group has-feedback divSexeIdeal" >
                                             <label class="control-label">Sexe</label>
                                             <div class="btn-group bootstrap-select">
                                                 {{ form_widget(formPoidIdeal.sexe,{'attr':{'class':'','title':'Sexe'}}) }}
@@ -218,7 +219,7 @@
                         var taille = $("#healthadvisorbundle_informationsante_taille").val();
                         var sexe = $("#healthadvisorbundle_informationsante_sexe").val();
                         var age = $("#healthadvisorbundle_informationsante_age").val();
-                    if(verifSexe(sexe)===true&&verifAge(age)===true&&verifTaille(taille)===true&&verifPoid(poids)===true) {
+                    if(verifSexe(sexe,".divPoids")===true&&verifAge(age,'.divAge')===true&&verifTaille(taille,'.divTaille')===true&&verifPoid(poids,'.divPoid')===true) {
                         var link = 'http://localhost' + '{{ path('afficher_outilBiennetre') }}';
                         $.ajax({
                             type: 'GET',
@@ -250,23 +251,22 @@
 
             $("#healthadvisorbundle_informationsante_poids").keyup(function ()
             {
-                 verifPoid($("#healthadvisorbundle_informationsante_poids").val());
+                 verifPoid($("#healthadvisorbundle_informationsante_poids").val(),".divPoids");
             });
             $("#healthadvisorbundle_informationsante_taille").keyup(function () {
-               verifTaille( $("#healthadvisorbundle_informationsante_taille").val());
+               verifTaille( $("#healthadvisorbundle_informationsante_taille").val(),".divTaille");
             });
             $("#healthadvisorbundle_informationsante_age").keyup(function () {
-                verifAge( $("#healthadvisorbundle_informationsante_age").val());
+                verifAge( $("#healthadvisorbundle_informationsante_age").val(),".divAge");
             });
             $("#healthadvisorbundle_informationsante_sexe").change(function () {
-                verifSexe( $("#healthadvisorbundle_informationsante_sexe").val());
+                verifSexe( $("#healthadvisorbundle_informationsante_sexe").val(),".divSexe");
             });
             $("#health_advisor_bundlepoid_ideal_type_taille").keyup(function () {
-                console.log("roro");
-                verifPoid($("#health_advisor_bundlepoid_ideal_type_taille").val());
+                verifTaille($("#health_advisor_bundlepoid_ideal_type_taille").val(),".divTailleIdeal");
             })
-            $("#health_advisor_bundlepoid_ideal_type_sexe").keyup(function () {
-                verifSexe($("#health_advisor_bundlepoid_ideal_type_sexe").val())
+            $("#health_advisor_bundlepoid_ideal_type_sexe").change(function () {
+                verifSexe($("#health_advisor_bundlepoid_ideal_type_sexe").val(),".divSexeIdeal");
             })
 
         });
