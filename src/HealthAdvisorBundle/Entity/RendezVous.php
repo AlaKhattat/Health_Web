@@ -62,6 +62,102 @@ class RendezVous
      */
     private $user;
 
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDateHeure()
+    {
+        return $this->dateHeure;
+    }
+
+    /**
+     * @param \DateTime $dateHeure
+     */
+    public function setDateHeure($dateHeure)
+    {
+        $this->dateHeure = $dateHeure;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDateValid()
+    {
+        return $this->dateValid;
+    }
+
+    /**
+     * @param \DateTime $dateValid
+     */
+    public function setDateValid($dateValid)
+    {
+        $this->dateValid = $dateValid;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStatut()
+    {
+        return $this->statut;
+    }
+
+    /**
+     * @param string $statut
+     */
+    public function setStatut($statut)
+    {
+        $this->statut = $statut;
+    }
+
+    /**
+     * @return \Medecin
+     */
+    public function getMed()
+    {
+        return $this->med;
+    }
+
+    /**
+     * @param \Medecin $med
+     */
+    public function setMed($med)
+    {
+        $this->med = $med;
+    }
+
+    /**
+     * @return \Patient
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param \Patient $user
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+    }
+
 
 }
 

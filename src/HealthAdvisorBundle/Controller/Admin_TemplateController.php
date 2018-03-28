@@ -26,6 +26,15 @@ class Admin_TemplateController extends Controller
         $list=$reposit->findAll();
         return $this->render('@HealthAdvisor/Admin_Template/users_profile.html.twig',array('users'=>$list,'user'=>$user));
     }
+    public function afficher_MedecinAction()
+    {
+
+        $em = $this->getDoctrine()->getManager();
+        $medecins = $em->getRepository('HealthAdvisorBundle:Medecin')->findAll();
+        return $this->render('@HealthAdvisor/Admin_Template/afficher_medecin.html.twig',array('medecins'=>$medecins));
+    }
+
+
     public function supprimer_UserAction(Request $request)
     {
         $user=$this->getDoctrine()
@@ -36,6 +45,14 @@ class Admin_TemplateController extends Controller
             ->remove($user);
         $this->getDoctrine()->getManager()->flush();
         return $this->redirectToRoute('admin_users');
+    }
+
+    public function afficher_profile_medecinAction(Request $request)
+    {   $login=$request->get('login');
+        $em = $this->getDoctrine()->getManager();
+        $medecins = $em->getRepository('HealthAdvisorBundle:Medecin')->findOneBy(array('login'=>$login));
+        return $this->render('@HealthAdvisor/Admin_Template/afficher_profile_medecin.html.twig',array('medecin'=>$medecins));
+
     }
 
 }

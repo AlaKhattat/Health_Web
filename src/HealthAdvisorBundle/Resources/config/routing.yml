@@ -14,3 +14,9 @@ admin_users:
 admin_supprimer:
     path:     /admin/supprimer
     defaults: { _controller: HealthAdvisorBundle:Admin_Template:supprimer_User }
+admin_afficher_medecin:
+    path:     /admin/afficher_medecin
+    defaults: { _controller: HealthAdvisorBundle:Admin_Template:afficher_Medecin }
+admin_afficher_profile_medecin:
+    path:     /admin/afficher_profile_medecin
+    defaults: { _controller: HealthAdvisorBundle:Admin_Template:afficher_profile_medecin }

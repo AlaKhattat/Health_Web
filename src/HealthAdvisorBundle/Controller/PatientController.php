@@ -143,4 +143,9 @@ class PatientController extends Controller
             ->getForm()
         ;
     }
+
+    public function afficherRDVAction(Request $request)
+    {
+
+    }
 }

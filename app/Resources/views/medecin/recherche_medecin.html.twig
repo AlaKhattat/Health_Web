@@ -1,0 +1,239 @@
+{% extends 'HealthAdvisorBundle:Default:index.html.twig' %}
+{% block head %}
+{{ parent() }}
+{% endblock %}
+
+{% block body %}
+{% block header %}
+{{ parent() }}
+{% endblock %}
+<div class="page-header">
+    <div class="container">
+        <h1>Trouver Votre Medecin</h1>
+        <ul class="breadcrumb">
+            <li><a href="{{ path('health_advisor_homepage') }}">Home</a></li>
+            <li class="active">RechercherMedecin</li>
+        </ul>
+    </div>
+</div>
+    <div class="jumbotron" style="background-image: url('{{ asset('images/slider-hero.jpg') }}')">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-10">
+                    <h1 class="heading">TROUVEZ VOTRE MÉDECIN
+                        Et prenez rendez-vous immédiatement </h1>
+                </div>
+                <div class="col-sm-12"><br><br></div>
+                <div class="col-sm-12">
+                    <div class="pills-1">
+                        <ul class="nav nav-pills nav-stacked pull-left" role="tablist">
+                            <li role="presentation" class="active">
+                                <a href="#p1body1" aria-controls="p1body1" role="tab" data-toggle="tab">
+                                    <strong>Trouvez Votre Medecin </strong>
+                                    <span>Trouvez Selon Spécialite / Adresse </span>
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#p1body2" aria-controls="p1body2" role="tab" data-toggle="tab">
+                                    <strong>J'ai Déja Mon Medecin</strong>
+                                    <span>Trouvez Selon Nom / Adresse </span>
+                                </a>
+                            </li>
+
+
+                        </ul>
+                        <form>
+
+                        <div class="tab-content">
+                            <!-- Tab One -->
+                            <div role="tabpanel" class="tab-pane fade in active" id="p1body1">
+                                <div class="row">
+
+                                <div class="col-sm-8">
+
+                                <select class="form-control" name="specialite">
+                                    <option>Selectioner Votre Spécialite</option>
+
+                                            <option value="Angiologie">Angiologie</option>
+                                            <option value="Cardiologie">Cardiologie</option>
+                                            <option value="Chirurgie">Chirurgie</option>
+                                            <option value="Dentisterie">Dentisterie</option>
+                                            <option value="Dermatologie">Dermatologie</option>
+                                            <option value="Endocrinologie">Endocrinologie</option>
+                                            <option value="Gastroentérologie">Gastroentérologie</option>
+                                            <option value="Gériatrie">Gériatrie</option>
+                                            <option value="Gynécologie">Gynécologie</option>
+                                            <option value="Hématologie">Hématologie</option>
+                                            <option value="Hépatologie">Hépatologie</option>
+                                            <option value="Infectiologie">Infectiologie</option>
+                                            <option value="Médecine générale">Médecine générale</option>
+                                            <option value="Médecine interne">Médecine interne</option>
+
+                                </select>
+
+                                    <div class="col-sm-8"><br>
+                                    </div>
+                                    <div class="form-group">
+                                        <input id="autocomplete" placeholder="Enter your address" class="form-control"
+                                               onfocus="geolocate()" type="text" name="adresse">
+                                    </div>
+
+                                        <div class="form-group">
+                                            <button class="btn btn-black" type="submit" name="action" value="afficher"><i class="fa fa-paper-plane"></i>Prendre RDV</button>
+                                        </div>
+                                </div>
+
+                            </div>
+                            </div>
+                            <!-- Tab Two -->
+
+                            <div role="tabpanel" class="tab-pane fade" id="p1body2">
+                                <div class="row">
+
+                                    <div class="col-sm-8">
+
+                                        <select class="form-control">
+                                            <option>Selectioner Votre Medecin </option>
+
+                                            {% for medecin in medecins %}
+
+                                                <option>{{ medecin.login.cinUser.nom}}  {{ medecin.login.cinUser.prenom}} </option>
+                                            {% endfor %}
+
+                                        </select>
+                                        <div class="col-sm-8"><br>
+                                        </div>
+                                        <div class="form-group">
+                                            <input id="autocomplete" placeholder="Enter your address" class="form-control"
+                                                   onfocus="geolocate()" type="text">
+                                        </div>
+                                        <div class="form-group">
+
+                                            <button class="btn btn-black" type="submit"><i class="fa fa-paper-plane"></i>Prendre RDV</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-80">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="heading-block">
+                    <h2 class="heading">Nos <span class="color1">Médecins</span> Spécialisés</h2>
+                    <p class="sub-heading">Behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics.</p>
+                </div>
+            </div>
+            {% for medecin in medecins %}
+
+            <div class="col-sm-4">
+                <div class="doctor-box-2">
+
+                    <div class="doctor-img">
+                        <img src="{{ asset('images/doctor-small-1.jpg') }}" class="img-circle" alt="">
+                    </div>
+                    <div class="doctor-name">
+                        <h4 class="heading">Mr. {{ medecin.login.cinUser.nom}}  {{ medecin.login.cinUser.prenom}}</h4>
+                        <span class="doctor-desig">{{ medecin.specialite }}</span>
+                    </div>
+                    <hr class="hr-1">
+                    <div class="doctor-details">
+                        <p>Behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics.</p>
+                    </div>
+                    <br>
+                    <div class="text-center">
+                        <a href="{{ path('rendezvous_new',{'login':medecin.login.login}) }}" class="btn btn-primary btn-sm">Prendre RDV</a>
+                        <a href="{{ path('medecin_details',{'login':medecin.login.login}) }}" class="btn btn-black btn-sm">Profile</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+
+        </div>
+    </div>
+
+{% block footer %}
+{{ parent() }}
+{% endblock %}
+    {% block script %}
+        {{ parent() }}
+    {% endblock %}
+    <script>
+        // This example displays an address form, using the autocomplete feature
+        // of the Google Places API to help users fill in the information.
+
+        // This example requires the Places library. Include the libraries=places
+        // parameter when you first load the API. For example:
+        // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+        var placeSearch, autocomplete;
+        var componentForm = {
+            street_number: 'short_name',
+            route: 'long_name',
+            locality: 'long_name',
+            administrative_area_level_1: 'short_name',
+            country: 'long_name',
+            postal_code: 'short_name'
+        };
+
+        function initAutocomplete() {
+            // Create the autocomplete object, restricting the search to geographical
+            // location types.
+            autocomplete = new google.maps.places.Autocomplete(
+                /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
+                {types: ['geocode']});
+
+            // When the user selects an address from the dropdown, populate the address
+            // fields in the form.
+            autocomplete.addListener('place_changed', fillInAddress);
+        }
+
+        function fillInAddress() {
+            // Get the place details from the autocomplete object.
+            var place = autocomplete.getPlace();
+
+            for (var component in componentForm) {
+                document.getElementById(component).value = '';
+                document.getElementById(component).disabled = false;
+            }
+
+            // Get each component of the address from the place details
+            // and fill the corresponding field on the form.
+            for (var i = 0; i < place.address_components.length; i++) {
+                var addressType = place.address_components[i].types[0];
+                if (componentForm[addressType]) {
+                    var val = place.address_components[i][componentForm[addressType]];
+                    document.getElementById(addressType).value = val;
+                }
+            }
+        }
+
+        // Bias the autocomplete object to the user's geographical location,
+        // as supplied by the browser's 'navigator.geolocation' object.
+        function geolocate() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    var geolocation = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    };
+                    var circle = new google.maps.Circle({
+                        center: geolocation,
+                        radius: position.coords.accuracy
+                    });
+                    autocomplete.setBounds(circle.getBounds());
+                });
+            }
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJkdBg93f7XLLxfR67gme9X03EBhRuWkw&libraries=places&callback=initAutocomplete"
+            async defer></script>
+{% endblock %}

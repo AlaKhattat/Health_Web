@@ -2,6 +2,7 @@
 
 namespace HealthAdvisorBundle\Controller;
 
+use FOS\UserBundle\Model\UserInterface;
 use HealthAdvisorBundle\Entity\Medecin;
 use HealthAdvisorBundle\Entity\Patient;
 use HealthAdvisorBundle\Entity\Utilisateur;
@@ -10,6 +11,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 /**
  * Medecin controller.
@@ -34,7 +36,99 @@ class MedecinController extends Controller
             'medecins' => $medecins,
         ));
     }
+    /**
+     * Lists all medecin selon specialite.
+     *
+     * @Route("/medecin_specialite", name="medecin_specialite")
+     * @Method({"GET", "POST"})
+     */
+    public function afficher_specialite(Request $request)
+    {
 
+        $em = $this->getDoctrine()->getManager();
+
+        $medecins = $em->getRepository('HealthAdvisorBundle:Medecin')->findAll();
+if ($request->get('adresse')!=null||$request->get('specialite')!=null)
+{
+    return $this->redirectToRoute('medecin_list',array('adresse'=>$request->get('adresse'),'specialite'=>$request->get('specialite')));
+}
+        return $this->render('medecin/recherche_medecin.html.twig', array(
+            'medecins' => $medecins,
+        ));
+    }
+    /**
+     * Lists all medecin selon specialite.
+     *
+     * @Route("/medecin_list", name="medecin_list")
+     * @Method({"GET", "POST"})
+     */
+    public function afficher_listAction(Request $request)
+    {
+       $r=$request->get('adresse');
+        $em = $this->getDoctrine()->getManager();
+
+        $medecins = $em->getRepository('HealthAdvisorBundle:Medecin')->findBy(array('specialite'=>$request->get('specialite')));
+
+        return $this->render('medecin/afficher_medecin_specialite.html.twig', array(
+            'medecins' => $medecins,
+        ));
+    }
+
+    /**
+     * Lists all rdv du medecin.
+     *
+     * @Route("/suivie_rdv", name="suivie_rdv")
+     * @Method({"GET", "POST"})
+     */
+    public function suivie_rdvAction(Request $request)
+    {
+        $user = $this->getUser();
+        if (!is_object($user) || !$user instanceof UserInterface) {
+            throw new AccessDeniedException('This user does not have access to this section.');
+        }
+        $utilisateur=$this->getDoctrine()
+            ->getRepository('HealthAdvisorBundle:Utilisateur')
+            ->find($user->getId());
+        var_dump($utilisateur);
+
+        $rendezvous=$this->getDoctrine()
+            ->getRepository('HealthAdvisorBundle:RendezVous')
+            ->findBy(array('id'=>1));
+var_dump($rendezvous);
+        return $this->render('medecin/suivie_rdv.html.twig', array(
+            'user' => $utilisateur,
+            'rendezvous' => $rendezvous,
+        ));
+    }
+
+    /**
+     * Lists all medecin selon specialite.
+     *
+     * @Route("/medecin_details", name="medecin_details")
+     * @Method({"GET", "POST"})
+     */
+    public function afficher_detailsAction(Request $request)
+    {
+     $login=$request->get('login');
+
+        $medecin =$this->getDoctrine()
+            ->getRepository('HealthAdvisorBundle:Medecin')
+            ->findOneBy(array('login'=>$login));
+
+        $patient=$this->getDoctrine()
+            ->getRepository('HealthAdvisorBundle:Patient')
+            ->findOneBy(array('login'=>$medecin->getLogin()));
+
+        $utilisateur=$this->getDoctrine()
+            ->getRepository('HealthAdvisorBundle:Utilisateur')
+            ->findOneBy(array('id'=>$patient->getCinUser()));
+
+
+        return $this->render('medecin/afficher_details.html.twig', array(
+            'user' => $utilisateur,
+            'medecin' => $medecin,
+        ));
+    }
     /**
      * Creates a new medecin entity.
      *
@@ -124,10 +218,9 @@ class MedecinController extends Controller
     }
 
     /**
-     * Deletes a medecin entity.
      *
      * @Route("/{login}", name="medecin_delete")
-     * @Method("DELETE")
+     * @Method({"GET", "POST"})
      */
     public function deleteAction(Request $request, Medecin $medecin)
     {
@@ -158,4 +251,5 @@ class MedecinController extends Controller
             ->getForm()
         ;
     }
+
 }

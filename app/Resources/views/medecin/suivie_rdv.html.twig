@@ -1,0 +1,182 @@
+{% extends 'HealthAdvisorBundle:Default:index.html.twig' %}
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    {% block header %}
+        {{ parent() }}
+    {% endblock %}
+
+<div class="page-header">
+    <div class="container">
+        <h1>List Des RendezVous</h1>
+        <div class="breadcrumb-2">
+            <ul class="breadcrumb">
+                <li><a href="{{ path('health_advisor_homepage') }}">Home</a></li>
+                <li class="active">List RDV</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-80 mb-80">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="heading-block">
+                <h2 class="heading">Advanced <span class="color1">Appointment</span> Table</h2>
+                <p class="sub-heading">Behind the word mountains, far from the countries Vokalia and Consonantia, there
+                    live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics.</p>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="table-responsive">
+                <table class="table-schedule">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th><span class="date">Date</span><span class="day">Du Rendez_Vous</span></th>
+                        <th><span class="date">Statut</span><span class="day">Rendez_Vous</span></th>
+
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for rdv in rendezvous %}
+
+                    <tr>
+                        <td>{{ rdv.dateHeure|date }}</td>
+                        <td rowspan="3" class="light">
+                            <strong class="doc-name">Patient : {{ rdv.user.cinUser.nom }} {{ rdv.user.cinUser.prenom }}</strong>
+                            <br/>
+                            <small> Date De Naissance : {{ rdv.user.cinUser.dateNaiss|date }}</small>
+                            <br/><br/>
+                            <span class="time">{{ rdv.dateHeure|date }}</span>
+                            <div class="book">
+                                <a href="#" class="btn btn-primary btn-sm" data-toggle="modal"
+                                   data-target="#modal-booking">Details Rdv</a>
+                            </div>
+                        </td>
+
+                        {% if    rdv.statut =='VALIDE' %}
+                        <td>
+                            <div class="iconbox-3">
+                        <span class="iconbox-icon">
+                            <i class="fa fa-check-circle-o"></i>
+                        </span>
+                                <h4 class="heading">VALIDE</h4>
+                            </div>
+                        </td>
+                        {% elseif  rdv.statut == 'NONVALIDE' %}
+
+                        <td>
+                            <div class="iconbox-3">
+                        <span class="iconbox-icon">
+                            <i class="fa fa-exclamation-triangle"></i>
+                        </span>
+                                <h4 class="heading">EN COURS</h4>
+                            </div>
+                        </td>
+                        {% else %}
+                        <td>
+                            <div class="iconbox-3">
+                        <span class="iconbox-icon">
+                            <i class="fa fa-ban"></i>
+                        </span>
+                                <h4 class="heading">ANNULE</h4>
+                            </div>
+                        </td>
+                        {% endif %}
+
+                    </tr>
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% block footer %}
+    {{ parent() }}
+{% endblock %}
+
+<div id="back"><i class="fa fa-angle-up"></i></div>
+
+<!-- Modal -->
+<div class="modal fade" id="modal-booking" data-open-onload="false" data-open-delay="0" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i>
+            </button>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <form>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h3 class="heading">Avoid Long Queues. <span class="color1">Book Online!</span></h3>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input class="form-control" type="text" placeholder="Your First Name">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input class="form-control" type="text" placeholder="Your Last Name">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input class="form-control" type="text" placeholder="Your Phone Number">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input class="form-control" type="number" placeholder="Your Email ID">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input class="form-control date-select" type="text"
+                                           placeholder="Your Date of Birth">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <select>
+                                        <option>Select Appointment Slot</option>
+                                        <option>9:00 p.m. - 12:00 p.m.</option>
+                                        <option>12:00 p.m. - 4:00 p.m.</option>
+                                        <option>4:00 p.m. - 8:00 p.m.</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <textarea class="form-control" rows="5" placeholder="Your Message"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary" type="submit"><i class="fa fa-paper-plane"></i> Book
+                                Appointment
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% block script %}
+    {{ parent() }}
+{% endblock %}
+{% endblock %}
