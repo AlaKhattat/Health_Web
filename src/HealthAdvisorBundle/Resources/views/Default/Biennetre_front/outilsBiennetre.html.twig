@@ -88,7 +88,7 @@
                                                 <label class="control-label">Taille</label>
                                                 {{ form_widget(form.taille,{'attr':{'class':'form-control','placeholder':'votre taille en cm'}}) }}
                                                 <span class="glyphicon glyphicon-ok  form-control-feedback  "   style="display: none;margin-top: 5px"> </span>
-                                                <span class="help-block" id="" style="display: none"></span>
+                                                <span class="help-block"  style="display: none"></span>
                                             </div>
                                             <div class="form-group has-feedback divSexe" >
 
@@ -96,16 +96,16 @@
                                                 <div class="btn-group bootstrap-select">
                                                     {{ form_widget(form.sexe,{'attr':{'class':'','title':'Sexe'}}) }}
                                                 </div>
-                                                <span class="help-block" id="" style="display: none"></span>
+                                                <span class="help-block"  style="display: none"></span>
                                             </div>
                                             <div class="form-group has-feedback divAge" >
                                                 <label class="control-label">Age</label>
                                                 {{ form_widget(form.age,{'attr':{'class':'form-control','placeholder':'votre age'}}) }}
-                                                <span class="glyphicon glyphicon-ok  form-control-feedback "  id="" style="display: none;margin-top: 5px"> </span>
-                                                <span class="help-block" id="" style="display: none"></span>
+                                                <span class="glyphicon glyphicon-ok  form-control-feedback "   style="display: none;margin-top: 5px"> </span>
+                                                <span class="help-block"  style="display: none"></span>
                                             </div>
                                             <div class="form-group">
-                                                <button type="button" class="btn btn-black" id="btnCalculImc"  ><i class="fa fa-calculator"></i>Calculer</button>
+                                                <button type="button" class="btn btn-black" id="btnCalculImc" ><i class="fa fa-calculator"></i>Calculer</button>
                                             </div>
                                             {{ form_rest(form) }}
                                         </form>
@@ -137,10 +137,9 @@
                                                     La formule du poids ideal vous permet de savoir approximativement votre poids. Elle permet
                                                     facilement de vous donnée votre poids  en fonction de votre age et de votre taille
                                                     <b>pour calculer votre poid IDEAL remplissez le formulaire avec vos donnée</b>
-                                                    <div hidden class="infoIMC">
-                                                        <h2 class="doctor-desig" style='color: #00aeef;' id="imc">IMC : {{ imc }} </h2>
-                                                        <p class="" style='color: #00aeef' id="interpretationIMC"><span>{{ interpretationIMC }}</span></p>
-                                                    </div>
+                                                    <div hidden class="infoPoid">
+                                                        <h2 class="doctor-desig" style='color: #00aeef;' id="poidIdeal">Poids Ideal : {{ poidIdeal }} </h2>
+                                                   </div>
                                                  </p>
                                         </div>
                                     </div>
@@ -158,15 +157,15 @@
                                         <div class="form-group has-feedback divTailleIdeal" >
                                             <label class="control-label">Taille</label>
                                             {{ form_widget(formPoidIdeal.taille,{'attr':{'class':'form-control','placeholder':'votre taille en cm'}}) }}
-                                            <span class="glyphicon glyphicon-ok  form-control-feedback "  id="spanTaille" style="display: none;margin-top: 5px"> </span>
-                                            <span class="help-block" id="helpTaille" style="display: none"></span>
+                                            <span class="glyphicon glyphicon-ok  form-control-feedback "   style="display: none;margin-top: 5px"> </span>
+                                            <span class="help-block"  style="display: none"></span>
                                         </div>
                                         <div class="form-group has-feedback divSexeIdeal" >
                                             <label class="control-label">Sexe</label>
                                             <div class="btn-group bootstrap-select">
                                                 {{ form_widget(formPoidIdeal.sexe,{'attr':{'class':'','title':'Sexe'}}) }}
                                             </div>
-                                            <span class="help-block" id="helpSexe" style="display: none"></span>
+                                            <span class="help-block"  style="display: none"></span>
                                         </div>
 
                                         <div class="form-group">
@@ -219,11 +218,12 @@
                         var taille = $("#healthadvisorbundle_informationsante_taille").val();
                         var sexe = $("#healthadvisorbundle_informationsante_sexe").val();
                         var age = $("#healthadvisorbundle_informationsante_age").val();
-                    if(verifSexe(sexe,".divPoids")===true&&verifAge(age,'.divAge')===true&&verifTaille(taille,'.divTaille')===true&&verifPoid(poids,'.divPoid')===true) {
+                        var action='calculIMC';
+                    if(verifSexe(sexe,".divSexe")===true&&verifAge(age,'.divAge')===true&&verifTaille(taille,'.divTaille')===true&&verifPoid(poids,'.divPoid')===true) {
                         var link = 'http://localhost' + '{{ path('afficher_outilBiennetre') }}';
                         $.ajax({
                             type: 'GET',
-                            data: {'poids': poids, 'taille': taille, 'sexe': sexe, 'age': age},
+                            data: {'poids': poids, 'taille': taille, 'sexe': sexe, 'age': age,'action':action},
                             url: link,
                             success: function (data) {
                                 $('.infoIMC').css('display', 'block').fadeIn("slow");
@@ -239,13 +239,30 @@
                                     $('#imc').text("IMC : " + data.imc).css('color', 'red');
                                     $('#interpretationIMC').text(data.interpretation).css('color', 'red');
                                 }
-
-                                console.log(data.imc);
+                                console.log("poid:"+data.poidsIdeal);
+                                console.log("imc:"+data.imc);
                             }
                         });
                     }
                 });
+             $("#btnCalculPoid").click(function () {
+                 var taille = $("#health_advisor_bundlepoid_ideal_type_taille").val();
+                 var sexe = $("#health_advisor_bundlepoid_ideal_type_sexe").val();
+                 var action='calculPoidIdeal';
+                 if(verifSexe(sexe,".divSexeIdeal")===true&&verifTaille(taille,'.divTailleIdeal')===true) {
+                     var link = 'http://localhost' + '{{ path('afficher_outilBiennetre') }}';
+                     $.ajax({
+                         type: 'GET',
+                         data: {'taille': taille, 'sexe': sexe,'action':action},
+                         url: link,
+                         success: function (data) {
+                             $('.infoPoid').css('display', 'block').fadeIn("slow");
+                             $('#poidIdeal').text("Poids Ideal : " + data.poidIdeal).css('color', 'green');
 
+                         }
+                     });
+                 }
+             });
 
 
 

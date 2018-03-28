@@ -188,6 +188,7 @@ class InformationSante
     {
         //IMC = poids(kg)/(taille*taille)m
          $imc = ($info->getPoids()/(($info->getTaille()*$info->getTaille())/100))*100;
+
          return round((round($imc *100)/100),2);
     }
     public  function  calculPoidIdeal(InformationSante $info)
@@ -195,14 +196,15 @@ class InformationSante
         //(homme)=H(taille en cm)−100−((H−150)/4)
         //(femme)=H(taille en cm)−100−((H−150)/2,5
         $poidIdeal = 0;
-       if("HOMME"==$info->getSexe())
+       if("Homme"==$info->getSexe())
        {
-           $poidIdeal = ($info->getTaille())-100-(($info->getTaille()-150)/4);
+           $poidIdeal = $info->getTaille()-100-(($info->getTaille()-150)/4);
        }
-       else if("FEMME"==$info->getSexe())
+       else if("Femme"==$info->getSexe())
        {
            $poidIdeal = ($info->getTaille())-100-(($info->getTaille()-150)/2.5);
        }
+
        return $poidIdeal;
     }
     public  function calculCalorieMin(InformationSante $info)

@@ -23,17 +23,21 @@ class BiennetreController extends Controller
     public function indexOutilBiennetreAction(Request $request)
     {
         $informationSante = new Informationsante();
+        $informationSantePoid= new InformationSante();
         $imc=0;
         $poidIdeal=0;
         $interpretationIMC="";
+        $tableau =array();
+        $serializer = new Serializer(array(new ObjectNormalizer()));
         $form = $this->createForm('HealthAdvisorBundle\Form\InformationSanteType', $informationSante);
-        $formPoidIdeal = $this->createForm('HealthAdvisorBundle\Form\poidIdealType',$informationSante);
+        $formPoidIdeal = $this->createForm('HealthAdvisorBundle\Form\poidIdealType',$informationSantePoid);
+
        if($request->isXmlHttpRequest()) {
 
-
            $form->handleRequest($request);
+           $formPoidIdeal->handleRequest($request);
+           if ($request!=null) {
 
-           if ($request->get('taille')!=null&&$request->get('age')!=null) {
                $em = $this->getDoctrine()->getManager();
                if ($this->container->get('security.token_storage')->getToken()->getUsername() != "anon.") {
                    $patient = new Patient();
@@ -43,38 +47,61 @@ class BiennetreController extends Controller
                    {
                        $informationSante = new InformationSante();
                    }
-                   $informationSante->setAge($request->get('age'));
-                   $informationSante->setPoids($request->get('poids'));
-                   $informationSante->setSexe($request->get('sexe'));
-                   $informationSante->setTaille($request->get('taille'));
-                   $informationSante->setLogin($patient);
-                   $em->persist($informationSante);
-                   $em->flush();
-                   $imc = $informationSante->calculIMC($informationSante);
-                   $interpretationIMC = $informationSante->interpreterIMC($imc);
-                   $serializer = new Serializer(array(new ObjectNormalizer()));
-                   $tableau = array("imc"=>$imc,"interpretation"=>$interpretationIMC);
+                   if($request->get('action')=='calculIMC')
+                   {
+                       $informationSante->setAge($request->get('age'));
+                       $informationSante->setPoids($request->get('poids'));
+                       $informationSante->setSexe($request->get('sexe'));
+                       $informationSante->setTaille($request->get('taille'));
+                       $imc = $informationSante->calculIMC($informationSante);
+                       $interpretationIMC = $informationSante->interpreterIMC($imc);
+                       $tableau = array("imc"=>$imc,"interpretation"=>$interpretationIMC);
+                       $informationSante->setLogin($patient);
+                       $em->persist($informationSante);
+                       $em->flush();
+                   }
+                   else if($request->get('action')=='calculPoidIdeal')
+                   {
+
+                       $informationSantePoid->setSexe($request->get('sexe'));
+                       $informationSantePoid->setTaille($request->get('taille'));
+                       $poidIdeal = $informationSantePoid->calculPoidIdeal($informationSante);
+
+                       $tableau = array("poidsIdeal"=>$poidIdeal);
+                       $informationSantePoid->setLogin($patient);
+                       $em->persist($informationSantePoid);
+                       $em->flush();
+                   }
+
                    $resultat = $serializer->normalize($tableau);
                    return new JsonResponse($resultat);
                } else {
-                   $informationSante->setAge($request->get('age'));
-                   $informationSante->setPoids($request->get('poids'));
-                   $informationSante->setSexe($request->get('sexe'));
-                   $informationSante->setTaille($request->get('taille'));
-                   $imc = $informationSante->calculIMC($informationSante);
-                   $interpretationIMC = $informationSante->interpreterIMC($imc);
-                   $serializer = new Serializer(array( new ObjectNormalizer()));
-                   $tableau = array("imc"=>$imc,"interpretation"=>$interpretationIMC);
+
+                   if($request->get('action')=='calculIMC')
+                   {
+                       $informationSante->setAge($request->get('age'));
+                       $informationSante->setPoids($request->get('poids'));
+                       $informationSante->setSexe($request->get('sexe'));
+                       $informationSante->setTaille($request->get('taille'));
+                       $imc = $informationSante->calculIMC($informationSante);
+                       $interpretationIMC = $informationSante->interpreterIMC($imc);
+                       $tableau = array("imc"=>$imc,"interpretation"=>$interpretationIMC);
+                   }
+                   else if($request->get('action')=='calculPoidIdeal')
+                   {
+                       $informationSantePoid->setSexe($request->get('sexe'));
+                       $informationSantePoid->setTaille($request->get('taille'));
+                       $poidIdeal = $informationSantePoid->calculPoidIdeal($informationSantePoid);
+                       $tableau = array("poidIdeal"=>$poidIdeal);
+                   }
+
                    $resultat = $serializer->normalize($tableau);
                    return new JsonResponse($resultat);
 
                }
 
-               /*a mediter encore */
-               // return $this->redirectToRoute('', array('login' => $informationSante->getLogin()));
            }
        }
-
 
         return $this->render('HealthAdvisorBundle:Default/Biennetre_front:outilsBiennetre.html.twig', array(
             'form' => $form->createView(),'formPoidIdeal'=>$formPoidIdeal->createView(),'imc'=>$imc,'interpretationIMC'=>$interpretationIMC,'poidIdeal'=>$poidIdeal
