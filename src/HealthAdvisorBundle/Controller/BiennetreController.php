@@ -24,8 +24,10 @@ class BiennetreController extends Controller
     {
         $informationSante = new Informationsante();
         $imc=0;
+        $poidIdeal=0;
         $interpretationIMC="";
         $form = $this->createForm('HealthAdvisorBundle\Form\InformationSanteType', $informationSante);
+        $formPoidIdeal = $this->createForm('HealthAdvisorBundle\Form\poidIdealType',$informationSante);
        if($request->isXmlHttpRequest()) {
 
 
@@ -75,7 +77,7 @@ class BiennetreController extends Controller
 
 
         return $this->render('HealthAdvisorBundle:Default/Biennetre_front:outilsBiennetre.html.twig', array(
-            'form' => $form->createView(),'imc'=>$imc,'interpretationIMC'=>$interpretationIMC
+            'form' => $form->createView(),'formPoidIdeal'=>$formPoidIdeal->createView(),'imc'=>$imc,'interpretationIMC'=>$interpretationIMC,'poidIdeal'=>$poidIdeal
         ));
     }
 
