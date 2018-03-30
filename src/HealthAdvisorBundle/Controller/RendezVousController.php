@@ -99,30 +99,6 @@ class RendezVousController extends Controller
         ));
     }
 
-    /**
-     * Displays a form to edit an existing rendezVous entity.
-     *
-     * @Route("/{id}/edit", name="rendezvous_edit")
-     * @Method({"GET", "POST"})
-     */
-    public function editAction(Request $request, RendezVous $rendezVous)
-    {
-        $deleteForm = $this->createDeleteForm($rendezVous);
-        $editForm = $this->createForm('HealthAdvisorBundle\Form\RendezVousType', $rendezVous);
-        $editForm->handleRequest($request);
-
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('rendezvous_edit', array('id' => $rendezVous->getId()));
-        }
-
-        return $this->render('rendezvous/edit.html.twig', array(
-            'rendezVous' => $rendezVous,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
 
     /**
      * Deletes a rendezVous entity.

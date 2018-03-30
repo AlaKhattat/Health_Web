@@ -48,11 +48,34 @@ class Admin_TemplateController extends Controller
     }
 
     public function afficher_profile_medecinAction(Request $request)
-    {   $login=$request->get('login');
+    {
+        $login=$request->get('login');
+        $id=$request->get('id');
+        $statut=$request->get('statut');
         $em = $this->getDoctrine()->getManager();
         $medecins = $em->getRepository('HealthAdvisorBundle:Medecin')->findOneBy(array('login'=>$login));
+
+        if ($statut!=null&&$request->get('modifier')=='modifier'){
+            return $this->redirectToRoute('admin_modifier_statut_medecin',array('login'=>$id,'statut'=>$statut));
+        }
+
         return $this->render('@HealthAdvisor/Admin_Template/afficher_profile_medecin.html.twig',array('medecin'=>$medecins));
 
+    }
+
+    public function modifier_statut_medecinAction(Request $request)
+    {
+        $statut=$request->get('statut');
+        $id=$request->get('login');
+        $medecin=$this->getDoctrine()
+            ->getRepository('HealthAdvisorBundle:Medecin')
+            ->find($id);
+            $medecin->setStatutCompte($statut);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($medecin);
+            $em->flush();
+
+        return $this->redirectToRoute('admin_afficher_profile_medecin',array('login'=>$id));
     }
 
 }

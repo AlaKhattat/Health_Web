@@ -7,7 +7,8 @@
 <p>{% transchoice threads|length with {'%num%': threads|length } from 'FOSMessageBundle' %}
     threads_found
 {% endtranschoice %}</p>
+<div class="blog-box">
 
 {% include 'FOSMessageBundle:Message:threads_list.html.twig' with {'threads': threads} %}
-
+</div>
 {% endblock %}

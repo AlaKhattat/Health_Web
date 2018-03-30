@@ -50,7 +50,7 @@ class MedecinController extends Controller
         $medecins = $em->getRepository('HealthAdvisorBundle:Medecin')->findAll();
 if ($request->get('adresse')!=null||$request->get('specialite')!=null)
 {
-    return $this->redirectToRoute('medecin_list',array('adresse'=>$request->get('adresse'),'specialite'=>$request->get('specialite')));
+    return $this->redirectToRoute('medecin_list',array('adresse'=>$request->get('adresse'),'specialite'=>$request->get('specialite'),'username'=>$request->get('username')));
 }
         return $this->render('medecin/recherche_medecin.html.twig', array(
             'medecins' => $medecins,
@@ -64,14 +64,56 @@ if ($request->get('adresse')!=null||$request->get('specialite')!=null)
      */
     public function afficher_listAction(Request $request)
     {
-       $r=$request->get('adresse');
-        $em = $this->getDoctrine()->getManager();
+       $adresse=$request->get('adresse');
+       $specialite=$request->get('specialite');
+       $nom=$request->get('username');
+       var_dump($nom);
+if($adresse!=null && $specialite!=null){
+    var_dump('Recherche Par  Adresse et Specialite');
+        $medecins = $this->getDoctrine()->getRepository('HealthAdvisorBundle:Medecin')->rechercherParSpecialiteAdresse($specialite,$adresse);
+}elseif($specialite=!null&&$specialite=!'Selectioner Votre Spécialite'){
+    var_dump('Recherche PAr Specialite');
+    $medecins = $this->getDoctrine()->getRepository('HealthAdvisorBundle:Medecin')->rechercherParSpecialite($specialite);
 
-        $medecins = $em->getRepository('HealthAdvisorBundle:Medecin')->findBy(array('specialite'=>$request->get('specialite')));
+}elseif ($adresse!=null){
+    var_dump('Recherche PAr Adresse');
 
-        return $this->render('medecin/afficher_medecin_specialite.html.twig', array(
+    $medecins = $this->getDoctrine()->getRepository('HealthAdvisorBundle:Medecin')->rechercherParAdresse($adresse);
+}elseif ($nom!=null){
+    var_dump('Recherche PAr Nom');
+    $medecins = $this->getDoctrine()->getRepository('HealthAdvisorBundle:Medecin')->rechercherParNom($nom);
+
+}
+return $this->render('medecin/afficher_medecin_specialite.html.twig', array(
             'medecins' => $medecins,
         ));
+    }
+
+    /**
+     * Lists all medecin selon specialite.
+     *
+     * @Route("/modifier_statut", name="modifier_statut")
+     * @Method({"GET", "POST"})
+     */
+    public function modifier_statutAction(Request $request)
+    {
+
+        $statut=$request->get('statut');
+        $id=$request->get('id');
+        var_dump($statut);
+        var_dump($id);
+        $rendezvous=$this->getDoctrine()
+            ->getRepository('HealthAdvisorBundle:RendezVous')
+            ->find($id);
+
+        if($statut!=null){
+            $rendezvous->setStatut($statut);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($rendezvous);
+            $em->flush();
+            return $this->redirectToRoute('suivie_rdv');
+        }
+        return $this->redirectToRoute('suivie_rdv');
     }
 
     /**
@@ -89,12 +131,20 @@ if ($request->get('adresse')!=null||$request->get('specialite')!=null)
         $utilisateur=$this->getDoctrine()
             ->getRepository('HealthAdvisorBundle:Utilisateur')
             ->find($user->getId());
-        var_dump($utilisateur);
+        $patient=$this->getDoctrine()
+            ->getRepository('HealthAdvisorBundle:Patient')
+            ->findBy(array('cinUser'=>$utilisateur->getId()));
 
+        $medecin=$this->getDoctrine()
+            ->getRepository('HealthAdvisorBundle:Medecin')
+            ->findBy(array('login'=>$patient));
         $rendezvous=$this->getDoctrine()
             ->getRepository('HealthAdvisorBundle:RendezVous')
-            ->findBy(array('id'=>1));
-var_dump($rendezvous);
+            ->findBy(array('med'=>$medecin));
+        if ($request->get('statut')!=null)
+        {
+            return $this->redirectToRoute('modifier_statut',array('statut'=>$request->get('statut'),'id'=>$request->get('id')));
+        }
         return $this->render('medecin/suivie_rdv.html.twig', array(
             'user' => $utilisateur,
             'rendezvous' => $rendezvous,

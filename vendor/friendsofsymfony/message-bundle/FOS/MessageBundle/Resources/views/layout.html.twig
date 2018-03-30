@@ -31,7 +31,7 @@
 
                 <div class="panel-body">
             <div class="col-sm-12">
-                <div class="col-sm-4">
+                <div class="col-sm-2">
                     <div class="feature-box right">
                         <span class="count">1</span>
                         <div class="text">
@@ -42,29 +42,26 @@
                     <div class="feature-box right">
                         <span class="count">2</span>
                         <div class="text">
-                            <h4 class="heading"><a href="{{ url('fos_message_sent') }}">{% trans from 'FOSMessageBundle' %}sent{% endtrans %}</a></h4>
+                            <h4 class="heading"><a href="{{ url('fos_message_sent') }}">{% trans from 'FOSMessageBundle' %}Envoyé{% endtrans %}</a></h4>
 
                         </div>
                     </div>
                     <div class="feature-box right">
                         <span  class="count">3</span>
                         <div class="text">
-                            <h4 class="heading"><a href="{{ url('fos_message_deleted') }}">{% trans from 'FOSMessageBundle' %}deleted{% endtrans %}</a></h4>
+                            <h4 class="heading"><a href="{{ url('fos_message_deleted') }}">{% trans from 'FOSMessageBundle' %}Supprimer{% endtrans %}</a></h4>
 
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-8">
+                            <div class="col-sm-11 col-sm-offset-4 frame">
 
-                            <div class="col-sm-8 col-sm-offset-4 frame">
                                 <ul id="ull">
                                     {% block fos_message_content %}{% endblock %}
-
                                 </ul>
 
                             </div>
-
-
                 </div>
             </div>
 

@@ -20,3 +20,6 @@ admin_afficher_medecin:
 admin_afficher_profile_medecin:
     path:     /admin/afficher_profile_medecin
     defaults: { _controller: HealthAdvisorBundle:Admin_Template:afficher_profile_medecin }
+admin_modifier_statut_medecin:
+    path:     /admin/modifier_statut_medecin
+    defaults: { _controller: HealthAdvisorBundle:Admin_Template:modifier_statut_medecin }
