@@ -41,13 +41,13 @@ class PatientController extends Controller
     public function newAction(Request $request)
     {
         $patient = new Patient();
+
         $form = $this->createForm('HealthAdvisorBundle\Form\PatientType', $patient);
         $form->handleRequest($request);
         if($request->get('id')!=null) {
             $utilisateur = new Utilisateur();
 
             $utilisateur = $this->getDoctrine()->getRepository('HealthAdvisorBundle:Utilisateur')->find($request->get('id'));
-
             if ($form->isSubmitted() && $form->isValid()) {
                 $utilisateur->setRoles(array('ROLES'=>'PATIENT'));
 
@@ -58,7 +58,7 @@ class PatientController extends Controller
                 $em->persist($patient);
                 $em->flush();
                 $this->getDoctrine()->getManager()->persist($utilisateur);
-                return $this->redirectToRoute('_show', array('login' => $patient->getLogin()));
+                return $this->redirectToRoute('fos_user_profile_show', array('login' => $patient->getLogin()));
             }
         }
         return $this->render('patient/new.html.twig', array(
@@ -73,40 +73,59 @@ class PatientController extends Controller
      * @Route("/{login}", name="_show")
      * @Method("GET")
      */
-    public function showAction(Patient $patient)
+  /*  public function showAction(Patient $patient,Request $request)
     {
-        $deleteForm = $this->createDeleteForm($patient);
 
+        $deleteForm = $this->createDeleteForm($patient);
+        $patient2 = new Patient();
+        echo "dd";
+        if($request->get('modifier')=="modif" )
+        {
+            $tab = explode('/',$request->get('dateNaiss'));
+            $str="";
+            if(sizeof($tab)>1) {
+                $str = $tab[2] . "-" . $tab[1] . "-" . $tab[0];
+            }
+            if(date_create_from_format('Y-m-d',$str)==null) {
+                $tab = explode(',', $request->get('dateNaiss'));
+                $str1 = $tab[0];
+                $str2 = $tab[1];
+                $str1Temp = explode(' ', $str1);
+                $str2Temp = explode(' ', $str2);
+                $strfinal = $str1Temp[1] . "-" . $str1Temp[0] . "-" . $str2Temp[1];
+                $date = \DateTime::createFromFormat('j-M-Y', $strfinal);
+            }
+            else{
+                $date = date_create_from_format('Y-m-d',$str);
+            }
+            $patient2 = $this->getDoctrine()->getRepository('HealthAdvisorBundle:Patient')->find($patient->getLogin());
+            $patient2->getCinUser()->setNom($request->get('nom'));
+            $patient2->getCinUser()->setPrenom($request->get('prenom'));
+            $patient2->getCinUser()->setNumTel($request->get('tel'));
+            $patient2->getCinUser()->setDateNaiss($date);
+            $patient2->getCinUser()->setPays($request->get('pays'));
+            $patient2->getCinUser()->setVille($request->get('ville'));
+            $patient2->setPhotoProfile($request->get('photo'));
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($patient2);
+            $em->flush();
+        }
+        $modifForm = $this->createForm('HealthAdvisorBundle\Form\PatientModifType',$patient2);
         return $this->render('patient/show.html.twig', array(
             'patient' => $patient,
+            'modif_form'=> $modifForm->createView(),
             'delete_form' => $deleteForm->createView(),
+
         ));
     }
-
+*/
     /**
      * Displays a form to edit an existing patient entity.
      *
      * @Route("/{login}/edit", name="_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, Patient $patient)
-    {
-        $deleteForm = $this->createDeleteForm($patient);
-        $editForm = $this->createForm('HealthAdvisorBundle\Form\PatientType', $patient);
-        $editForm->handleRequest($request);
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('_edit', array('login' => $patient->getLogin()));
-        }
-
-        return $this->render('patient/edit.html.twig', array(
-            'patient' => $patient,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
 
     /**
      * Deletes a patient entity.
@@ -114,38 +133,5 @@ class PatientController extends Controller
      * @Route("/{login}", name="_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, Patient $patient)
-    {
-        $form = $this->createDeleteForm($patient);
-        $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($patient);
-            $em->flush();
-        }
-
-        return $this->redirectToRoute('_index');
-    }
-
-    /**
-     * Creates a form to delete a patient entity.
-     *
-     * @param Patient $patient The patient entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm(Patient $patient)
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('_delete', array('login' => $patient->getLogin())))
-            ->setMethod('DELETE')
-            ->getForm()
-        ;
-    }
-
-    public function afficherRDVAction(Request $request)
-    {
-
-    }
 }
