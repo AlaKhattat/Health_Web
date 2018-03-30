@@ -54,3 +54,6 @@ deleteEvt:
 modifEvt:
     path:     /modifEvt/{id}
     defaults: { _controller: HealthAdvisorBundle:Evennement:modifEvt }
+calculCalorie:
+    path:     /calculCalorie
+    defaults: { _controller: HealthAdvisorBundle:Biennetre:calculCalorie }

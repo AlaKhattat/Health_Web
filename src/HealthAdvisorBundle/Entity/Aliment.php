@@ -113,7 +113,6 @@ class Aliment
     {
         $this->valeurEnergetique = $valeurEnergetique;
     }
-
     /**
      * @return string
      */

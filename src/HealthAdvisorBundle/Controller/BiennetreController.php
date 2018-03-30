@@ -10,6 +10,7 @@ namespace HealthAdvisorBundle\Controller;
 
 
 use HealthAdvisorBundle\Entity\InformationSante;
+use HealthAdvisorBundle\Entity\Nutritionix;
 use HealthAdvisorBundle\Entity\Patient;
 use HealthAdvisorBundle\Entity\Utilisateur;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -116,6 +117,13 @@ class BiennetreController extends Controller
 
     }
 
+    public function calculCalorieAction(Request $request)
+    {
+        $nutrition = new Nutritionix('073b261f','b9bfaaaff31fc9b51481c649d2958a6f');
+        //var_dump($nutrition->search('pain*',NULL,0,10,NULL,1,NULL,
+          //   'item_name,brand_name,item_id,nf_calories',TRUE,TRUE));
+        return $this->render('@HealthAdvisor/Default/Biennetre_front/calculCalorie.html.twig');
+    }
     public function afficherInfoSanteAction(Request $request)
     {
 
