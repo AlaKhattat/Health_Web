@@ -1,0 +1,151 @@
+{% extends 'HealthAdvisorBundle:Default:index.html.twig' %}
+{% block head %}
+    {{ parent() }}
+    <link href="{{ asset('css/symptoms.css') }}" type="text/css" rel="stylesheet">
+    <style>
+        .loader-backdrop-sympt{
+            position: fixed;
+            top:0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            z-index: 999999;
+            background-color: rgba(255, 255, 255, 0.7);
+        }
+        #loader-backdrop-sympt{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        #infoi {
+            z-index: 10;
+        }
+    </style>
+{% endblock %}
+{% block body %}
+    {% block header %}
+        {{ parent() }}
+    {% endblock %}
+    <div class="container mt-80">
+    <div class="row">
+    <div class="col-sm-8 mt-20">
+        <form id="conteneur">
+            <div id="formulaire">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="anne">Année de Naissance</label><input type="number" id="anne" name="anne" class="form-control" placeholder="Anné de Naissance Ex : 1993">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="genre">Vous êtes?</label>
+                        <select name="genre" id="genre"  class="form-control">
+                            <option value="man">Homme</option>
+                            <option value="woman">Femme</option>
+                            <option value="boy">Garçon</option>
+                            <option value="girl">Fille</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="genre">Partie du corps que Vous pensez contient les symptomes</label>
+                        <select name="body-part" id="body-part"  class="form-control">
+                        </select>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="genre">Presisez en plus la partie du corps</label>
+                        <select name="sub-body-part" id="sub-body-part"  class="form-control">
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                    <div class="choose-symptoms-list">
+                        <fieldset id="listsymptome">
+                            <legend>Symptomes possibbles</legend>
+                        </fieldset>
+                    </div>
+            </div>
+            </div>
+            <div class="loader-backdrop-sympt" id="loader-backdrop-sympt">           <!-- Loader -->
+                <div class="loader">
+                </div>
+            </div>
+    </form>
+    </div>
+    </div>
+    </div>
+
+    {% block footer %}
+        {{ parent() }}
+    {% endblock %}
+    {% block script %}
+        {{ parent() }}
+    {% endblock %}
+        <script>
+        $(function () {
+            $(".loader-backdrop-sympt").fadeIn();
+            var link='http://localhost'+'{{ path('FindBodyParts') }}';
+                $.ajax({
+                    type:"POST",
+                    data:{x:'x'},
+                    url:link,
+                    success:function (data) {
+                        $.each(data,function (k,v) {
+                            $('#body-part').append('<option value="'+v.idBodyPart+'">'+v.nomBodyPart+'</option>');
+                            $('#body-part').selectpicker("refresh");
+                            $(".loader-backdrop-sympt").fadeOut();
+                        });
+                    }
+                });
+            $('#body-part').on('change', function() {
+                $(".loader-backdrop-sympt").fadeIn();
+                $.ajax({
+                    type:"POST",
+                    data:{idbodypart:this.value},
+                    url:'http://localhost'+'{{ path('FindSubBodyParts') }}',
+                    success:function (data) {
+                        $('#sub-body-part').html('');
+                        $.each(data,function (k,v) {
+                            $('#sub-body-part').append('<option value="'+v.idSubBody+'">'+v.nomSubBody+'</option>');
+                            $('#sub-body-part').selectpicker("refresh");
+                            $(".loader-backdrop-sympt").fadeOut();
+                        });
+                    }
+                });
+            });
+            $('#sub-body-part').on('change', function() {
+                $(".loader-backdrop-sympt").fadeIn();
+                console.log($('#genre').val());
+                $.ajax({
+                    type:"POST",
+                    data:{
+                        idsubbodypart:this.value,
+                        gender:$('#genre').val()
+                    },
+                    url:'http://localhost'+'{{ path('FindSymptoms') }}',
+                    success:function (data) {
+                        console.log(data);
+                        $('#listsymptome').html('');
+                        $.each(data,function (k,v) {
+                            $('#listsymptome').append('<input type="button" class="btn btn-symptom" id="'+v.idSymptome.idSymptome+'" value="'+v.idSymptome.nomSymptome+'">');
+                            $(".loader-backdrop-sympt").fadeOut();
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+
+{% endblock %}
