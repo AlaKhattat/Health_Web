@@ -32,7 +32,7 @@ modifEvt:
 geo:
     path:     /geolocalisation
     defaults: { _controller: HealthAdvisorBundle:Default:Geolocalisation }
-analyseSympt:
+symptomchecker:
     path:     /symptomechecker
     defaults: { _controller: HealthAdvisorBundle:Default:AnalyseSympt }
 FindBodyParts:
