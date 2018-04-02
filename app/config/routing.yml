@@ -1,3 +1,7 @@
+health_advisor_rendez_vous:
+    resource: "@HealthAdvisorBundle/Controller/RendezVousController.php"
+    type:     annotation
+
 
 
 health_advisor_biennetre:

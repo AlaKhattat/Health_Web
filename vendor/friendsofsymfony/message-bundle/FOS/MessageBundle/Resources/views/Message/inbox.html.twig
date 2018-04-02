@@ -1,11 +1,13 @@
 {% extends 'FOSMessageBundle::layout.html.twig' %}
 
 {% block fos_message_content %}
-
-<h2>{% trans from 'FOSMessageBundle' %}inbox{% endtrans %}</h2>
-
-<a href="{{ url('fos_message_thread_new' )}}">{% trans from 'FOSMessageBundle' %}send_new{% endtrans %}</a>
-
+<div class="blog-box">
+<h2 class="heading text-center">{% trans from 'FOSMessageBundle' %}inbox{% endtrans %}</h2>
+    <hr class="hr-1">
+    <div class="widget widget-icon">
+    <a href="{{ url('fos_message_thread_new' )}}"><i class="fa fa-envelope-o"></i><strong> Nouveau Message </strong></a>
+    </div>
+    <br>
 {% include 'FOSMessageBundle:Message:threads_list.html.twig' with {'threads': threads} %}
-
+</div>
 {% endblock %}

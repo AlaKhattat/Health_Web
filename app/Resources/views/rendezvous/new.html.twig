@@ -1,0 +1,150 @@
+{% extends 'HealthAdvisorBundle:Default:index.html.twig' %}
+
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+
+    {% block header %}
+        {{ parent() }}
+    {% endblock %}
+    <div class="page-header">
+        <div class="container">
+            <h1>Doctor Profile</h1>
+            <div class="breadcrumb-2">
+                <ul class="breadcrumb">
+                    <li><a href="home-version-1.html">Home</a></li>
+                    <li class="active">Doctor Profile</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="doctor-single mt-80 mb-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="heading-block">
+                        <h2 class="heading">Book <span class="color1">Your</span> Appointment</h2>
+                        <p class="sub-heading">Behind the word mountains, far from the countries Vokalia and
+                            Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the
+                            coast of the Semantics.</p>
+                    </div>
+                    <div class="clearfix"></div>
+                    <form>
+                        <div class="form-group">
+                            <input class="form-control" type="text" value="{{ user.nom }}" placeholder="Nom" readonly>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input class="form-control" type="text" value="{{ user.prenom }}"
+                                           placeholder="Prenom" readonly>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input class="form-control" type="text" value="{{ user.email }}" placeholder="Email"
+                                           readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                    <span class="label label-info">Entrez La Date Du Rendez Vous</span>
+                                <br><br>
+                                <div class='input-group date' id='datetimepicker1'>
+                                    <input type='text' class="form-control" name="date"/>
+                                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <br><br>
+                        <div class="row" hidden>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input class="form-control" type="text" value="{{ login }}" name="login"
+                                           placeholder="Email" readonly>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-black" type="submit" name="rdv" value="rdv"><i
+                                        class="fa fa-paper-plane"></i> Prendre RDV
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="app-download-dark bgcolor1 pt-60 pb-60 mt-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-7 col-sm-offset-5">
+                    <h2 class="heading inverse">Download the HealthAdvisor App today!</h2>
+                    <p>Behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind
+                        texts.</p>
+                    <br>
+                    <form>
+                        <div class="input-group">
+                            <input type="text" class="form-control"
+                                   placeholder="Enter your Mobile Number to get App Download Link">
+                            <span class="input-group-btn">
+                                <button class="btn btn-black" type="button"><i class="fa fa-arrow-right"></i></button>
+                            </span>
+                        </div>
+                    </form>
+                    <br>
+                    <ul class="app-links">
+                        <li>
+                            <a href="#" class="btn btn-app">
+                                <span class="icon">
+                                    <i class="fa fa-apple"></i>
+                                </span>
+                                <span class="text">
+                                    Get App
+                                    <span class="sub-text">iOS Store</span>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="btn btn-app">
+                                <span class="icon">
+                                    <i class="fa fa-android"></i>
+                                </span>
+                                <span class="text">
+                                    Get App
+                                    <span class="sub-text">iOS Store</span>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="btn btn-app">
+                                <span class="icon">
+                                    <i class="fa fa-windows"></i>
+                                </span>
+                                <span class="text">
+                                    Get App
+                                    <span class="sub-text">iOS Store</span>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    {% block footer %}
+        {{ parent() }}
+    {% endblock %}
+    {% block script %}
+        {{ parent() }}
+    {% endblock %}
+{% endblock %}

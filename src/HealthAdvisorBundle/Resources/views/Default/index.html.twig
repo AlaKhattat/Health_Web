@@ -10,6 +10,7 @@
 
     <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon" />
     <link rel="stylesheet" id="style" href="{{ asset('css/style.css') }}" type="text/css" >
+    <link href="{{ asset('datepicker/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet" media="screen">
 
     <link href="{{ asset('css/bootstrap.min.css') }}" type="text/css" rel="stylesheet">
 
@@ -81,18 +82,13 @@
 
             <div class="collapse navbar-collapse" id="main-navigation">         <!-- Main Menu -->
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="active"><a href="#">Home</a>
-                        <ul class="sub-menu">           <!-- Sub Menu -->
-                            <li><a href="#">Home Version 1 <span class="badge">Appointment Form</span> </a></li>
-                            <li><a href="#">Home Version 2 <span class="badge">Slider Revolution</span> </a></li>
-                            <li><a href="#">Home Version 3 <span class="badge">Video Background</span> </a></li>
-                        </ul>
+                    <li class="active"><a href="{{ path('health_advisor_homepage') }}">Acceuil</a>
                     </li>
-                    <li class="mega-sub-menu"><a href="#">Pages</a>         <!-- Mega Menu -->
+                    <li class="mega-sub-menu"><a href="#">Nos Medecins</a>         <!-- Mega Menu -->
                         <ul class="mega-dropdown row">
                             <li class="col-sm-3">
                                 <ul class="mega-menu-items">
-                                    <li class="heading">Doctor Grid</li>
+                                    <li class="heading">Rechercher Medecin </li>
                                     <li><a href="doctors-style-1.html">Doctor Style 1</a></li>
                                     <li><a href="doctors-style-2.html">Doctor Style 2</a></li>
                                     <li><a href="doctors-mini.html">Doctor Mini</a></li>
@@ -102,50 +98,7 @@
                                     <li><a href="doctor-single-sidebar.html">Doctor Single with Sidebar</a></li>
                                 </ul>
                             </li>
-                            <li class="col-sm-3">
-                                <ul class="mega-menu-items">
-                                    <li class="heading">Department Grid</li>
-                                    <li><a href="departments-style-1.html">Department Style 1</a></li>
-                                    <li><a href="departments-style-2.html">Department Style 2</a></li>
-                                    <li><a href="departments-mini.html">Department Mini</a></li>
-                                    <li><a href="departments-list.html">Department List</a></li>
-                                    <li class="hr"></li>
-                                    <li class="heading">Department Details</li>
-                                    <li><a href="department-single.html">Department Single</a></li>
-                                    <li><a href="department-single-sidebar.html">Department Single with Sidebar</a></li>
-                                </ul>
-                            </li>
-                            <li class="col-sm-3">
-                                <ul class="mega-menu-items">
-                                    <li class="heading">Appointments</li>
-                                    <li><a href="appointment-advanced.html">Appointment Advanced</a></li>
-                                    <li><a href="appointment-basic.html">Appointment Basic</a></li>
-                                    <li><a href="book-appointment-form.html">Book Appointment Form</a></li>
-                                    <li class="hr"></li>
-                                    <li class="heading">About Medwise</li>
-                                    <li><a href="about.html">About Us</a></li>
-                                    <li><a href="why-us.html">Why Us</a></li>
-                                    <li><a href="process.html">Process</a></li>
-                                    <li><a href="features.html">Features</a></li>
-                                    <li><a href="testimonials.html">Testimonials</a></li>
-                                    <li><a href="careers.html">Careers</a></li>
-                                </ul>
-                            </li>
-                            <li class="col-sm-3">
-                                <ul class="mega-menu-items">
-                                    <li class="heading">Other Pages</li>
-                                    <li><a href="gallery.html">Gallery</a></li>
-                                    <li><a href="events.html">Events</a></li>
-                                    <li><a href="download-app.html">Download App</a></li>
-                                    <li><a href="pricing-tables.html">Pricing Tables</a></li>
-                                    <li><a href="offers.html">Offers</a></li>
-                                    <li><a href="dos-donts.html">Dos &amp; Donts</a></li>
-                                    <li><a href="question-answer.html">Q and A</a></li>
-                                    <li><a href="policies.html">Policies</a></li>
-                                    <li><a href="coming-soon.html">Coming Soon</a></li>
-                                    <li><a href="404.html">404-Not Found</a></li>
-                                </ul>
-                            </li>
+                        
                         </ul>
                     </li>
                     <li class="mega-sub-menu"><a href="#">Elements</a>          <!-- Mega Menu -->
@@ -163,28 +116,7 @@
                                     <li><a href="call-out.html">Call Out</a></li>
                                 </ul>
                             </li>
-                            <li class="col-sm-3">
-                                <ul class="mega-menu-items">
-                                    <li class="heading">Elements</li>
-                                    <li><a href="icon-boxes.html">Icon Boxes</a></li>
-                                    <li><a href="accordion.html">Accordion</a></li>
-                                    <li><a href="tabs.html">Tabs</a></li>
-                                    <li><a href="progress-bar.html">Progress Bars</a></li>
-                                    <li><a href="modals.html">Modals</a></li>
-                                    <li><a href="carousels.html">Carousels</a></li>
-                                </ul>
-                            </li>
-                            <li class="col-sm-3">
-                                <ul class="mega-menu-items">
-                                    <li class="heading">Miscellaneous</li>
-                                    <li><a href="medical-icons.html">Medical Icons</a></li>
-                                    <li><a href="text-sections.html">Text Sections</a></li>
-                                    <li><a href="quick-contact.html">Quick Contact</a></li>
-                                    <li><a href="video.html">Video</a></li>
-                                    <li><a href="counters.html">Counters</a></li>
-                                    <li><a href="social-media.html">Social Media</a></li>
-                                </ul>
-                            </li>
+                            
                             <li class="col-sm-3">
                             </li>
                         </ul>
@@ -192,24 +124,20 @@
                     <li><a href="#">Blog</a>
                         <ul class="sub-menu">           <!-- Sub Menu -->
                             <li><a href="blog-list.html">Blog List</a></li>
-                            <li><a href="blog-single.html">Blog Single</a></li>
-                            <li><a href="widgets.html">Sidebar Widgets</a></li>
                         </ul>
                     </li>
                     <li><a href="#">Contact</a>
                         <ul class="sub-menu">           <!-- Sub Menu -->
                             <li><a href="contact-1.html">Contact Version 1</a></li>
-                            <li><a href="contact-2.html">Contact Version 2</a></li>
-                            <li><a href="contact-3.html">Contact Version 3</a></li>
                         </ul>
                     </li>
                     <li>
-                            <span class="emergency">            <!-- Emergency Number -->
-                                <i class="fa fa-mobile"></i>
-                                <span class="number">1800-234-456</span><br/>
-                                <span class="sub-text">Toll Free Emergency</span>
-                            </span>
+                              <span class="emergency"><a href="{{ path('fos_message_inbox') }}">
+                            <img src="{{ asset('messenger.png') }}" alt="">
+                            <span class="sub-text">  Messagerie</span></a>
+                        </span>
                     </li>
+
                 </ul>
             </div>
         </div>
@@ -1271,6 +1199,13 @@
 
 <!-- Custom J-->
 <script src="{{ asset('js/script.js') }}" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#datetimepicker1').datetimepicker();
+        });
+    </script>
+    <script type="text/javascript" src="{{ asset('datepicker/js/bootstrap-datetimepicker.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('datepicker/js/locales/bootstrap-datetimepicker.fr.js') }}" ></script>
     {% endblock %}
 {% endblock %}
 </body>

@@ -1,0 +1,137 @@
+{% extends '@HealthAdvisor/Admin_Template/index.html.twig'%}
+
+{% block contenu %}
+    <div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>Profile Medecin</h3>
+        </div>
+
+    </div>
+    <div class="clearfix"></div>
+
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2> Détails Profile</h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+
+                    <div class="col-md-3 col-sm-3 col-xs-12 profile_left">
+
+                        <div class="profile_img">
+
+                            <!-- Current avatar -->
+                            <div class="avatar-view">
+                                <img src="{{ asset('admin/images/picture.jpg') }}" alt="Avatar">
+                            </div>
+
+
+                            <!-- Loading state -->
+                            <div class="loading" aria-label="Loading" role="img" tabindex="-1"></div>
+
+                        </div>
+                        <!-- details medecin -->
+
+                        <h3>{{ medecin.login.cinUser.nom }} {{ medecin.login.cinUser.prenom }}</h3>
+
+                        <ul class="list-unstyled user_data">
+                            <li><i class="fa fa-map-marker user-profile-icon"></i> {{ medecin.adresse }}
+                            </li>
+
+                            <li>
+                                <i class="fa fa-stethoscope user-profile-icon"></i> {{ medecin.specialite }}
+                            </li>
+
+                            <li class="m-top-xs">
+                                <i class="fa fa-mail-forward user-profile-icon"></i>
+                                <a target="_blank">{{ medecin.login.cinUser.email }}</a>
+                            </li>
+                        </ul>
+
+                        <a  id="modalstatut" class="btn btn-success" data-toggle="modal"><i class="fa fa-edit m-right-xs"></i> Modifier Statut</a>
+                        <form>
+                            <input type="text" value="{{ medecin.login.login }}" name="id" hidden>
+
+                            <!-- Modal -->
+                        <div class="modal fade" id="myModal" role="dialog">
+                            <div class="modal-dialog">
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Modifier Statut Medecin</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Statut Courante <strong>{{ medecin.statutCompte }}</strong></p>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                                    <select class="form-control" name="statut">
+                                                        <option>Séléctionner Statut</option>
+                                                        <option value="VALIDE">Valide</option>
+                                                        <option value="INVALIDE">Non Valide</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-9">
+                                                <div class="thumbnail">
+                                                    <div class="image view view-first">
+                                                        <img style="width: 100%; display: block;" src="{{ asset('admin/images/4.jpg') }}" alt="image" />
+                                                        <div class="mask">
+                                                            <p>Diplome</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="caption">
+                                                        <p>Diplome Du Medecin {{ medecin.login.cinUser.nom }} {{ medecin.login.cinUser.prenom }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-9">
+                                               <button type="submit" class="btn btn-primary" name="modifier" value="modifier">Modifier</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        </form>
+                        <br />
+                        <!-- end of details medecin -->
+
+
+                    </div>
+                    <div class="col-md-9 col-sm-9 col-xs-12">
+
+                        <div class="profile_title">
+                            <div class="col-md-6">
+                                <h2>User Activity Report</h2>
+                            </div>
+                            <div class="col-md-6">
+                                <div id="reportrange" class="pull-right" style="margin-top: 5px; background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #E6E9ED">
+                                    <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                                    <span>December 30, 2014 - January 28, 2015</span> <b class="caret"></b>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- start of user-activity-graph -->
+                        <div id="graph_bar" style="width:100%; height:280px;"></div>
+                        <!-- end of user-activity-graph -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
