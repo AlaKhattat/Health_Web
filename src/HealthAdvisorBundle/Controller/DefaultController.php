@@ -3,6 +3,7 @@
 namespace HealthAdvisorBundle\Controller;
 
 use HealthAdvisorBundle\Entity\BodyParts;
+use HealthAdvisorBundle\Entity\TokenSymptom;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -57,6 +58,26 @@ class DefaultController extends Controller
         $serializer = new Serializer(array(new ObjectNormalizer()));
         $result = $serializer->normalize($symptoms);
         return new JsonResponse($result);
+    }
+
+    public function FindMaladieAction()
+    {
+        $computedHash = base64_encode(hash_hmac ( 'md5' , 'https://authservice.priaid.ch/login' , 'ftHALLrv83JCfdA5', true ));
+        $authorization = 'Authorization: Bearer firas_mrad:'.$computedHash;
+
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_POST, true);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, '');
+        curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json' , $authorization ));
+        curl_setopt($curl, CURLOPT_URL, 'https://authservice.priaid.ch/login');
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+
+        $result = curl_exec($curl);
+        $obj = json_decode($result);
+        //$info = curl_getinfo($curl);
+        curl_close($curl);
+        return new JsonResponse($obj);
     }
 
 }

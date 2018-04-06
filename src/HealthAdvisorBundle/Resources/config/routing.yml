@@ -44,3 +44,6 @@ FindSubBodyParts:
 FindSymptoms:
     path:     /findsymptoms
     defaults: { _controller: HealthAdvisorBundle:Default:FindSymptoms }
+FindMaladie:
+    path:     /findmaladie
+    defaults: { _controller: HealthAdvisorBundle:Default:FindMaladie }
