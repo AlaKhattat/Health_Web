@@ -4,12 +4,14 @@ namespace HealthAdvisorBundle\Controller;
 
 use FOS\UserBundle\Model\UserInterface;
 use HealthAdvisorBundle\Entity\Medecin;
+use HealthAdvisorBundle\Entity\Notification;
 use HealthAdvisorBundle\Entity\Patient;
 use HealthAdvisorBundle\Entity\RendezVous;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * Rendezvous controller.
@@ -42,7 +44,6 @@ class RendezVousController extends Controller
      */
     public function newAction(Request $request)
     {
-        var_dump($request->get('login'));
         $login=$request->get('login');
         $user = $this->getUser();
         if (!is_object($user) || !$user instanceof UserInterface) {
@@ -71,8 +72,6 @@ class RendezVousController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($rendezVous);
             $em->flush();
-
-            return $this->redirectToRoute('rendezvous_show', array('id' => $rendezVous->getId()));
         }
 
         return $this->render('rendezvous/new.html.twig', array(

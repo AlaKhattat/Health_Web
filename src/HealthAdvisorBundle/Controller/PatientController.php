@@ -86,7 +86,7 @@ class PatientController extends Controller
             if(sizeof($tab)>1) {
                 $str = $tab[2] . "-" . $tab[1] . "-" . $tab[0];
             }
-            if(date_create_from_format('Y-m-d',$str)==null) {
+            if(date_create_from_format('Y-m-d ',$str)==null) {
                 $tab = explode(',', $request->get('dateNaiss'));
                 $str1 = $tab[0];
                 $str2 = $tab[1];

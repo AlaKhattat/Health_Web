@@ -5,6 +5,31 @@ health_advisor_homepage:
 index_admin:
     path:     /admin
     defaults: { _controller: HealthAdvisorBundle:Admin_Template:index }
+afficher_aliment:
+    path:     /admin/afficherAliment
+    defaults: { _controller: HealthAdvisorBundle:Aliment:afficherAliment }
+ajouter_aliment:
+    path:     /admin/ajoutAliment
+    defaults: { _controller: HealthAdvisorBundle:Aliment:ajouterAliment }
+modifier_aliment:
+    path:     /admin/modifAliment
+    defaults: { _controller: HealthAdvisorBundle:Aliment:modifierAliment }
+supprimer_aliment:
+    path:     /admin/suppAliment
+    defaults: { _controller: HealthAdvisorBundle:Aliment:supprimerAliment }
+rechercher_aliment:
+    path:     /admin/rechercheAliment
+    defaults: { _controller: HealthAdvisorBundle:Aliment:rechercheAliment }
+afficher_outilBiennetre:
+    path:     /outils
+    defaults: { _controller: HealthAdvisorBundle:Biennetre:indexOutilBiennetre }
+ajouter_infoSante:
+    path:     /outils/ajouterInfoSanter
+    defaults: { _controller: HealthAdvisorBundle:Biennetre:ajouterInfoSante }
+afficher_infoSante:
+    path:     /outils/afficherInfoSante
+    defaults: { _controller: HealthAdvisorBundle:Biennetre:afficherInfoSante }
+
 index_medecin:
     path:     /medecin
     defaults: { _controller: HealthAdvisorBundle:Medecin:index }
@@ -23,3 +48,15 @@ admin_afficher_profile_medecin:
 admin_modifier_statut_medecin:
     path:     /admin/modifier_statut_medecin
     defaults: { _controller: HealthAdvisorBundle:Admin_Template:modifier_statut_medecin }
+notification_update_statut:
+    path:     /notification/modifier_statut
+    defaults: { _controller: HealthAdvisorBundle:Default:marquerCommeLus }
+notification_afficher:
+    path:     /notification/afficher
+    defaults: { _controller: HealthAdvisorBundle:Default:afficherNotification }
+message_afficher:
+    path:     /message/afficher
+    defaults: { _controller: HealthAdvisorBundle:Default:afficherMessage }
+notifications_update_status:
+    path:     /notification/update
+    defaults: { _controller: HealthAdvisorBundle:Default:marquerTousCommeLus }

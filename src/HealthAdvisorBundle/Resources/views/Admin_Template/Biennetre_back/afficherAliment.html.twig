@@ -1,0 +1,25 @@
+<h1>Liste des voitures</h1>
+<table border="2">
+    <thead>
+    <tr>
+        <th>Nom Aliment</th>
+        <th>Quantite</th>
+        <th>Valeur Energetique</th>
+        <th>Type Aliment</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for i in aliments %}
+    <tr>
+        <td>{{ i.nomAliment }}</td>
+        <td> {{ i.quantite }} </td>
+        <td> {{ i.valeurEnergetique }} </td>
+        <td> {{ i.typeAliment }} </td>
+    </tr>
+    </tbody>
+    {% else %}
+        <tr>
+            <td colspan="4">Pas d'aliment</td>
+        </tr>
+    {% endfor %}
+</table>

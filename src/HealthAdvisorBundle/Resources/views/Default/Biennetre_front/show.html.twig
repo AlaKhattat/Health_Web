@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Informationsante</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Taille</th>
+                <td>{{ informationSante.taille }}</td>
+            </tr>
+            <tr>
+                <th>Poids</th>
+                <td>{{ informationSante.poids }}</td>
+            </tr>
+            <tr>
+                <th>Age</th>
+                <td>{{ informationSante.age }}</td>
+            </tr>
+            <tr>
+                <th>Allergies</th>
+                <td>{{ informationSante.allergies }}</td>
+            </tr>
+            <tr>
+                <th>Maladies</th>
+                <td>{{ informationSante.maladies }}</td>
+            </tr>
+            <tr>
+                <th>Sexe</th>
+                <td>{{ informationSante.sexe }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('outil_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('outil_edit', { 'login': informationSante.login }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

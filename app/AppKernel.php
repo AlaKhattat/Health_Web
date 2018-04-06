@@ -19,6 +19,8 @@ class AppKernel extends Kernel
             new HealthAdvisorBundle\HealthAdvisorBundle(),
             new FOS\MessageBundle\FOSMessageBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+            new JMS\SerializerBundle\JMSSerializerBundle(),
+
 
         ];
 

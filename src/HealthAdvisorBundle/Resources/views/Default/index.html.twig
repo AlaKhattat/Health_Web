@@ -22,6 +22,8 @@
 
     <link href="{{ asset('css/vendors.css') }}" type="text/css" rel="stylesheet">
     <link href="{{ asset('css/components.css') }}" type="text/css" rel="stylesheet" id="components">
+    <link href="{{ asset('admin/css/animate.min.css') }}" rel="stylesheet">
+
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Volkhov:400,400i" rel="stylesheet">
@@ -61,7 +63,7 @@
                 </div>
                 <div class="col-md-6">
                     <ul class="contact">
-                        <li><span>Email Us : </span> hello@medwise.com</li>
+                        <li><span>Email Us : </span> heathadvioresprit@gmail.com</li>
                     </ul>
                 </div>
             </div>
@@ -89,13 +91,7 @@
                             <li class="col-sm-3">
                                 <ul class="mega-menu-items">
                                     <li class="heading">Rechercher Medecin </li>
-                                    <li><a href="doctors-style-1.html">Doctor Style 1</a></li>
-                                    <li><a href="doctors-style-2.html">Doctor Style 2</a></li>
-                                    <li><a href="doctors-mini.html">Doctor Mini</a></li>
-                                    <li class="hr"></li>
-                                    <li class="heading">Doctor Profile</li>
-                                    <li><a href="doctor-single.html">Doctor Single</a></li>
-                                    <li><a href="doctor-single-sidebar.html">Doctor Single with Sidebar</a></li>
+                                    <li><a href="{{ path('medecin_specialite') }}"> Rechercher</a></li>
                                 </ul>
                             </li>
                         
@@ -136,6 +132,62 @@
                             <img src="{{ asset('messenger.png') }}" alt="">
                             <span class="sub-text">  Messagerie</span></a>
                         </span>
+                    </li>
+
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fa fa-bell">
+                                        <span class="badge badge-pill badge-info" id="nbrnotif"></span>
+                                    </i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li class="head text-light">
+                                        <div class="row">
+                                            <div class="col-lg-12 col-sm-12 col-12">
+                                                <div class="col-lg-6 col-sm-6 col-6">
+
+                                                <span>List Notifications</span>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                        <li class="notification-box" id="affichernotif">
+                                        </li>
+
+                                    <li class="footer bg-dark text-center">
+                                        <a onclick="updatenotifications()" class="text-light"> Marquer Tous Comme Lus</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-comment">
+                                <span class="badge badge-pill badge-warning" id="nbrmsg"></span>
+
+                            </i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="head text-light">
+                                <div class="row">
+                                    <div class="col-lg-12 col-sm-12 col-12">
+                                        <div class="col-lg-6 col-sm-6 col-6">
+                                            <span> Messages </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+                                <li class="notification-box" id="affichermsg">
+                                </li>
+
+                            <li class="footer bg-dark text-center">
+                                <a href="" class="text-light">Consulter Messagerie</a>
+                            </li>
+                        </ul>
                     </li>
 
                 </ul>
@@ -1200,12 +1252,160 @@
 <!-- Custom J-->
 <script src="{{ asset('js/script.js') }}" type="text/javascript"></script>
     <script type="text/javascript">
+
         $(function () {
+            var linknotif = 'http://localhost' + '{{ path('notification_afficher') }}';
+            var linkmsg = 'http://localhost' + '{{ path('message_afficher') }}';
+
+            //afficher message
+            $.ajax({
+                type: 'GET',
+                url: linkmsg,
+                success: function (data) {
+                    $('#affichermsg').html('');
+                    $('#nbrmsg').html('');
+                    $('#nbrmsg').append(data.length);
+                    $.each(data, function (key, value) {
+                        var longDateFormat  = moment(value.message.thread.createdAt).format('MMMM Do YYYY, h:mm:ss a');
+                        console.log(longDateFormat);
+                        $('#affichermsg').append(
+                            '<li class="notification-box">'+
+                            '<div class="row">' +
+                            '<div class="col-lg-3 col-sm-3 col-3 text-center">' +
+                            ' <img src="" class="w-50 rounded-circle">' +
+                            '</div>' +
+                            '<div class="col-lg-8 col-sm-8 col-8">' +
+                            '<strong class="text-info">Subject :'+ value.message.thread.subject+' </strong>' +
+                            '<div>' +
+                            value.message.body +
+                            '</div>' +
+                            '<small class="text-warning">'+ longDateFormat +
+                            '</small>' +
+                            '<div>' + '<i class="fa fa-check-circle-o">' + '</i>' +
+                            '<a href="http://localhost/HealthAdvisor/web/app_dev.php/msg/" class="float-right text-light">   Consulter Message </a>' +
+                            '</div>' +
+                            '</div>' +
+                            '</div>'+
+                            '</li>'
+                        )
+                        ;
+
+                    });
+                }
+
+            });
+            $.ajax({
+                type: 'GET',
+                url: linknotif,
+                success: function (data) {
+                    $('#affichernotif').html('');
+                    $('#nbrnotif').html('');
+                    $('#nbrnotif').append(data.length);
+                    console.log(data);
+                    $.each(data, function (key, value) {
+                        var longDateFormat  = moment(value.date).format('MMMM Do YYYY, h:mm:ss a');
+                        console.log(longDateFormat);
+                        $('#affichernotif').append(
+                            '<li class="notification-box">'+
+                            '<div class="row">' +
+                            '<div class="col-lg-3 col-sm-3 col-3 text-center">' +
+                            ' <img src="" class="w-50 rounded-circle">' +
+                            '</div>' +
+                            '<div class="col-lg-8 col-sm-8 col-8">' +
+                            '<strong class="text-info">Subject : Rendez Vous </strong>' +
+                            '<div>' +
+                            value.message +
+                            '</div>' +
+                            '<small class="text-warning">'+ longDateFormat +
+                            '</small>' +
+                            '<div>' + '<i class="fa fa-check-circle-o">' + '</i>' +
+                            '<a onclick="updatenotif('+value.id+')" class="float-right text-light">  MarquerCommeLus </a>' +
+                            '</div>' +
+                            '</div>' +
+                            '</div>'+
+                            '</li>'
+                        )
+                        ;
+
+                    });
+                }
+
+            });
             $('#datetimepicker1').datetimepicker();
-        });
+
+    });
+        //modifier statut notification
+        function updatenotif(id) {
+
+            console.log('notification'+ id);
+            if(id!=null) {
+
+                var link = 'http://localhost' + '{{ path('notification_update_statut') }}';
+                $.ajax({
+                    type: 'GET',
+                    data: {'id': id},
+                    url: link,
+                    success: function (data) {
+
+                        $('#affichernotif').html('');
+                        $('#nbrnotif').html('');
+                        $('#nbrnotif').append(data.length);
+                        $.each(data, function (key, value) {
+                            var longDateFormat  = moment(value.date).format('MMMM Do YYYY, h:mm:ss a');
+
+                            $('#affichernotif').append(
+                                '<li class="notification-box">'+
+                                '<div class="row">' +
+                                '<div class="col-lg-3 col-sm-3 col-3 text-center">' +
+                                ' <img src="/web/user.png" class="w-50 rounded-circle">' +
+                                '</div>' +
+                                '<div class="col-lg-8 col-sm-8 col-8">' +
+                                '<strong class="text-info">Subject : Rendez Vous</strong>' +
+                                '<div>' +
+                                value.message +
+                                '</div>' +
+                                '<small class="text-warning">'+ longDateFormat +
+                                '</small>' +
+                                '<div>' + '<i class="fa fa-check-circle-o">' + '</i>' +
+                                '<a onclick="updatenotif('+value.id+')" class="float-right text-light">  MarquerCommeLus </a>' +
+                                '</div>' +
+                                '</div>' +
+                                '</div>'+
+                                '</li>'
+                            )
+                            ;
+
+                        });
+                    }
+
+                });
+            }
+        }//toufa lenna
+        //modifier statuts notifications
+        function updatenotifications() {
+            console.log('marquer tous');
+                var link = 'http://localhost' + '{{ path('notifications_update_status') }}';
+                $.ajax({
+                    type: 'GET',
+                    url: link,
+                    success: function (data) {
+
+                        $('#affichernotif').html('');
+                            $('#nbrnotif').html('');
+                            $('#nbrnotif').append(data.length);
+                        $('#affichernotif').append(
+                            '<i class="fa fa-warning" style="align-content: center"> Vous N avez Pas De Notifications </i>'
+                        );
+
+                    }
+
+                });
+
+        }//toufa lenna
     </script>
     <script type="text/javascript" src="{{ asset('datepicker/js/bootstrap-datetimepicker.js') }}"></script>
     <script type="text/javascript" src="{{ asset('datepicker/js/locales/bootstrap-datetimepicker.fr.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('moment.min.js') }}"></script>
     {% endblock %}
 {% endblock %}
 </body>

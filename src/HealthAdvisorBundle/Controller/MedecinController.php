@@ -4,8 +4,11 @@ namespace HealthAdvisorBundle\Controller;
 
 use FOS\UserBundle\Model\UserInterface;
 use HealthAdvisorBundle\Entity\Medecin;
+use HealthAdvisorBundle\Entity\Notification;
 use HealthAdvisorBundle\Entity\Patient;
 use HealthAdvisorBundle\Entity\Utilisateur;
+use Nette\Mail\Message;
+use Nette\Mail\SendmailMailer;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -67,20 +70,15 @@ if ($request->get('adresse')!=null||$request->get('specialite')!=null)
        $adresse=$request->get('adresse');
        $specialite=$request->get('specialite');
        $nom=$request->get('username');
-       var_dump($nom);
-if($adresse!=null && $specialite!=null){
-    var_dump('Recherche Par  Adresse et Specialite');
+if($adresse!=null && ($specialite!=null && $specialite!='Selectioner Votre Spécialite')){
         $medecins = $this->getDoctrine()->getRepository('HealthAdvisorBundle:Medecin')->rechercherParSpecialiteAdresse($specialite,$adresse);
-}elseif($specialite=!null&&$specialite=!'Selectioner Votre Spécialite'){
-    var_dump('Recherche PAr Specialite');
+}elseif($specialite!=null && $specialite!='Selectioner Votre Spécialite'){
+
     $medecins = $this->getDoctrine()->getRepository('HealthAdvisorBundle:Medecin')->rechercherParSpecialite($specialite);
 
 }elseif ($adresse!=null){
-    var_dump('Recherche PAr Adresse');
-
     $medecins = $this->getDoctrine()->getRepository('HealthAdvisorBundle:Medecin')->rechercherParAdresse($adresse);
-}elseif ($nom!=null){
-    var_dump('Recherche PAr Nom');
+}elseif ($nom!=null && $nom!='Selectioner Votre Medecin '){
     $medecins = $this->getDoctrine()->getRepository('HealthAdvisorBundle:Medecin')->rechercherParNom($nom);
 
 }
@@ -100,16 +98,25 @@ return $this->render('medecin/afficher_medecin_specialite.html.twig', array(
 
         $statut=$request->get('statut');
         $id=$request->get('id');
-        var_dump($statut);
-        var_dump($id);
         $rendezvous=$this->getDoctrine()
             ->getRepository('HealthAdvisorBundle:RendezVous')
             ->find($id);
 
         if($statut!=null){
+            $notification=new Notification();
+            if($statut=='VALIDE'){
+                $notification->setStatut('NonLu');
+                $notification->setDate(new \DateTime());
+                $notification->setMessage('Vous avez un rendez vous avec le docteur : '.$rendezvous->getMed()->getLogin()->getCinUser()->getNom().' '
+                    .$rendezvous->getMed()->getLogin()->getCinUser()->getNom().' Le : '.$rendezvous->getDateHeure()->format('Y m ,d'));
+                $notification->setType('Rendez_Vous Confirmé');
+                $notification->setUserNotif($rendezvous->getUser()->getCinUser());
+
+            }
             $rendezvous->setStatut($statut);
             $em = $this->getDoctrine()->getManager();
             $em->persist($rendezvous);
+            $em->persist($notification);
             $em->flush();
             return $this->redirectToRoute('suivie_rdv');
         }

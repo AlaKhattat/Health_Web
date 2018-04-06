@@ -3,6 +3,7 @@
 namespace FOS\MessageBundle\FormType;
 
 use FOS\MessageBundle\Util\LegacyFormHelper;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -18,9 +19,11 @@ class NewThreadMessageFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('recipient', LegacyFormHelper::getType('FOS\UserBundle\Form\Type\UsernameFormType'), array(
-                'label' => 'recipient',
-                'translation_domain' => 'FOSMessageBundle',
+
+            ->add('recipient', EntityType::class,array(
+                'class'=>'HealthAdvisorBundle\Entity\Utilisateur',
+                'choice_label'=>'username',
+                'multiple'=>false
             ))
             ->add('subject', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\TextType'), array(
                 'label' => 'subject',

@@ -9,8 +9,8 @@
             <script src="{{ asset('jquery-3.2.1.js') }}"></script>
         </head>
     {% endblock %}
-{% block body %}
 
+{% block body %}
     {% block header %}
         {{ parent() }}
     {% endblock %}
@@ -74,6 +74,9 @@
 
 
     {% block footer %}
+        {{ parent() }}
+    {% endblock %}
+    {% block script %}
         {{ parent() }}
     {% endblock %}
 {% endblock %}

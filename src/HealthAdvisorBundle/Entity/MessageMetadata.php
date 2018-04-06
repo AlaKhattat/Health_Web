@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use FOS\MessageBundle\Entity\MessageMetadata as BaseMessageMetadata;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="HealthAdvisorBundle\Repository\MessageMetadataRepository")
  */
 class MessageMetadata extends BaseMessageMetadata
 {

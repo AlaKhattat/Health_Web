@@ -1,0 +1,103 @@
+<head>
+    <link rel="stylesheet" href="{{ asset('admin/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<div class="col-md-4 col-lg-4 col-sm-4 col-xs-4"></div>
+<form method="post" action="" class="col-md-4 col-lg-4 col-sm-4 col-xs-4 form-horizontal">
+    <div class="form-group">
+        <legend>
+            Ajouter Aliment
+        </legend>
+    </div>
+    <!-- debut food name field -->
+    <div class="row">
+        <div class="form-group  ">
+            <label for="nomAliment" class="col-md-3 col-sm-3 col-lg-3 control-label">Nom Aliment</label>
+            <div class="col-md-9 col-sm-9 col-lg-9">
+                <input type="text"  id="nomAliment" class="form-control" required="required" name="nomAliment">
+            </div>
+        </div>
+    </div>
+   <div class="row">
+    <div class="form-group has-success has-feedback ">
+     <label for="nomAliment" class="col-md-3 col-sm-3 col-lg-3 control-label">Nom Aliment</label>
+        <div class="col-md-9 col-sm-9 col-lg-9">
+            <input type="text"  id="nomAliment" class="form-control" required="required" name="nomAliment">
+            <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+            <span class="help-block">saisie correcte</span>
+        </div>
+    </div>
+   </div>
+    <!--end -->
+    <!--quantity field-->
+    <div class="row">
+    <div class="form-group ">
+        <label for="quantite"  class="col-md-3 col-sm-3 col-lg-3 control-label">Quantite</label>
+        <div class="col-md-9 col-sm-9 col-lg-9">
+            <input type="number" class="form-control" id="quantite" name="quantite">
+        </div>
+    </div>
+   </div>
+    <!--valeur energetique field-->
+    <div class="row">
+    <div class="form-group ">
+        <label for="valeurEnergetique" class="col-md-3 col-sm-3 col-lg-3 control-label">Valeur Energetique</label>
+        <div class="col-md-9 col-sm-9 col-lg-9">
+            <input type="number" class="form-control" id="valeurEnergetique" name="valeurEnergetique">
+        </div>
+    </div>
+   </div>
+    <!-- food type field-->
+    <div class="row">
+    <div class="form-group ">
+        <label for="typeAliment" class="col-md-3 col-sm-3 col-lg-3 control-label">Type Aliment</label>
+        <div class="col-md-9 col-sm-9 col-lg-9">
+            <select class="form-control  " multiple id="typeAliment" name="typeAliment[]">
+                {% for type,val in typeAliment %}
+                     <option name="typeAliment" value="{{ type }}">{{ type }}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+   </div>
+    <!--double down arrow-->
+    <div class="row" hidden>
+        <div class="form-group ">
+            <div class="col-md-12 col-sm-12 col-lg-12">
+                <div class="col-md-6 col-sm-6 col-lg-6"> </div>
+                <div class="col-md-4 col-sm-4 col-lg-4">
+                    <button type="button" class="fa fa-angle-double-down btn btn-default" style="font-size: 200%;border-radius: 25%" ></button>
+                </div>
+                <div class="col-md-2 col-sm-2 col-lg-2"> </div>
+            </div>
+        </div>
+    </div>
+    <!-- adding choices -->
+    <div class="row" hidden>
+        <div class="form-group ">
+            <label for="typeAliment" class="col-md-3 col-sm-3 col-lg-3 control-label"></label>
+            <div class="col-md-9 col-sm-9 col-lg-9">
+               <table class="table">
+                 <tbody>
+                    <tr>
+                        <td class="col-md-9 col-sm-9 col-lg-9" style="padding-top: 4%">toto</td>
+                        <td><button type="button" class=" btn  fa fa-remove" style="font-size: 100%; background: transparent"></button></td>
+                    </tr>
+                 </tbody>
+               </table>
+            </div>
+        </div>
+    </div>
+    <!-- validate button -->
+    <div class="row">
+        <div class="form-group">
+            <input type="submit" class="btn btn-success pull-right" value="Ajouter">
+        </div>
+   </div>
+
+
+</form>
+
+</body>
+
