@@ -60,3 +60,6 @@ calculCalorie:
 suivreRegime:
     path:     /regime
     defaults: { _controller: HealthAdvisorBundle:Biennetre:suivreRegime }
+listeRegime:
+    path:     /listeRegime
+    defaults: { _controller: HealthAdvisorBundle:Biennetre:proposerRegime }

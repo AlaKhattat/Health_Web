@@ -172,9 +172,26 @@ class BiennetreController extends Controller
 
     public function suivreRegimeAction(Request $request)
     {
-        return $this->render('HealthAdvisorBundle:Default/Biennetre_front:suivreRegime.html.twig',array(
-
+        $patient = new Patient();
+        $poidIdeal = 0;
+        $informationSante = new InformationSante();
+        $patient = $this->getDoctrine()->getRepository('HealthAdvisorBundle:Patient')->findOneBy(array('cinUser'=>$this->container->get('security.token_storage')->getToken()->getUser()));
+        $informationSante = $this->getDoctrine()->getRepository('HealthAdvisorBundle:InformationSante')->find($patient->getLogin());
+        if($informationSante!=null)
+        {
+            $poidIdeal = $informationSante->calculPoidIdeal($informationSante);
+        }
+        return $this->render('HealthAdvisorBundle:Default/Biennetre_front:suivreRegime.html.twig',array("info"=>$informationSante,
+                                                                                                              "poidIdeal"=>$poidIdeal
         ));
+    }
+
+    public function proposerRegimeAction(Request $request)
+    {
+        return $this->render('HealthAdvisorBundle:Default/Biennetre_front:listeRegime.html.twig');
+        /*$serializer = new Serializer(array(new ObjectNormalizer()));
+        $resultat= $serializer->normalize(Array());
+        return  new JsonResponse($resultat);*/
     }
 
 
