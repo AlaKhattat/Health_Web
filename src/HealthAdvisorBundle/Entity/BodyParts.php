@@ -28,6 +28,38 @@ class BodyParts
      */
     private $nomBodyPart;
 
+    /**
+     * @return int
+     */
+    public function getIdBodyPart()
+    {
+        return $this->idBodyPart;
+    }
+
+    /**
+     * @param int $idBodyPart
+     */
+    public function setIdBodyPart($idBodyPart)
+    {
+        $this->idBodyPart = $idBodyPart;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNomBodyPart()
+    {
+        return $this->nomBodyPart;
+    }
+
+    /**
+     * @param string $nomBodyPart
+     */
+    public function setNomBodyPart($nomBodyPart)
+    {
+        $this->nomBodyPart = $nomBodyPart;
+    }
+
 
 }
 

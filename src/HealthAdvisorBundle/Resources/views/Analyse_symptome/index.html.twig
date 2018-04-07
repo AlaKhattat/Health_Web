@@ -1,0 +1,278 @@
+{% extends 'HealthAdvisorBundle:Default:index.html.twig' %}
+{% block head %}
+    {{ parent() }}
+    <link href="{{ asset('css/symptoms.css') }}" type="text/css" rel="stylesheet">
+    <style>
+        .loader-backdrop-sympt{
+            position: fixed;
+            top:0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            z-index: 999999;
+            background-color: rgba(255, 255, 255, 0.7);
+        }
+    </style>
+{% endblock %}
+{% block body %}
+    {% block header %}
+        {{ parent() }}
+    {% endblock %}
+    <div class="loader-backdrop-sympt" id="loader-backdrop-sympt">           <!-- Loader -->
+        <div class="loader">
+        </div>
+    </div>
+    <div class="container mt-80" id="form-sympt">
+    <div class="row">
+    <div class="col-lg-16 mt-20">
+        <form id="conteneur">
+            <div id="formulaire">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div id="annediv" class="form-group">
+                        <label for="anne">Année de Naissance</label><input type="number" id="anne" name="anne" class="form-control" placeholder="Années entre 1901 et l'année courante">
+                        <p id="status"></p>
+
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="genre">Vous êtes?</label>
+                        <select name="genre" id="genre"  class="form-control">
+                            <option value="man" selected>Homme</option>
+                            <option value="woman">Femme</option>
+                            <option value="boy">Garçon</option>
+                            <option value="girl">Fille</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="genre">Partie du corps que Vous pensez contient les symptomes</label>
+                        <select name="body-part" id="body-part"  class="form-control">
+                            <option value="" selected disabled>Selectionner une partie du corps</option>
+                        </select>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="genre">Presisez en plus la partie du corps</label>
+                        <select name="sub-body-part" id="sub-body-part"  class="form-control">
+                            <option value="" selected disabled>Selectionner une sous partie du corps</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="choose-symptoms-list">
+                        <fieldset>
+                            <legend>Symptomes possibbles</legend>
+                            <div class="widget widget-tags">
+                                <ul class="widget-list" id="listsymptome">
+                                </ul>
+                            </div>
+                        </fieldset>
+                    </div>
+
+                </div>
+                <div class="col-md-6">
+                    <fieldset>
+                        <legend>Symptomes Sélectionnés</legend>
+                        <div class="widget widget-tags">
+                            <ul class="widget-list" id="listsymptomeanalyse">
+                            </ul>
+                        </div>
+                    </fieldset></div>
+            </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-6 col-md-offset-3">
+                        <button class="btn btn-primary" type="button" name="analyser" id="analyser" disabled><i class="fa fa-search"></i> Analyser</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    </form>
+    </div>
+    </div>
+    </div>
+    <div class="table-responsive" id="tab-resultat" hidden>
+        <table class="table table-bordered table-schedule-mini">
+            <thead>
+            <tr>
+                <th>Maladie</th>
+                <th>Precision (%)</th>
+                <th>Specialité de la Maladie</th>
+            </tr>
+            </thead>
+            <tbody id="tbody">
+
+            </tbody>
+        </table>
+    </div>
+    {% block footer %}
+        {{ parent() }}
+    {% endblock %}
+    {% block script %}
+        {{ parent() }}
+    {% endblock %}
+        <script>
+        $(function () {
+            $(".loader-backdrop-sympt").fadeIn();
+                $.ajax({
+                    type:"POST",
+                    data:{x:'x'},
+                    url:'http://localhost'+'{{ path('FindBodyParts') }}',
+                    success:function (data) {
+                        $.each(data,function (k,v) {
+                            $('#body-part').append('<option value="'+v.idBodyPart+'">'+v.nomBodyPart+'</option>');
+                            $('#body-part').selectpicker("refresh");
+                            $(".loader-backdrop-sympt").fadeOut();
+                        });
+                    }
+                });
+            $('#body-part').on('change', function() {
+                $(".loader-backdrop-sympt").fadeIn();
+                $.ajax({
+                    type:"POST",
+                    data:{idbodypart:this.value},
+                    url:'http://localhost'+'{{ path('FindSubBodyParts') }}',
+                    success:function (data) {
+                        $('#sub-body-part').html('<option value="" selected disabled>Selectionner une sous partie du corps</option>');
+                        $.each(data,function (k,v) {
+                            $('#sub-body-part').append('<option value="'+v.idSubBody+'">'+v.nomSubBody+'</option>');
+                            $('#sub-body-part').selectpicker("refresh");
+                            $(".loader-backdrop-sympt").fadeOut();
+                        });
+                    }
+                });
+            });
+            $('#sub-body-part').on('change', function() {
+                $(".loader-backdrop-sympt").fadeIn();
+                console.log($('#genre').val());
+                $.ajax({
+                    type:"POST",
+                    data:{
+                        idsubbodypart:this.value,
+                        gender:$('#genre').val()
+                    },
+                    url:'http://localhost'+'{{ path('FindSymptoms') }}',
+                    success:function (data) {
+                        console.log(data);
+                        $('#listsymptome').html('');
+                        $.each(data,function (k,v) {
+                            $('#listsymptome').append('<li><a style="cursor: pointer;text-decoration: none;"  onclick="addToSymptomList(this);" id="'+v.idSymptome.idSymptome+'" data-sympt="'+v.idSymptome.nomSymptome+'">'+v.idSymptome.nomSymptome+'</a></li>');
+                            $(".loader-backdrop-sympt").fadeOut();
+                        });
+                    }
+                });
+            });
+            $('#anne').keyup(function () {
+                $('#status').html('');
+                var year=new Date().getFullYear();
+                console.log(year);
+                if($.isNumeric(this.value) === false) {
+                    //chop off the last char entered
+                    this.value = this.value.slice(0,-1);
+                }
+                if(this.value.length>4){
+                    this.value = this.value.slice(0,-1);
+                }
+                if(this.value.length<4){
+                    $('#annediv').addClass('has-error');
+                }
+                else{
+                    if(this.value>1900 & this.value<=year){
+                    $('#annediv').removeClass('has-error').addClass('has-success');
+                    }
+                }
+            })
+            $('#analyser').click(function () {
+
+                var gender="";
+                var symptoms='';
+                if(!$('#anne').val()){
+                    $('#status').html('<code><span class="fa fa-exclamation-circle" aria-hidden="true"></span>  Ce Champ est Obligatoire</code>');
+                    $('#annediv').addClass('has-error');
+                    $('#anne').focus()
+                }
+                else{
+                    $(".loader-backdrop-sympt").fadeIn();
+                $('#listsymptomeanalyse>li').find("a").each(function () {
+                    symptoms=symptoms+"\""+this.id+"\",";
+                    console.log(symptoms)
+                });
+
+                    if($('#genre').val()=="man" || $('#genre').val()=="boy") {
+                        gender='male';
+                    }else{
+                        gender='female';
+                    }
+                    symptoms.slice(0, -1);
+                    $.ajax({
+                        type:"POST",
+                        url:'http://localhost'+'{{ path('FindMaladie') }}',
+                        success:function (data) {
+                            console.log(data.Token);
+                            $.ajax({
+                                type:"GET",
+                                url:"https://healthservice.priaid.ch/diagnosis?symptoms=["+symptoms+"]&gender="+gender+"&year_of_birth="+$('#anne').val()+"&token="+data.Token+"&language=fr-fr&format=json",
+                                success:function (data) {
+                                    $('#tab-resultat').show();
+                                    $('#form-sympt').hide();
+                                    console.log(data);
+                                    var maladie="";
+                                    var accur=0.0;
+
+                                    $.each(data,function (k,v) {
+                                        var spec="";
+                                        maladie=v.Issue.Name;
+                                        accur=v.Issue.Accuracy;
+                                    $.each(v.Specialisation,function (k1,v1) {
+                                        spec=spec+v1.Name+"<br>";
+                                    });
+                                        $('#tbody').append('<tr>\n' +
+                                            '<td>'+maladie+'</td>\n' +
+                                            '<td>'+Math.round(parseFloat(accur))+' %</td>\n' +
+                                            '<td>'+spec+'</td>\n' +
+                                            '</tr>');
+                                    });
+
+                                    $(".loader-backdrop-sympt").fadeOut();
+                                }
+                            });
+
+                        }
+                    });
+                }
+            })
+
+        });
+        function addToSymptomList(ele) {
+            $('#analyser').prop('disabled', false);
+            var id = ele.id;
+            var val=ele.dataset.sympt;
+            $('#listsymptomeanalyse').append('<li><a style="cursor: pointer;text-decoration: none;" onclick="removeFromSymptomList(this);" id="'+id+'" data-sympt="'+val+'">'+val+'<span class="fa fa-times" aria-hidden="true"></span></a></li>');
+            ele.parentElement.remove();
+            console.log('element id = ' + id + 'element Value = '+ val);
+        }
+        function removeFromSymptomList(ele) {
+            var id = ele.id;
+            var val=ele.dataset.sympt;
+            $('#listsymptome').append('<li><a style="cursor: pointer;text-decoration: none;" onclick="addToSymptomList(this);" id="'+id+'" data-sympt="'+val+'">'+val+'</a></li>');
+            ele.parentElement.remove();
+            if($('#listsymptomeanalyse').children().length==0){
+                console.log($('#listsymptomeanalyse').children());
+                $('#analyser').prop('disabled', true);
+            }
+        }
+    </script>
+
+{% endblock %}
