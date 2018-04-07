@@ -70,8 +70,8 @@ class BiennetreController extends Controller
 
                        $tableau = array("poidsIdeal"=>$poidIdeal);
                        $informationSantePoid->setLogin($patient);
-                       $em->persist($informationSantePoid);
-                       $em->flush();
+                     //  $em->persist($informationSantePoid);
+                       //$em->flush();
                    }
 
                    $resultat = $serializer->normalize($tableau);
@@ -119,9 +119,19 @@ class BiennetreController extends Controller
 
     public function calculCalorieAction(Request $request)
     {
-        $nutrition = new Nutritionix('073b261f','b9bfaaaff31fc9b51481c649d2958a6f');
-        //var_dump($nutrition->search('pain*',NULL,0,10,NULL,1,NULL,
-          //   'item_name,brand_name,item_id,nf_calories',TRUE,TRUE));
+        if($request->isXmlHttpRequest())
+        {
+            if($request->get('aliment')!="")
+            {
+                $nutrition = new Nutritionix("073b261f","b9bfaaaff31fc9b51481c649d2958a6f");
+                $serializer = new Serializer(array(new ObjectNormalizer()));
+                $nom = $request->get('aliment');
+               $resultat= $serializer->normalize($nutrition->search("'".$nom."'",NULL,0,10,NULL,1,NULL,
+                    'item_name,brand_name,item_id,nf_calories',TRUE,FALSE));
+               return  new JsonResponse($resultat);
+            }
+
+        }
         return $this->render('@HealthAdvisor/Default/Biennetre_front/calculCalorie.html.twig');
     }
     public function afficherInfoSanteAction(Request $request)
@@ -160,6 +170,12 @@ class BiennetreController extends Controller
         ));
     }
 
+    public function suivreRegimeAction(Request $request)
+    {
+        return $this->render('HealthAdvisorBundle:Default/Biennetre_front:suivreRegime.html.twig',array(
+
+        ));
+    }
 
 
 

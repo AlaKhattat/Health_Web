@@ -57,3 +57,6 @@ modifEvt:
 calculCalorie:
     path:     /calculCalorie
     defaults: { _controller: HealthAdvisorBundle:Biennetre:calculCalorie }
+suivreRegime:
+    path:     /regime
+    defaults: { _controller: HealthAdvisorBundle:Biennetre:suivreRegime }

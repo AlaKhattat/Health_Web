@@ -258,7 +258,8 @@
                          url: link,
                          success: function (data) {
                              $('.infoPoid').css('display', 'block').fadeIn("slow");
-                             $('#poidIdeal').text("Poids Ideal : " + data.poidIdeal).css('color', 'green');
+                             console.log("dd"+data.poidsIdeal);
+                             $('#poidIdeal').text("Poids Ideal : " + data.poidsIdeal).css('color', 'green');
 
                          }
                      });

@@ -7,10 +7,13 @@
         {{ parent() }}
     {% endblock %}
     <div class="col-sm-12">
+
         <h2 class="heading text-center">CALCULER LES CALORIES</h2>
         <hr class="hr-1">
+        <div class="btnCalcul"></div>
     </div>
-    <div class="pt-60 pb-60 subscribe" style="background-image:url({{asset('images/1920-600-dark.jpg')}})">
+    <div class="container">
+     <div class="pt-60 pb-60 subscribe" style="background-image:url({{asset('images/1920-600-dark.jpg')}})">
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
@@ -25,10 +28,12 @@
                                 <div class="btn-group " role="group">
                                     <div class="dropdown dropdown-lg " style="padding-top: 40px;" id="resultatSearch">
                                         <div class="dropdown-menu dropdown-menu-right " role="menu" >
-                                           <div class="form-group">
-                                               <label class="control-label">toto</label>
-                                           </div>
+                                           <div class=" form-group" >
+                                               <div class="btnCalcul col-sm-12 " id="afficheResultat">
 
+                                                </div>
+                                               <!-- affichage du resultat ici -->
+                                           </div>
                                         </div>
                                     </div>
                                 </div>
@@ -37,14 +42,42 @@
                                 <button class="btn btn-primary" type="button">Rechercher</button>
                             </span>
                         </div>
-
-
-
-
-
                 </div>
             </div>
+        </div>
+    </div>
+        <div class="col-sm-9 col-md-9 col-lg-9" style="padding-top: 75px">
+            <div class="col-sm-11 col-md-11 col-lg-11"></div>
+            <div class="col-sm-1 col-md-1 col-lg-1" style="padding-right: 6%"> <button id="viderTable" class="fa fa-2x fa-trash" style="border: none; background-color: transparent; " onmouseover="this.style.color='red'" onmouseleave="this.style.color='black'" ></button></div>
 
+            <table class="table" id="tableCalories" >
+               <thead>
+               <tr>
+                   <th scope="col">Nom Aliment</th>
+                   <th scope="col">Calorie</th>
+                   <th scope="col">Quantite</th>
+                   <th scope="col">Operations</th>
+               </tr>
+               </thead>
+               <tbody id="tableBody">
+
+               </tbody>
+           </table>
+
+           <div class="col-sm-3 col-md-3 col-lg-3" style="padding-top: 2%">
+               <button class="btn btn-default btn-success" id="calculer">Calculer </button>
+           </div>
+
+
+       </div>
+
+        <div class="col-sm-3 tabs-2" style="padding-top: 9%">
+            <div class="tab-content">
+                <div class="tab-pane fade in" id="divresultat">
+                    <p id="resultat">ddgfgrggtgttgtd</p>
+                </div>
+
+            </div>
         </div>
     </div>
     <!-- JQuery Version 3.1.0 -->
@@ -67,6 +100,7 @@
 
     <!-- Custom JS -->
     <script src="{{ asset('js/script.js') }}" type="text/javascript"></script>
+
     <script>
         $(function () {
            $("#textSearch").keyup(function () {
@@ -75,7 +109,267 @@
                {
                    $("#resultatSearch").removeClass('open');
                }
+              var nomAliment = $("#textSearch").val();
+                if(nomAliment!=="")
+                {
+                   /* $("#afficheResultat").append(
+                        '<div class="col-sm-12" class="toto">\n'+
+                        '<div class="col-sm-10">\n'+
+                        '<label class="control-label" class="toto" id="hh" value="element[i].fields.item_name"><i><b>"element[i].fields.item_name"</b></i></label>\n'+
+                        '<label class="control-label" class="toto" id="i+element[i].fields.nf_calories"value="element[i].fields.nf_calories"><i><b>"element[i].fields.nf_caloriesKcal"</b></i></label>\n'+
+                        '</div>\n'+
+                        '<div class="col-sm-2l ">\n'+
+                        '<button type="button" style="border: none"   class="totobtnCalcul btnCalcul fa fa-plus" ></button>\n'+
+                        '</div>\n'+
+                        '</div>'
+                    );*/
+                    var link = 'http://localhost' + '{{ path('calculCalorie') }}';
+                    $.ajax({
+                        type: 'GET',
+                        data: {'aliment': nomAliment},
+                        url: link,
+                        success: function (data) {
+                          $("#afficheResultat").html("");
+                         /*   $("#afficheResultat").append(
+                                '<div class=" spaghetti  col-sm-10 ">\n'+
+                                '<label class="control-label spaghetti "   >' +
+                                '<i>' +
+                                '<b>spaghetti</b>' +
+                                '</i>' +
+
+                                '</label>\n'+
+                                '<label class="control-label spaghetti " >' +
+                                '<i>'+
+                                '<b>175 Kcal</b>' +
+                                '</i>'+
+                                '</label>\n'+
+                                '<input class="spaghetti"  type="hidden" value=" 175 ">'+
+                                '<button type="button" style="border:none;"   class="btnCalcul fa fa-plus |spaghetti" ></button>\n'+
+                                '</div>\n'
+
+                            );*/
+                           $.each(JSON.parse(data),function (index,element) {
+
+                                for(var i =0; i < element.length; i++ )
+                               {
+                                   var name =element[i].fields.item_name ;
+                                   var calorieName = element[i].fields.nf_calories;
+                                   $("#afficheResultat").append(
+
+                                         '<div class=" '+concatinerChaine(name)+'  col-sm-10 ">\n'+
+                                           '<label class="control-label '+concatinerChaine(name)+' "   >' +
+                                                '<i>' +
+                                                    '<b>'+element[i].fields.item_name+'</b>' +
+                                                '</i>' +
+
+                                           '</label>\n'+
+                                           '<label class="control-label '+concatinerChaine(name)+' " >' +
+                                                   '<i>'+
+                                                         '<b>'+element[i].fields.nf_calories+'Kcal'+'</b>' +
+                                                    '</i>'+
+                                            '</label>\n'+
+                                                    '<input class="'+concatinerChaine(name)+'"  type="hidden" value="'+element[i].fields.nf_calories+'">'+
+                                                    '<button type="button" style="border: none;"   class="btnCalcul fa fa-plus | '+concatinerChaine(name)+' | '+concatinerChaine(element[i].fields.nf_calories.toLocaleString())+'" ></button>\n'+
+                                         '</div>\n'
+
+
+                                   );
+                               }
+                            });
+
+
+                        }
+                    });
+
+                }
+
+
            });
+            $('#viderTable').click(function () {
+
+                $('#tableBody').empty();
+            });
+           $(' table ').change(function () {
+               calculerCalorie();
+           });
+           $('.qtiteACalculer').click(function () {
+               calculerCalorie();
+           });
+            $('.qtiteACalculer').keyup(function () {
+                calculerCalorie();
+            });
+            $('.btnCalcul').click(function () {
+
+
+
+                var t = document.activeElement.className;
+                var child = t.split('|');
+                var couper = child[1];
+                //console.log(child);
+                console.log("orig:"+couper);
+                console.log("purifier:"+couper.replace(/[^a-z0-9\s]/gi, '').replace(/[-_&'"$\s]/g, ' '));
+                var toto=concatinerChaine(couper);
+                var text = $('.'+toto).find('b');//recuperation du nomAliment
+                var input = $('.'+toto).find('input');//recuperation de la calorie
+                if(chercherProduit($(text[0]).text(),input.val())===false)
+                {
+                    ajouterTableau($(text[0]).text(),child[2]);
+                }
+               /* if(document.activeElement.classList.contains(concatinerChaine($(text[0]).text())) && document.activeElement.classList.contains(concatinerChaine(input.val())) && $("#tableCalories tr").length>1)
+                {
+                    console.log("child2--->if:"+child[2]);
+                    console.log(document.activeElement.classList.contains("P"));
+
+                    chercherProduit($(text[0]).text(),input.val());
+                }
+
+                else
+                {
+
+                    console.log("child2--->else:"+child[2]);
+
+                } TODO: reverifier l'ajout d'aliment qui on le meme nom mais pas le meme calorie*/
+
+            });
+
+            function calculerCalorie() {
+
+                var total=0;
+                var calorie = 0,quantite=0;
+                $("#tableCalories tr").each(function (index,element) {
+
+
+                    $(element).find("td").each(function(index,element){
+                        if(index===1)
+                        {
+                            var ch = $(element).text().trim().split(' ');
+                            if(parseInt(ch[0].toLocaleString())!=='NaN' && parseInt(ch[0].toLocaleString())>0) {
+                                calorie = parseInt(ch[0].toLocaleString());
+                            }
+
+
+                        }
+                        // recuperation de la quantite
+                        else if(index===2)
+                        {
+                            var unitaire = $(element).find('input').val();
+
+                            if(parseInt(unitaire.toLocaleString())!=='NaN' && parseInt(unitaire.toLocaleString()) ) {
+                                quantite = parseInt(unitaire);
+                            }
+
+                        }
+
+
+                    });
+                    total +=quantite*calorie;
+                    calorie = 0;quantite=0;
+                });
+
+
+                    $("#divresultat").addClass('active').slideDown("slow");
+                $("#resultat").text("Humm vous avez consomme "+total+" Kcal").slideDown(3600);
+                
+            }
+            $("#calculer").click(function () {
+                     calculerCalorie();
+            });
+            function chercherProduit(nomAliment,nbCalorie) {
+                var calorie = 0,quantite=0;
+                var result=false;
+                var verif = false;
+                var verifCalorie=false;
+                $("#tableCalories tr").each(function (index,element) {
+                    $(element).find("td").each(function(index,element){
+                        if(index===0)
+                        {
+                            var ch = concatinerChaine($(element).text());
+                            var aliment = concatinerChaine(nomAliment);
+                            console.log("mmmmmm:"+ch+"element: "+aliment);
+                            if(ch===aliment) {
+                                calorie += parseInt(ch[0].toLocaleString());
+                                verif=true;
+
+                            }
+                        }
+                        else  if(index===1)
+                        {
+                           if(verif==true) {
+                               var tabCalorie = concatinerChaine($(element).text());
+                               nbCalorie = nbCalorie + "Kcal";
+                               console.log("cal " + tabCalorie + "nb" + nbCalorie);
+                               if (tabCalorie === nbCalorie) {
+                                   verifCalorie = true;
+                               }
+
+                           }
+                        }
+                        // recuperation de la quantite
+                        else if(index===2)
+                        {
+                            var unitaire = $(element).find('input').val();
+
+                            if(verif===true && verifCalorie==true) {
+                                quantite += parseInt(unitaire);
+                                quantite+=1;
+                                $(element).find('input').val(quantite);
+                                console.log("res"+$(element).find('input').val());
+                                verif=false;
+                                verifCalorie=false;
+                                result= true;
+                            }
+
+                        }
+
+
+                    });
+
+                });
+
+               return result;
+
+            }
         });
+    </script>
+    <script>
+                function  concatinerChaine(chaine) {
+                    //eleminationdes carectere speciaux
+                    chaine = chaine.replace(/[^a-z0-9\s]/gi, '').replace(/[-_&'"$\s]/g, ' ');
+                    chaine = chaine.trim().split(' ');
+                    var result = "";
+                    for(var i = 0; i < chaine.length ;i++)
+                    {
+                        result+=chaine[i];
+                    }
+                    return result;
+                }
+    </script>
+    <script>
+        function ajouterTableau(name,calorieName) {
+
+            $(" table ").append(
+
+                '<tr class=" '+name+'">\n'+
+                '<td> <strong>'+name+ '</strong> </td>\n'+
+                '<td><strong>'+ calorieName+ ' Kcal</strong></td>\n'+
+                '<td><strong> <input class="form-control qtiteACalculer" type="number" value="1"> </strong></td>\n'+
+                '<td><button type="button" class="fa fa-remove supprimerBtn |'+name+' "  style="border: none"></button></td>\n'+
+                '</tr>\n'
+            );
+        }
+        $(function () {
+            $(" table ").click(function () {
+                console.log(document.activeElement.className);
+                var t = document.activeElement.className;
+                var child = t.split('|');
+                var couper = child[1];
+               $('.'+child[1]).remove();
+            });
+        });
+        $(function () {
+
+
+        })
+
     </script>
 {% endblock %}

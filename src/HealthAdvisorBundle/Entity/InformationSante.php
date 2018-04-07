@@ -31,7 +31,7 @@ class InformationSante
     /**
      * @var integer
      *
-     * @ORM\Column(name="age", type="integer", nullable=false)
+     * @ORM\Column(name="age", type="integer", nullable=true)
      */
     private $age;
 
