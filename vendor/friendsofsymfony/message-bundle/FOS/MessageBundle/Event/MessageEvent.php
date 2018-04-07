@@ -25,4 +25,8 @@ class MessageEvent extends ThreadEvent
     {
         return $this->message;
     }
+
+
+
+
 }
