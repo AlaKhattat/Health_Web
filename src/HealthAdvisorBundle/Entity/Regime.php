@@ -81,5 +81,117 @@ class Regime
         $this->idUser = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
+    /**
+     * @return string
+     */
+    public function getIdRegime()
+    {
+        return $this->idRegime;
+    }
+
+    /**
+     * @param string $idRegime
+     */
+    public function setIdRegime($idRegime)
+    {
+        $this->idRegime = $idRegime;
+    }
+
+    /**
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param string $type
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescriptionRegime()
+    {
+        return $this->descriptionRegime;
+    }
+
+    /**
+     * @param string $descriptionRegime
+     */
+    public function setDescriptionRegime($descriptionRegime)
+    {
+        $this->descriptionRegime = $descriptionRegime;
+    }
+
+    /**
+     * @return int
+     */
+    public function getDuree()
+    {
+        return $this->duree;
+    }
+
+    /**
+     * @param int $duree
+     */
+    public function setDuree($duree)
+    {
+        $this->duree = $duree;
+    }
+
+    /**
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getNomAliment()
+    {
+        return $this->nomAliment;
+    }
+
+    /**
+     * @param \Doctrine\Common\Collections\Collection $nomAliment
+     */
+    public function setNomAliment($nomAliment)
+    {
+        $this->nomAliment = $nomAliment;
+    }
+
+    /**
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getNomSport()
+    {
+        return $this->nomSport;
+    }
+
+    /**
+     * @param \Doctrine\Common\Collections\Collection $nomSport
+     */
+    public function setNomSport($nomSport)
+    {
+        $this->nomSport = $nomSport;
+    }
+
+    /**
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getIdUser()
+    {
+        return $this->idUser;
+    }
+
+    /**
+     * @param \Doctrine\Common\Collections\Collection $idUser
+     */
+    public function setIdUser($idUser)
+    {
+        $this->idUser = $idUser;
+    }
+
 }
 

@@ -20,7 +20,7 @@ class Type_Aliment
         "volailles"=>5,
         "poissons"=>6,
         "haricot_sec"=>7,
-        "ouefs"=>8,
+        "oeufs"=>8,
         "noix"=>9,
         "pains"=>10,
         "cacao"=>11,
@@ -46,6 +46,19 @@ class Type_Aliment
     public function getNomTypeAliment()
     {
         return $this->nomTypeAliment;
+    }
+
+    public static function returnArrayTypeAliment($tableau)
+    {
+        $tab = array();
+        foreach ($tableau as $element)
+        {
+           if(in_array($element,Type_Aliment::$type_aliment))
+           {
+               $tab=array($element=>Type_Aliment::$type_aliment[$element]);
+           }
+        }
+        return $tab;
     }
    
 }

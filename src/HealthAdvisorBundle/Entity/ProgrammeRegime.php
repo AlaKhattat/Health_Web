@@ -63,6 +63,37 @@ class ProgrammeRegime
 
     }
 
+    public function trieAliment()
+    {
+        
+    }
+                                       //aliments array        //  allergiesAliment array
+    public function trieAlergiesAliment( $aliments, $allergiesAliment)
+    {
+        $aliment = new Aliment();
+         foreach ($aliments as $aliment)
+         {
+             $tab=$aliment->explodeAliment($aliment->getTypeAliment());
+
+             foreach ($tab as $element)
+             {
+
+                 foreach ( array_keys($allergiesAliment) as $allergie)
+                 {
+
+                    if($element==$allergie)
+                   {
+                           unset($aliments[array_search($aliment,$aliments)]);
+                   }
+
+                 }
+             }
+
+         }
+
+         return $aliments;
+    }
+
 
 
 

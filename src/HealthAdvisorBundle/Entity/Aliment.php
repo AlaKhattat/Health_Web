@@ -160,5 +160,28 @@ class Aliment
     }
 
 
-}
 
+    /**
+     * Add idRegime
+     *
+     * @param \HealthAdvisorBundle\Entity\Regime $idRegime
+     *
+     * @return Aliment
+     */
+    public function addIdRegime(\HealthAdvisorBundle\Entity\Regime $idRegime)
+    {
+        $this->idRegime[] = $idRegime;
+    
+        return $this;
+    }
+
+    /**
+     * Remove idRegime
+     *
+     * @param \HealthAdvisorBundle\Entity\Regime $idRegime
+     */
+    public function removeIdRegime(\HealthAdvisorBundle\Entity\Regime $idRegime)
+    {
+        $this->idRegime->removeElement($idRegime);
+    }
+}
