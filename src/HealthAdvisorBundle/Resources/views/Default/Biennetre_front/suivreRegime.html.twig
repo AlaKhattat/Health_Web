@@ -54,29 +54,28 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <select class="" tabindex="-98" id="tempsDePerdre">
-                                    <option>En combien de temps voulez vous perdre du poids?</option>
-                                    <option value="0">Le temps que sa prendra</option>
-                                    <option value="2s">2 semaine</option>
-                                    <option value="1">1 mois</option>
-                                    <option value="2">2 mois</option>
-                                    <option value="3">3 mois</option>
-                                    <option value="4">4 mois</option>
-                                    <option value="5">5 mois</option>
-                                    <option value="6">6 mois</option>
-                                    <option value="1">1 ans</option>
-
+                                  <!--  <option value="0">En combien de temps voulez vous perdre du poids?</option>-->
+                                    <option value="6">Le temps que sa prendra</option>
+                                    <option value="2">2 semaine</option>
+                                    <option value="4">1 mois</option>
+                                    <option value="8">2 mois</option>
+                                    <option value="12">3 mois</option>
+                                    <option value="16">4 mois</option>
+                                    <option value="20">5 mois</option>
+                                    <option value="24">6 mois</option>
+                                    <option value="48">1 ans</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <select class="" tabindex="-98" id="dejaSuivieRegime">
-                                    <option>Avez vous deja suivie un regime si oui le quel?</option>
-                                    <option>le jeune</option>
-                                    <option>la micronutrition ou chronoregime</option>
-                                    <option>le regime dissocié</option>
-                                    <option>le regime hyperproteiné</option>
-                                    <option>le regime hypocalorique ou hypoglucidique</option>
+                                    <option value="aucun">Avez vous deja suivie un regime si oui le quel</option>
+                                    <option value="le jeune">le jeune</option>
+                                    <option value="micronutrition">la micronutrition ou chronoregime</option>
+                                    <option value="regime dissocie">le regime dissocié</option>
+                                    <option value="regime hyperproteine">le regime hyperproteiné</option>
+                                    <option value="regime hypocalorique">le regime hypocalorique ou hypoglucidique</option>
                                 </select>
                             </div>
                         </div>
@@ -224,11 +223,14 @@
                   allergies = verifierChecked("#legumes",allergies);
               var allergiesSupp=retournerTableau("#allergieSupp");
               var maladiesSupp=retournerTableau("#maladies");
+              var tempsAperdre = $("#tempsDePerdre").val();
+              var dejaSuivie = $("#dejaSuivieRegime").val().toLocaleString();
               var link = 'http://localhost'+'{{path('listeRegime')}}';
+              var action='consulterRegime';
                $.ajax({
                    type: 'GET',
                    dataType:'html',
-                   data: {'age': age,'taille':taille,'poids':poids,'poidsAperdre':poidsAperdre,'allergies':allergies,'allergiesSupp':allergiesSupp,'maladiesSupp':maladiesSupp},
+                   data: {'age': age,'taille':taille,'poids':poids,'poidsAperdre':poidsAperdre,'allergies':allergies,'allergiesSupp':allergiesSupp,'maladiesSupp':maladiesSupp,'duree':tempsAperdre,'suivie':dejaSuivie,'action':action},
                    url: link,
                    success: function (data) {
 

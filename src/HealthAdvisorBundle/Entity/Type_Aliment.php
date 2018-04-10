@@ -55,7 +55,7 @@ class Type_Aliment
         {
            if(in_array($element,Type_Aliment::$type_aliment))
            {
-               $tab=array($element=>Type_Aliment::$type_aliment[$element]);
+               $tab[$element]=array($element=>Type_Aliment::$type_aliment[$element]);
            }
         }
         return $tab;

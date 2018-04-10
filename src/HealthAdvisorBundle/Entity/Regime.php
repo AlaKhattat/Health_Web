@@ -193,5 +193,79 @@ class Regime
         $this->idUser = $idUser;
     }
 
-}
 
+    /**
+     * Add nomAliment
+     *
+     * @param \HealthAdvisorBundle\Entity\Aliment $nomAliment
+     *
+     * @return Regime
+     */
+    public function addNomAliment(\HealthAdvisorBundle\Entity\Aliment $nomAliment)
+    {
+        $this->nomAliment[] = $nomAliment;
+    
+        return $this;
+    }
+
+    /**
+     * Remove nomAliment
+     *
+     * @param \HealthAdvisorBundle\Entity\Aliment $nomAliment
+     */
+    public function removeNomAliment(\HealthAdvisorBundle\Entity\Aliment $nomAliment)
+    {
+        $this->nomAliment->removeElement($nomAliment);
+    }
+
+    /**
+     * Add nomSport
+     *
+     * @param \HealthAdvisorBundle\Entity\Sport $nomSport
+     *
+     * @return Regime
+     */
+    public function addNomSport(\HealthAdvisorBundle\Entity\Sport $nomSport)
+    {
+        $this->nomSport[] = $nomSport;
+    
+        return $this;
+    }
+
+    /**
+     * Remove nomSport
+     *
+     * @param \HealthAdvisorBundle\Entity\Sport $nomSport
+     */
+    public function removeNomSport(\HealthAdvisorBundle\Entity\Sport $nomSport)
+    {
+        $this->nomSport->removeElement($nomSport);
+    }
+
+    /**
+     * Add idUser
+     *
+     * @param \HealthAdvisorBundle\Entity\Patient $idUser
+     *
+     * @return Regime
+     */
+    public function addIdUser(\HealthAdvisorBundle\Entity\Patient $idUser)
+    {
+        $this->idUser[] = $idUser;
+    
+        return $this;
+    }
+
+    /**
+     * Remove idUser
+     *
+     * @param \HealthAdvisorBundle\Entity\Patient $idUser
+     */
+    public function removeIdUser(\HealthAdvisorBundle\Entity\Patient $idUser)
+    {
+        $this->idUser->removeElement($idUser);
+    }
+
+
+
+}

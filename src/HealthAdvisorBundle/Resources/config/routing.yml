@@ -63,3 +63,18 @@ suivreRegime:
 listeRegime:
     path:     /listeRegime
     defaults: { _controller: HealthAdvisorBundle:Biennetre:proposerRegime }
+micronutrition:
+    path:     /micronutrition
+    defaults: { _controller: HealthAdvisorBundle:Biennetre:regimeMicronutrition }
+regime_dissocie:
+    path:     /regime_dissocie
+    defaults: { _controller: HealthAdvisorBundle:Biennetre:regimeDissocie }
+regime_hyper_proteine:
+    path:     /regime_hyper_proteine
+    defaults: { _controller: HealthAdvisorBundle:Biennetre:regimeHyperProteine }
+regime_hypo_calorique:
+    path:     /regime_hypo_calorique
+    defaults: { _controller: HealthAdvisorBundle:Biennetre:regimeHypoCalorique }
+regime_jeune:
+    path:     /regime_jeune
+    defaults: { _controller: HealthAdvisorBundle:Biennetre:regimeJeune }

@@ -57,5 +57,85 @@ class Sport
         $this->idRegime = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
+    /**
+     * @return string
+     */
+    public function getNomSport()
+    {
+        return $this->nomSport;
+    }
+
+    /**
+     * @param string $nomSport
+     */
+    public function setNomSport($nomSport)
+    {
+        $this->nomSport = $nomSport;
+    }
+
+    /**
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param string $type
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+    }
+
+    /**
+     * @return float
+     */
+    public function getDepenseEnergetique()
+    {
+        return $this->depenseEnergetique;
+    }
+
+    /**
+     * @param float $depenseEnergetique
+     */
+    public function setDepenseEnergetique($depenseEnergetique)
+    {
+        $this->depenseEnergetique = $depenseEnergetique;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLiensport()
+    {
+        return $this->liensport;
+    }
+
+    /**
+     * @param string $liensport
+     */
+    public function setLiensport($liensport)
+    {
+        $this->liensport = $liensport;
+    }
+
+    /**
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getIdRegime()
+    {
+        return $this->idRegime;
+    }
+
+    /**
+     * @param \Doctrine\Common\Collections\Collection $idRegime
+     */
+    public function setIdRegime($idRegime)
+    {
+        $this->idRegime = $idRegime;
+    }
+
 }
 

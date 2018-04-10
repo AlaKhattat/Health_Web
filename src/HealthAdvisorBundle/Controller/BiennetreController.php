@@ -15,6 +15,8 @@ use HealthAdvisorBundle\Entity\Nutritionix;
 use HealthAdvisorBundle\Entity\Patient;
 use HealthAdvisorBundle\Entity\ProgrammeRegime;
 use HealthAdvisorBundle\Entity\Regime;
+use HealthAdvisorBundle\Entity\RegimeUserSupp;
+use HealthAdvisorBundle\Entity\Sport;
 use HealthAdvisorBundle\Entity\Type_Aliment;
 use HealthAdvisorBundle\Entity\Utilisateur;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -177,10 +179,31 @@ class BiennetreController extends Controller
     public function suivreRegimeAction(Request $request)
     {
         $patient = new Patient();
+        $p = new Patient();
         $poidIdeal = 0;
         $informationSante = new InformationSante();
         $patient = $this->getDoctrine()->getRepository('HealthAdvisorBundle:Patient')->findOneBy(array('cinUser'=>$this->container->get('security.token_storage')->getToken()->getUser()));
         $informationSante = $this->getDoctrine()->getRepository('HealthAdvisorBundle:InformationSante')->find($patient->getLogin());
+        if(sizeof($patient->getIdRegime()->getValues())==1)
+        {
+            $listAliment = array();
+            $prog = new ProgrammeRegime();
+            $regime = new Regime();
+            $regime = $patient->getIdRegime()->get(0);
+            if($informationSante->getAllergies()!=null)
+            {
+                $allergies = explode('|',$informationSante->getAllergies());
+                $allergies = Type_Aliment::returnArrayTypeAliment($allergies);
+                $listAliment = $prog->trieAlergiesAliment($regime->getNomAliment()->getValues(),$allergies);
+                $listAliment = $prog->trieAliment($listAliment);
+            }
+            else
+            {
+                $listAliment = $prog->trieAliment($regime->getNomAliment()->getValues());
+            }
+            return $this->redirectToRoute($this->redirectionRegime($regime->getIdRegime()),array("aliments"=>$listAliment));
+        }
+
         if($informationSante!=null)
         {
             $poidIdeal = $informationSante->calculPoidIdeal($informationSante);
@@ -192,88 +215,111 @@ class BiennetreController extends Controller
 
     public function proposerRegimeAction(Request $request)
     {
-        if($request->isXmlHttpRequest())
+        $patient = new Patient();
+        $patient = $this->getDoctrine()->getRepository('HealthAdvisorBundle:Patient')->findOneBy(array('cinUser'=>$this->container->get('security.token_storage')->getToken()->getUser()));
+        var_dump($patient->getIdRegime());
+        if(sizeof($patient->getIdRegime())>0)
         {
-            $programmeRegime = new ProgrammeRegime();
-            $a = new Aliment();
-            $listRegime = new Aliment();
-            //'age': age,'taille':taille,'poids':poids,'poidsAperdre':poidsAperdre,'allergies':allergies,'allergiesSupp':allergiesSupp,'maladiesSupp':maladiesSupp
-            $age = $request->get('age');
-            $taille = $request->get('taille');
-            $poids = $request->get('poids');
-            $poidsAPerdre = $request->get('poidsAperdre');
-            $allergies = $request->get('allergies');
-            $allergiesSupp = $request->get('allergiesSupp');
-            $maladiesSupp = $request->get('maladiesSupp');
-            $aliments = new Aliment();
-            $aliments = $this->getDoctrine()->getRepository('HealthAdvisorBundle:Aliment')->findAll();
-          //  echo $aliments[0]->getNomAliment();
-            //var_dump($aliments[0]->getIdRegime()->getValues());
-            $allergies = Type_Aliment::returnArrayTypeAliment($allergies);
-            $aliments=$programmeRegime->trieAlergiesAliment($aliments,$allergies);
-            $listRegime = $this->getDoctrine()->getRepository('HealthAdvisorBundle:Regime')->findAll();
-            $regimes= array();
-           foreach ($aliments as  $aliment)
-            {
-                foreach ($aliment->getIdRegime()->toArray() as  $regime)
-                {
-                    if(sizeof($regimes)==0)
-                    {
-                        $reg = new Regime();
-                        $reg->setIdRegime($regime->getIdRegime());
-                        $reg->getNomAliment()->add($aliment);
-                        $reg = array($regime->getIdRegime() => $reg);
-                        array_push($regimes,$reg);
-                        //var_dump($regimes);
-                    }
-                    else
-                    {
-                        if(array_key_exists($regime->getIdRegime(),$regimes)==false)
-                        {
-                            $reg = new Regime();
-                            $reg->setIdRegime($regime->getIdRegime());
-                            $reg->getNomAliment()->add($aliment);
-                            $reg = array($regime->getIdRegime() => $reg);
-                            array_push($regimes,$reg);
-                        }
-                        else {
-                           echo "hjnk,lm";
-                        }
-                    }
-
-                   /* echo  $regime->getIdRegime()."<br>";
-                    if(sizeof($regimes)>0) {
-
-                        if (array_key_exists($regime->getIdRegime(), $regimes[0])) {
-                            echo "existe ".sizeof($regimes)."<br>";
-                        //$regimes[0][$regime->getIdRegime()]->getNomAliment()->add($aliment);
-                        } else if(array_key_exists($regime->getIdRegime(), $regimes[0])==false) {
-                            echo "non ".sizeof($regimes)."<br>";
-                            $regime->getNomAliment()->add($aliment);
-                            $reg = new Regime();
-                            $reg->setIdRegime($regime->getIdRegime());
-                            $reg->getNomAliment()->add($aliment);
-                            $reg = array($regime->getIdRegime() => $reg);
-                            array_push($regimes,$reg);
-                        }
-                    }
-                    else
-                    {
-                        $regime->getNomAliment()->add($aliment);
-                        $reg = new Regime();
-                        $reg->setIdRegime($regime->getIdRegime());
-                        $reg->getNomAliment()->add($aliment);
-                        $reg = array($regime->getIdRegime() => $reg);
-                        array_push($regimes,$reg);
-                    }*/
-                }
-
-
-            }
-
 
         }
-        return $this->render('HealthAdvisorBundle:Default/Biennetre_front:listeRegime.html.twig');
+        else {
+         if ($request->isXmlHttpRequest()) {
+             $programmeRegime = new ProgrammeRegime();
+             $infoRegime = new Regime();
+             $a = new Aliment();
+             // $l->getNomAliment()
+             $age = $request->get('age');
+             $taille = $request->get('taille');
+             $poids = $request->get('poids');
+             $poidsAPerdre = $request->get('poidsAperdre');
+             $allergies = $request->get('allergies');
+             $allergiesSupp = $request->get('allergiesSupp');
+             $maladiesSupp = $request->get('maladiesSupp');
+             $duree = $request->get('duree');
+             $aliments = new Aliment();
+             $aliments = $this->getDoctrine()->getRepository('HealthAdvisorBundle:Aliment')->findAll();
+             $infoRegime = $this->getDoctrine()->getRepository('HealthAdvisorBundle:Regime')->findAll();
+             $allergies = Type_Aliment::returnArrayTypeAliment($allergies);
+             $aliments = $programmeRegime->trieAlergiesAliment($aliments, $allergies);
+             $listSport = $this->getDoctrine()->getRepository('HealthAdvisorBundle:Sport')->findAll();
+             $listRegime = $programmeRegime->recupererTabRegime($aliments, $infoRegime);
+             if ($request->get('action') == 'suivreRegime') {
+                 $informationSante = new InformationSante();
+                 $infoRegimeSupp = new RegimeUserSupp();
+                 $regime = new Regime();
+                 $sports = new Sport();
+                 $informationSante = $this->getDoctrine()->getRepository('HealthAdvisorBundle:InformationSante')->find($patient->getLogin());
+                 $informationSante->setAge($age);
+                 $informationSante->setPoids($poids);
+                 $informationSante->setTaille($taille);
+                 if ($allergies != null) {
+                     $informationSante->setAllergies(implode('|', array_keys($allergies)));
+                 }
+                 if ($maladiesSupp != null) {
+                     $informationSante->setMaladies(implode('|', $maladiesSupp));
+                 }
+
+                 $infoRegimeSupp->setIdRegime($request->get('idRegime'));
+                 $infoRegimeSupp->setIdUser($patient->getLogin());
+                 $this->getDoctrine()->getManager()->persist($informationSante);
+                 $this->getDoctrine()->getManager()->flush();
+                 $regime = $this->getDoctrine()->getRepository('HealthAdvisorBundle:Regime')->find($request->get('idRegime'));
+                 $sports = $this->getDoctrine()->getRepository('HealthAdvisorBundle:Sport')->findAll();
+                 $tabSport = array();
+                 foreach ($request->get('sport') as $sport) {
+                     $s = new Sport();
+                     $tabSport[$sport] = $sport;
+                 }
+                 $infoRegimeSupp->setIdSport(implode("|", $tabSport));
+                 $infoRegimeSupp->setDateDebut(new \DateTime());
+                 $infoRegimeSupp->setDuree($duree);
+                 $patient->getIdRegime()->add($regime);
+                 $this->getDoctrine()->getManager()->persist($patient);  //ajout dans la table user_regime
+                 $this->getDoctrine()->getManager()->flush();
+                 $this->getDoctrine()->getManager()->persist($infoRegimeSupp);
+                 $this->getDoctrine()->getManager()->flush();                  //ajout dans la table infoRegimeSupp
+                 return $this->render('HealthAdvisorBundle:Default/Biennetre_front:suivreRegime.html.twig');
+             }
+             return $this->render('HealthAdvisorBundle:Default/Biennetre_front:listeRegime.html.twig',
+                 array("regimes" => $listRegime, "sports" => $listSport, 'age' => $age, 'taille' => $taille, 'poids' => $poids,
+                     'poidsAPerdre' => $poidsAPerdre, 'allergies' => $allergies, 'allergiesSupp' => $allergiesSupp,
+                     'maladiesSupp' => $maladiesSupp, 'duree' => $duree));
+         }
+     }
+
+    }
+    public  function  regimeDissocieAction(Request $request)
+    {
+           return $this->render('@HealthAdvisor/Default/Biennetre_front/regimeDissocie.html.twig');
+    }
+    public  function  regimeHyperProteineAction(Request $request)
+    {
+          return $this->render('@HealthAdvisor/Default/Biennetre_front/regimeHyperProteine.html.twig');
+    }
+    public  function  regimeHypoCaloriqueAction(Request $request)
+    {
+           return $this->render('@HealthAdvisor/Default/Biennetre_front/regimeHypocalorique.html.twig');
+    }
+    public  function  regimeJeuneAction(Request $request)
+    {
+        return $this->render('@HealthAdvisor/Default/Biennetre_front/regimeJeune.html.twig');
+    }
+    public  function  regimeMicronutritionAction(Request $request)
+    {
+        return $this->render('@HealthAdvisor/Default/Biennetre_front/regimeMicronutrion.html.twig');
+
+    }
+
+    public  function  redirectionRegime($nomRegime)
+    {
+        $routes = array(
+                        "micronutrition"=>"micronutrition",
+                        "le jeune"=>'regime_jeune',
+                        "regime dissocie"=>'regime_dissocie',
+                        "regime hyperproteine"=>'regime_hyper_proteine',
+                        "regime hypocalorique"=>'regime_hypo_calorique'
+        );
+        return $routes[$nomRegime];
     }
 
 
