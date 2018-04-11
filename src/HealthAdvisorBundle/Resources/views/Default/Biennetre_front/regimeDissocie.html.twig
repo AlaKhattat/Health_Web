@@ -7,68 +7,71 @@
         {{ parent() }}
     {% endblock %}
 
-    <div class="container mt-80">
+    <div class="col-sm-6 container mt-80">
         <div class="row">
             <div class="col-sm-12">
-                <h2 class="heading text-center">Accordion Style 1</h2>
+                <h2 class="heading text-center">Le Regime Dissocié</h2>
                 <hr class="hr-1">
             </div>
             <div class="col-sm-8 col-sm-offset-2">
                 <div class="accordion-1">
-                    <div class="panel-group" id="a1" role="tablist" aria-multiselectable="true">
-                        <div class="panel panel-default">
-                            <div class="panel-heading" role="tab" id="a1heading1">
-                                <h4 class="panel-title">
-                                    <a role="button" data-toggle="collapse" data-parent="#a1" href="#a1body1" aria-expanded="true" aria-controls="a1body1">
-                                        Common causes of Sleeplessness
-                                    </a>
-                                </h4>
-                            </div>
-                            <div id="a1body1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="a1heading1">
+                    {% for key,aliment in aliments %}
+                        <div class="panel-group" id="{{ key|split(' ')|join }}a1" role="tablist" aria-multiselectable="true">
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="{{ key|split(' ')|join }}a1heading">
+                                    <h4 class="panel-title">
+                                        <a role="button" data-toggle="collapse" data-parent="#{{ key|split(' ')|join }}a1" href="#{{ key|split(' ')|join }}a1body" aria-expanded="false" aria-controls="{{ key|split(' ')|join }}a1body">
+                                            {{ key }}
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="{{ key|split(' ')|join }}a1body" class="panel-collapse collapse " role="tabpanel" aria-labelledby="{{ key|split(' ')|join }}a1heading">
                                 <span class="icon-tab">
-                                    <i class="fa fa-heartbeat"></i>
+                                       <i class="fa fa-cutlery"></i>
                                 </span>
-                                <div class="panel-body">
-                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                                    {% for item in aliment %}
+                                        <div class="panel-body">
+                                            {{ item.nomAliment }}
+                                        </div>
+                                    {% endfor %}
                                 </div>
                             </div>
                         </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading" role="tab" id="a1heading2">
-                                <h4 class="panel-title">
-                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#a1" href="#a1body2" aria-expanded="false" aria-controls="a1body2">
-                                        Collapsible Group Item #2
-                                    </a>
-                                </h4>
-                            </div>
-                            <div id="a1body2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="a1heading2">
-                                <span class="icon-tab">
-                                    <i class="fa fa-stethoscope"></i>
-                                </span>
-                                <div class="panel-body">
-                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading" role="tab" id="a1heading3">
-                                <h4 class="panel-title">
-                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#a1" href="#a1body3" aria-expanded="false" aria-controls="a1body3">
-                                        Collapsible Group Item #3
-                                    </a>
-                                </h4>
-                            </div>
-                            <div id="a1body3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="a1heading3">
-                                <span class="icon-tab">
-                                    <i class="fa fa-scissors"></i>
-                                </span>
-                                <div class="panel-body">
-                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
+            </div>
+            <form action="{{ path('supprimer_Regime', {'nomRegime': 'regime dissocie'}) }}">
+                <button class="btn btn-danger" id="suivreRegime" type="submit"><i class="fa fa-remove"></i>Ne plus suivre ce regime</button>
+            </form>
+        </div>
+    </div>
+    <div class="col-sm-6 container mt-80">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2 class="heading text-center">Les Sports</h2>
+                <hr class="hr-1">
+            </div>
+            <div class="col-sm-8 col-sm-offset-2">
+                {% if sports is null %}
+                    <div class="form-group">
+                        <h2 class="heading text-center">Vous navez selectionner aucun sports</h2>
+                    </div>
+
+                {% else %}
+                    <div class="form-group">
+                        <select class="" tabindex="-98" id="choixSport">
+                            <option value="aucun">quel sport voudrai vous faire aujourdhui</option>
+                            {% for keySport,sport in sports %}
+                                <option value="{{ sport.lienSport }}"> {{ keySport }}</option>
+                            {% endfor %}
+
+                        </select>
+                    </div>
+                    <iframe id="sport" width="425" height="300"
+                            src="">
+                    </iframe>
+                {% endif %}
+
             </div>
         </div>
     </div>
@@ -94,4 +97,15 @@
     <!-- Custom JS -->
     <script src="{{ asset('js/script.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/biennetre.js') }}"></script>
+    <script>
+        $(function () {
+            $("#choixSport").change(function () {
+                var sport = $("#choixSport").val();
+                if(sport!=="aucun")
+                {
+                    console.log( $("#sport").attr("src",$("#choixSport").val()));
+                }
+            });
+        });
+    </script>
 {% endblock %}

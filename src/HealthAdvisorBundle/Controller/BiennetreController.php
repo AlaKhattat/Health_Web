@@ -9,6 +9,7 @@
 namespace HealthAdvisorBundle\Controller;
 
 
+use Doctrine\Common\Collections\ArrayCollection;
 use HealthAdvisorBundle\Entity\Aliment;
 use HealthAdvisorBundle\Entity\InformationSante;
 use HealthAdvisorBundle\Entity\Nutritionix;
@@ -184,24 +185,15 @@ class BiennetreController extends Controller
         $informationSante = new InformationSante();
         $patient = $this->getDoctrine()->getRepository('HealthAdvisorBundle:Patient')->findOneBy(array('cinUser'=>$this->container->get('security.token_storage')->getToken()->getUser()));
         $informationSante = $this->getDoctrine()->getRepository('HealthAdvisorBundle:InformationSante')->find($patient->getLogin());
+        if($informationSante==null)
+        {
+            return $this->redirectToRoute('afficher_outilBiennetre');
+        }
         if(sizeof($patient->getIdRegime()->getValues())==1)
         {
-            $listAliment = array();
-            $prog = new ProgrammeRegime();
             $regime = new Regime();
             $regime = $patient->getIdRegime()->get(0);
-            if($informationSante->getAllergies()!=null)
-            {
-                $allergies = explode('|',$informationSante->getAllergies());
-                $allergies = Type_Aliment::returnArrayTypeAliment($allergies);
-                $listAliment = $prog->trieAlergiesAliment($regime->getNomAliment()->getValues(),$allergies);
-                $listAliment = $prog->trieAliment($listAliment);
-            }
-            else
-            {
-                $listAliment = $prog->trieAliment($regime->getNomAliment()->getValues());
-            }
-            return $this->redirectToRoute($this->redirectionRegime($regime->getIdRegime()),array("aliments"=>$listAliment));
+            return $this->redirectToRoute($this->redirectionRegime($regime->getIdRegime()));
         }
 
         if($informationSante!=null)
@@ -217,13 +209,7 @@ class BiennetreController extends Controller
     {
         $patient = new Patient();
         $patient = $this->getDoctrine()->getRepository('HealthAdvisorBundle:Patient')->findOneBy(array('cinUser'=>$this->container->get('security.token_storage')->getToken()->getUser()));
-        var_dump($patient->getIdRegime());
-        if(sizeof($patient->getIdRegime())>0)
-        {
-
-        }
-        else {
-         if ($request->isXmlHttpRequest()) {
+         if ($request->isXmlHttpRequest() && sizeof($patient->getIdRegime()->getValues())==0) {
              $programmeRegime = new ProgrammeRegime();
              $infoRegime = new Regime();
              $a = new Aliment();
@@ -285,20 +271,142 @@ class BiennetreController extends Controller
                      'poidsAPerdre' => $poidsAPerdre, 'allergies' => $allergies, 'allergiesSupp' => $allergiesSupp,
                      'maladiesSupp' => $maladiesSupp, 'duree' => $duree));
          }
-     }
+         return $this->redirectToRoute('suivreRegime');
 
     }
     public  function  regimeDissocieAction(Request $request)
     {
-           return $this->render('@HealthAdvisor/Default/Biennetre_front/regimeDissocie.html.twig');
+        $patient = new Patient();
+        $informationSante = new InformationSante();
+        $sports = new Sport();
+        $programmeRegime = new ProgrammeRegime();
+        $aliments = new Aliment();
+        $aliments = $this->getDoctrine()->getRepository('HealthAdvisorBundle:Aliment')->findAll();
+        $sports = $this->getDoctrine()->getRepository('HealthAdvisorBundle:Sport')->findAll();
+        $patient = $this->getDoctrine()->getRepository('HealthAdvisorBundle:Patient')->findOneBy(array('cinUser'=>$this->container->get('security.token_storage')->getToken()->getUser()));
+        $informationSante = $this->getDoctrine()->getRepository('HealthAdvisorBundle:InformationSante')->find($patient->getLogin());
+        $listAliment = array();
+        $prog = new ProgrammeRegime();
+        $regime = new Regime();
+        $regime = $patient->getIdRegime()->get(0);
+        $userRegimeSupp = $this->getDoctrine()->getRepository('HealthAdvisorBundle:RegimeUserSupp')->findOneBy(array('idUser'=>$patient->getLogin(),'idRegime'=>$regime->getIdRegime()));
+        if($informationSante->getAllergies()!=null)
+        {
+            $allergies = explode('|',$informationSante->getAllergies());
+            $allergies = Type_Aliment::returnArrayTypeAliment($allergies);
+            $listAliment = $prog->trieAlergiesAliment($regime->getNomAliment()->getValues(),$allergies);
+            $listAliment = $prog->trieAliment($listAliment);
+        }
+        else {
+            $listAliment = $prog->trieAliment($regime->getNomAliment()->getValues());
+        }
+
+        $tab = $programmeRegime->regimeDissocie($listAliment);
+        $ch = $programmeRegime->splitDailyAliment($tab);
+        $tabSport = $programmeRegime->retournerListeSports(explode('|',$userRegimeSupp->getIdSport()),$sports);
+        if($userRegimeSupp->getDailyprogrammedate()==null || $userRegimeSupp->getDailyprogrammedate() < new \DateTime())
+        {
+            $userRegimeSupp->setDailyprogrammedate(new \DateTime());
+            $userRegimeSupp->setDailyaliment($ch);
+            $this->getDoctrine()->getManager()->persist($userRegimeSupp);
+            $this->getDoctrine()->getManager()->flush();
+        }
+        else if($userRegimeSupp->getDailyprogrammedate()==new \DateTime())
+        {
+            $ch = $userRegimeSupp->getDailyaliment();
+            $tab = $programmeRegime->retournerListeDailyAliment($ch,$aliments);
+        }
+        return $this->render('@HealthAdvisor/Default/Biennetre_front/regimeDissocie.html.twig',array('aliments'=>$tab,'sports'=>$tabSport));
+
     }
     public  function  regimeHyperProteineAction(Request $request)
     {
-          return $this->render('@HealthAdvisor/Default/Biennetre_front/regimeHyperProteine.html.twig');
+        $patient = new Patient();
+        $informationSante = new InformationSante();
+        $sports = new Sport();
+        $programmeRegime = new ProgrammeRegime();
+        $aliments = new Aliment();
+        $aliments = $this->getDoctrine()->getRepository('HealthAdvisorBundle:Aliment')->findAll();
+        $sports = $this->getDoctrine()->getRepository('HealthAdvisorBundle:Sport')->findAll();
+        $patient = $this->getDoctrine()->getRepository('HealthAdvisorBundle:Patient')->findOneBy(array('cinUser'=>$this->container->get('security.token_storage')->getToken()->getUser()));
+        $informationSante = $this->getDoctrine()->getRepository('HealthAdvisorBundle:InformationSante')->find($patient->getLogin());
+        $listAliment = array();
+        $prog = new ProgrammeRegime();
+        $regime = new Regime();
+        $regime = $patient->getIdRegime()->get(0);
+        $userRegimeSupp = $this->getDoctrine()->getRepository('HealthAdvisorBundle:RegimeUserSupp')->findOneBy(array('idUser'=>$patient->getLogin(),'idRegime'=>$regime->getIdRegime()));
+        if($informationSante->getAllergies()!=null)
+        {
+            $allergies = explode('|',$informationSante->getAllergies());
+            $allergies = Type_Aliment::returnArrayTypeAliment($allergies);
+            $listAliment = $prog->trieAlergiesAliment($regime->getNomAliment()->getValues(),$allergies);
+            $listAliment = $prog->trieAliment($listAliment);
+        }
+        else {
+            $listAliment = $prog->trieAliment($regime->getNomAliment()->getValues());
+        }
+
+        $tab = $programmeRegime->regimeHyperProteine($listAliment);
+        $ch = $programmeRegime->splitDailyAliment($tab);
+        $tabSport = $programmeRegime->retournerListeSports(explode('|',$userRegimeSupp->getIdSport()),$sports);
+        if($userRegimeSupp->getDailyprogrammedate()==null || $userRegimeSupp->getDailyprogrammedate() < new \DateTime())
+        {
+            $userRegimeSupp->setDailyprogrammedate(new \DateTime());
+            $userRegimeSupp->setDailyaliment($ch);
+            $this->getDoctrine()->getManager()->persist($userRegimeSupp);
+            $this->getDoctrine()->getManager()->flush();
+        }
+        else if($userRegimeSupp->getDailyprogrammedate()==new \DateTime())
+        {
+            $ch = $userRegimeSupp->getDailyaliment();
+            $tab = $programmeRegime->retournerListeDailyAliment($ch,$aliments);
+        }
+        return $this->render('@HealthAdvisor/Default/Biennetre_front/regimeHyperProteine.html.twig',array('aliments'=>$tab,'sports'=>$tabSport));
     }
     public  function  regimeHypoCaloriqueAction(Request $request)
     {
-           return $this->render('@HealthAdvisor/Default/Biennetre_front/regimeHypocalorique.html.twig');
+        $patient = new Patient();
+        $informationSante = new InformationSante();
+        $sports = new Sport();
+        $programmeRegime = new ProgrammeRegime();
+        $aliments = new Aliment();
+        $aliments = $this->getDoctrine()->getRepository('HealthAdvisorBundle:Aliment')->findAll();
+        $sports = $this->getDoctrine()->getRepository('HealthAdvisorBundle:Sport')->findAll();
+        $patient = $this->getDoctrine()->getRepository('HealthAdvisorBundle:Patient')->findOneBy(array('cinUser'=>$this->container->get('security.token_storage')->getToken()->getUser()));
+        $informationSante = $this->getDoctrine()->getRepository('HealthAdvisorBundle:InformationSante')->find($patient->getLogin());
+        $listAliment = array();
+        $prog = new ProgrammeRegime();
+        $regime = new Regime();
+        $regime = $patient->getIdRegime()->get(0);
+        $userRegimeSupp = $this->getDoctrine()->getRepository('HealthAdvisorBundle:RegimeUserSupp')->findOneBy(array('idUser'=>$patient->getLogin(),'idRegime'=>$regime->getIdRegime()));
+        if($informationSante->getAllergies()!=null)
+        {
+            $allergies = explode('|',$informationSante->getAllergies());
+            $allergies = Type_Aliment::returnArrayTypeAliment($allergies);
+            $listAliment = $prog->trieAlergiesAliment($regime->getNomAliment()->getValues(),$allergies);
+            $listAliment = $prog->trieAliment($listAliment);
+        }
+        else {
+            $listAliment = $prog->trieAliment($regime->getNomAliment()->getValues());
+        }
+
+        $tab = $programmeRegime->regimeHypoCalorique($listAliment);
+        $ch = $programmeRegime->splitDailyAliment($tab);
+        $tabSport = $programmeRegime->retournerListeSports(explode('|',$userRegimeSupp->getIdSport()),$sports);
+        if($userRegimeSupp->getDailyprogrammedate()==null || $userRegimeSupp->getDailyprogrammedate() < new \DateTime())
+        {
+            $userRegimeSupp->setDailyprogrammedate(new \DateTime());
+            $userRegimeSupp->setDailyaliment($ch);
+            $this->getDoctrine()->getManager()->persist($userRegimeSupp);
+            $this->getDoctrine()->getManager()->flush();
+        }
+        else if($userRegimeSupp->getDailyprogrammedate()==new \DateTime())
+        {
+            $ch = $userRegimeSupp->getDailyaliment();
+            $tab = $programmeRegime->retournerListeDailyAliment($ch,$aliments);
+        }
+        return $this->render('@HealthAdvisor/Default/Biennetre_front/regimeHypocalorique.html.twig',array('aliments'=>$tab,'sports'=>$tabSport));
+
     }
     public  function  regimeJeuneAction(Request $request)
     {
@@ -306,8 +414,47 @@ class BiennetreController extends Controller
     }
     public  function  regimeMicronutritionAction(Request $request)
     {
-        return $this->render('@HealthAdvisor/Default/Biennetre_front/regimeMicronutrion.html.twig');
+        $patient = new Patient();
+        $informationSante = new InformationSante();
+        $sports = new Sport();
+        $programmeRegime = new ProgrammeRegime();
+        $aliments = new Aliment();
+        $aliments = $this->getDoctrine()->getRepository('HealthAdvisorBundle:Aliment')->findAll();
+        $sports = $this->getDoctrine()->getRepository('HealthAdvisorBundle:Sport')->findAll();
+        $patient = $this->getDoctrine()->getRepository('HealthAdvisorBundle:Patient')->findOneBy(array('cinUser'=>$this->container->get('security.token_storage')->getToken()->getUser()));
+        $informationSante = $this->getDoctrine()->getRepository('HealthAdvisorBundle:InformationSante')->find($patient->getLogin());
+        $listAliment = array();
+        $prog = new ProgrammeRegime();
+        $regime = new Regime();
+        $regime = $patient->getIdRegime()->get(0);
+        $userRegimeSupp = $this->getDoctrine()->getRepository('HealthAdvisorBundle:RegimeUserSupp')->findOneBy(array('idUser'=>$patient->getLogin(),'idRegime'=>$regime->getIdRegime()));
+        if($informationSante->getAllergies()!=null)
+          {
+                $allergies = explode('|',$informationSante->getAllergies());
+                $allergies = Type_Aliment::returnArrayTypeAliment($allergies);
+                $listAliment = $prog->trieAlergiesAliment($regime->getNomAliment()->getValues(),$allergies);
+                $listAliment = $prog->trieAliment($listAliment);
+          }
+          else {
+                $listAliment = $prog->trieAliment($regime->getNomAliment()->getValues());
+            }
 
+        $tab = $programmeRegime->regimeMicronutrition($listAliment);
+        $ch = $programmeRegime->splitDailyAliment($tab);
+        $tabSport = $programmeRegime->retournerListeSports(explode('|',$userRegimeSupp->getIdSport()),$sports);
+        if($userRegimeSupp->getDailyprogrammedate()==null || $userRegimeSupp->getDailyprogrammedate() < new \DateTime())
+        {
+            $userRegimeSupp->setDailyprogrammedate(new \DateTime());
+            $userRegimeSupp->setDailyaliment($ch);
+            $this->getDoctrine()->getManager()->persist($userRegimeSupp);
+            $this->getDoctrine()->getManager()->flush();
+        }
+        else if($userRegimeSupp->getDailyprogrammedate()==new \DateTime())
+        {
+            $ch = $userRegimeSupp->getDailyaliment();
+            $tab = $programmeRegime->retournerListeDailyAliment($ch,$aliments);
+        }
+        return $this->render('@HealthAdvisor/Default/Biennetre_front/regimeMicronutrion.html.twig',array('aliments'=>$tab,'sports'=>$tabSport));
     }
 
     public  function  redirectionRegime($nomRegime)
@@ -321,7 +468,28 @@ class BiennetreController extends Controller
         );
         return $routes[$nomRegime];
     }
+   public  function  supprimerRegimeAction($nomRegime)
+   {
+       $patient = new Patient();
+       $informationSante = new InformationSante();
+       $patient = $this->getDoctrine()->getRepository('HealthAdvisorBundle:Patient')->findOneBy(array('cinUser'=>$this->container->get('security.token_storage')->getToken()->getUser()));
+       $informationSante = $this->getDoctrine()->getRepository('HealthAdvisorBundle:InformationSante')->find($patient->getLogin());
+       $userRegimeSupp = $this->getDoctrine()->getRepository('HealthAdvisorBundle:RegimeUserSupp')->findOneBy(array('idUser'=>$patient->getLogin(),'idRegime'=>$nomRegime));
+       if($patient->getIdRegime()->get(0)->getIdRegime()==$nomRegime && $informationSante!=null && $userRegimeSupp!=null)
+      {
+          $co = new ArrayCollection();
+          $patient->getIdRegime()->remove($nomRegime);
+          $patient->getIdRegime()->clear();
+          $this->getDoctrine()->getManager()->persist($patient);
+          $this->getDoctrine()->getManager()->flush();
+          $this->getDoctrine()->getManager()->remove($informationSante);
+          $this->getDoctrine()->getManager()->flush();
+          $this->getDoctrine()->getManager()->remove($userRegimeSupp);
+          $this->getDoctrine()->getManager()->flush();
+          return $this->redirectToRoute("homepage");
+      }
 
+   }
 
 
 }
