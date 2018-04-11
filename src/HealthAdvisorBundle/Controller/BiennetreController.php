@@ -410,7 +410,12 @@ class BiennetreController extends Controller
     }
     public  function  regimeJeuneAction(Request $request)
     {
-        return $this->render('@HealthAdvisor/Default/Biennetre_front/regimeJeune.html.twig');
+        $sports = new Sport();
+        $patient = new Patient();
+
+        $patient = $this->getDoctrine()->getRepository('HealthAdvisorBundle:Patient')->findOneBy(array('cinUser'=>$this->container->get('security.token_storage')->getToken()->getUser()));
+        $sports= $this->getDoctrine()->getRepository('HealthAdvisorBundle:Sport')->findAll();
+        return $this->render('@HealthAdvisor/Default/Biennetre_front/regimeJeune.html.twig',array('sports'=>$sports));
     }
     public  function  regimeMicronutritionAction(Request $request)
     {
