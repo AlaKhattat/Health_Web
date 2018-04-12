@@ -80,3 +80,8 @@ fos_user:
     from_email:
         address: "healthadvisoresprit@gmail.com"
         sender_name: "HealthAdvisor"
+
+bo_shurik_telegram_bot:
+    api:
+        token: "573801303:AAE7069I5i-dChAn_ZrUnEg7JDe7Ec6vcFk"
+    name: "healthyBot"

@@ -19,7 +19,7 @@ class AppKernel extends Kernel
             new HealthAdvisorBundle\HealthAdvisorBundle(),
             new FOS\MessageBundle\FOSMessageBundle(),
             new FOS\UserBundle\FOSUserBundle(),
-
+            new BoShurik\TelegramBotBundle\BoShurikTelegramBotBundle,
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

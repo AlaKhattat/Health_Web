@@ -11,6 +11,7 @@ namespace HealthAdvisorBundle\Controller;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use HealthAdvisorBundle\Entity\Aliment;
+use HealthAdvisorBundle\Entity\Conseillesante;
 use HealthAdvisorBundle\Entity\InformationSante;
 use HealthAdvisorBundle\Entity\Nutritionix;
 use HealthAdvisorBundle\Entity\Patient;
@@ -496,5 +497,24 @@ class BiennetreController extends Controller
 
    }
 
+    public function chatbotAction()
+    {
+        $this->conseilSante();
+      return $this->render('@HealthAdvisor/Default/Biennetre_front/botChat.html.twig');
+    }
+
+    public function conseilSante()
+    {
+        $tab = array();
+      $conseilleSante = new Conseillesante();
+
+       $conseilleSante = $this->getDoctrine()->getRepository('HealthAdvisorBundle:Conseillesante')->findAll();
+       var_dump($conseilleSante);
+       foreach ($conseilleSante as $conseil)
+       {
+         $tab[mt_rand(0,2000)]=$conseil->getConseille();
+       }
+       return $tab;
+    }
 
 }

@@ -23,6 +23,7 @@ class ComposerStaticInit1c56b9f8baaef3511324c8a024f1eb72
         array (
             'Twig\\' => 5,
             'Tests\\' => 6,
+            'TelegramBot\\Api\\' => 16,
         ),
         'S' => 
         array (
@@ -78,6 +79,10 @@ class ComposerStaticInit1c56b9f8baaef3511324c8a024f1eb72
         array (
             'Composer\\CaBundle\\' => 18,
         ),
+        'B' => 
+        array (
+            'BoShurik\\TelegramBotBundle\\' => 27,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -88,6 +93,10 @@ class ComposerStaticInit1c56b9f8baaef3511324c8a024f1eb72
         'Tests\\' => 
         array (
             0 => __DIR__ . '/../..' . '/tests',
+        ),
+        'TelegramBot\\Api\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/telegram-bot/api/src',
         ),
         'Symfony\\Polyfill\\Util\\' => 
         array (
@@ -220,6 +229,10 @@ class ComposerStaticInit1c56b9f8baaef3511324c8a024f1eb72
         'Composer\\CaBundle\\' => 
         array (
             0 => __DIR__ . '/..' . '/composer/ca-bundle/src',
+        ),
+        'BoShurik\\TelegramBotBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/boshurik/telegram-bot-bundle',
         ),
     );
 

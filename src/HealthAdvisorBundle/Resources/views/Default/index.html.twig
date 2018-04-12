@@ -23,6 +23,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Volkhov:400,400i" rel="stylesheet">
 
+
     <link href="{{ asset('css/biennetre.css') }}" rel="stylesheet" type="text/css">
 
     <script>
@@ -222,6 +223,7 @@
         </div>
     </nav>
 </header>
+    {{ include('@HealthAdvisor/Default/Biennetre_front/botChat.html.twig') }}
 {% endblock %}
 <div class="jumbotron" style="background-image: url('{{ asset('images/slider-hero.jpg') }}')">
     <div class="container">
@@ -1095,7 +1097,9 @@
         </div>
     </div>
 </div>
+
 {% block footer %}
+
 <footer class="footer-1">           <!-- Footer Style 1 -->
     <div class="footer-pri pt-20 pb-40">            <!-- Primary Footer -->
         <div class="container">

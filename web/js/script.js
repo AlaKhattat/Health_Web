@@ -362,7 +362,7 @@ function testimonialWidgetSlider(){
 
 function fixedAppointment(){
     $("#open-form").click(function(){
-       $("#fixed-appointment .form-body").toggle("linear"); 
+       $("#fixed-appointment .form-body").toggle("linear");
     });
 }
 

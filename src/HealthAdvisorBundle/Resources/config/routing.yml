@@ -81,3 +81,6 @@ regime_jeune:
 supprimer_Regime:
     path:     /supprimer_regime/{nomRegime}/
     defaults: { _controller: HealthAdvisorBundle:Biennetre:supprimerRegime }
+bot_chat:
+    path:     /bot
+    defaults: { _controller: HealthAdvisorBundle:Biennetre:chatbot }
