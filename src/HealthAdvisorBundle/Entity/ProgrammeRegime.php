@@ -283,7 +283,6 @@ class ProgrammeRegime
             }
 
         }
-        var_dump($dailyAliment);
         return $dailyAliment;
     }
                                       //aliments array        //  allergiesAliment array
@@ -413,7 +412,6 @@ class ProgrammeRegime
           $ch.='|';
 
       }
-      var_dump($ch);
       return $ch;
     }
     public  function  retournerListeDailyAliment($chaine,$aliments)

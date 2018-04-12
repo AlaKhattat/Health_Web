@@ -27,26 +27,41 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <input class="form-control" id="poid" name="poid" type="text" value="{{ info.poids }}" placeholder="Veuillez saisir votre poid">
+                                {% if info.poids is null %}
+                                    <input class="form-control" id="poid" name="poid" type="text"  placeholder="Veuillez saisir votre poid">
+                                {% else %}
+                                    <input class="form-control" id="poid" name="poid" type="text" value="{{ info.poids }}" placeholder="Veuillez saisir votre poid">
+                                {% endif %}
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <input class="form-control" id="poidAperdre" name="poidAPerdre" type="text" value="{{ info.poids-poidIdeal|abs }}" placeholder="Combien de Kilo voulez vous perdre">
-                            </div>
+                                {% if info.poids is null %}
+                                    <input class="form-control" id="poidAperdre" name="poidAPerdre" type="text"  placeholder="Combien de Kilo voulez vous perdre">
+                                {% else %}
+                                    <input class="form-control" id="poidAperdre" name="poidAPerdre" type="text" value="{{ info.poids-poidIdeal|abs }}" placeholder="Combien de Kilo voulez vous perdre">
+                                {% endif %}
+                               </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">
-
-                                <input class="form-control" id="age" name="age" type="text" value="{{ info.age }}" placeholder="Veuillez saisir votre age">
+                               {% if info.age is null %}
+                                   <input class="form-control" id="age" name="age" type="text"  placeholder="Veuillez saisir votre age">
+                               {% else %}
+                                    <input class="form-control" id="age" name="age" type="text" value="{{ info.age }}" placeholder="Veuillez saisir votre age">
+                               {% endif %}
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <input class="form-control" id="taille" name="taille" type="text" value="{{ info.taille }}" placeholder="Veuillez saisir votre taille">
-                            </div>
+                                {% if info.taille is null %}
+                                    <input class="form-control" id="taille" name="taille" type="text" value="{{ info.taille }}" placeholder="Veuillez saisir votre taille">
+                                {% else %}
+                                    <input class="form-control" id="taille" name="taille" type="text"  placeholder="Veuillez saisir votre taille">
+                                {% endif %}
+                               </div>
                         </div>
                     </div>
 
@@ -283,4 +298,5 @@
             return tableau;
         }
     </script>
+
 {% endblock %}

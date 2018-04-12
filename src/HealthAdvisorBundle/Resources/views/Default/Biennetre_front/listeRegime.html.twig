@@ -91,6 +91,8 @@
                   url: link,
                   success: function (data) {
                   console.log("succes");
+                  var lien = 'http://localhost'+ '{{ path('suivreRegime') }}';
+                  $(location).attr('href',lien);
                   console.log(data);
                   }
               });

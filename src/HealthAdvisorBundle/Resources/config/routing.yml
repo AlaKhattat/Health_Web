@@ -60,6 +60,9 @@ modifEvt:
 calculCalorie:
     path:     /calculCalorie
     defaults: { _controller: HealthAdvisorBundle:Biennetre:calculCalorie }
+etapeRegime:
+    path:     /etapeRegime
+    defaults: { _controller: HealthAdvisorBundle:Biennetre:etapeRegime }
 suivreRegime:
     path:     /regime
     defaults: { _controller: HealthAdvisorBundle:Biennetre:suivreRegime }
