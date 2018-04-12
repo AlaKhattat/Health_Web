@@ -1,6 +1,8 @@
 {% extends 'HealthAdvisorBundle:Default:index.html.twig' %}
 {% block head %}
 {{ parent() }}
+    <link href="{{ asset('css/select/bootstrap-select.min.css') }}" rel="stylesheet">
+
 {% endblock %}
 
 {% block body %}
@@ -51,24 +53,13 @@
 
                                 <div class="col-sm-8">
 
-                                <select class="form-control" name="specialite" required>
+                                <select  data-live-search="true" name="specialite" >
                                     <option>Selectioner Votre Spécialite</option>
-
                                             <option value="Angiologie">Angiologie</option>
                                             <option value="Cardiologie">Cardiologie</option>
                                             <option value="Chirurgie">Chirurgie</option>
-                                            <option value="Dentisterie">Dentisterie</option>
-                                            <option value="Dermatologie">Dermatologie</option>
-                                            <option value="Endocrinologie">Endocrinologie</option>
-                                            <option value="Gastroentérologie">Gastroentérologie</option>
-                                            <option value="Gériatrie">Gériatrie</option>
-                                            <option value="Gynécologie">Gynécologie</option>
-                                            <option value="Hématologie">Hématologie</option>
-                                            <option value="Hépatologie">Hépatologie</option>
-                                            <option value="Infectiologie">Infectiologie</option>
                                             <option value="Médecine générale">Médecine générale</option>
-                                            <option value="Médecine interne">Médecine interne</option>
-
+                                            <option value="Dermatologie">Dermatologie</option>
                                 </select>
 
                                     <div class="col-sm-8"><br>
@@ -229,6 +220,8 @@
             }
         }
     </script>
+    <script src="{{ asset('js/select/bootstrap-select.min.js') }}" type="text/javascript"></script>
+
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJkdBg93f7XLLxfR67gme9X03EBhRuWkw&libraries=places&callback=initAutocomplete"
             async defer></script>
 {% endblock %}

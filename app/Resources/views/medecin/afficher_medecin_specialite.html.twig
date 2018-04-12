@@ -1,16 +1,7 @@
 {% extends 'HealthAdvisorBundle:Default:index.html.twig' %}
 {% block head %}
     {{ parent() }}
-    <style>
-        html, body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
-        #street-view {
-            height: 60%;
-        }
-    </style>
+
 {% endblock %}
 
 {% block body %}
@@ -32,11 +23,13 @@
             <div class="col-sm-12">
                 <div class="heading-block">
                     <h2 class="heading">Nos <span class="color1">Médecins</span> Spécialisés</h2>
-                    <p class="sub-heading">Behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics.</p>
+                    {% if medecins == null %}
+                    <p class="sub-heading"> Vous Devez Séléctionner un critère de recherche </p>
+                        <a href="{{ path('medecin_specialite')}}" class="btn btn-warning btn-sm">Retour</a>
+                    {% endif %}
                 </div>
             </div>
             {% for medecin in medecins %}
-            <div class="col-sm-12">
 
                 <div class="col-sm-5">
                     <div class="doctor-box-2">
@@ -45,7 +38,7 @@
                             <img src="{{ asset('images/doctor-small-1.jpg') }}" class="img-circle" alt="">
                         </div>
                         <div class="doctor-name">
-                            <h4 class="heading">Mr. {{ medecin.login.cinUser.nom}}  {{ medecin.login.cinUser.prenom}}</h4>
+                            <h4 class="heading">Dr. {{ medecin.login.cinUser.nom}}  {{ medecin.login.cinUser.prenom}}</h4>
                             <span class="doctor-desig">{{ medecin.specialite }}</span>
                         </div>
                         <hr class="hr-1">
@@ -55,33 +48,61 @@
                         <br>
                         <div class="text-center">
                             <a href="{{ path('rendezvous_new',{'login':medecin.login.login}) }}" class="btn btn-primary btn-sm">Prendre RDV</a>
-                            <a href="{{ path('medecin_details',{'login':medecin.login.login}) }}" class="btn btn-black btn-sm">Profile</a>
+                            <a href="{{ path('medecin_details',{'login':medecin.login.login}) }}" class="btn btn-black btn-sm">Profile</a><br><br>
+                            <button type="button" onclick="afficherCabinet({{ medecin.latP }},{{ medecin.longP }})" data-toggle="modal" data-target="#modal1" class="btn btn-warning btn-sm"><i class="fa fa-location-arrow"></i>Afficher Cabinet</button>
                         </div>
                     </div>
                 </div>
                 <br><br><br><br>
-                <div class="row">
-                <div class="col-sm-5">
+                {% endfor %}
 
-                    <div id="street-view"></div>
                     <script>
-                        var panorama;
-                        function initialize() {
-                            panorama = new google.maps.StreetViewPanorama(
-                                document.getElementById('street-view'),
-                                {
-                                    position: {lat: 37.869260, lng: -122.254811},
-                                    pov: {heading: 165, pitch: 0},
-                                    zoom: 1
+                        function afficherCabinet(latp,longp) {
+                                var uluru = {lat: latp, lng: longp};
+                                var map = new google.maps.Map(document.getElementById('map'), {
+                                    zoom: 10,
+                                    center: uluru
                                 });
+                                var contentString = '<div style="float:left"><img src="http://i.stack.imgur.com/g672i.png" style="height: 40px;width: 40px"></div><div style="float:right; padding: 10px;"><b>Title</b><br/>123 Address<br/> City,Country</div>';
+
+                                var infowindow = new google.maps.InfoWindow({
+                                    content: contentString
+                                });
+
+                                var marker = new google.maps.Marker({
+                                    position: uluru,
+                                    map: map,
+                                    title: 'Cabinet Du Medecin'
+                                });
+                                marker.addListener('click', function() {
+                                    infowindow.open(map, marker);
+                                });
+
                         }
+
                     </script>
-                </div>
-                </div>
-                </div>
-            {% endfor %}
 
 
+
+        </div>
+    </div>
+    <div class="modal fade modal-popup" id="modal1" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i></button>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-10 col-sm-offset-1 pt-20 pb-20 text-center">
+                                <h4 class="heading font34 inverse">Position Du Cabinet </h4>
+                                <hr class="hr-2">
+                                <div id="map" style="height: 60%;width: 100%"></div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -92,7 +113,7 @@
         {{ parent() }}
     {% endblock %}
 
-        <script async defer
-                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJkdBg93f7XLLxfR67gme9X03EBhRuWkw&callback=initialize">
-        </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJkdBg93f7XLLxfR67gme9X03EBhRuWkw&callback=initMap">
+    </script>
 {% endblock %}

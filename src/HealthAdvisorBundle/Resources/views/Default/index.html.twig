@@ -100,22 +100,18 @@
                                     <li><a href="{{ path('medecin_specialite') }}"> Rechercher</a></li>
                                 </ul>
                             </li>
-                        
                         </ul>
                     </li>
-                    <li class="mega-sub-menu"><a href="#">Elements</a>          <!-- Mega Menu -->
+
+
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        {% if  app.user.roles[0] == "PATIENT" %}
+                    <li class="mega-sub-menu"><a href="#">Mon Profile</a>
                         <ul class="mega-dropdown row" style="background-image:url('{{ asset('images/doc-3.png') }}'); background-position:right top; background-repeat:no-repeat">
                             <li class="col-sm-3">
                                 <ul class="mega-menu-items">
-                                    <li class="heading">Header &amp; Footer</li>
-                                    <li><a href="page-style-1.html">Page Style 1</a></li>
-                                    <li><a href="page-style-2.html">Page Style 2</a></li>
-                                    <li><a href="page-style-3.html">Page Style 3</a></li>
-                                    <li class="hr"></li>
-                                    <li class="heading">Interaction</li>
-                                    <li><a href="call-to-action.html">Call To Action</a></li>
-                                    <li><a href="subscribe.html">Subscribe</a></li>
-                                    <li><a href="call-out.html">Call Out</a></li>
+                                    <li class="heading">Vos Rendez_Vous</li>
+                                    <li><a href="{{ path('list_rdv_patient') }}">Consulter la liste</a></li>
                                 </ul>
                             </li>
                             
@@ -123,6 +119,24 @@
                             </li>
                         </ul>
                     </li>
+                    {% elseif app.user.roles[0] == "MEDECIN" %}
+                    <li class="mega-sub-menu"><a href="#">Mon Profile</a>
+                        <ul class="mega-dropdown row" style="background-image:url('{{ asset('images/doc-3.png') }}'); background-position:right top; background-repeat:no-repeat">
+                            <li class="col-sm-3">
+                                <ul class="mega-menu-items">
+                                    <li class="heading">Vos Rendez_Vous</li>
+                                    <li><a href="{{ path('suivie_rdv') }}">Consulter la liste des patients</a></li>
+                                    <li><a href="{{ path('list_rdv_patient') }}">Consulter la liste de vos rendez_vous</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="col-sm-3">
+                            </li>
+                        </ul>
+                    </li>
+                    {% endif %}
+                    {% endif %}
+
                     <li><a href="#">Blog</a>
                         <ul class="sub-menu">           <!-- Sub Menu -->
                             <li><a href="blog-list.html">Blog List</a></li>
