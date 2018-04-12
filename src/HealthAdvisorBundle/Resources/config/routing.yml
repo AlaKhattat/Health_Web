@@ -42,6 +42,9 @@ admin_users:
 admin_supprimer:
     path:     /admin/supprimer
     defaults: { _controller: HealthAdvisorBundle:Admin_Template:supprimer_User }
+gerer_regime:
+    path:     /gestionRegime
+    defaults: { _controller: HealthAdvisorBundle:Aliment:AfficherRegime }
 ajoutEvt:
     path:     /ajoutEvt
     defaults: { _controller: HealthAdvisorBundle:Evennement:ajoutEvenement }

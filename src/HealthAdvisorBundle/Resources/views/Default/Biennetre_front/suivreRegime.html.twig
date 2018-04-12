@@ -198,13 +198,13 @@
         $(function () {
             //ajout des allergies dans le tableau alergiesSupp
             $("#btnAddAllergie").click(function () {
-                if($("#alergieInput").val()!==" ")
+                if($("#alergieInput").val()!=="")
                 {
                    ajouterTableau($("#alergieInput").val(),"#allergieSupp");
                 }
             });
            $("#btnAddMaladie").click(function () {
-               if($("#maladieInput").val()!==" ")
+               if($("#maladieInput").val()!=="")
                {
                    ajouterTableau($("#maladieInput").val(),"#maladies");
                }
@@ -265,7 +265,6 @@
         function  retournerTableau(tableau) {
             var tab=[];
             $(tableau+" "+"tr").each(function (index,element) {
-                console.log("lol");
                 $(element).find("td").each(function(index,element){
                     var ch = $(element).find('label').text();
                      tab.push(ch);
