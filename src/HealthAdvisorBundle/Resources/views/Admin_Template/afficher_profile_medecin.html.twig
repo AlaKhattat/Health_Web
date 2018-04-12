@@ -115,23 +115,71 @@
                     <div class="col-md-9 col-sm-9 col-xs-12">
 
                         <div class="profile_title">
-                            <div class="col-md-6">
-                                <h2>User Activity Report</h2>
-                            </div>
-                            <div class="col-md-6">
-                                <div id="reportrange" class="pull-right" style="margin-top: 5px; background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #E6E9ED">
-                                    <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
-                                    <span>December 30, 2014 - January 28, 2015</span> <b class="caret"></b>
+                            <div class="col-md-11">
+                                <div class="x_content">
+                                    <blockquote>
+                                        <p>                                        List De Tous Les Rendez_Vous
+                                        </p>
+                                    </blockquote>
+
+                                    <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                                        <thead>
+                                        <tr>
+                                            <th>Patient</th>
+                                            <th>Date Rendez_Vous</th>
+                                            <th>Statut Rendez Vous</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for rdv in rendezvous %}
+                                            <tr>
+                                                <td><strong>{{ rdv.user.cinUser.nom |upper  }}</strong>  {{ rdv.user.cinUser.prenom  }} </td>
+                                                <td>{{ rdv.dateHeure|date }}</td>
+                                                {% if rdv.statut=='VALIDE' %}
+                                                    <td> <button type="button" class="btn btn-success btn-xs"> <i class="fa fa-check">
+                                                            </i> Validé</button></td>
+                                                {% elseif rdv.statut=='ENCOURS' %}
+                                                    <td>  <button type="button" class="btn btn-warning btn-xs"> <i class="fa fa-warning">
+                                                            </i> En Cours </button></td>
+                                                {% else %}
+                                                    <td>  <button type="button" class="btn btn-danger btn-xs"> <i class="fa fa-ban">
+                                                            </i> ANNULE</button></td>
+                                                {% endif %}
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
                                 </div>
+
                             </div>
                         </div>
-                        <!-- start of user-activity-graph -->
+                        <blockquote>
+                            <p>Nombre Des Rendez Vous Par Mois </p>
+                        </blockquote>
+                            <!-- start of user-activity-graph -->
                         <div id="graph_bar" style="width:100%; height:280px;"></div>
                         <!-- end of user-activity-graph -->
 
+                        <script>
+                            $(function() {
+                                    Morris.Bar({
+                                    element: 'graph_bar',
+                                    data: day_data,
+                                    xkey: 'mois',
+                                    hideHover: 'auto',
+                                    barColors: ['#26B99A', '#34495E', '#ACADAC', '#3498DB'],
+                                    ykeys: ['nombre', 'sorned'],
+                                    labels: ['nombre', 'SORN'],
+                                    xLabelAngle: 60
+                                });
+
+
+                            });
+                        </script>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
 {% endblock %}

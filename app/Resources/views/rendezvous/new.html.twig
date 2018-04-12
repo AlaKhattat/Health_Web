@@ -71,11 +71,21 @@
                             </div>
 
                         </div>
+                    {% if rdv == null %}
                         <div class="form-group">
                             <button class="btn btn-black" type="submit" name="rdv" value="rdv"><i
                                         class="fa fa-paper-plane"></i> Prendre RDV
                             </button>
                         </div>
+                        {% else %}
+                            <blockquote>
+                                <p>Vous Avez Deja Pris un Rendez Vous Avec Ce Docteur </p>
+                                <footer>
+                                    Lien vers list de vos rendez_vous
+                                    <a href="{{ path('list_rdv_patient') }}"><cite title="Cite">cliquez_ici</cite></a>
+                                </footer>
+                            </blockquote>
+                        {% endif %}
                     </form>
                 </div>
             </div>

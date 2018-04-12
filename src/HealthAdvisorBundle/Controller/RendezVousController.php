@@ -45,6 +45,7 @@ class RendezVousController extends Controller
     public function newAction(Request $request)
     {
         $login=$request->get('login');
+
         $user = $this->getUser();
         if (!is_object($user) || !$user instanceof UserInterface) {
             throw new AccessDeniedException('This user does not have access to this section.');
@@ -52,12 +53,19 @@ class RendezVousController extends Controller
         $utilisateur=$this->getDoctrine()
             ->getRepository('HealthAdvisorBundle:Utilisateur')
             ->find($user->getId());
+
         $patient=$this->getDoctrine()
             ->getRepository('HealthAdvisorBundle:Patient')
-            ->find($login);
+            ->findOneBy(array('cinUser'=>$utilisateur->getId()));
+
         $medecin=$this->getDoctrine()
             ->getRepository('HealthAdvisorBundle:Medecin')
             ->find($login);
+
+        $rdv=$this->getDoctrine()
+            ->getRepository('HealthAdvisorBundle:RendezVous')
+            ->findBy(array('user'=>$patient,'med'=>$medecin));
+
         $rendezVous = new Rendezvous();
         $form = $this->createForm('HealthAdvisorBundle\Form\RendezVousType', $rendezVous);
         $form->handleRequest($request);
@@ -72,12 +80,17 @@ class RendezVousController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($rendezVous);
             $em->flush();
+
+            return $this->redirectToRoute('rendezvous_new', array(
+                'login' => $login,
+            ));
         }
 
         return $this->render('rendezvous/new.html.twig', array(
             'rendezVous' => $rendezVous,
             'user' => $utilisateur,
             'login' => $login,
+            'rdv'=>$rdv,
             'form' => $form->createView(),
         ));
     }

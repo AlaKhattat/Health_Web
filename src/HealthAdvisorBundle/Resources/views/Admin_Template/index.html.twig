@@ -17,6 +17,11 @@
     <link href="{{ asset('admin/fonts/css/font-awesome.min.css') }}" rel="stylesheet">
     <link href="{{ asset('admin/css/animate.min.css') }}" rel="stylesheet">
 
+    <link href="{{ asset('admin/js/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('admin/js/datatables/buttons.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('admin/js/datatables/fixedHeader.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('admin/js/datatables/responsive.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('admin/js/datatables/scroller.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <!-- Custom styling plus plugins -->
     <link href="{{ asset('admin/css/custom.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/maps/jquery-jvectormap-2.0.3.css') }}" />
@@ -36,6 +41,7 @@
         .modal-footer {
             background-color: #f9f9f9;
         }
+
     </style>
 
     <script src="{{ asset('admin/js/jquery.min.js') }}"></script>
@@ -45,6 +51,7 @@
             $('#modalstatut').click(function(){
                 $("#myModal").modal();
             });
+
         });
     </script>
 
@@ -96,6 +103,8 @@
                             <li><a><i class="fa fa-edit"></i> Gestion Des Medecins <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu" style="display: none">
                                     <li><a href="{{ path('admin_afficher_medecin') }}">Afficher Liste Medecins</a>
+                                    </li>
+                                    <li><a href="{{ path('admin_list_rdv') }}">Afficher Tous Les RDV</a>
                                     </li>
                                 </ul>
                             </li>
@@ -264,6 +273,21 @@
 <script type="text/javascript" src="{{ asset('admin/js/flot/jquery.flot.stack.js') }}"></script>
 <script type="text/javascript" src="{{ asset('admin/js/flot/curvedLines.js') }}"></script>
 <script type="text/javascript" src="{{ asset('admin/js/flot/jquery.flot.resize.js') }}"></script>
+<!-- Datatables-->
+<script src="{{ asset('admin/js/datatables/jquery.dataTables.min.js')}}"></script>
+<script src="{{ asset('admin/js/datatables/dataTables.bootstrap.js') }}"></script>
+<script src="{{ asset('admin/js/datatables/dataTables.buttons.min.js') }}"></script>
+<script src="{{ asset('admin/js/datatables/buttons.bootstrap.min.js') }}"></script>
+<script src="{{ asset('admin/js/datatables/jszip.min.js') }}"></script>
+<script src="{{ asset('admin/js/datatables/pdfmake.min.js') }}"></script>
+<script src="{{ asset('admin/js/datatables/vfs_fonts.js') }}"></script>
+<script src="{{ asset('admin/js/datatables/buttons.html5.min.js') }}"></script>
+<script src="{{ asset('admin/js/datatables/buttons.print.min.js') }}"></script>
+<script src="{{ asset('admin/js/datatables/dataTables.fixedHeader.min.js') }}"></script>
+<script src="{{ asset('admin/js/datatables/dataTables.keyTable.min.js') }}"></script>
+<script src="{{ asset('admin/js/datatables/dataTables.responsive.min.js') }}"></script>
+<script src="{{ asset('admin/js/datatables/responsive.bootstrap.min.js') }}"></script>
+<script src="{{ asset('admin/js/datatables/dataTables.scroller.min.js') }}"></script>
 <script>
     $(document).ready(function() {
         // [17, 74, 6, 39, 20, 85, 7]
@@ -340,7 +364,9 @@
         }
     });
 </script>
-
+<!-- moris js -->
+<script src="{{ asset('admin/js/moris/raphael-min.js') }}"></script>
+<script src="{{ asset('admin/js/moris/morris.min.js') }}"></script>
 <!-- worldmap -->
 <script type="text/javascript" src="{{ asset('admin/js/maps/jquery-jvectormap-2.0.3.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('admin/js/maps/gdp-data.js') }}"></script>
@@ -499,6 +525,61 @@
             $('#reportrange').data('daterangepicker').remove();
         });
     });
+</script>
+<!-- pace -->
+<script src="{{ asset('admin/js/pace/pace.min.js') }}"></script>
+<script>
+    var handleDataTableButtons = function() {
+            "use strict";
+            0 !== $("#datatable-buttons").length && $("#datatable-buttons").DataTable({
+                dom: "Bfrtip",
+                buttons: [{
+                    extend: "copy",
+                    className: "btn-sm"
+                }, {
+                    extend: "csv",
+                    className: "btn-sm"
+                }, {
+                    extend: "excel",
+                    className: "btn-sm"
+                }, {
+                    extend: "pdf",
+                    className: "btn-sm"
+                }, {
+                    extend: "print",
+                    className: "btn-sm"
+                }],
+                responsive: !0
+            })
+        },
+        TableManageButtons = function() {
+            "use strict";
+            return {
+                init: function() {
+                    handleDataTableButtons()
+                }
+            }
+        }();
+</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#datatable').dataTable();
+        $('#datatable-keytable').DataTable({
+            keys: true
+        });
+        $('#datatable-responsive').DataTable();
+        $('#datatable-scroller').DataTable({
+            ajax: "admin/js/datatables/json/scroller-demo.json",
+            deferRender: true,
+            scrollY: 380,
+            scrollCollapse: true,
+            scroller: true
+        });
+        var table = $('#datatable-fixed-header').DataTable({
+            fixedHeader: true
+        });
+    });
+    TableManageButtons.init();
 </script>
 <script>
     NProgress.done();

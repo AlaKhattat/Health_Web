@@ -2,11 +2,14 @@
 
 namespace HealthAdvisorBundle\Controller;
 
+use FOS\UserBundle\Model\UserInterface;
 use HealthAdvisorBundle\Entity\Patient;
+use HealthAdvisorBundle\Entity\RendezVous;
 use HealthAdvisorBundle\Entity\Utilisateur;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 /**
  * Patient controller.
@@ -29,6 +32,39 @@ class PatientController extends Controller
 
         return $this->render('patient/index.html.twig', array(
             'patients' => $patients,
+        ));
+    }
+
+    /**
+     * Lists des rendez_vous.
+     *
+     * @Route("/list_rdv", name="list_rdv_patient")
+     * @Method({"GET", "POST"})
+     */
+    public function list_rdv_patientAction(Request $request)
+    {
+        $user = $this->getUser();
+        if (!is_object($user) || !$user instanceof UserInterface) {
+            throw new AccessDeniedException('This user does not have access to this section.');
+        }
+        $em = $this->getDoctrine()->getManager();
+        $patient = $em->getRepository('HealthAdvisorBundle:Patient')->findBy(array('cinUser'=>$user->getId()));
+        $rdv = $em->getRepository('HealthAdvisorBundle:RendezVous')->findBy(array('user'=>$patient));
+
+if($request->get('date')!=null){
+    $rendezVous=$em->getRepository('HealthAdvisorBundle:RendezVous')->find($request->get('rendez'));
+    $date=new \DateTime($request->get('date'));
+    $rendezVous->setDateHeure($date);
+    $rendezVous->setDateValid(new \DateTime());
+    $rendezVous->setStatut('ENCOURS');
+    $em = $this->getDoctrine()->getManager();
+    $em->persist($rendezVous);
+    $em->flush();
+}
+
+
+        return $this->render('patient/list_rdv_patient.html.twig', array(
+            'rendezvous' => $rdv,
         ));
     }
 

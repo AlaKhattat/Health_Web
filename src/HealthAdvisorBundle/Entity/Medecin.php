@@ -3,6 +3,7 @@
 namespace HealthAdvisorBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use FOS\MessageBundle\Model\ParticipantInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -202,7 +203,6 @@ class Medecin
     {
         $this->login = $login;
     }
-
 
 }
 

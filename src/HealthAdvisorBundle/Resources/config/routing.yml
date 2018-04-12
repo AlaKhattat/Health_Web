@@ -48,6 +48,10 @@ admin_afficher_profile_medecin:
 admin_modifier_statut_medecin:
     path:     /admin/modifier_statut_medecin
     defaults: { _controller: HealthAdvisorBundle:Admin_Template:modifier_statut_medecin }
+admin_list_rdv:
+    path:     /admin/afficher_list_rdv
+    defaults: { _controller: HealthAdvisorBundle:Admin_Template:afficher_list_rendezvous }
+
 notification_update_statut:
     path:     /notification/modifier_statut
     defaults: { _controller: HealthAdvisorBundle:Default:marquerCommeLus }

@@ -5,8 +5,7 @@ parameters:
     database_name: health
     database_user: root
     database_password: null
-    mailer_transport: smtp
-    mailer_host: 127.0.0.1
-    mailer_user: null
-    mailer_password: null
+    mailer_user: healthadvisoresprit@gmail.com
+    mailer_password: HEALTHadvisor2018
     secret: 31f2746d87787a6fd3d7bf986ae852db8d436e16
+

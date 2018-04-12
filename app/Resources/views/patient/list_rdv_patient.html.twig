@@ -1,0 +1,192 @@
+{% extends 'HealthAdvisorBundle:Default:index.html.twig' %}
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    {% block header %}
+        {{ parent() }}
+    {% endblock %}
+    <div class="page-header">
+        <div class="container">
+            <h1>List De Vos Rendez_Vous</h1>
+            <div class="breadcrumb-2">
+                <ul class="breadcrumb">
+                    <li><a href="{{ path('health_advisor_homepage') }}">Home</a></li>
+                    <li class="active">List des RDV</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-80">
+        <div class="row">
+            <div class="col-sm-12">
+                <hr class="hr-1">
+            </div>
+            {% for rdv in rendezvous %}
+
+                <div class="col-sm-4">
+                    <div class="doctor-box-2 text-center">
+                        <div class="doctor-img">
+                            <img src="{{ asset('images/doctor-small-2.jpg') }}" class="img-circle" alt="">
+                        </div>
+                        <div class="doctor-name">
+                            <h4 class="heading"><a
+                                        href="{{ path('medecin_details',{'login':rdv.med.login.login}) }}"><strong>Dr {{ rdv.med.login.cinUser.nom }}</strong> {{ rdv.med.login.cinUser.prenom }}
+                                </a></h4>
+                            <strong class="doctor-desig">{{ rdv.med.specialite }}</strong>
+                            <strong class="time"><i class="fa fa-clock-o"></i> {{ rdv.dateHeure|date }}</strong>
+                        </div>
+
+                        <hr class="hr-1">
+                        <div class="book">
+                            <a href="#" class="btn btn-info btn-sm" data-toggle="modal"
+                               data-target="#modal-booking-{{ rdv.id }}">Modifier Rendez Vous</a><br><br>
+                            <button type="button" onclick="afficherCabinet({{ rdv.med.latP }},{{ rdv.med.longP }})" data-toggle="modal" data-target="#modal1" class="btn btn-warning btn-sm"><i class="fa fa-location-arrow"></i>Afficher Cabinet</button>
+
+                        </div>
+                        <!-- Modal -->
+                        <div class="modal fade" id="modal-booking-{{ rdv.id }}" data-open-onload="false"
+                             data-open-delay="0" tabindex="-1" role="dialog">
+                            <div class="modal-dialog modal-lg" role="document">
+                                <div class="modal-content">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i
+                                                class="fa fa-times"></i>
+                                    </button>
+                                    <div class="modal-body">
+                                        <div class="container-fluid">
+                                            <form>
+                                                <input type="text" name="rendez" value="{{ rdv.id }}" hidden>
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <h3 class="heading"><span
+                                                                    class="color1">Détails Rendez Vous</span></h3>
+                                                    </div>
+                                                    <div class="col-sm-12">
+                                                        <h4 class="color3">Votre Rendez Vous est avec le
+                                                            <strong>Dr {{ rdv.med.login.cinUser.nom }}  {{ rdv.med.login.cinUser.prenom }}</strong><br>
+                                                            <br> Le {{ rdv.dateHeure|date }}
+                                                        </h4>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    {% set difference = date().diff(date(rdv.dateValid)) %}
+                                                    {% set leftDays = difference.days %}
+                                                    {% if difference.days > 1 %}
+                                                        <blockquote>
+                                                            <p class="color3">Vous ne pouvez pas modifié la date du
+                                                                rendez vous le delai de 24h pour changer est dépassé </p>
+                                                        </blockquote>
+                                                    {% else %}
+                                                            <h5 class="heading"><span
+                                                                        class="color1"> Séléctionner la date du rendez_vous à modifier :
+                                                                </span></h5>
+
+                                                    <div class="col-sm-6">
+                                                    <div class='input-group date' id='datetimepicker1'>
+                                                            <input type='text' class="form-control" name="date"/>
+                                                            <span class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-calendar"></span>
+                                                        </span>
+                                                        </div>
+                                                        </div>
+                                                    {% endif %}
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div class="form-group">
+                                                            <h4>
+                                                                <span class="color3">L'Etat de votre Rendez Vous est : </span>
+                                                            </h4>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row"><span
+                                                            class="label label-info">   {{ rdv.statut }}</span></div>
+                                                <br><br>
+                                                {% if difference.days > 1 %}
+                                                    {% else %}
+                                                        <div class="row">
+                                                            <div class="form-group">
+                                                                <a>
+                                                                    <button class="btn btn-primary" type="submit"><i
+                                                                                class="fa fa-paper-plane"></i> Modifier
+                                                                        Date RDV
+                                                                    </button>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                {% endif %}
+
+                                                <script>
+                                                    function afficherCabinet(latp,longp) {
+                                                        var uluru = {lat: latp, lng: longp};
+                                                        var map = new google.maps.Map(document.getElementById('map'), {
+                                                            zoom: 10,
+                                                            center: uluru
+                                                        });
+                                                        var contentString = '<div style="float:left"><img src="http://i.stack.imgur.com/g672i.png" style="height: 40px;width: 40px"></div><div style="float:right; padding: 10px;"><b>Title</b><br/>123 Address<br/> City,Country</div>';
+
+                                                        var infowindow = new google.maps.InfoWindow({
+                                                            content: contentString
+                                                        });
+
+                                                        var marker = new google.maps.Marker({
+                                                            position: uluru,
+                                                            map: map,
+                                                            title: 'Cabinet Du Medecin'
+                                                        });
+                                                        marker.addListener('click', function() {
+                                                            infowindow.open(map, marker);
+                                                        });
+
+                                                    }
+
+                                                </script>
+
+
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="modal fade modal-popup" id="modal1" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i></button>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-10 col-sm-offset-1 pt-20 pb-20 text-center">
+                                <h4 class="heading font34 inverse">Position Du Cabinet </h4>
+                                <hr class="hr-2">
+                                <div id="map" style="height: 60%;width: 100%"></div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    {% block footer %}
+        {{ parent() }}
+    {% endblock %}
+
+    {% block script %}
+        {{ parent() }}
+    {% endblock %}
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJkdBg93f7XLLxfR67gme9X03EBhRuWkw&callback=initMap">
+    </script>
+{% endblock %}

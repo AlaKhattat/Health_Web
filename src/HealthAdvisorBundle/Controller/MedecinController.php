@@ -7,8 +7,6 @@ use HealthAdvisorBundle\Entity\Medecin;
 use HealthAdvisorBundle\Entity\Notification;
 use HealthAdvisorBundle\Entity\Patient;
 use HealthAdvisorBundle\Entity\Utilisateur;
-use Nette\Mail\Message;
-use Nette\Mail\SendmailMailer;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -95,6 +93,7 @@ return $this->render('medecin/afficher_medecin_specialite.html.twig', array(
      */
     public function modifier_statutAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
 
         $statut=$request->get('statut');
         $id=$request->get('id');
@@ -103,20 +102,98 @@ return $this->render('medecin/afficher_medecin_specialite.html.twig', array(
             ->find($id);
 
         if($statut!=null){
-            $notification=new Notification();
             if($statut=='VALIDE'){
+                $notification=new Notification();
+                $rendezvous->setDateValid(new \DateTime());
+                $date=new \DateTime($rendezvous->getDateHeure()->format('Y-m-d H:i:s'));
+                $message = (new \Swift_Message('Hello Email'))
+                    ->setFrom('healthadvisoresprit@gmail.com')
+                    ->setTo('alakhattat17@gmail.com')
+                    ->setBody(
+                        '
+<div id="mailsub" class="notification" align="center">
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" style="min-width: 320px;"><tr><td align="center" bgcolor="#ff8080">
+
+
+<table border="0" cellspacing="0" cellpadding="0" class="table_width_100" width="100%" style="max-width: 680px; min-width: 300px;">
+    <tr><td>
+	<!-- padding --><div style="height: 80px; line-height: 80px; font-size: 10px;"> </div>
+	</td></tr>
+	<!--header -->
+	<tr><td align="center" bgcolor="#ffffff">
+		<!-- padding --><div style="height: 30px; line-height: 30px; font-size: 10px;"> </div>
+		<table width="90%" border="0" cellspacing="0" cellpadding="0">
+			<tr><td align="left"><!-- 
+
+				Item --><div class="mob_center_bl" style="float: left; display: inline-block; width: 115px;">
+					<table class="mob_center" width="115" border="0" cellspacing="0" cellpadding="0" align="left" style="border-collapse: collapse;">
+						<tr><td align="left" valign="middle">
+							<!-- padding --><div style="height: 20px; line-height: 20px; font-size: 10px;"> </div>
+							<table width="115" border="0" cellspacing="0" cellpadding="0" >
+								<tr><td align="left" valign="top" class="mob_center">
+									<h2 class="heading"><span class="color1">Health Advisor</span></h2>
+									</td></tr>
+							</table>						
+						</td></tr>
+					</table></div><!-- Item END--><!--[if gte mso 10]>
+					</td>
+					<td align="right">
+				<![endif]-->
+			</td>
+			</tr>
+		</table>
+		<!-- padding --><div style="height: 50px; line-height: 50px; font-size: 10px;"> </div>
+	</td></tr>
+	<!--header END-->
+
+	<!--content 1 -->
+	<tr><td align="center" bgcolor="#fbfcfd">
+		<table width="90%" border="0" cellspacing="0" cellpadding="0">
+			<tr><td align="center">
+				<!-- padding --><div style="height: 60px; line-height: 60px; font-size: 10px;"> </div>
+				<div style="line-height: 44px;">
+					<font face="Arial, Helvetica, sans-serif" size="5" color="#57697e" style="font-size: 34px;">
+					<span style="font-family: Arial, Helvetica, sans-serif; font-size: 34px; color: #57697e;">
+						Votre Rendez Vous A été Confirmé
+					</span></font>
+				</div>
+				<!-- padding --><div style="height: 40px; line-height: 40px; font-size: 10px;"> </div>
+			</td></tr>
+			<tr><td align="center">
+				<div style="line-height: 24px;">
+					<font face="Arial, Helvetica, sans-serif" size="4" color="#57697e" style="font-size: 15px;">
+					<span style="font-family: Arial, Helvetica, sans-serif; font-size: 25px; color: #57697e;">
+						Avec le docteur <strong>'.$rendezvous->getMed()->getLogin()->getCinUser()->getNom().'  '.$rendezvous->getMed()->getLogin()->getCinUser()->getPrenom().'</strong> 
+					<br><br>Le '.$date->format('Y-m-d H:i:s').'</span></font>
+				</div>
+				<!-- padding --><div style="height: 40px; line-height: 40px; font-size: 10px;"> </div>
+			</td></tr>
+			<tr><td align="center">
+				<div style="line-height: 24px;">
+					<a href="#" target="_blank" style="color: #596167; font-family: Arial, Helvetica, sans-serif; font-size: 13px;">
+						<font face="Arial, Helvetica, sans-seri; font-size: 13px;" size="3" color="#596167">
+                        <h4 class="heading"> Merci pour avoir utilisé notre application</h4>
+				</div>
+				<!-- padding --><div style="height: 60px; line-height: 60px; font-size: 10px;"> </div>
+			</td></tr>
+		</table>		
+	</td></tr>
+	<!--content 1 END-->','text/html'
+                    );
+                $this->get('mailer')->send($message);
                 $notification->setStatut('NonLu');
                 $notification->setDate(new \DateTime());
                 $notification->setMessage('Vous avez un rendez vous avec le docteur : '.$rendezvous->getMed()->getLogin()->getCinUser()->getNom().' '
                     .$rendezvous->getMed()->getLogin()->getCinUser()->getNom().' Le : '.$rendezvous->getDateHeure()->format('Y m ,d'));
                 $notification->setType('Rendez_Vous Confirmé');
                 $notification->setUserNotif($rendezvous->getUser()->getCinUser());
+                $em->persist($notification);
+                $em->flush();
 
             }
             $rendezvous->setStatut($statut);
-            $em = $this->getDoctrine()->getManager();
             $em->persist($rendezvous);
-            $em->persist($notification);
             $em->flush();
             return $this->redirectToRoute('suivie_rdv');
         }
