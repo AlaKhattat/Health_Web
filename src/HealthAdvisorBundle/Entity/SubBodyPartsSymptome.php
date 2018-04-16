@@ -52,6 +52,70 @@ class SubBodyPartsSymptome
      */
     private $idSymptome;
 
+    /**
+     * @return int
+     */
+    public function getIdSubBodyPartsSymptome()
+    {
+        return $this->idSubBodyPartsSymptome;
+    }
+
+    /**
+     * @param int $idSubBodyPartsSymptome
+     */
+    public function setIdSubBodyPartsSymptome($idSubBodyPartsSymptome)
+    {
+        $this->idSubBodyPartsSymptome = $idSubBodyPartsSymptome;
+    }
+
+    /**
+     * @return string
+     */
+    public function getGender()
+    {
+        return $this->gender;
+    }
+
+    /**
+     * @param string $gender
+     */
+    public function setGender($gender)
+    {
+        $this->gender = $gender;
+    }
+
+    /**
+     * @return \SubBodyParts
+     */
+    public function getIdSubBody()
+    {
+        return $this->idSubBody;
+    }
+
+    /**
+     * @param \SubBodyParts $idSubBody
+     */
+    public function setIdSubBody($idSubBody)
+    {
+        $this->idSubBody = $idSubBody;
+    }
+
+    /**
+     * @return \Symptome
+     */
+    public function getIdSymptome()
+    {
+        return $this->idSymptome;
+    }
+
+    /**
+     * @param \Symptome $idSymptome
+     */
+    public function setIdSymptome($idSymptome)
+    {
+        $this->idSymptome = $idSymptome;
+    }
+
 
 }
 

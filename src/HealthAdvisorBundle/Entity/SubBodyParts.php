@@ -38,6 +38,54 @@ class SubBodyParts
      */
     private $idBodyPart;
 
+    /**
+     * @return int
+     */
+    public function getIdSubBody()
+    {
+        return $this->idSubBody;
+    }
+
+    /**
+     * @param int $idSubBody
+     */
+    public function setIdSubBody($idSubBody)
+    {
+        $this->idSubBody = $idSubBody;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNomSubBody()
+    {
+        return $this->nomSubBody;
+    }
+
+    /**
+     * @param string $nomSubBody
+     */
+    public function setNomSubBody($nomSubBody)
+    {
+        $this->nomSubBody = $nomSubBody;
+    }
+
+    /**
+     * @return \BodyParts
+     */
+    public function getIdBodyPart()
+    {
+        return $this->idBodyPart;
+    }
+
+    /**
+     * @param \BodyParts $idBodyPart
+     */
+    public function setIdBodyPart($idBodyPart)
+    {
+        $this->idBodyPart = $idBodyPart;
+    }
+
 
 }
 

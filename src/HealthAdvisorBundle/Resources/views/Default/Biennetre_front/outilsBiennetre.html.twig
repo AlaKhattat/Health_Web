@@ -1,0 +1,291 @@
+{% extends 'HealthAdvisorBundle:Default:index.html.twig' %}
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+    {% block header %}
+        {{ parent() }}
+    {% endblock %}
+
+    <div class="page-header">
+        <div class="container">
+            <h1>Outils de biennetre</h1>
+            <div class="breadcrumb-2">
+                <ul class="breadcrumb">
+                    <li><a href="#">Home</a></li>
+                    <li class="active"><a href="#">Outils</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+    <div class="col-sm-12">
+        <h2 class="heading text-center"> Calculer votre IMC </h2>
+        <hr class="hr-1">
+    </div>
+        <div class="col-sm-12">
+            <div class="tabs-3">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active">
+                        <a href="#tabbody1" aria-controls="t3body1" role="tab" data-toggle="tab" aria-expanded="false">
+                            <i class="fa fa-calculator"></i>
+                            <strong>Calculer IMC</strong>
+                        </a>
+                    </li>
+                    <li role="presentation" class="">
+                        <a href="#t3body2" aria-controls="t3body2" role="tab" data-toggle="tab" aria-expanded="true">
+                            <i class="fa fa-balance-scale"></i>
+                            <strong>Calcul Poids Ideal</strong>
+                        </a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#t3body3" aria-controls="t3body3" role="tab" data-toggle="tab">
+                            <i class="fa fa-male"></i>
+                            <strong>Calculer Masse grasse</strong>
+                        </a>
+                    </li>
+
+                </ul>
+
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade in active" id="tabbody1">
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <div class="row">
+                                    <div class="col-sm-5">
+                                        <div>
+                                            <h3 class="doctor-desig" style="color: #00aeef">Indice de masse corporel(IMC)</h3>
+                                            <div class="doctor-detail">
+                                                <p class="justify">
+                                                    L'IMC est un indice comparatif sur une échelle de 70 points. Elle permet
+                                                    facilement d'etablir l'importance de votre poids pour votre santé
+                                                    <b>pour calculer IMC remplissez le formulaire avec vos donnée</b>
+                                                     <div hidden class="infoIMC">
+                                                      <h2 class="doctor-desig" style='color: #00aeef;' id="imc">IMC : {{ imc }} </h2>
+                                                      <p class="" style='color: #00aeef' id="interpretationIMC"><span>{{ interpretationIMC }}</span></p>
+                                                     </div>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4">
+
+                                <aside class="sidebar ">
+                                    <div class="widget widget-blogs">
+                                        <h4 class="heading">Vos informations ICI</h4>
+                                        {{ form_start(form) }}
+                                        <form METHOD="get">
+                                            <div class="form-group  has-feedback divPoids" >
+                                                <label class="control-label">Poids</label>
+                                                {{ form_widget(form.poids,{'attr':{'class':'form-control','placeholder':'votre poids en Kg'}}) }}
+                                                <span class="glyphicon glyphicon-ok  form-control-feedback "  style="display: none;margin-top: 5px"> </span>
+                                                <span class="help-block "  style="display: none"></span>
+                                            </div>
+                                            <div class="form-group has-feedback divTaille" >
+                                                <label class="control-label">Taille</label>
+                                                {{ form_widget(form.taille,{'attr':{'class':'form-control','placeholder':'votre taille en cm'}}) }}
+                                                <span class="glyphicon glyphicon-ok  form-control-feedback  "   style="display: none;margin-top: 5px"> </span>
+                                                <span class="help-block"  style="display: none"></span>
+                                            </div>
+                                            <div class="form-group has-feedback divSexe" >
+
+                                                <label class="control-label">Sexe</label>
+                                                <div class="btn-group bootstrap-select">
+                                                    {{ form_widget(form.sexe,{'attr':{'class':'','title':'Sexe'}}) }}
+                                                </div>
+                                                <span class="help-block"  style="display: none"></span>
+                                            </div>
+                                            <div class="form-group has-feedback divAge" >
+                                                <label class="control-label">Age</label>
+                                                {{ form_widget(form.age,{'attr':{'class':'form-control','placeholder':'votre age'}}) }}
+                                                <span class="glyphicon glyphicon-ok  form-control-feedback "   style="display: none;margin-top: 5px"> </span>
+                                                <span class="help-block"  style="display: none"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <button type="button" class="btn btn-black" id="btnCalculImc" ><i class="fa fa-calculator"></i>Calculer</button>
+                                            </div>
+                                            {{ form_rest(form) }}
+                                        </form>
+                                    </div>
+
+                                    {{ form_end(form) }}
+                                </aside>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4"></div>
+                            <div class="col-sm-4">
+
+                            </div>
+                            <div class="col-sm-4"></div>
+                        </div>
+                    </div>
+
+                    <div role="tabpanel" class="tab-pane fade" id="t3body2">
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <div class="row">
+                                    <div class="col-sm-5">
+                                        <div>
+                                            <h3 class="doctor-desig" style="color: #00aeef">Poids Ideal</h3>
+                                            <div class="doctor-detail">
+                                                <p class="justify">
+                                                    La formule du poids ideal vous permet de savoir approximativement votre poids. Elle permet
+                                                    facilement de vous donnée votre poids  en fonction de votre age et de votre taille
+                                                    <b>pour calculer votre poid IDEAL remplissez le formulaire avec vos donnée</b>
+                                                    <div hidden class="infoPoid">
+                                                        <h2 class="doctor-desig" style='color: #00aeef;' id="poidIdeal">Poids Ideal : {{ poidIdeal }} </h2>
+                                                   </div>
+                                                 </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+
+                            <aside class="sidebar ">
+                                <div class="widget widget-blogs">
+                                    <h4 class="heading">Vos informations ICI</h4>
+                                    {{ form_start(formPoidIdeal) }}
+                                    <form METHOD="get">
+
+                                        <div class="form-group has-feedback divTailleIdeal" >
+                                            <label class="control-label">Taille</label>
+                                            {{ form_widget(formPoidIdeal.taille,{'attr':{'class':'form-control','placeholder':'votre taille en cm'}}) }}
+                                            <span class="glyphicon glyphicon-ok  form-control-feedback "   style="display: none;margin-top: 5px"> </span>
+                                            <span class="help-block"  style="display: none"></span>
+                                        </div>
+                                        <div class="form-group has-feedback divSexeIdeal" >
+                                            <label class="control-label">Sexe</label>
+                                            <div class="btn-group bootstrap-select">
+                                                {{ form_widget(formPoidIdeal.sexe,{'attr':{'class':'','title':'Sexe'}}) }}
+                                            </div>
+                                            <span class="help-block"  style="display: none"></span>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <button type="button" class="btn btn-black" id="btnCalculPoid" name="btnCalculPoid" value="calculPoid"  ><i class="fa fa-calculator"></i>Calculer</button>
+                                        </div>
+                                        {{ form_rest(form) }}
+                                    </form>
+                                </div>
+
+                                {{ form_end(form) }}
+                            </aside>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="t3body3">
+                        <p>tab3 serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine. I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents.</p>
+                        <p>I should be incapable of drawing a single stroke at the present moment; and yet I feel that I never was a greater artist than now. When, while the lovely valley teems with vapour around me, and the meridian sun strikes the upper surface of the impenetrable foliage of my trees, and but a few stray gleams steal into the inner sanctuary, I throw myself down among the tall grass by the trickling stream; and, as I lie close to the earth, a thousand unknown plants are noticed by me.</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JQuery Version 3.1.0 -->
+    <script src="{{asset('js/jquery.min.js') }}" type="text/javascript"></script>
+
+    <!-- Bootstrap Version 3.3.7 -->
+    <script src="{{ asset('js/bootstrap.min.js')}}" type="text/javascript"></script>
+
+    <!-- Count To JS -->
+    <script src="{{ asset('js/jquery.countTo.js') }}" type="text/javascript"></script>
+
+    <!-- Appear JS -->
+    <script src="{{asset('js/jquery.appear.js')}}" type="text/javascript"></script>
+
+    <!-- Owl Carousel 2.0.0 -->
+    <script src="{{ asset('js/owl.carousel.min.js') }}" type="text/javascript"></script>
+
+    <!-- BootStrap select -->
+    <script src="{{ asset('js/bootstrap-select.min.js') }}" type="text/javascript"></script>
+
+    <!-- Custom JS -->
+    <script src="{{ asset('js/script.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/biennetre.js') }}"></script>
+    <script>
+        $(function () {
+            $("#btnCalculImc").click(
+                function () {
+                        var poids = $("#healthadvisorbundle_informationsante_poids").val();
+                        var taille = $("#healthadvisorbundle_informationsante_taille").val();
+                        var sexe = $("#healthadvisorbundle_informationsante_sexe").val();
+                        var age = $("#healthadvisorbundle_informationsante_age").val();
+                        var action='calculIMC';
+                    if(verifSexe(sexe,".divSexe")===true&&verifAge(age,'.divAge')===true&&verifTaille(taille,'.divTaille')===true&&verifPoid(poids,'.divPoid')===true) {
+                        var link = 'http://localhost' + '{{ path('afficher_outilBiennetre') }}';
+                        $.ajax({
+                            type: 'GET',
+                            data: {'poids': poids, 'taille': taille, 'sexe': sexe, 'age': age,'action':action},
+                            url: link,
+                            success: function (data) {
+                                $('.infoIMC').css('display', 'block').fadeIn("slow");
+                                if (data.imc < 18.5) {
+                                    $('#imc').text("IMC : " + data.imc).css('color', 'red');
+                                    $('#interpretationIMC').text(data.interpretation).css('color', 'red');
+                                }
+                                else if (data.imc >= 18.5 && data.imc < 25) {
+                                    $('#imc').text("IMC : " + data.imc).css('color', 'green');
+                                    $('#interpretationIMC').text(data.interpretation).css('color', 'green');
+                                }
+                                else {
+                                    $('#imc').text("IMC : " + data.imc).css('color', 'red');
+                                    $('#interpretationIMC').text(data.interpretation).css('color', 'red');
+                                }
+                                console.log("poid:"+data.poidsIdeal);
+                                console.log("imc:"+data.imc);
+                            }
+                        });
+                    }
+                });
+             $("#btnCalculPoid").click(function () {
+                 var taille = $("#health_advisor_bundlepoid_ideal_type_taille").val();
+                 var sexe = $("#health_advisor_bundlepoid_ideal_type_sexe").val();
+                 var action='calculPoidIdeal';
+                 if(verifSexe(sexe,".divSexeIdeal")===true&&verifTaille(taille,'.divTailleIdeal')===true) {
+                     var link = 'http://localhost' + '{{ path('afficher_outilBiennetre') }}';
+                     $.ajax({
+                         type: 'GET',
+                         data: {'taille': taille, 'sexe': sexe,'action':action},
+                         url: link,
+                         success: function (data) {
+                             $('.infoPoid').css('display', 'block').fadeIn("slow");
+                             $('#poidIdeal').text("Poids Ideal : " + data.poidIdeal).css('color', 'green');
+
+                         }
+                     });
+                 }
+             });
+
+
+
+            $("#healthadvisorbundle_informationsante_poids").keyup(function ()
+            {
+                 verifPoid($("#healthadvisorbundle_informationsante_poids").val(),".divPoids");
+            });
+            $("#healthadvisorbundle_informationsante_taille").keyup(function () {
+               verifTaille( $("#healthadvisorbundle_informationsante_taille").val(),".divTaille");
+            });
+            $("#healthadvisorbundle_informationsante_age").keyup(function () {
+                verifAge( $("#healthadvisorbundle_informationsante_age").val(),".divAge");
+            });
+            $("#healthadvisorbundle_informationsante_sexe").change(function () {
+                verifSexe( $("#healthadvisorbundle_informationsante_sexe").val(),".divSexe");
+            });
+            $("#health_advisor_bundlepoid_ideal_type_taille").keyup(function () {
+                verifTaille($("#health_advisor_bundlepoid_ideal_type_taille").val(),".divTailleIdeal");
+            })
+            $("#health_advisor_bundlepoid_ideal_type_sexe").change(function () {
+                verifSexe($("#health_advisor_bundlepoid_ideal_type_sexe").val(),".divSexeIdeal");
+            })
+
+        });
+    </script>
+{% endblock %}

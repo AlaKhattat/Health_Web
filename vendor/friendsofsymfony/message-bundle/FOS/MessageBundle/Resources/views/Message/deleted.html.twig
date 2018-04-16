@@ -1,9 +1,10 @@
 {% extends 'FOSMessageBundle::layout.html.twig' %}
 
 {% block fos_message_content %}
+<div class="blog-box">
 
-<h2>{% trans from 'FOSMessageBundle' %}deleted{% endtrans %}</h2>
-
+<h2 class="heading text-center">{% trans from 'FOSMessageBundle' %}Supprimer{% endtrans %}</h2>
+    <hr class="hr-1">
 {% include 'FOSMessageBundle:Message:threads_list.html.twig' with {'threads': threads} %}
-
+</div>
 {% endblock %}

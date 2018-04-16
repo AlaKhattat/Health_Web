@@ -2,12 +2,27 @@
 
 {% block fos_message_content %}
 
-<h2>{% trans from 'FOSMessageBundle' %}send_new{% endtrans %}</h2>
+    <div class="blog-box">
+        <h2 class="heading text-center">{% trans from 'FOSMessageBundle' %}Nouveau Message {% endtrans %}</h2>
+        <hr class="hr-1">
+        <form action="{{ url('fos_message_thread_new') }}" method="post">
+            {{ form_start(form) }}
 
-<form action="{{ url('fos_message_thread_new') }}" method="post">
-    {{ form_widget(form) }}
+            <div class="widget widget-icon">
+                <h2><blockquote style="background-color: #9EDBF9">  Séléctionner le destinataire</blockquote></h2>
 
-    <input type="submit" />
-</form>
+            </div>
+            {{ form_widget(form.recipient, { 'attr' : {'class': 'form-control','placeholder': 'Recipient'}}) }}
+            <br><br><br>
+            {{ form_widget(form.subject, { 'attr' : {'class': 'form-control','placeholder': 'Sujet'}}) }}<br>
+            {{ form_widget(form.body, { 'attr' : {'class': 'body','placeholder': 'Message'}}) }}
+            <br><br>
+            <input  class="input" type="submit" />
+            {{ form_end(form) }}
+
+        </form>
+
+    </div>
+
 
 {% endblock %}

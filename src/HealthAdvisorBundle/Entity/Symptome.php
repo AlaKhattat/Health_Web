@@ -35,6 +35,54 @@ class Symptome
      */
     private $description;
 
+    /**
+     * @return int
+     */
+    public function getIdSymptome()
+    {
+        return $this->idSymptome;
+    }
+
+    /**
+     * @param int $idSymptome
+     */
+    public function setIdSymptome($idSymptome)
+    {
+        $this->idSymptome = $idSymptome;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNomSymptome()
+    {
+        return $this->nomSymptome;
+    }
+
+    /**
+     * @param string $nomSymptome
+     */
+    public function setNomSymptome($nomSymptome)
+    {
+        $this->nomSymptome = $nomSymptome;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
 
 }
 

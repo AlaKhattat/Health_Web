@@ -2,8 +2,10 @@
 
 {% block fos_message_content %}
 
-<h2>{% trans from 'FOSMessageBundle' %}sent{% endtrans %}</h2>
+<h2 class="heading text-center">{% trans from 'FOSMessageBundle' %}Envoyé{% endtrans %}</h2>
+    <hr class="hr-1">
+<div class="blog-box">
 
 {% include 'FOSMessageBundle:Message:threads_list.html.twig' with {'threads': threads} %}
-
+</div>
 {% endblock %}

@@ -1,12 +1,23 @@
+health_advisor_rendez_vous:
+    resource: "@HealthAdvisorBundle/Controller/RendezVousController.php"
+    type:     annotation
+
+
+health_advisor_aliment:
+    resource: "@HealthAdvisorBundle/Controller/AlimentController.php"
+    type:     annotation
+
 
 
 health_advisor_biennetre:
     resource: "@HealthAdvisorBundle/Controller/BiennetreController.php"
     type:     annotation
+
 health_advisor_patient:
     resource: "@HealthAdvisorBundle/Controller/PatientController.php"
     type:     annotation
     prefix:   /patient
+
 health_advisor_utilisateur:
     resource: "@HealthAdvisorBundle/Controller/UtilisateurController.php"
     type:     annotation
