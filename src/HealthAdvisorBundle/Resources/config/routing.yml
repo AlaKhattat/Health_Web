@@ -60,3 +60,6 @@ message_afficher:
 notifications_update_status:
     path:     /notification/update
     defaults: { _controller: HealthAdvisorBundle:Default:marquerTousCommeLus }
+    gbdfgdfddfdsfs
+    fsdsfdsfsdfdfdfdgfdgdfgdg
+    gfgdgdgdgdgdgdgdgdgdgddg
