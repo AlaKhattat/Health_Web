@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7ae43fb6-ab13-4f21-9487-b52f8c1f1bfd" name="Default" comment="new commit">
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" afterPath="$PROJECT_DIR$/.idea/php.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/HealthAdvisorBundle/Controller/ArticleController.php" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Controller/ArticleController.php" />
     </list>
@@ -387,7 +386,7 @@
       <workItem from="1523746565512" duration="85000" />
       <workItem from="1524408402008" duration="4662000" />
       <workItem from="1524417876147" duration="308000" />
-      <workItem from="1524418209552" duration="732000" />
+      <workItem from="1524418209552" duration="910000" />
     </task>
     <task id="LOCAL-00001" summary="push1">
       <created>1521811541168</created>
@@ -494,11 +493,18 @@
       <option name="project" value="LOCAL" />
       <updated>1524414629618</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="new commit">
+      <created>1524419055528</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1524419055528</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="248171000" />
+    <option name="totallyTimeSpent" value="248349000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -560,9 +566,9 @@
     <MESSAGE value="push2" />
     <MESSAGE value="push3" />
     <MESSAGE value="push33" />
-    <MESSAGE value="new commit" />
     <MESSAGE value="new commit ala" />
-    <option name="LAST_COMMIT_MESSAGE" value="new commit ala" />
+    <MESSAGE value="new commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="new commit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

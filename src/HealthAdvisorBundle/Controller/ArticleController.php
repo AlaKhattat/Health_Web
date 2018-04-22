@@ -36,6 +36,8 @@ class ArticleController extends Controller
         return $this->render('@HealthAdvisor/Article/ajout.html.twig',array('form'=>$form->createView()));
     }
 
+
+
     public function listArtAction()
     {
         $req=$this->getDoctrine()->getRepository('HealthAdvisorBundle:Article');
