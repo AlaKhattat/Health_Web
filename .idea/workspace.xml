@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7ae43fb6-ab13-4f21-9487-b52f8c1f1bfd" name="Default" comment="new commit">
-      <change beforePath="$PROJECT_DIR$/.idea/HealthAdvisor.iml" afterPath="$PROJECT_DIR$/.idea/HealthAdvisor.iml" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" afterPath="$PROJECT_DIR$/.idea/php.xml" />
+    <list default="true" id="7ae43fb6-ab13-4f21-9487-b52f8c1f1bfd" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/vendor/docdocdoc/nexmo-bundle/DocDocDoc/NexmoBundle" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/vendor/nomaya/social-bundle/Nomaya/SocialBundle" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/vendor/vresh/twilio-bundle" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_files.php" afterPath="$PROJECT_DIR$/vendor/composer/autoload_files.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_namespaces.php" afterPath="$PROJECT_DIR$/vendor/composer/autoload_namespaces.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" afterPath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" />
     </list>
     <list id="ed62660f-4cdd-49bf-aa09-436085be8312" name="New changelist" comment="New changelist" />
     <ignored path="$PROJECT_DIR$/vendor/composer/" />
@@ -260,6 +257,9 @@
       <path value="$PROJECT_DIR$/vendor/guzzlehttp/guzzle" />
       <path value="$PROJECT_DIR$/vendor/guzzlehttp/psr7" />
       <path value="$PROJECT_DIR$/vendor/guzzlehttp/promises" />
+      <path value="$PROJECT_DIR$/vendor/vresh/twilio-bundle" />
+      <path value="$PROJECT_DIR$/vendor/nomaya/social-bundle" />
+      <path value="$PROJECT_DIR$/vendor/docdocdoc/nexmo-bundle" />
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
@@ -340,15 +340,15 @@
     <property name="ChangesBrowser.SHOW_FLATTEN" value="false" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\HealthIntege\src\HealthAdvisorBundle\Resources\views\Default" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\wamp64\www\HealthIntege\app\Resources\views\reponse" />
       <recent name="C:\wamp64\www\HealthIntege\app\Resources\views\question" />
       <recent name="C:\wamp64\www\HealthIntege\src\HealthAdvisorBundle\Controller" />
       <recent name="C:\wamp64\www\HealthIntege\src\HealthAdvisorBundle\Repository" />
       <recent name="C:\wamp64\www\HealthIntege\src\HealthAdvisorBundle\Resources\views" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\wamp64\www\HealthIntege\src\HealthAdvisorBundle\Resources\views\Default" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -403,7 +403,7 @@
       <workItem from="1523746565512" duration="85000" />
       <workItem from="1524408402008" duration="4662000" />
       <workItem from="1524417876147" duration="308000" />
-      <workItem from="1524418209552" duration="2817000" />
+      <workItem from="1524418209552" duration="2887000" />
     </task>
     <task id="LOCAL-00001" summary="push1">
       <created>1521811541168</created>
@@ -538,11 +538,18 @@
       <option name="project" value="LOCAL" />
       <updated>1524420184868</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="new commit">
+      <created>1524421054413</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1524421054413</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="250256000" />
+    <option name="totallyTimeSpent" value="250326000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
