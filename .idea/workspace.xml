@@ -3,8 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="7ae43fb6-ab13-4f21-9487-b52f8c1f1bfd" name="Default" comment="new commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/HealthAdvisorBundle/Controller/ArticleController.php" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Controller/ArticleController.php" />
+      <change beforePath="$PROJECT_DIR$/vendor/nomaya/social-bundle/Nomaya/SocialBundle" afterPath="$PROJECT_DIR$/vendor/nomaya/social-bundle/Nomaya/SocialBundle" />
+      <change beforePath="$PROJECT_DIR$/vendor/vresh/twilio-bundle" afterPath="$PROJECT_DIR$/vendor/vresh/twilio-bundle" />
     </list>
+    <list id="ed62660f-4cdd-49bf-aa09-436085be8312" name="New changelist" comment="" />
     <ignored path="$PROJECT_DIR$/vendor/composer/" />
     <ignored path="$PROJECT_DIR$/vendor/doctrine/annotations/" />
     <ignored path="$PROJECT_DIR$/vendor/doctrine/cache/" />
@@ -56,7 +58,18 @@
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="composer.json" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/vendor/docdocdoc/nexmo-bundle/DocDocDoc/NexmoBundle/composer.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="12" column="25" lean-forward="true" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -311,6 +324,71 @@
               <item name="HealthIntege" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="vendor" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
+            <path>
+              <item name="HealthIntege" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HealthIntege" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="vendor" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="docdocdoc" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="HealthIntege" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HealthIntege" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="vendor" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="docdocdoc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="nexmo-bundle" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="HealthIntege" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HealthIntege" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="vendor" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="docdocdoc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="nexmo-bundle" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="DocDocDoc" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="HealthIntege" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HealthIntege" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="vendor" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="docdocdoc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="nexmo-bundle" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="DocDocDoc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="NexmoBundle" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="HealthIntege" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HealthIntege" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="vendor" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="nomaya" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="HealthIntege" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HealthIntege" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="vendor" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="nomaya" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="social-bundle" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="HealthIntege" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HealthIntege" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="vendor" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="nomaya" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="social-bundle" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Nomaya" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="HealthIntege" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HealthIntege" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="vendor" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="nomaya" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="social-bundle" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Nomaya" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="SocialBundle" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="HealthIntege" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HealthIntege" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="web" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -357,6 +435,7 @@
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="7ae43fb6-ab13-4f21-9487-b52f8c1f1bfd" name="Default" comment="push33" />
+      <changelist id="ed62660f-4cdd-49bf-aa09-436085be8312" name="New changelist" comment="" />
       <created>1521642848691</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -386,7 +465,7 @@
       <workItem from="1523746565512" duration="85000" />
       <workItem from="1524408402008" duration="4662000" />
       <workItem from="1524417876147" duration="308000" />
-      <workItem from="1524418209552" duration="910000" />
+      <workItem from="1524418209552" duration="1331000" />
     </task>
     <task id="LOCAL-00001" summary="push1">
       <created>1521811541168</created>
@@ -500,11 +579,18 @@
       <option name="project" value="LOCAL" />
       <updated>1524419055528</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="new commit">
+      <created>1524419184626</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1524419184626</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="248349000" />
+    <option name="totallyTimeSpent" value="248770000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -514,7 +600,8 @@
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32646593" sideWeight="0.50292826" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290735" sideWeight="0.49151292" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296355" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3280507" sideWeight="0.49151292" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -528,7 +615,6 @@
       <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3280507" sideWeight="0.49707174" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -577,20 +663,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/HealthAdvisorBundle/Controller/AlimentController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="26" column="89" lean-forward="false" selection-start-line="26" selection-start-column="89" selection-end-line="26" selection-end-column="89" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Admin_Template/Biennetre_back/afficherAliment.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="38" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Admin_Template/Biennetre_back/ajouterAliment.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2652">
@@ -936,6 +1008,22 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/vresh/twilio-bundle/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="7" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/docdocdoc/nexmo-bundle/DocDocDoc/NexmoBundle/composer.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="25" lean-forward="true" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
+          <folding />
         </state>
       </provider>
     </entry>
