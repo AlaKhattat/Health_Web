@@ -1,0 +1,59 @@
+{% extends '@HealthAdvisor/Default/index.html.twig' %}
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+    {% block header %}
+        {{ parent() }}
+    {% endblock %}
+
+    <div class="col-sm-8 mt-20">
+        <h3 class="heading"><span class="color1">Ajoutez un article</span></h3>
+        {{ form_start(form) }}
+        <form>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        {{ form_widget(form.nom, { 'attr' : {'class': 'form-control','placeholder':'Titre'}}) }}
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        {{ form_widget(form.tags, { 'attr' : {'class': 'form-control','placeholder':'Tags'}}) }}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        {{ form_widget(form.description,{'attr':{ 'class':'form-control','placeholder':'Description'}}) }}
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        {{ form_widget(form.contenu,{'attr':{ 'class':'form-control','placeholder':'Contenu'}}) }}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <input type="file" id="img" name="img">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        {{ form_widget(form.Valider, { 'attr' : {'class': 'btn btn-primary'}}) }}
+                    </div>
+                </div>
+            </div>
+            {{ form_rest(form) }}
+        </form>
+        {{ form_end(form) }}
+    </div>
+    {% block footer %}
+        {{ parent() }}
+    {% endblock %}
+
+
+{% endblock %}

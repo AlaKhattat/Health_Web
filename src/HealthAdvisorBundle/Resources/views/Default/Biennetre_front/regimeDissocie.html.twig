@@ -1,0 +1,111 @@
+{% extends 'HealthAdvisorBundle:Default:index.html.twig' %}
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+    {% block header %}
+        {{ parent() }}
+    {% endblock %}
+
+    <div class="col-sm-6 container mt-80">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2 class="heading text-center">Le Regime Dissocié</h2>
+                <hr class="hr-1">
+            </div>
+            <div class="col-sm-8 col-sm-offset-2">
+                <div class="accordion-1">
+                    {% for key,aliment in aliments %}
+                        <div class="panel-group" id="{{ key|split(' ')|join }}a1" role="tablist" aria-multiselectable="true">
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="{{ key|split(' ')|join }}a1heading">
+                                    <h4 class="panel-title">
+                                        <a role="button" data-toggle="collapse" data-parent="#{{ key|split(' ')|join }}a1" href="#{{ key|split(' ')|join }}a1body" aria-expanded="false" aria-controls="{{ key|split(' ')|join }}a1body">
+                                            {{ key }}
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="{{ key|split(' ')|join }}a1body" class="panel-collapse collapse " role="tabpanel" aria-labelledby="{{ key|split(' ')|join }}a1heading">
+                                <span class="icon-tab">
+                                       <i class="fa fa-cutlery"></i>
+                                </span>
+                                    {% for item in aliment %}
+                                        <div class="panel-body">
+                                            {{ item.nomAliment }}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <form action="{{ path('supprimer_Regime', {'nomRegime': 'regime dissocie'}) }}">
+                <button class="btn btn-danger" id="suivreRegime" type="submit"><i class="fa fa-remove"></i>Ne plus suivre ce regime</button>
+            </form>
+        </div>
+    </div>
+    <div class="col-sm-6 container mt-80">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2 class="heading text-center">Les Sports</h2>
+                <hr class="hr-1">
+            </div>
+            <div class="col-sm-8 col-sm-offset-2">
+                {% if sports is null %}
+                    <div class="form-group">
+                        <h2 class="heading text-center">Vous navez selectionner aucun sports</h2>
+                    </div>
+
+                {% else %}
+                    <div class="form-group">
+                        <select class="" tabindex="-98" id="choixSport">
+                            <option value="aucun">quel sport voudrai vous faire aujourdhui</option>
+                            {% for keySport,sport in sports %}
+                                <option value="{{ sport.lienSport }}"> {{ keySport }}</option>
+                            {% endfor %}
+
+                        </select>
+                    </div>
+                    <iframe id="sport" width="425" height="300"
+                            src="">
+                    </iframe>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+
+    <!-- JQuery Version 3.1.0 -->
+    <script src="{{asset('js/jquery.min.js') }}" type="text/javascript"></script>
+
+    <!-- Bootstrap Version 3.3.7 -->
+    <script src="{{ asset('js/bootstrap.min.js')}}" type="text/javascript"></script>
+
+    <!-- Count To JS -->
+    <script src="{{ asset('js/jquery.countTo.js') }}" type="text/javascript"></script>
+
+    <!-- Appear JS -->
+    <script src="{{asset('js/jquery.appear.js')}}" type="text/javascript"></script>
+
+    <!-- Owl Carousel 2.0.0 -->
+    <script src="{{ asset('js/owl.carousel.min.js') }}" type="text/javascript"></script>
+
+    <!-- BootStrap select -->
+    <script src="{{ asset('js/bootstrap-select.min.js') }}" type="text/javascript"></script>
+
+    <!-- Custom JS -->
+    <script src="{{ asset('js/script.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/biennetre.js') }}"></script>
+    <script>
+        $(function () {
+            $("#choixSport").change(function () {
+                var sport = $("#choixSport").val();
+                if(sport!=="aucun")
+                {
+                    console.log( $("#sport").attr("src",$("#choixSport").val()));
+                }
+            });
+        });
+    </script>
+{% endblock %}

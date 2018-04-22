@@ -10,8 +10,11 @@ return array(
     'SensioLabs\\Security' => array($vendorDir . '/sensiolabs/security-checker'),
     'PhpOption\\' => array($vendorDir . '/phpoption/phpoption/src'),
     'PhpCollection' => array($vendorDir . '/phpcollection/phpcollection/src'),
+    'Nomaya\\SocialBundle\\' => array($vendorDir . '/nomaya/social-bundle'),
     'Metadata\\' => array($vendorDir . '/jms/metadata/src'),
     'JMS\\Serializer' => array($vendorDir . '/jms/serializer/src'),
+    'JMS\\Payment\\PaypalBundle' => array($vendorDir . '/jms/payment-paypal-bundle'),
+    'JMS\\Payment\\CoreBundle' => array($vendorDir . '/jms/payment-core-bundle'),
     'JMS\\' => array($vendorDir . '/jms/parser-lib/src'),
     'FOS\\MessageBundle' => array($vendorDir . '/friendsofsymfony/message-bundle'),
     'Doctrine\\ORM\\' => array($vendorDir . '/doctrine/orm/lib'),
@@ -19,4 +22,5 @@ return array(
     'Doctrine\\Common\\Lexer\\' => array($vendorDir . '/doctrine/lexer/lib'),
     'Doctrine\\Common\\Inflector\\' => array($vendorDir . '/doctrine/inflector/lib'),
     'Doctrine\\Common\\Collections\\' => array($vendorDir . '/doctrine/collections/lib'),
+    'DocDocDoc\\NexmoBundle' => array($vendorDir . '/docdocdoc/nexmo-bundle'),
 );

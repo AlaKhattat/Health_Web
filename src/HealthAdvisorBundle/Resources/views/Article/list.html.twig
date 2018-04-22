@@ -1,0 +1,49 @@
+{% extends '@HealthAdvisor/Admin_Template/index.html.twig' %}
+
+{% block contenu %}
+    <form>
+        <input type="text" name="mot" id="mot" placeholder="chercher">
+    </form>
+    <table class="table table-striped responsive-utilities jambo_table bulk_action">
+        <thead>
+        <tr class="headings">
+            <th class="column-title">Titre</th>
+            <th class="column-title">Tags</th>
+            <th class="column-title">Description</th>
+            <th class="column-title">Note moyenne</th>
+            <th class="column-title">URL Image</th>
+            <th class="column-title">Consultation</th>
+            <th class="column-title">Suppression</th>
+            <th class="column-title">Validation</th>
+            <th class="bulk-actions" colspan="7">
+                <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
+            </th>
+        </tr>
+        </thead>
+
+        <tbody id="tbody">
+        {% for i in art  %}
+            <tr class="even pointer">
+                <td>{{ i.nom }}</td>
+                <td>{{ i.tags }}</td>
+                <td>{{ i.description }}</td>
+                <td>{{ i.moyenneNotes }}</td>
+                <td>{{ i.urlImage }}</td>
+                <td class="last"><a href="{{ path('afficheArt', {'id':i.reference}) }}">Consulter</a></td>
+                <td class="last"><a href="{{ path('deleteArt', {'id':i.reference}) }}">Supprimer</a></td>
+                {% if i.validation is not sameas("Validé") %}
+                    <td><a href="{{ path('validArt',{'id':i.reference}) }}">Valider</a></td>
+                {% else %}
+                    <td><a href="{{ path('invalidArt',{'id':i.reference}) }}">Invalider</a></td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+        </tbody>
+
+    </table>
+
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+
+{% endblock %}
+
+

@@ -29,5 +29,38 @@ class Sondage
     private $nomSondage;
 
 
-}
 
+    /**
+     * Get idSondage
+     *
+     * @return integer
+     */
+    public function getIdSondage()
+    {
+        return $this->idSondage;
+    }
+
+    /**
+     * Set nomSondage
+     *
+     * @param string $nomSondage
+     *
+     * @return Sondage
+     */
+    public function setNomSondage($nomSondage)
+    {
+        $this->nomSondage = $nomSondage;
+    
+        return $this;
+    }
+
+    /**
+     * Get nomSondage
+     *
+     * @return string
+     */
+    public function getNomSondage()
+    {
+        return $this->nomSondage;
+    }
+}

@@ -31,7 +31,7 @@ function verifTaille(tailleVerif,diveTaille) {
     var taille=  Number(tailleVerif);
       console.log(taille);
     if(taille.toLocaleString()==="NaN") {
-        $(diveTaille).removeClass("has-succes").addClass("has-error");
+        $(diveTaille).removeClass("has-succes").removeClass("has-error").addClass("has-error");
         $(diveTaille).find($(".divTaille").find("span")[0]).css("display","block").addClass("glyphicon glyphicon-remove ").slideDown("slow");
         $(diveTaille).find($(".divTaille").find("span")[1]).css("display","block").slideDown("slow").text("Veullez saisir un nombre correcte");
         return false;
@@ -39,7 +39,7 @@ function verifTaille(tailleVerif,diveTaille) {
     else
     {
         if((taille<=0) || (taille>=1 && taille <=57) || (taille > 280)) {
-            $(diveTaille).removeClass("has-succes").addClass("has-error");
+            $(diveTaille).removeClass("has-succes").removeClass("has-error").addClass("has-error");
             $(diveTaille).find($(diveTaille).find("span")[0]).css("display","block").addClass("glyphicon glyphicon-remove ").slideDown("slow");
             $(diveTaille).find($(diveTaille).find("span")[1]).css("display","block").slideDown("slow").text("Veullez saisir votre taille en cm");
             return false;
@@ -47,7 +47,7 @@ function verifTaille(tailleVerif,diveTaille) {
         }
         else
         {
-            $(diveTaille).removeClass("has-error").addClass("has-success");
+            $(diveTaille).removeClass("has-error").removeClass("has-succes").addClass("has-success");
             $(diveTaille).find($(".divTaille").find("span")[0]).css("display","block").removeClass("glyphicon glyphicon-remove").addClass("glyphicon glyphicon-ok ").slideDown("slow");
             $(diveTaille).find($(".divTaille").find("span")[1]).css("display","none").slideUp("slow");
             return true;

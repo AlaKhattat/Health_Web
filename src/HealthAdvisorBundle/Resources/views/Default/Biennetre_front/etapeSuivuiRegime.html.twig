@@ -1,0 +1,67 @@
+{% extends 'HealthAdvisorBundle:Default:index.html.twig' %}
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+    {% block header %}
+        {{ parent() }}
+    {% endblock %}
+  <div class="container">
+      <h2>Pour commencer dabord par entree </h2>
+    {{ form_start(form) }}
+    <form METHOD="get">
+        <div class="form-group  has-feedback divPoids" >
+            <label class="control-label">Poids</label>
+            {{ form_widget(form.poids,{'attr':{'class':'form-control','placeholder':'votre poids en Kg'}}) }}
+            <span class="glyphicon glyphicon-ok  form-control-feedback "  style="display: none;margin-top: 5px"> </span>
+            <span class="help-block "  style="display: none"></span>
+        </div>
+        <div class="form-group has-feedback divTaille" >
+            <label class="control-label">Taille</label>
+            {{ form_widget(form.taille,{'attr':{'class':'form-control','placeholder':'votre taille en cm'}}) }}
+            <span class="glyphicon glyphicon-ok  form-control-feedback  "   style="display: none;margin-top: 5px"> </span>
+            <span class="help-block"  style="display: none"></span>
+        </div>
+        <div class="form-group has-feedback divSexe" >
+
+            <label class="control-label">Sexe</label>
+            <div class="btn-group bootstrap-select">
+                {{ form_widget(form.sexe,{'attr':{'class':'','title':'Sexe'}}) }}
+            </div>
+            <span class="help-block"  style="display: none"></span>
+        </div>
+        <div class="form-group has-feedback divAge" >
+            <label class="control-label">Age</label>
+            {{ form_widget(form.age,{'attr':{'class':'form-control','placeholder':'votre age'}}) }}
+            <span class="glyphicon glyphicon-ok  form-control-feedback "   style="display: none;margin-top: 5px"> </span>
+            <span class="help-block"  style="display: none"></span>
+        </div>
+        <div class="form-group">
+            <button type="button" class="btn btn-black" id="btnCalculImc" ><i class="fa fa-calculator"></i>Calculer</button>
+        </div>
+        {{ form_rest(form) }}
+    </form>
+    {{ form_end(form) }}
+  </div>
+    <!-- JQuery Version 3.1.0 -->
+    <script src="{{asset('js/jquery.min.js') }}" type="text/javascript"></script>
+
+    <!-- Bootstrap Version 3.3.7 -->
+    <script src="{{ asset('js/bootstrap.min.js')}}" type="text/javascript"></script>
+
+    <!-- Count To JS -->
+    <script src="{{ asset('js/jquery.countTo.js') }}" type="text/javascript"></script>
+
+    <!-- Appear JS -->
+    <script src="{{asset('js/jquery.appear.js')}}" type="text/javascript"></script>
+
+    <!-- Owl Carousel 2.0.0 -->
+    <script src="{{ asset('js/owl.carousel.min.js') }}" type="text/javascript"></script>
+
+    <!-- BootStrap select -->
+    <script src="{{ asset('js/bootstrap-select.min.js') }}" type="text/javascript"></script>
+
+    <!-- Custom JS -->
+    <script src="{{ asset('js/script.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/biennetre.js') }}"></script>
+{% endblock %}

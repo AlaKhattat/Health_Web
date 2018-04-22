@@ -1,0 +1,182 @@
+{% extends 'base.html.twig' %}
+
+
+
+
+{% block stylesheets %}
+{{ parent() }}
+
+{% endblock %}
+
+{% block header %}
+    {{ parent() }}
+
+{% endblock %}
+
+{% block body %}
+{{ parent() }}
+
+    {% if nb_produits == 0 %}
+    <div id="app-body">
+        <div id="app-body-inner">
+            <div id="content-wrap" class="row column-max padding-top padding-bottom-200">
+                <section class="primary small-12 columns">
+                    <main role="main">
+                        <div id="shopify-section-cart-template" class="shopify-section">
+                            <div class=" column-max" data-section-id="cart-template" data-section-type="cart-template">
+                                <div class="text-center padding-top-200 padding-bottom-200">
+                                    <header class="page-header ">
+                                        <div class="">
+                                            <h1 class="title" data-default-text="Your Shopping Cart">Your Shopping Cart</h1>
+                                        </div>
+                                    </header>
+                                    <div class="separator lined margin-top margin-bottom" aria-hidden="true"></div>
+                                    <p>Your cart is currently empty.</p><br><p><a class="button" href="{{ path('produit_index') }}">Go shopping &rarr;</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </main>
+                </section>
+            </div>
+        </div>
+    </div>
+
+   {% elseif nb_produits != 0 %}
+    <form action="" method="post" novalidate="" class="cart">
+        <div class="line-items">
+            {% set i=0 %}
+            {% for produit in produits %}
+            <div class="line-item row">
+                <div class="image small-12 medium-3 large-1 columns text-center">
+                    <div class="image-container " style="max-width: 611px;" data-image-id="299953705">
+                        <a href="{{ path('produit_afficher',{'id':produit.idProduit}) }}" >
+                            <div class="image-container-position" style="padding-top: 133.7152209%;">
+                                <img class="lazyautosizes lazyloaded" src="{{ produit.UrlImage }}" data-image-id="299953705" data-aspectratio="0.7478580171358629" data-sizes="auto"   data-widths="[100, 250, 650]"  sizes="169px">
+                            </div>
+                        </a>
+                    </div>
+                    <noscript>
+                        &lt;div class="text-center"&gt;
+                        &lt;img src="//cdn.shopify.com/s/files/1/0170/3006/products/Stocksy_txpcd4bb35cLY0000_Small_38594_medium.jpg?v=1376251963" alt="Aloe Shower, Scrub &amp;amp; Moisture Set" /&gt;
+                        &lt;/div&gt;
+                    </noscript>
+                </div>
+                <div class="small-12 medium-9 large-11 columns">
+                    <div class="row">
+                        <div class="meta small-12 medium-6 columns text-light">
+                            <div class="product-title font-size-17">
+                                <a class="text-color" href="/products/aloe-shower-scrub-moisture-set?variant=231147586">{{ produit.Nom }}</a>
+                            </div>
+                        </div>
+                        <div class="small-12 medium-5 medium-push-1 columns">
+                            <div class="row">
+                                <div class="qty small-12 large-6 columns">
+                                    <div class="row">
+                                        <div class="small-4 medium-3 columns no-margin-bottom">
+                                            <label class="hidden" for="updates_231147586:9d7a5f15ac94f171a79a2865f40c32a0">Qty.</label>
+                                            <input class="quantity text-center" type="number" name="updates[]" id="{{ i }}" value="1" min="0" pattern="[0-9]*">
+                                        </div>
+                                        <div class="small-4 medium-4 columns no-margin-bottom">
+                                            <a href="{{ path('delete_produit_panier',{'id':produit.idProduit}) }}" class="button secondary" id="btn_supprimer" >x</a>
+                                        </div>
+                                        <div class="small-4 medium-4 columns no-margin-bottom">
+                                            <input type="submit" value="Update" class="button secondary" id="{{ i }}" onclick="UpdatePanier({{ produit.idProduit }},{{ i }})" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pricing small-12 large-6 columns text-right">
+                                    <span class="price line-price font-size-17 converted" data-price="" data-base-price="2900" data-money-style="money_format">${{ quantite[i]*produit.PrixVente}}</span>
+                                    <span class="line-price-calc text-light font-size-15">{{ quantite[i]}} x <span>
+<span class="price item-price converted" data-price="" data-base-price="2900" data-money-style="money_format">${{ produit.PrixVente }}</span></span>
+
+                    </span>
+                                    <input type="hidden" id="id_prod" value="{{ produit.idProduit }}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="separator lined full margin-top margin-bottom" aria-hidden="true"></div>
+        </div>
+        {% set i=i+1 %}
+        {% endfor %}
+        {% endif %}
+
+        <div class="separator " aria-hidden="true"></div>
+        <div class="row checkout text-center text-right-medium">
+            <div class="small-12 columns">
+                <div class="row">
+                    <div class="small-12 medium-6 columns">
+                        <div class="cart-note">
+                            <label for="cart-note" class="cart-note-label text-left-medium">Add a note to your order</label>
+                            <textarea name="note" id="cart-note" rows="3"></textarea>
+                        </div>
+                        <div class="separator " aria-hidden="true"></div>
+                    </div>
+                    <div class="small-12 medium-6 columns">
+                        <div class="subtotal">
+                            <span class="subtotal-title">Prix Total Sans Promotion</span>
+                            <span class="price fw-500 converted" >${{ prix_total_sp }}USD</span>
+                        </div>
+                        <div class="subtotal">
+                            <span class="subtotal-title">Prix Total Apres Promotion</span>
+                            <span class="price fw-500 converted" >${{ prix_total }}USD</span>
+                        </div>
+                        <div class="separator lined margin-top margin-bottom show-for-small" aria-hidden="true"></div>
+                        <div class="separator no-margin-top hide-for-small" aria-hidden="true"></div>
+                        <div class="shipping text-light font-size-15">
+                            Shipping &amp; taxes calculated at checkout
+                        </div>
+                        <div class="separator " aria-hidden="true"></div>
+
+                        <div class="continue-shopping text-light font-size-15 margin-top">
+                            <a class="text-light" href="{{ path('new',{'amount':prix_total}) }}">Checkout</a>
+                        </div>
+                        <div class="separator " aria-hidden="true"></div>
+                        <div class="continue-shopping text-light font-size-15 margin-top">
+                            <a class="text-light" href="{{ path('produit_index') }}">Continue shopping</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+
+    <script src="{{ asset('jquery-3.2.1.js')}}"></script>
+    <script>
+              function UpdatePanier(id_produit,id_txtQte) {
+
+               var link = 'http://localhost' + '{{ path('update_produit_panier') }}';
+                   console.log('working');
+                   var qte=$('#'+id_txtQte).val();
+                   console.log("Quantite "+qte);
+                   $.ajax({
+                           type:"POST",
+                           data:{'quantite':qte,'id_produit':id_produit},
+                           url: link,
+                           success:function (data) {
+                              // console.log(data);
+                               /*var cpt=0;
+                               $.each(data,function (key,value) {
+                                   cpt=cpt+1;
+                               });
+                               $('#nb_panier').text(cpt);
+                           */
+                           }
+                       }
+                   );
+
+           }
+
+
+    </script>
+
+
+{% endblock %}

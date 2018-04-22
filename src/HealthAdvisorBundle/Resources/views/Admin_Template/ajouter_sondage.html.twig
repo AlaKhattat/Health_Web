@@ -1,0 +1,126 @@
+{% extends '@HealthAdvisor/Admin_Template/index.html.twig' %}
+
+{% block contenu %}
+
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Sondages</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li><a href="#"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#">Settings 1</a>
+                                </li>
+                                <li><a href="#">Settings 2</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href="#"><i class="fa fa-close"></i></a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+
+
+
+                <div class="x_content">
+
+                    <form class="form-horizontal form-label-left" novalidate>
+
+                        <p>For alternative validation library <code>parsleyJS</code> check out in the <a href="form.html">form page</a>
+                        </p>
+                        <span class="section">Formulaire d'ajout d'un sondage</span>
+
+
+
+
+
+                        <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Nom sondage <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <textarea id="nomSondage" required="required" name="nomSondage" class="form-control col-md-7 col-xs-12" placeholder="Tapez le nom du sondage..."></textarea>
+                            </div>
+                        </div>
+
+
+                        <h5 align="center" id="textSondage"></h5>
+
+                        <div class="ln_solid"></div>
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-3">
+                                <button id="ajouter" type="button" class="btn btn-danger"><i class="fa fa-plus">  Ajouter Sondage</i></button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+
+
+
+            </div>
+        </div>
+
+
+
+    <script>
+       $('#ajouter').click(function () {
+           $.ajax({
+               type: "POST",
+               data:{
+                   nomSondage: $('#nomSondage').val(),
+               },
+               url: 'http://localhost'+'{{ path('ajouter_sondage_admin') }}',
+               success: function (data){
+                   window.location.replace("http://localhost"+"{{ path('afficher_sondages_admin') }}")
+               }
+
+           })
+       });
+    </script>
+
+    <script>
+        $(function () {
+
+            $('#ajouter').hide();
+            $('#nomSondage').css('border-color','red');
+            $('#textSondage').text('Vous devez tapez au moins 20 caractères...');
+            $('#textSondage').css('color','red');
+
+
+
+            $('#nomSondage').keyup(function () {
+                if ($('#nomSondage').val().length < 20) {
+
+                    $('#nomSondage').css('color', 'red');
+                    $('#nomSondage').css('border-color', 'red');
+                    $('#textSondage').css('color', 'red');
+                    $('#textSondage').text('Vous devez tapez au moins 20 caractères...');
+                    $('#ajouter').hide();
+
+                }
+
+
+                else {
+                    $('#nomSondage').css('border-color', 'green');
+                    $('#nomSondage').css('color', 'green');
+                    $('#textSondage').text('Vous pouvez publier votre sondage...');
+                    $('#textSondage').css('color', 'green');
+                    $('#ajouter').show();
+
+                }
+            });
+
+
+
+
+        });
+    </script>
+
+
+
+
+{% endblock %}

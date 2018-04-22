@@ -236,8 +236,8 @@
                                         maladie=v.Issue.Name;
                                         accur=v.Issue.Accuracy;
                                     $.each(v.Specialisation,function (k1,v1) {
-                                        spec=spec+v1.Name+"<br>";
-                                    });
+                                        spec=spec+"<a href='http://localhost"+"{{ path('medecin_list')}}"+"?adresse=&specialite="+v1.Name+"&username=Selectioner%20Votre%20Medecin'>"+v1.Name+"</a><br>";
+                            });
                                         $('#tbody').append('<tr>\n' +
                                             '<td>'+maladie+'</td>\n' +
                                             '<td>'+Math.round(parseFloat(accur))+' %</td>\n' +

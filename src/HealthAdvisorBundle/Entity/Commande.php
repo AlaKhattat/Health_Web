@@ -64,5 +64,103 @@ class Commande
         $this->idProduit = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
+    /**
+     * @return int
+     */
+    public function getNumeroCommande()
+    {
+        return $this->numeroCommande;
+    }
+
+    /**
+     * @param int $numeroCommande
+     */
+    public function setNumeroCommande($numeroCommande)
+    {
+        $this->numeroCommande = $numeroCommande;
+    }
+
+    /**
+     * @return string
+     */
+    public function getReferenceCommande()
+    {
+        return $this->referenceCommande;
+    }
+
+    /**
+     * @param string $referenceCommande
+     */
+    public function setReferenceCommande($referenceCommande)
+    {
+        $this->referenceCommande = $referenceCommande;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDatePayement()
+    {
+        return $this->datePayement;
+    }
+
+    /**
+     * @param \DateTime $datePayement
+     */
+    public function setDatePayement($datePayement)
+    {
+        $this->datePayement = $datePayement;
+    }
+
+    /**
+     * @return string
+     */
+    public function getModePayement()
+    {
+        return $this->modePayement;
+    }
+
+    /**
+     * @param string $modePayement
+     */
+    public function setModePayement($modePayement)
+    {
+        $this->modePayement = $modePayement;
+    }
+
+    /**
+     * @return string
+     */
+    public function getIdClient()
+    {
+        return $this->idClient;
+    }
+
+    /**
+     * @param string $idClient
+     */
+    public function setIdClient($idClient)
+    {
+        $this->idClient = $idClient;
+    }
+
+    /**
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getIdProduit()
+    {
+        return $this->idProduit;
+    }
+
+    /**
+     * @param \Doctrine\Common\Collections\Collection $idProduit
+     */
+    public function setIdProduit($idProduit)
+    {
+        $this->idProduit = $idProduit;
+    }
+
+
+
 }
 

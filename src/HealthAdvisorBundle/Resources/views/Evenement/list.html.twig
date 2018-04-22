@@ -1,0 +1,51 @@
+{% extends '@HealthAdvisor/Admin_Template/index.html.twig' %}
+
+{% block contenu %}
+    <form>
+        <input type="text" name="rech" id="rech" placeholder="chercher">
+    </form>
+    <table class="table table-striped responsive-utilities jambo_table bulk_action">
+        <thead>
+        <tr class="headings">
+            <th class="column-title">Nom</th>
+            <th class="column-title">Date</th>
+            <th class="column-title">Heure</th>
+            <th class="column-title">Lieu</th>
+            <th class="column-title">Type</th>
+            <th class="column-title">Nombre max de participants</th>
+            <th class="column-title">Créateur</th>
+            <th class="column-title">Consultation</th>
+            <th class="column-title">Suppression</th>
+            <th class="column-title">Validation</th>
+            <th class="bulk-actions" colspan="7">
+                <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
+            </th>
+        </tr>
+        </thead>
+        <tbody id="tbody">
+        {% for i in evt  %}
+                <tr class="even pointer">
+                    <td>{{ i.nom }}</td>
+                    <td>{{ i.date|date('m/d/Y') }}</td>
+                    <td>{{ i.heure|date('H:i') }}</td>
+                    <td>{{ i.location }}</td>
+                    <td>{{ i.type }}</td>
+                    <td>{{ i.maxParticipants }}</td>
+                    <td>{{ i.createur }}</td>
+                    <td class="last"><a href="{{ path('afficheEvt', {'id':i.id}) }}">Consulter</a></td>
+                    <td class="last"><a href="{{ path('deleteEvt', {'id':i.id}) }}">Supprimer</a></td>
+                    {% if i.validation is not sameas("Validé") %}
+                        <td><a href="{{ path('validEvt',{'id':i.id}) }}">Valider</a></td>
+                    {% else %}
+                        <td><a href="{{ path('invalidEvt',{'id':i.id}) }}">Invalider</a></td>
+                    {% endif %}
+                </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+
+{% endblock %}
+
+

@@ -8,4 +8,5 @@ parameters:
     mailer_user: healthadvisoresprit@gmail.com
     mailer_password: HEALTHadvisor2018
     secret: 31f2746d87787a6fd3d7bf986ae852db8d436e16
-
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1

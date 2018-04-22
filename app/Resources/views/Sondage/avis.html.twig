@@ -1,0 +1,181 @@
+{% extends 'HealthAdvisorBundle:Default:index.html.twig' %}
+
+{% block head %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/rating.css') }}" />
+
+    <style type="text/css">
+        fieldset, label { margin: 0; padding: 0; }
+        h1 { font-size: 1.5em; margin: 10px; }
+
+        /****** Style Star Rating Widget *****/
+
+        .rating {
+            border: none;
+            float: left;
+        }
+
+        .rating > input { display: none; }
+        .rating > label:before {
+            margin: 5px;
+            font-size: 1.25em;
+            font-family: FontAwesome;
+            display: inline-block;
+            content: "\f005";
+        }
+
+        .rating > .half:before {
+            content: "\f089";
+            position: absolute;
+        }
+
+        .rating > label {
+            color: #ddd;
+            float: right;
+        }
+
+        /***** CSS Magic to Highlight Stars on Hover *****/
+
+        .rating > input:checked ~ label, /* show gold star when clicked */
+        .rating:not(:checked) > label:hover, /* hover current star */
+        .rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+        .rating > input:checked + label:hover, /* hover current star when changing rating */
+        .rating > input:checked ~ label:hover,
+        .rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+        .rating > input:checked ~ label:hover ~ label { color: #FFED85;  }
+    </style>
+{% endblock %}
+
+{% block body %}
+
+    {% block header %}
+        {{ parent() }}
+
+    {% endblock %}
+
+    <div class="page-header">
+        <div class="container">
+            <h1>Sondages</h1>
+            <br>
+            <ul class="breadcrumb">
+                <li><a href="home-version-1.html">Home</a></li>
+                <li class="active">Sondages</li>
+            </ul>
+        </div>
+    </div>
+    <div class="container mt-60 mb-80">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2 class="heading text-center">Sondages</h2>
+                <hr class="hr-1">
+            </div>
+            <br><br><br><br><br>
+        </div>
+
+
+            <div class="row" align="center">
+                 <div class = "form-group">
+                    <h1>{{ nomSondage }}</h1>
+                </div>
+            </div>
+
+
+        <input id="idSondage" hidden value="{{ idSondage }}">
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="col-sm-5"></div>
+                <div class = "form-group">
+
+                <fieldset class="rating">
+                    <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+                    <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+                    <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
+                    <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+                    <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+                </fieldset>
+
+            </div>
+            </div>
+        </div>
+        <br>
+        <div class="row" align="center">
+            <div class = "form-group">
+                <button type="button" id="btn" class="btn btn-primary btn-sm" name="envoyer avis"><i class="fa fa-paper-plane"></i>Envoyer avis</button>
+            </div>
+        </div>
+
+
+        <!--
+        <div class="rating">
+            {% for i in 5..1 %}
+                <div class="star"></div>
+            {% endfor %}
+        </div>
+        -->
+
+
+
+
+
+
+
+
+    </div>
+
+
+    {% block footer %}
+        {{ parent() }}
+    {% endblock %}
+
+
+
+    {% block script %}
+        {{ parent() }}
+        <script src="{{ asset('js/rating.js') }}"></script>
+
+
+        <script>
+            var rating;
+            $('#star1').click(function () {
+                rating = this.value;
+                console.log(rating);
+            });
+            $('#star2').click(function () {
+                rating = this.value;
+                console.log(rating);
+            });
+            $('#star3').click(function () {
+                rating = this.value;
+                console.log(rating);
+            });
+            $('#star4').click(function () {
+                rating = this.value;
+                console.log(rating);
+            });
+            $('#star5').click(function () {
+                rating = this.value;
+                console.log(rating);
+            });
+
+            $('#btn').click(function () {
+                $.ajax({
+                    type:"POST",
+                    data:{rating:rating,sondage:$('#idSondage').val()},
+                    url:"http://localhost"+"{{ path('envoyer_reponse_sondage') }}",
+                    success:function () {
+                        window.location.replace("http://localhost"+"{{ path('sondage') }}")
+                    }
+                })
+            });
+
+        </script>
+
+
+
+    {% endblock %}
+
+
+
+{% endblock %}

@@ -1,0 +1,302 @@
+{% extends 'HealthAdvisorBundle:Default:index.html.twig' %}
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+    {% block header %}
+        {{ parent() }}
+    {% endblock %}
+    <div class="page-header">
+        <div class="container">
+            <h1>Regime</h1>
+            <div class="breadcrumb-2">
+                <ul class="breadcrumb">
+                    <li><a href="{{ path('afficher_outilBiennetre') }}">Biennetre</a></li>
+                    <li class="active">Regime</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="chargeurPage">
+    <div class="container mt-80 mb-60">
+        <div class="row">
+            <div class="col-sm-8">
+                <h3>Suivre un regime. <span class="color1">Faite sur mesure pour vous!</span></h3>
+                <p>pour pouvoir suivre un de nos regime je vous invite a  remplir le formulaire ci-dessous</p>
+                <form>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                {% if info.poids is null %}
+                                    <input class="form-control" id="poid" name="poid" type="text"  placeholder="Veuillez saisir votre poid">
+                                {% else %}
+                                    <input class="form-control" id="poid" name="poid" type="text" value="{{ info.poids }}" placeholder="Veuillez saisir votre poid">
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                {% if info.poids is null %}
+                                    <input class="form-control" id="poidAperdre" name="poidAPerdre" type="text"  placeholder="Combien de Kilo voulez vous perdre">
+                                {% else %}
+                                    <input class="form-control" id="poidAperdre" name="poidAPerdre" type="text" value="{{ info.poids-poidIdeal|abs }}" placeholder="Combien de Kilo voulez vous perdre">
+                                {% endif %}
+                               </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                               {% if info.age is null %}
+                                   <input class="form-control" id="age" name="age" type="text"  placeholder="Veuillez saisir votre age">
+                               {% else %}
+                                    <input class="form-control" id="age" name="age" type="text" value="{{ info.age }}" placeholder="Veuillez saisir votre age">
+                               {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                {% if info.taille is null %}
+                                    <input class="form-control" id="taille" name="taille" type="text" value="{{ info.taille }}" placeholder="Veuillez saisir votre taille">
+                                {% else %}
+                                    <input class="form-control" id="taille" name="taille" type="text"  placeholder="Veuillez saisir votre taille">
+                                {% endif %}
+                               </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <select class="" tabindex="-98" id="tempsDePerdre">
+                                  <!--  <option value="0">En combien de temps voulez vous perdre du poids?</option>-->
+                                    <option value="6">Le temps que sa prendra</option>
+                                    <option value="2">2 semaine</option>
+                                    <option value="4">1 mois</option>
+                                    <option value="8">2 mois</option>
+                                    <option value="12">3 mois</option>
+                                    <option value="16">4 mois</option>
+                                    <option value="20">5 mois</option>
+                                    <option value="24">6 mois</option>
+                                    <option value="48">1 ans</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <select class="" tabindex="-98" id="dejaSuivieRegime">
+                                    <option value="aucun">Avez vous deja suivie un regime si oui le quel</option>
+                                    <option value="le jeune">le jeune</option>
+                                    <option value="micronutrition">la micronutrition ou chronoregime</option>
+                                    <option value="regime dissocie">le regime dissocié</option>
+                                    <option value="regime hyperproteine">le regime hyperproteiné</option>
+                                    <option value="regime hypocalorique">le regime hypocalorique ou hypoglucidique</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <fieldset>
+                                <legend>Veuillez cochez les produits dont vous etes allergique</legend>
+                                <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <div class="col-sm-4">
+                                              <div class="checkbox" >
+                                                 <label for="laitier">
+                                                    <input type="checkbox" id="laitier" value="laitier">produit laitiers
+                                                 </label>
+                                               </div>
+                                                <div class="checkbox">
+                                                    <label class="checkbox" for="noix">
+                                                        <input type="checkbox" id="noix" value="noix">noix
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="checkbox">
+                                                    <label class="checkbox" for="cereales">
+                                                        <input type="checkbox" id="cereales" value="cereales">cereales
+                                                    </label>
+                                                </div>
+                                                <div class="checkbox">
+                                                    <label class="checkbox" for="fruits">
+                                                        <input type="checkbox" id="fruits" value="fruits">fruits
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="checkbox">
+                                                    <label class="checkbox" for="oeufs">
+                                                        <input type="checkbox" id="oeufs" value="oeufs">oeufs
+                                                    </label>
+                                                </div>
+                                                <div class="checkbox">
+                                                    <label class="checkbox" for="legumes">
+                                                        <input type="checkbox" id="legumes" value="legumes">legumes
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                 </div>
+                            </fieldset>
+                        </div>
+                        <div class="col-sm-12">
+                            <fieldset>
+                                <legend>Allergies supplementaire</legend>
+                                <div class="form-group">
+                                    <div class="col-sm-8">
+                                        <input id="alergieInput" class="form-control" placeholder="veuillez saisir des allergies" >
+                                    </div>
+                                    <div>
+                                         <button class="btn btn-dark" type="button" id="btnAddAllergie"> <i class="fa fa-plus"></i>Ajouter</button>
+                                    </div>
+
+                                    <div class="col-sm-8">
+                                    <table class="table" id="allergieSupp">
+
+                                    </table>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="col-sm-12">
+                            <fieldset>
+                                <legend>Souffrez vous d'une maladie?</legend>
+                                <div class="form-group">
+                                    <div class="col-sm-8">
+                                        <input id="maladieInput" class="form-control" placeholder="veuillez saisir une maladie" >
+                                    </div>
+                                    <div>
+                                        <button class="btn btn-dark" type="button" id="btnAddMaladie"> <i class="fa fa-plus"></i>Ajouter</button>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-8">
+                                    <table class="table" id="maladies">
+
+                                    </table>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary" id="suivreRegime" type="button"><i class="fa fa-paper-plane"></i> Suivre le regime</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- JQuery Version 3.1.0 -->
+    <script src="{{asset('js/jquery.min.js') }}" type="text/javascript"></script>
+
+    <!-- Bootstrap Version 3.3.7 -->
+    <script src="{{ asset('js/bootstrap.min.js')}}" type="text/javascript"></script>
+
+    <!-- Count To JS -->
+    <script src="{{ asset('js/jquery.countTo.js') }}" type="text/javascript"></script>
+
+    <!-- Appear JS -->
+    <script src="{{asset('js/jquery.appear.js')}}" type="text/javascript"></script>
+
+    <!-- Owl Carousel 2.0.0 -->
+    <script src="{{ asset('js/owl.carousel.min.js') }}" type="text/javascript"></script>
+
+    <!-- BootStrap select -->
+    <script src="{{ asset('js/bootstrap-select.min.js') }}" type="text/javascript"></script>
+
+    <!-- Custom JS -->
+    <script src="{{ asset('js/script.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/biennetre.js') }}"></script>
+    <script>
+        $(function () {
+            //ajout des allergies dans le tableau alergiesSupp
+            $("#btnAddAllergie").click(function () {
+                if($("#alergieInput").val()!=="")
+                {
+                   ajouterTableau($("#alergieInput").val(),"#allergieSupp");
+                }
+            });
+           $("#btnAddMaladie").click(function () {
+               if($("#maladieInput").val()!=="")
+               {
+                   ajouterTableau($("#maladieInput").val(),"#maladies");
+               }
+           });
+           $("#suivreRegime").click(function () {
+               var allergies = [];
+              var age = $("#age").val();
+              var taille=$("#taille").val();
+              var poids=$("#poid").val();
+              var poidsAperdre=$("#poidAperdre").val();
+                  allergies = verifierChecked("#laitier",allergies);
+                  allergies = verifierChecked("#noix",allergies);
+                  allergies = verifierChecked("#cereales",allergies);
+                  allergies = verifierChecked("#fruits",allergies);
+                  allergies = verifierChecked("#oeufs",allergies);
+                  allergies = verifierChecked("#legumes",allergies);
+              var allergiesSupp=retournerTableau("#allergieSupp");
+              var maladiesSupp=retournerTableau("#maladies");
+              var tempsAperdre = $("#tempsDePerdre").val();
+              var dejaSuivie = $("#dejaSuivieRegime").val().toLocaleString();
+              var link = 'http://localhost'+'{{path('listeRegime')}}';
+              var action='consulterRegime';
+               $.ajax({
+                   type: 'GET',
+                   dataType:'html',
+                   data: {'age': age,'taille':taille,'poids':poids,'poidsAperdre':poidsAperdre,'allergies':allergies,'allergiesSupp':allergiesSupp,'maladiesSupp':maladiesSupp,'duree':tempsAperdre,'suivie':dejaSuivie,'action':action},
+                   url: link,
+                   success: function (data) {
+
+                       $("#chargeurPage").html(data);
+                   },
+                   error: function (data) {
+                      console.log("probleme");
+                   }
+               });
+           });
+        });
+    </script>
+    <script>
+        function ajouterTableau(name,tab) {
+
+            $(tab).append(
+                '<tr class=" '+name+'">\n'+
+                   '<td  onclick="supprimerTableau(this)">' +
+                   '                    <div class="col-sm-10"><input value="'+name+'" type="hidden">' +
+                   '                      <label >'+name+' </label>' +
+                   '                    </div> ' +
+                   '                    <div class="col-sm-2">' +
+                   '                      <button type="button" class="supprimerBtnAllergie" style="border: none; background-color: transparent"><i class="fa fa-remove" style="color: red"></i></button> ' +
+                   '                    </div>' +
+                   '</td>\n'+
+                '</tr>\n'
+            );
+        }
+        function supprimerTableau(ch) {
+                $(ch).remove();
+        }
+        function  retournerTableau(tableau) {
+            var tab=[];
+            $(tableau+" "+"tr").each(function (index,element) {
+                $(element).find("td").each(function(index,element){
+                    var ch = $(element).find('label').text();
+                     tab.push(ch);
+                })
+            });
+            return tab;
+
+        }
+        //verifier si le l'input est cocher et retourne un tableau
+        function verifierChecked(input,tableau)
+        {
+            if($(input).is(':checked'))
+            {
+                tableau.push($(input).val());
+            }
+            return tableau;
+        }
+    </script>
+
+{% endblock %}

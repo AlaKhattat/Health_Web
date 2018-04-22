@@ -56,8 +56,8 @@ class RendezVousController extends Controller
 
         $patient=$this->getDoctrine()
             ->getRepository('HealthAdvisorBundle:Patient')
-            ->findOneBy(array('cinUser'=>$utilisateur->getId()));
-
+            ->findOneBy(array('cinUser'=>$utilisateur));
+var_dump($patient);
         $medecin=$this->getDoctrine()
             ->getRepository('HealthAdvisorBundle:Medecin')
             ->find($login);

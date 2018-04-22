@@ -100,7 +100,7 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li><a><i class="fa fa-edit"></i> Gestion Des Medecins <span class="fa fa-chevron-down"></span></a>
+                            <li><a><i class="fa fa-user-md"></i> Gestion Des Medecins <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu" style="display: none">
                                     <li><a href="{{ path('admin_afficher_medecin') }}">Afficher Liste Medecins</a>
                                     </li>
@@ -108,11 +108,55 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li><a><i class="fa fa-desktop"></i> Gestion Des Utilisateurs <span class="fa fa-chevron-down"></span></a>
+                            <li><a><i class="fa fa-user"></i> Gestion Des Utilisateurs <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu" style="display: none">
                                     <li><a href="{{ path('admin_users') }}">Afficher Liste Utilisaeurs</a>
                                     </li>
 
+                                </ul>
+                            </li>
+                            <li><a><i class="fa fa-cutlery"></i> Biennetre <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu" style="display: none">
+                                    <li><a href="{{ path('ajouter_aliment') }}">Ajouter Aliment</a>
+                                    </li>
+                                    <li><a href="{{ path('afficher_aliment') }}">Afficher Aliment</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a><i class="fa fa-flag"></i> Gestion des articles <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu" style="display: none">
+                                    <li><a href="{{ path('listArt') }}">Afficher liste articles</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a><i class="fa fa-calendar"></i> Gestion des événements <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu" style="display: none">
+                                    <li><a href="{{ path('listEvt') }}">Afficher liste événements</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a><i class="fa fa-flag"></i> Gestion Réclamation <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu" style="display: none">
+                                    <li><a href="{{ path('ReclamationBack') }}">Résoudre Réclamation</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a><i class="fa fa-product-hunt"></i> Gestion Produit <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu" style="display: none">
+                                    <li><a href="{{ path('admin_produits') }}">Liste Produits</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a><i class="fa fa-comments-o"></i>Gestion Questions <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu" style="display: none">
+                                    <li><a href="{{ path('afficher_questions_admin') }}">Liste Questions</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a><i class="fa fa-star"></i>Gestion Sondages <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu" style="display: none">
+                                    <li><a href="{{ path('afficher_questions_admin') }}">Liste Sondages</a>
+                                    </li>
                                 </ul>
                             </li>
 

@@ -1,0 +1,38 @@
+{% extends 'HealthAdvisorBundle:Default:index.html.twig' %}
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+                {% block header %}
+                    {{ parent() }}
+                {% endblock %}
+                            <div class="container mt-100 mb-100">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="not-found">
+                                            <div class="nf-icon">
+                                                <i class="fa fa-ban"></i>
+                                            </div>
+                                            <div class="nf-text">
+                                                <h2 class="heading">Désolé</h2>
+                                                <p class="font26">Vous n'avez pas <span class="color1 normal">l'accès</span> à cette page</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8 col-sm-offset-2 mt-60">
+                                        <div class="text-center">
+                                            <a href="{{ path('health_advisor_homepage') }}" class="btn btn-primary">Retouner à l'accueil</a>
+                                        </div>
+                                        <br/>
+                                        <hr class="hr-or">
+                                    </div>
+                                </div>
+                            </div>
+
+                {% block footer %}
+                    {{ parent() }}
+                {% endblock %}
+    {% block script %}
+        {{ parent() }}
+    {% endblock %}
+{% endblock %}

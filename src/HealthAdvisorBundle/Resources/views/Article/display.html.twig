@@ -1,0 +1,147 @@
+{% extends 'HealthAdvisorBundle:Default:index.html.twig' %}
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+    {% block header %}
+        {{ parent() }}
+    {% endblock %}
+
+
+    <div class="doctor-single mt-80 mb-60">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-5">
+                    <div class="doctor-img">
+
+
+                        <img src="{{ art.urlImage }}" width="419" height="250" class="img-responsive" alt="Image introuvable">
+
+                    </div>
+                    <div class="doctor-contact col-sm-11">
+                        <ul class="contact-list">
+                            <li>
+                                {{ art.nom }}
+                            </li>
+                            <li>
+                                <i class="fa fa-pencil"></i>{{ art.idMedecin.login.login }}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-7">
+                    <div class="doctor-details">
+                        <h2 class="doctor-name">{{ art.nom }}</h2>
+                        <ul class="doctor-edu">
+                            <li><i class="fa fa-hashtag"></i>{{ art.tags }}</li>
+                            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                            {% if  app.user.roles[0] != "ROLE_ADMIN" %}
+                            <li id="mod"><button type="button" class="fa fa-edit fa-1x " style="background-color: transparent; border: none" id="btnmodif"></button></li>
+                            <li id="supp"><a href="{{ path('deleteArt', {'id':art.reference}) }}"><i class="fa fa-remove"></i></a></li>
+                            {% endif %}
+                            {% endif %}
+                        </ul>
+                        <hr class="hr-1 left">
+                        <div style="width: 500px; word-wrap: break-word;" id="article">
+                            <p>{{ art.description }}</p>
+                            </br>
+                            <p>{{ art.contenu }}</p>
+                        </div>
+                        <form hidden id="formModif">
+                            <div class="form-group">
+                                <input class="form-control" type="text" placeholder="Titre" name="nom" value="{{ art.nom }}">
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" type="text" placeholder="Tags" name="tags" value="{{ art.tags }}">
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" name="description" value="{{ art.description }}" type="text" placeholder="Description">
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" name="contenu" value="{{ art.contenu }}" type="text" placeholder="Contenu">
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control " type="file" name="img" value="{{ art.urlImage }}">
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-primary" type="submit" name="modif" value="modif"><i class="fa fa-pencil"></i>Modifier</button>
+                            </div>
+                        </form>
+                        <div class="row" id="social">
+                            {{ facebookButton() }}
+                            {{ twitterButton() }}
+                            {{ googleplusButton() }}
+                            {{ linkedinButton() }}
+                        </div>
+                        <div class="row" id="pdf">
+                            <a href="{{ path('pdfGenerate', {'id':art.reference}) }}" id="download"><i class="fa fa-file-pdf-o"></i>Télécharger en PDF</a>
+                        </div>
+                        <div>
+                            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                            {% if  app.user.roles[0] != "ROLE_ADMIN" %}
+                            <x-star-rating value="{{ art.moyenneNotes }}" number="5" id="rating"></x-star-rating>
+                            <p id="succes"></p>
+                            {% endif %}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/StarRating.css') }}" />
+    <link rel="stylesheet" href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/StarRating.js') }}"></script>
+
+    <script>
+        $(function () {
+            $('#btnmodif').click(function () {
+                $('#formModif').toggle();
+                $('#social').toggle();
+                $('#pdf').toggle();
+                $('#article').toggle();
+            })
+        })
+    </script>
+    <script>
+        var connect='{{ app.user.username }}';
+        var user='{{ art.idMedecin.login.login }}';
+        if(connect==user){
+            $('#rating').hide();
+            $('#mod').show();
+            $('#supp').show();
+        }else{
+            $('#rating').show();
+            $('#mod').hide();
+            $('#supp').hide();
+        }
+    </script>
+    <script>
+        $(function () {
+            $('#rating').click(function () {
+                var note=rating.value;
+                console.log(note);
+                var link='http://localhost'+'{{ path('ajoutNote') }}';
+                var id={{ art.reference }};
+                var login='{{ app.user.username }}';
+                $.ajax({
+                    type:'POST',
+                    data:{'note':note, 'id':id, 'login':login},
+                    url:link,
+                    success: function (data) {
+                        $('#succes').html("Votre vote a bien été enregistré !");
+                    }
+                })
+            })
+        })
+    </script>
+    {% block footer %}
+        {{ parent() }}
+    {% endblock %}
+
+{% endblock %}

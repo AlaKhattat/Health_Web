@@ -1,0 +1,319 @@
+{% extends 'HealthAdvisorBundle:Default:index.html.twig' %}
+{% block head %}
+    {{ parent() }}
+    <link href="{{ asset('css/select/bootstrap-select.min.css') }}" type="text/css" rel="stylesheet">
+    <style>
+    .modal-confirm {
+		color: #636363;
+		width: 325px;
+	}
+	.modal-confirm .modal-content {
+		padding: 20px;
+		border-radius: 5px;
+		border: none;
+	}
+	.modal-confirm .modal-header {
+		border-bottom: none;
+        position: relative;
+	}
+	.modal-confirm h4 {
+		text-align: center;
+		font-size: 26px;
+		margin: 30px 0 -15px;
+	}
+	.modal-confirm , .modal-confirm .btn {
+		min-height: 40px;
+		border-radius: 3px;
+	}
+	.modal-confirm .close {
+        position: absolute;
+		top: -5px;
+		right: -5px;
+	}
+	.modal-confirm .modal-footer {
+		border: none;
+		text-align: center;
+		border-radius: 5px;
+		font-size: 13px;
+	}
+	.modal-confirm .icon-box {
+		color: #fff;
+		position: absolute;
+		margin: 0 auto;
+		left: 0;
+		right: 0;
+		top: -70px;
+		width: 95px;
+		height: 95px;
+		border-radius: 50%;
+		z-index: 9;
+		background: #82ce34;
+		padding: 15px;
+		text-align: center;
+		box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+	}
+	.modal-confirm .icon-box i {
+		font-size: 58px;
+		position: relative;
+		top: 3px;
+	}
+	.modal-confirm.modal-dialog {
+		margin-top: 80px;
+	}
+    .modal-confirm .btn {
+        color: #fff;
+        border-radius: 4px;
+		background: #82ce34;
+		text-decoration: none;
+		transition: all 0.4s;
+        line-height: normal;
+        border: none;
+    }
+	.modal-confirm .btn:hover, .modal-confirm .btn:focus {
+		background: #6fb32b;
+		outline: none;
+	}
+    .text-center{
+        color: #636363;
+    }
+</style>
+{% endblock %}
+    {% block body %}
+        {% block header %}
+             {{ parent() }}
+        {% endblock %}
+        <div class="container mt-80 ">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3 class="heading">Envoyer votre <span class="color1">Réclamation!</span></h3>
+                    <form>
+
+                        <div class="form-group">
+                            <select name="typereclamation" id="typereclamation" title="Selectionner le type de réclamation">
+                                <option value="medecin">Réclamer un Médecin</option>
+                                <option value="produit">Réclamer un Produit</option>
+                                <option value="article">Réclamer un Article</option>
+                                <option value="event">Réclamer un Evenement</option>
+                                <option value="service">Réclamer un Service</option>
+                                <option value="autre">Autre</option>
+                            </select>
+                        </div>
+                        <div class="form-group" id="medecincontainer" hidden>
+                            <select name="listmedecin" id="listmedecin" data-live-search="true" title="Selectionner le medecin à réclamer">
+                                {% for m in medecins %}
+                                <option value="{{ m.login.cinUser.nom }} {{ m.login.cinUser.prenom }}">{{ m.login.cinUser.nom }} {{ m.login.cinUser.prenom }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group" id="produitcontainer" hidden>
+                            <select name="listproduit" id="listproduit" data-live-search="true" title="Selectionner le produit à réclamer" >
+                                {% for p in produits %}
+                                    <option value="{{ p.nom }}">{{ p.nom }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group" id="articlecontainer" hidden>
+                            <select name="listarticles" id="listarticles" data-live-search="true" title="Selectionner l'article à réclamer">
+                                {% for a in articles %}
+                                    <option value="{{ a.nom }}">{{ a.nom }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group" id="eventcontainer" hidden>
+                            <select name="listevent" id="listevent" data-live-search="true" title="Selectionner l'evenement à réclamer">
+                                {% for e in evenements %}
+                                    <option value="{{ e.nom }}">{{ e.nom }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group" id="servicecontainer" hidden>
+                            <select name="listservice" id="listservice" data-live-search="true" title="Selectionner le service à réclamer">
+                                <option value="Calcule IMC">Calcule IMC</option>
+                                <option value="Recherche Geolocalisation">Recherche Geolocalisation</option>
+                                <option value="Analyse symptome">Analyse symptome</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="text" placeholder="Sujet De Réclamation" id="subject" name="subject">
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" rows="5" placeholder="Tapez votre réclamation" id="contenu" name="contenu"></textarea>
+                        </div>
+                        <p id="status"></p>
+                        <div class="form-group">
+                            <button class="btn btn-primary" type="button" name="signaler" id="signaler"><i class="fa fa-flag"></i> Signaler</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div id="myModal" class="modal fade">
+            <div class="modal-dialog modal-confirm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="icon-box">
+						    <i class="mdi mdi-check mdi-48px"></i>
+                        </div>
+                        <h4 class="modal-title">Effectué!</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p class="text-center">Votre réclamation est enregistrée , Merci pour votre intervention</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-success btn-block" data-dismiss="modal">OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% block footer %}
+            {{ parent() }}
+        {% endblock %}
+        {% block script %}
+            {{ parent() }}
+            <script src="{{ asset('js/select/bootstrap-select.min.js') }}" type="text/javascript"></script>
+            <script>
+                $('#typereclamation').on('change',function () {
+                    if(this.value=='medecin'){
+                        console.log('medecin');
+                        $('#medecincontainer').show();
+                        $('#produitcontainer').hide();
+                        $('#articlecontainer').hide();
+                        $('#servicecontainer').hide();
+                        $('#eventcontainer').hide();
+                    }
+                    else  if(this.value=='produit'){
+                        console.log('produit');
+                        $('#medecincontainer').hide();
+                        $('#produitcontainer').show();
+                        $('#articlecontainer').hide();
+                        $('#servicecontainer').hide();
+                        $('#eventcontainer').hide();
+                    }
+                    else  if(this.value=='service'){
+                        console.log('service');
+                        $('#medecincontainer').hide();
+                        $('#produitcontainer').hide();
+                        $('#articlecontainer').hide();
+                        $('#servicecontainer').show();
+                        $('#eventcontainer').hide();
+                    }
+                    else  if(this.value=='article'){
+                        console.log('article');
+                        $('#medecincontainer').hide();
+                        $('#produitcontainer').hide();
+                        $('#articlecontainer').show();
+                        $('#servicecontainer').hide();
+                        $('#eventcontainer').hide();
+                    }else  if(this.value=='event'){
+                        console.log('article');
+                        $('#medecincontainer').hide();
+                        $('#produitcontainer').hide();
+                        $('#articlecontainer').hide();
+                        $('#servicecontainer').hide();
+                        $('#eventcontainer').show();
+                    }
+                    else  if(this.value=='autre'){
+                        console.log('autre');
+                        $('#medecincontainer').hide();
+                        $('#produitcontainer').hide();
+                        $('#articlecontainer').hide();
+                        $('#servicecontainer').hide();
+                        $('#eventcontainer').hide();
+                        $('#subject').focus();
+                    }
+                });
+                $('#signaler').click(function () {
+                    console.log($('#typereclamation').val());
+                    if($('#typereclamation').val()=='medecin') {
+                        $.ajax({
+                            type: "POST",
+                            data: {
+                                type: $('#typereclamation').val(),
+                                objet: $('#listmedecin').val(),
+                                sujet: $('#subject').val(),
+                                contenu: $('#contenu').val()
+                            },
+                            url: 'http://localhost' + '{{ path('Reclamation') }}',
+                            success: function (data) {
+                                $('#myModal').modal('show');
+                            }
+                        });
+                    }
+                    else if($('#typereclamation').val()=='produit'){
+                        $.ajax({
+                            type: "POST",
+                            data: {
+                                type: $('#typereclamation').val(),
+                                objet: $('#listproduit').val(),
+                                sujet: $('#subject').val(),
+                                contenu: $('#contenu').val()
+                            },
+                            url: 'http://localhost' + '{{ path('Reclamation') }}',
+                            success: function (data) {
+                                $('#myModal').modal('show');
+                            }
+                        });
+                    }
+                    else if($('#typereclamation').val()=='service'){
+                        $.ajax({
+                            type: "POST",
+                            data: {
+                                type: $('#typereclamation').val(),
+                                objet: $('#listservice').val(),
+                                sujet: $('#subject').val(),
+                                contenu: $('#contenu').val()
+                            },
+                            url: 'http://localhost' + '{{ path('Reclamation') }}',
+                            success: function (data) {
+                                $('#myModal').modal('show');
+                            }
+                        });
+                    }
+                    else if($('#typereclamation').val()=='event'){
+                        $.ajax({
+                            type: "POST",
+                            data: {
+                                type: $('#typereclamation').val(),
+                                objet: $('#listevent').val(),
+                                sujet: $('#subject').val(),
+                                contenu: $('#contenu').val()
+                            },
+                            url: 'http://localhost' + '{{ path('Reclamation') }}',
+                            success: function (data) {
+                                $('#myModal').modal('show');
+                            }
+                        });
+                    }
+                    else if($('#typereclamation').val()=='article'){
+                        $.ajax({
+                            type: "POST",
+                            data: {
+                                type: $('#typereclamation').val(),
+                                objet: $('#listarticles').val(),
+                                sujet: $('#subject').val(),
+                                contenu: $('#contenu').val()
+                            },
+                            url: 'http://localhost' + '{{ path('Reclamation') }}',
+                            success: function (data) {
+                                $('#myModal').modal('show');
+                            }
+                        });
+                    }else if($('#typereclamation').val()=='autre'){
+                        $.ajax({
+                            type: "POST",
+                            data: {
+                                type: $('#typereclamation').val(),
+                                objet: 'NaN',
+                                sujet: $('#subject').val(),
+                                contenu: $('#contenu').val()
+                            },
+                            url: 'http://localhost' + '{{ path('Reclamation') }}',
+                            success: function (data) {
+                                $('#myModal').modal('show');
+                            }
+                        });
+                    }
+                });
+            </script>
+        {% endblock %}
+{% endblock %}

@@ -105,7 +105,7 @@ return $this->render('medecin/afficher_medecin_specialite.html.twig', array(
             if($statut=='VALIDE'){
                 $notification=new Notification();
                 $rendezvous->setDateValid(new \DateTime());
-                $message = (new \Swift_Message('Hello Email'))
+                $message = (new \Swift_Message('Health Advisor'))
                     ->setFrom('healthadvisoresprit@gmail.com')
                     ->setTo('alakhattat17@gmail.com')
                     ->setBody(
@@ -233,7 +233,7 @@ return $this->render('medecin/afficher_medecin_specialite.html.twig', array(
                 $em->persist($medecin);
                 $em->flush();
                 $login=$medecin->getLogin();
-                return $this->redirectToRoute('medecin_show', array('login' => $login->getLogin()));
+                return $this->redirectToRoute('homepage');
             }
         }
         return $this->render('medecin/new.html.twig', array(

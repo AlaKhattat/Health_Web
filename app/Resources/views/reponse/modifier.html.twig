@@ -1,0 +1,169 @@
+{% extends 'HealthAdvisorBundle:Default:index.html.twig' %}
+
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+    {% block header %}
+        {{ parent() }}
+
+    {% endblock %}
+
+
+
+    <div class="page-header">
+        <div class="container">
+            <h1>Posez votre question ici !</h1>
+            <br>
+            <ul class="breadcrumb">
+                <li><a href="home-version-1.html">Home</a></li>
+                <li class="active">Questions & Réponses</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container mt-60 mb-80">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2 class="heading text-center">Modifier votre réponse</h2>
+                <hr class="hr-1">
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <form action="" method="post">
+        <div class="container mt-80">
+
+            {{ form_start(edit_form) }}
+
+
+            <div class="row">
+
+                <div class="col-sm-12">
+
+                    <div class="col-sm-3"></div>
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class = "form-group">
+                                {{ form_widget(edit_form) }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class = "form-group">
+                                <h1 id="textTime" align="center"></h1>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class = "form-group">
+                                <h6 id="text" align="center"></h6>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row" align="center">
+                        <div class = "form-group">
+                            <button id="btn" class="btn btn-primary btn-sm" name="Publier reponse"><i class="fa fa-refresh"></i>Mettre à jour la réponse</button>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+            {{ form_end(edit_form) }}
+
+        </div>
+    </form>
+
+
+
+
+
+
+
+    {% block footer %}
+        {{ parent() }}
+    {% endblock %}
+
+
+    {% block script %}
+        {{ parent() }}
+    {% endblock %}
+
+
+
+    <script type="text/javascript">
+        $(function () {
+
+
+            var diff = {{ difference }};
+
+            if (diff < 30){
+                $('#textTime').hide();
+                $('#btn').hide();
+                $('#healthadvisorbundle_reponse_reponse').css('color','red');
+                $('#healthadvisorbundle_reponse_reponse').css('border-color','red');
+                $('#text').text('Votre réponse ne respecte pas les normes').append('<br/>').append("Il faut qu'elle soit chnagée et détaillée (30 caractères au moins)");
+                $('#text').css('color','red');
+                var val = $('#healthadvisorbundle_reponse_reponse').val();
+
+                $('#healthadvisorbundle_reponse_reponse').keyup(function () {
+
+
+                    if ($('#healthadvisorbundle_reponse_reponse').val().length < 30 || $('#healthadvisorbundle_reponse_reponse').val()==val){
+
+                        $('#healthadvisorbundle_reponse_reponse').css('color','red');
+                        $('#healthadvisorbundle_reponse_reponse').css('border-color','red');
+                        $('#text').css('color','red');
+                        $('#text').text('Votre réponse ne respecte pas les normes').append('<br/>').append("Il faut qu'elle soit chnagée et détaillée (30 caractères au moins)");
+                        $('#btn').hide();
+
+                    }
+
+
+                    else {
+                        $('#healthadvisorbundle_reponse_reponse').css('border-color','green');
+                        $('#healthadvisorbundle_reponse_reponse').css('color','green');
+                        $('#text').text('Vous pouvez mettre à jour votre réponse...');
+                        $('#text').css('color','green');
+                        $('#btn').show();
+
+                    }
+
+
+                });
+            } else {
+                $('#healthadvisorbundle_reponse_reponse').hide();
+                $('#btn').hide();
+                $('#textTime').css('color','red');
+                $('#textTime').text('Vous ne pouvez plus modifier cette réponse car vous avez dépassez 30 secondes...');
+            }
+
+
+
+
+
+
+        });
+    </script>
+
+
+
+
+
+
+{% endblock %}

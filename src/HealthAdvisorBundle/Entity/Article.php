@@ -81,21 +81,6 @@ class Article
     private $idMedecin;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="Patient", inversedBy="idArticle")
-     * @ORM\JoinTable(name="article_vote",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="ID_ARTICLE", referencedColumnName="REFERENCE")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="ID_USER", referencedColumnName="LOGIN")
-     *   }
-     * )
-     */
-    private $idUser;
-
-    /**
      * Constructor
      */
     public function __construct()
@@ -103,5 +88,201 @@ class Article
         $this->idUser = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
-}
 
+    /**
+     * Get reference
+     *
+     * @return integer
+     */
+    public function getReference()
+    {
+        return $this->reference;
+    }
+
+    /**
+     * Set nom
+     *
+     * @param string $nom
+     *
+     * @return Article
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+    
+        return $this;
+    }
+
+    /**
+     * Get nom
+     *
+     * @return string
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Article
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set contenu
+     *
+     * @param string $contenu
+     *
+     * @return Article
+     */
+    public function setContenu($contenu)
+    {
+        $this->contenu = $contenu;
+    
+        return $this;
+    }
+
+    /**
+     * Get contenu
+     *
+     * @return string
+     */
+    public function getContenu()
+    {
+        return $this->contenu;
+    }
+
+    /**
+     * Set urlImage
+     *
+     * @param string $urlImage
+     *
+     * @return Article
+     */
+    public function setUrlImage($urlImage)
+    {
+        $this->urlImage = $urlImage;
+    
+        return $this;
+    }
+
+    /**
+     * Get urlImage
+     *
+     * @return string
+     */
+    public function getUrlImage()
+    {
+        return $this->urlImage;
+    }
+
+    /**
+     * Set moyenneNotes
+     *
+     * @param float $moyenneNotes
+     *
+     * @return Article
+     */
+    public function setMoyenneNotes($moyenneNotes)
+    {
+        $this->moyenneNotes = $moyenneNotes;
+    
+        return $this;
+    }
+
+    /**
+     * Get moyenneNotes
+     *
+     * @return float
+     */
+    public function getMoyenneNotes()
+    {
+        return $this->moyenneNotes;
+    }
+
+    /**
+     * Set validation
+     *
+     * @param string $validation
+     *
+     * @return Article
+     */
+    public function setValidation($validation)
+    {
+        $this->validation = $validation;
+    
+        return $this;
+    }
+
+    /**
+     * Get validation
+     *
+     * @return string
+     */
+    public function getValidation()
+    {
+        return $this->validation;
+    }
+
+    /**
+     * Set tags
+     *
+     * @param string $tags
+     *
+     * @return Article
+     */
+    public function setTags($tags)
+    {
+        $this->tags = $tags;
+    
+        return $this;
+    }
+
+    /**
+     * Get tags
+     *
+     * @return string
+     */
+    public function getTags()
+    {
+        return $this->tags;
+    }
+
+    /**
+     * @return \Medecin
+     */
+    public function getIdMedecin()
+    {
+        return $this->idMedecin;
+    }
+
+    /**
+     * @param \Medecin $idMedecin
+     */
+    public function setIdMedecin($idMedecin)
+    {
+        $this->idMedecin = $idMedecin;
+    }
+
+
+
+}

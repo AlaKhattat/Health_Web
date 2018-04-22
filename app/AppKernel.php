@@ -20,7 +20,14 @@ class AppKernel extends Kernel
             new FOS\MessageBundle\FOSMessageBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle(),
-
+            new CMEN\GoogleChartsBundle\CMENGoogleChartsBundle(),
+            new JMS\Payment\CoreBundle\JMSPaymentCoreBundle(),
+            new JMS\Payment\PaypalBundle\JMSPaymentPaypalBundle(),
+            new Vresh\TwilioBundle\VreshTwilioBundle(),
+            new Nomaya\SocialBundle\NomayaSocialBundle(),
+            new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
+            new BoShurik\TelegramBotBundle\BoShurikTelegramBotBundle,
+            new DocDocDoc\NexmoBundle\DocDocDocNexmoBundle(),
 
         ];
 

@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Produit
  *
  * @ORM\Table(name="produit", uniqueConstraints={@ORM\UniqueConstraint(name="REFERENCE", columns={"REFERENCE"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="HealthAdvisorBundle\Repository\ProduitRepository")
  */
 class Produit
 {
@@ -120,6 +120,215 @@ class Produit
     {
         $this->idCommande = new \Doctrine\Common\Collections\ArrayCollection();
     }
+
+    /**
+     * @return int
+     */
+    public function getIdProduit()
+    {
+        return $this->idProduit;
+    }
+
+    /**
+     * @param int $idProduit
+     */
+    public function setIdProduit($idProduit)
+    {
+        $this->idProduit = $idProduit;
+    }
+
+    /**
+     * @return string
+     */
+    public function getReference()
+    {
+        return $this->reference;
+    }
+
+    /**
+     * @param string $reference
+     */
+    public function setReference($reference)
+    {
+        $this->reference = $reference;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * @param string $nom
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+    }
+
+    /**
+     * @return float
+     */
+    public function getPrixVente()
+    {
+        return $this->prixVente;
+    }
+
+    /**
+     * @param float $prixVente
+     */
+    public function setPrixVente($prixVente)
+    {
+        $this->prixVente = $prixVente;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUrlImage()
+    {
+        return $this->urlImage;
+    }
+
+    /**
+     * @param string $urlImage
+     */
+    public function setUrlImage($urlImage)
+    {
+        $this->urlImage = $urlImage;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param string $type
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDateMise()
+    {
+        return $this->dateMise;
+    }
+
+    /**
+     * @param \DateTime $dateMise
+     */
+    public function setDateMise($dateMise)
+    {
+        $this->dateMise = $dateMise;
+    }
+
+    /**
+     * @return float
+     */
+    public function getPromotion()
+    {
+        return $this->promotion;
+    }
+
+    /**
+     * @param float $promotion
+     */
+    public function setPromotion($promotion)
+    {
+        $this->promotion = $promotion;
+    }
+
+    /**
+     * @return string
+     */
+    public function getIdUser()
+    {
+        return $this->idUser;
+    }
+
+    /**
+     * @param string $idUser
+     */
+    public function setIdUser($idUser)
+    {
+        $this->idUser = $idUser;
+    }
+
+    /**
+     * @return int
+     */
+    public function getQuantite()
+    {
+        return $this->quantite;
+    }
+
+    /**
+     * @param int $quantite
+     */
+    public function setQuantite($quantite)
+    {
+        $this->quantite = $quantite;
+    }
+
+    /**
+     * @return int
+     */
+    public function getSignalisationEtat()
+    {
+        return $this->signalisationEtat;
+    }
+
+    /**
+     * @param int $signalisationEtat
+     */
+    public function setSignalisationEtat($signalisationEtat)
+    {
+        $this->signalisationEtat = $signalisationEtat;
+    }
+
+    /**
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getIdCommande()
+    {
+        return $this->idCommande;
+    }
+
+    /**
+     * @param \Doctrine\Common\Collections\Collection $idCommande
+     */
+    public function setIdCommande($idCommande)
+    {
+        $this->idCommande = $idCommande;
+    }
+
 
 }
 

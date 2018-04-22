@@ -1,13 +1,341 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" lang="fr"/>
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#FFFFFF">
+    <meta id="shopify-digital-wallet" name="shopify-digital-wallet" content="/1703006/digital_wallets/dialog">
+    <link rel="canonical" href="index.html">
+    <meta name="description" content="Providence is a beautifully clean, classy, modern and responsive Shopify theme that directs attention straight to your products.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="A beautiful, responsive Shopify theme from Empyre.">
+    <meta property="og:url" content="https://providence-seaside.myshopify.com/">
+    <meta property="og:description" content="Providence is a beautifully clean, classy, modern and responsive Shopify theme that directs attention straight to your products.">
+    <meta property="og:site_name" content="Providence Seaside Shopify Theme">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="A beautiful, responsive Shopify theme from Empyre.">
+    <meta name="twitter:description" content="Providence is a beautifully clean, classy, modern and responsive Shopify theme that directs attention straight to your products.">
+
+    <title>{% block title %}
+
+            Ecommerce Health Advisor
+
+        {% endblock %}</title>
+
+    {% block stylesheets %}
+        <!-- Les link css -->
+
+        <link href=" {{ asset('Ecommerce/ajax/libs/normalize/3.0.3/normalize.min.css') }}" rel="stylesheet" type="text/css" media="all" />
+        <link href="{{ asset('Ecommerce/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css" media="all" />
+        <link href="{{ asset('Ecommerce/ajax/libs/flickity/1.2.1/flickity.min.css') }}" rel="stylesheet" type="text/css" media="all" />
+        <link href="{{ asset('Ecommerce/files/1/0170/3006/t/13/assets/theme.scss32dd.css') }}" rel="stylesheet" type="text/css" media="all" />
+        <link href="{{ asset('Ecommerce/files/1/0170/3006/t/13/assets/theme.scss32dd.css') }}" rel="stylesheet" type="text/css" media="all" />
+
+        <style>
+            /* Brand image */
+            .brand .image-container {
+                max-width: 150px;
+            }
+            @media screen and (min-width: 640px) {
+                .brand .image-container {
+                    width: 150px;
+                }
+            }
+        </style>
+    {% endblock %}
+
+</head>
+<body>
+
+
+<!--=================================menu -->
+{% block header %}
+    <div id="shopify-section-header" class="shopify-section">
+        <div class="column-screen" data-section-id="header" data-section-type="header">
+            <div id="top-bar-search">
+                <div class="column-max">
+                    <form name="search" action="https://providence-seaside.myshopify.com/search">
+                        <input class="search-text text-center" type="search" name="q" placeholder="To search type and hit enter...">
+                    </form>
+                </div>
+            </div>
+            <div id="top-bar">
+                <div class="column-max">
+                    <div class="table">
+                        <div class="cell left text-center text-left-large">
+                            <p class="brand-tagline">
+                                <a href="{{ path('homepage') }}"><i class="fa fa-home" aria-hidden="true"></i>  Retourner vers l'Accueil</a>
+                            </p>
+                        </div>
+                        <div class="cell right text-center text-right-large hide-for-small">
+                            <a class="checkout section" href="cart.html">Checkout</a>
+                            <div class="cart section">
+                                  <span class="cart-badge empty">
+                                  <a href="{{ path('produit_cart') }}"><i class="fa fa-shopping-basket"></i><span class="badge cart-item-count" id="nb_panier">0</span></a>
+                                  </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <header id="app-header" class="logo-left">
+                <div class="column-max">
+                    <div class="table">
+                        <div class="">
+                            <div class="brand text-center text-left-large">
+                                <h1 class="visually-hidden">Providence Seaside Shopify Theme</h1>
+
+                                <noscript>
+                                    <div class="text-center">
+                                        <img src="{{ asset('Ecommerce/files/1/0170/3006/files/seaside-logo_bb584e7a-411c-4bbe-b9e9-d5183f264f5f_medium781d.png') }}" alt="Providence Seaside Shopify Theme" />
+                                    </div>
+                                </noscript>
+                            </div>
+                        </div>
+                        <div class="cell app-header-app-nav">
+                            <div id="app-nav">
+                                <div class="nav-wrap column-max">
+                                    <nav class="nav-primary nav-align-edges nav-center nav-right-large subnav-flyout-right" data-nav-id="primary" role="navigation" aria-label="Primary">
+                                        <h2 class="visually-hidden">Navigation: Main Menu</h2>
+                                        <div class="nav-primary-mobile-icons">
+                                            <button class="nav-primary-mobile-icon nav-toggle nav-toggle-tri" data-nav-id="primary">
+                                                <span></span>
+                                            </button>
+                                            <a class="nav-primary-mobile-icon" href="cart.html"><i class="fa fa-shopping-basket"></i></a>
+                                        </div>
+                                        <ul>
+                                            <li class="nav-item nav-level-1 nav-active">
+                                                <a href="index.html">Home</a>
+                                            </li>
+                                            <li class="nav-item nav-level-1">
+                                                <a href="{{ path('produit_index') }}">Tous les produits</a>
+                                            </li>
+                                            <li class="nav-item nav-level-1">
+                                                <a href="{{ path('afficher_produits_user') }}">Mes Produits</a>
+                                            </li>
+                                            <li class="nav-item nav-level-1">
+                                                <a href="{{ path('add_produit') }}">Nouveau Produit</a>
+                                            </li>
+                                            <li class="nav-item nav-level-1">
+                                                <a href="{{ path('produit_cart') }}">Panier</a>
+                                            </li>
+                                            <li class="show-for-small">
+                                                <div class="separator lined no-margin-left margin-top-50 margin-bottom-50 no-padding" aria-hidden="true"></div>
+                                            </li>
+                                            <li class="show-for-small">
+                                                <a href="cart.html">Checkout (<span class="cart-item-count-items">0 items</span>)</a>
+                                            </li>
+                                            <li class="show-for-small">
+                                                <a href="search.html" data-toggle-top-bar-search>Search</a>
+                                            </li>
+                                            <li class="show-for-small">
+                                                <a href="account/login.html" id="customer_login_link">Sign in</a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block body %}
+
+{% endblock %}
+{% block javascripts %}
+
+    <script defer="defer" integrity="sha256-4Lrj9Eqt0GgChZyjTAqISUk7zjQwz1OwG/rr4/rA7aY=" crossorigin="anonymous" src="{{ asset('Ecommerce/assets/storefront/express_buttons-e0bae3f44aadd06802859ca34c0a8849493bce3430cf53b01bfaebe3fac0eda6.js') }}"></script>
+    <script defer="defer" src="{{ asset('Ecommerce/assets/themes_support/ga_urchin_forms-68ca1924c495cfc55dac65f4853e0c9a395387ffedc8fe58e0f2e677f95d7f23.js') }}"></script>
+    <script src="{{ asset('Ecommerce/ajax/libs/lazysizes/4.0.1/plugins/rias/ls.rias.min.js') }}" async="async"></script>
+    <script src="{{ asset('Ecommerce/ajax/libs/lazysizes/4.0.1/plugins/parent-fit/ls.parent-fit.min.js') }}" async="async"></script>
+    <script src="{{ asset('Ecommerce/ajax/libs/lazysizes/4.0.1/plugins/bgset/ls.bgset.min.js') }}" async="async"></script>
+    <script src="{{ asset('Ecommerce/ajax/libs/lazysizes/4.0.1/lazysizes.min.js') }}" async="async"></script>
+    <script type="text/javascript">
+
+    </script>
+    <script src="{{ asset('Ecommerce/ajax/libs/modernizr/2.8.3/modernizr.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('Ecommerce/ajax/libs/lodash.js/4.17.4/lodash.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('Ecommerce/ajax/libs/jquery/3.1.1/jquery.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('Ecommerce/ajax/libs/jquery.matchHeight/0.7.0/jquery.matchHeight-min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('Ecommerce/ajax/libs/velocity/1.3.1/velocity.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('Ecommerce/ajax/libs/flickity/2.0.10/flickity.pkgd.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('Ecommerce/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('Ecommerce/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('Ecommerce/ajax/libs/jquery-zoom/1.7.18/jquery.zoom.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('Ecommerce/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('Ecommerce/assets/themes_support/shopify_common-040322ee69221c50a47032355f2f7e6cbae505567e2157d53dfb0a2e7701839c.js') }}" type="text/javascript"></script>
+    <script defer="defer" integrity="sha256-4Lrj9Eqt0GgChZyjTAqISUk7zjQwz1OwG/rr4/rA7aY=" crossorigin="anonymous" src="{{ asset('Ecommerce/assets/storefront/express_buttons-e0bae3f44aadd06802859ca34c0a8849493bce3430cf53b01bfaebe3fac0eda6.js') }}"></script>
+    <script defer="defer" src="{{ asset('Ecommerce/assets/themes_support/ga_urchin_forms-68ca1924c495cfc55dac65f4853e0c9a395387ffedc8fe58e0f2e677f95d7f23.js') }}"></script>
+
+{% endblock %}
+
+{% block footer %}
+    <div id="shopify-section-footer" class="shopify-section footer-section">
+        <div class="column-screen" data-section-id="footer" data-section-type="footer">
+            <div id="footer-content">
+                <div class="column-max padding-top-200 padding-bottom-200">
+                    <div class="small-item-grid-1 medium-item-grid-2 large-item-grid-4 row-spacing-150" data-section-id="footer" data-section-type="footer">
+                        <!-- Block: text -->
+                        <section id="section-block-text-1508242653839" class="section-block section-block-text secondary-block font-size-15 item"  data-block-id="1508242653839">
+                            <header class="section-block-header">
+                                <h1 class="section-block-header-heading lhxt">Welcome</h1>
+                            </header>
+                            <style>
+                                #section-block-text-1508242653839 .rte {
+                                    color: white;
+                                }
+                            </style>
+                            <span class="rte">
+  <p>Our products are inspired by the people and world around us. Beautiful, high quality goods that are designed especially for you. Discover our story and meet the people that make our brand what it is.</p>
+</span>
+                        </section>
+                        <!-- Block: blog-posts -->
+                        <section id="section-block-blog-posts-1482275566756" class="section-block section-block-blog-posts secondary-block font-size-15 item"  data-block-id="1482275566756">
+                            <header class="section-block-header">
+                                <h1 class="section-block-header-heading lhxt">Blog</h1>
+                            </header>
+                            <div class="blog-articles">
+                                <article class="blog-article">
+                                    <div class="image-frame">
+                                        <div class="image-container " style="max-width: 2048px;" data-image-id="25475786" >
+                                            <a href="blogs/news/8522423-first-post.html" title="The Big Launch">
+                                                <div class="image-container-position" style="padding-top: 66.650390625%;">
+                                                    <img class="lazyload " src="{{ asset('Ecommerce/files/1/0170/3006/articles/vigsqyux_-8-sarah-burvenich_mediumf8cd.jpg') }}" data-image-id="25475786" data-src="//cdn.shopify.com/s/files/1/0170/3006/articles/vigsqyux_-8-sarah-burvenich_{width}x.jpg?v=1486679445" data-aspectratio="1.5003663003663004" data-sizes="auto" alt="The Big Launch"  data-src-master="../cdn.shopify.com/s/files/1/0170/3006/articles/vigsqyux_-8-sarah-burvenichf8cd.jpg?v=1486679445">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <noscript>
+                                            <div class="text-center">
+                                                <img src="{{ asset('Ecommerce/files/1/0170/3006/articles/vigsqyux_-8-sarah-burvenich_mediumf8cd.jpg') }}" alt="The Big Launch" />
+                                            </div>
+                                        </noscript>
+                                    </div>
+                                    <div class="separator no-margin-top" aria-hidden="true"></div>
+                                    <header>
+                                        <h1 class="title no-margin">
+                                            <a href="blogs/news/8522423-first-post.html" title="">The Big Launch</a>
+                                        </h1>
+                                    </header>
+                                    <div class="separator margin-top-25 no-margin-bottom" aria-hidden="true"></div>
+                                    <div class="meta text-left text-light font-size-13 lht">
+                                        <span class="published group"><time datetime="2013-08-08T17:44:00Z">August 08, 2013</time></span><span class="author group">Tyson Tredger</span><span class="comment-count group"><a class="text-light" href="blogs/news/8522423-first-post.html#comments">1 comment</a></span>
+                                    </div>
+                                    <div class="separator no-margin-top margin-bottom-50" aria-hidden="true"></div>
+                                    <div class="body">
+                                        <meta charset="utf-8"><span>After much planning, decorating, sourcing, packaging, pricing, and more, it was time to launch. Celebrating with a small party for friends, family, and everyone in between, we finally shared our brand and products with the world.</span>
+                                    </div>
+
+                                </article>
+                            </div>
+                        </section>
+                        <!-- Block: newsletter -->
+                        <section id="section-block-newsletter-1482275590235" class="section-block section-block-newsletter secondary-block font-size-15 item"  data-block-id="1482275590235">
+                            <header class="section-block-header">
+                                <h1 class="section-block-header-heading lhxt">Newsletter</h1>
+                            </header>
+                            <div class="margin-bottom">
+                                <p>Sign up to stay in the loop. Receive updates, access to exclusive deals, and more.</p>
+                            </div>
+                            <form method="post" action="https://providence-seaside.myshopify.com/contact#contact_form" id="contact_form" accept-charset="UTF-8" class="contact-form"><input type="hidden" name="form_type" value="customer" /><input type="hidden" name="utf8" value="✓" />
+                                <input type="hidden" name="contact[tags]" value="newsletter">
+                                <div class="table">
+                                    <div class="cell">
+                                        <input type="email" name="contact[email]" value="" placeholder="Email">
+                                    </div>
+                                    <div class="cell">
+                                        <button type="submit" class="button">→</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </section>
+                        <!-- Block: social-icons -->
+                        <section id="section-block-social-icons-1482276648998" class="section-block section-block-social-icons secondary-block font-size-15 item"  data-block-id="1482276648998">
+                            <header class="section-block-header">
+                                <h1 class="section-block-header-heading lhxt">Social Links</h1>
+                            </header>
+                            <style>
+                                .secondary-block.section-block-social-icons i {
+                                    font-size: 24px;
+                                }
+                            </style>
+                            <div class="social-media-icons">
+                                <a class="social-media-icon inline-block text-color" href="https://facebook.com/shopify" data-target-new>
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                                <a class="social-media-icon inline-block text-color" href="https://twitter.com/shopify" data-target-new>
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                                <a class="social-media-icon inline-block text-color" href="https://pinterest.com/shopify" data-target-new>
+                                    <i class="fa fa-pinterest"></i>
+                                </a>
+                                <a class="social-media-icon inline-block text-color" href="http://instagram.com/shopify" data-target-new>
+                                    <i class="fa fa-instagram"></i>
+                                </a>
+                                <a class="social-media-icon inline-block text-color" href="https://plus.google.com/+shopify" data-target-new>
+                                    <i class="fa fa-google-plus"></i>
+                                </a>
+                                <a class="social-media-icon inline-block text-color" href="http://shopify.tumblr.com/" data-target-new>
+                                    <i class="fa fa-tumblr"></i>
+                                </a>
+                                <a class="social-media-icon inline-block text-color" href="https://www.snapchat.com/add/shopify" data-target-new>
+                                    <i class="fa fa-snapchat"></i>
+                                </a>
+                                <a class="social-media-icon inline-block text-color" href="https://www.youtube.com/user/shopify" data-target-new>
+                                    <i class="fa fa-youtube-play"></i>
+                                </a>
+                                <a class="social-media-icon inline-block text-color" href="https://vimeo.com/shopify" data-target-new>
+                                    <i class="fa fa-vimeo"></i>
+                                </a>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+            <footer id="app-footer">
+                <div class="column-max padding-top-150 padding-bottom-200 text-center">
+                    <div class="nav-wrap">
+                        <nav class="nav-footer lht" role="navigation" aria-label="Secondary">
+                            <h2 class="visually-hidden">Navigation: Footer</h2>
+                            <ul class="inline-list">
+                                <li class="nav-item">
+                                    <a href="search.html">Search</a>
+                                </li>
+                                <li class="divider">/</li>
+                                <li class="nav-item">
+                                    <a href="pages/theme-features.html">Theme Features</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="payment-types">
+                        <img width="45" src="http://cdn.shopify.com/s/assets/global/payment_types/creditcards_visa-e9f829d15f5ec3b1953ba8b9bc59b448ddb1ec9235ae70c7936178744cb31489.svg" alt="visa" />
+                        <img width="45" src="http://cdn.shopify.com/s/assets/global/payment_types/creditcards_master-94df290d56a3c6424296953282e18e46895ba94bdef368640eb52f8349915610.svg" alt="master" />
+                        <img width="45" src="http://cdn.shopify.com/s/assets/global/payment_types/creditcards_american_express-54be4e6bfc1dbd42f93af603e102fde2356dfe2372a7dd851074964337533296.svg" alt="american_express" />
+                        <img width="45" src="http://cdn.shopify.com/s/assets/global/payment_types/creditcards_paypal-dd71910a20fd73f78b4eed60e89331d4f4ceb38d55ef42e1e9935d78070ba3e2.svg" alt="paypal" />
+                        <img width="45" src="http://cdn.shopify.com/s/assets/global/payment_types/creditcards_diners_club-d07838507a213e5e52ef4272d3ccfe3da294642628264cd0934baf6878ceb197.svg" alt="diners_club" />
+                        <img width="45" src="http://cdn.shopify.com/s/assets/global/payment_types/creditcards_discover-96a6318d3deeede785ba12114a8d00bd23731f9f16e14ddcd0bdfd5e1d846307.svg" alt="discover" />
+                    </div>
+                    <div class="footer-copyright lht">
+                        © 2018 <a href="index.html" title="">Providence Seaside Shopify Theme</a>. All prices displayed in <span class="currency" data-currency-code>USD</span>. Checkout in <span class="currency">USD</span>. Designed by <a href="http://empy.re/" data-target-new>Empyre</a>. <a target="_blank" rel="nofollow" href="https://www.shopify.com/?utm_campaign=poweredby&amp;utm_medium=shopify&amp;utm_source=onlinestore">Ecommerce Software by Shopify</a>.
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <script src="{{ asset('Ecommerce/files/1/0170/3006/t/13/assets/jquery.currencies.mind89b.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('Ecommerce/files/1/0170/3006/t/13/assets/theme32dd.js') }}" type="text/javascript"></script>
+
+    <script src="{{ asset('Ecommerce/files/1/0170/3006/t/13/assets/themed89b.js') }}"></script>
+    <script src="{{ asset('Ecommerce/javascripts/currencies.js') }}"></script>
+
+
+{% endblock %}
+</body>
 </html>

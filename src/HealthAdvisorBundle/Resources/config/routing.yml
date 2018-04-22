@@ -5,30 +5,6 @@ health_advisor_homepage:
 index_admin:
     path:     /admin
     defaults: { _controller: HealthAdvisorBundle:Admin_Template:index }
-afficher_aliment:
-    path:     /admin/afficherAliment
-    defaults: { _controller: HealthAdvisorBundle:Aliment:afficherAliment }
-ajouter_aliment:
-    path:     /admin/ajoutAliment
-    defaults: { _controller: HealthAdvisorBundle:Aliment:ajouterAliment }
-modifier_aliment:
-    path:     /admin/modifAliment
-    defaults: { _controller: HealthAdvisorBundle:Aliment:modifierAliment }
-supprimer_aliment:
-    path:     /admin/suppAliment
-    defaults: { _controller: HealthAdvisorBundle:Aliment:supprimerAliment }
-rechercher_aliment:
-    path:     /admin/rechercheAliment
-    defaults: { _controller: HealthAdvisorBundle:Aliment:rechercheAliment }
-afficher_outilBiennetre:
-    path:     /outils
-    defaults: { _controller: HealthAdvisorBundle:Biennetre:indexOutilBiennetre }
-ajouter_infoSante:
-    path:     /outils/ajouterInfoSanter
-    defaults: { _controller: HealthAdvisorBundle:Biennetre:ajouterInfoSante }
-afficher_infoSante:
-    path:     /outils/afficherInfoSante
-    defaults: { _controller: HealthAdvisorBundle:Biennetre:afficherInfoSante }
 
 index_medecin:
     path:     /medecin
@@ -64,6 +40,299 @@ message_afficher:
 notifications_update_status:
     path:     /notification/update
     defaults: { _controller: HealthAdvisorBundle:Default:marquerTousCommeLus }
-    gbdfgdfddfdsfs
-    fsdsfdsfsdfdfdfdgfdgdfgdg
-    gfgdgdgdgdgdgdgdgdgdgddg
+admin_produits:
+    path:     /admin/produits
+    defaults: { _controller: HealthAdvisorBundle:Admin_Template:AfficherProduit }
+
+admin_produit_supprimer:
+    path:     /admin/ProduitSupprimer
+    defaults: { _controller: HealthAdvisorBundle:Admin_Template:SupprimerProduitAdmin }
+
+produit_index:
+    path:     /produit/listProduits
+    defaults: { _controller: HealthAdvisorBundle:Produit:index }
+
+produit_afficher:
+    path:     /produit/produit_show
+    defaults: { _controller: HealthAdvisorBundle:Produit:show }
+
+produit_cart:
+    path:     /produit/produit_detail
+    defaults: { _controller: HealthAdvisorBundle:Produit:produit }
+
+add_produit_panier:
+    path:     /produit/add_panier
+    defaults: { _controller: HealthAdvisorBundle:Produit:AddProductPanier }
+
+delete_produit_panier:
+    path:     /produit/delete_panier
+    defaults: { _controller: HealthAdvisorBundle:Produit:SupprimerProduit_Panier }
+
+update_produit_panier:
+    path:     /produit/update_panier
+    defaults: { _controller: HealthAdvisorBundle:Produit:UpdatePanier }
+
+update_produit_detail_panier:
+    path:     /produit/updateProduit_Panier
+    defaults: { _controller: HealthAdvisorBundle:Produit:AjouterProduit_DetailPanier }
+
+afficher_produits_user:
+    path:     /produit/afficherPU
+    defaults: { _controller: HealthAdvisorBundle:Produit:AfficherProduits_User }
+
+passer_produit_modifier:
+    path:     /produit/ModifierProduit
+    defaults: { _controller: HealthAdvisorBundle:Produit:Passer_ModifierProduit }
+
+supprimer_produit:
+    path:     /produit/SupprimerProduit
+    defaults: { _controller: HealthAdvisorBundle:Produit:SupprimerProduit }
+
+produit_modifier:
+    path:     /produit/Modifier_Produit
+    defaults: { _controller: HealthAdvisorBundle:Produit:ModifierProduit }
+
+
+signaler_produit:
+    path:     /produit/signaler
+    defaults: { _controller: HealthAdvisorBundle:Produit:SignalerProduit }
+add_produit:
+    path:     /produit/addProduit
+    defaults: { _controller: HealthAdvisorBundle:Produit:AddProduit }
+
+new:
+    path:     /order/new/{amount}
+    defaults: { _controller: HealthAdvisorBundle:Order:new }
+
+show:
+    path:     /order/{id}/show
+    defaults: { _controller: HealthAdvisorBundle:Order:show }
+
+paymentCreate:
+    path:     /order/new/{id}/payment/create
+    defaults: { _controller: HealthAdvisorBundle:Order:paymentCreate }
+
+paymentComplete:
+    path:     /order/new/{id}/payment/complete
+    defaults: { _controller: HealthAdvisorBundle:Order:paymentComplete }
+
+admin_charts:
+    path:     /admin/chart
+    defaults: { _controller: HealthAdvisorBundle:Admin_Template:chart }
+
+Sort:
+    path:     /produit/sort
+    defaults: { _controller: HealthAdvisorBundle:Produit:Sort }
+question_supprimer:
+    path:     /question/supprimer/{id}
+    defaults: { _controller: HealthAdvisorBundle:Question:deleteQuestion }
+supprimer_reponse:
+    path:     /supprimer/{idReponse}
+    defaults: { _controller: HealthAdvisorBundle:Reponse:supprimerReponse }
+afficher_questions_admin:
+    path:     /admin/questions/liste
+    defaults: { _controller: HealthAdvisorBundle:Admin_Template:afficherListeQuestion }
+supprimer_questions_admin:
+    path:     /admin/questions/supprimer/{id}
+    defaults: { _controller: HealthAdvisorBundle:Admin_Template:deleteQuestion }
+afficher_reponses_admin:
+    path:     /admin/reponses/liste/{id}
+    defaults: { _controller: HealthAdvisorBundle:Admin_Template:afficherListeReponses }
+supprimer_reponsess_admin:
+    path:     /admin/reponses/supprimer/{idReponse}
+    defaults: { _controller: HealthAdvisorBundle:Admin_Template:supprimerReponse }
+afficher_sondages_admin:
+    path:     /admin/sondages/liste
+    defaults: { _controller: HealthAdvisorBundle:Admin_Template:afficherListeSondages }
+supprimer_sondage_admin:
+    path:     /admin/sondages/supprimer/{idSondage}
+    defaults: { _controller: HealthAdvisorBundle:Admin_Template:deleteSondage }
+ajouter_sondage_admin:
+    path:     /admin/sondages/ajouter
+    defaults: { _controller: HealthAdvisorBundle:Admin_Template:ajouterSondage }
+form_sondage_admin:
+    path:     /admin/sondages/form
+    defaults: { _controller: HealthAdvisorBundle:Admin_Template:formSondage }
+sondage:
+    path:     /sondage
+    defaults: { _controller: HealthAdvisorBundle:Sondage:afficherListeSondages }
+avis:
+    path:     /sondage/avis
+    defaults: { _controller: HealthAdvisorBundle:Sondage:avis }
+envoyer_reponse_sondage:
+    path:     /sondage/reponse
+    defaults: { _controller: HealthAdvisorBundle:Sondage:AjoutReponse }
+stat:
+    path:     /sondage/stat
+    defaults: { _controller: HealthAdvisorBundle:Admin_Template:Stat }
+liste_question:
+    path:     /question/liste
+    defaults: { _controller: HealthAdvisorBundle:Question:afficherListeQuestion }
+afficher_mes_question:
+    path:     /question/afficherquestion
+    defaults: { _controller: HealthAdvisorBundle:Question:afficherMesQuestions }
+ajouter_question:
+    path:     /question/ajouter
+    defaults: { _controller: HealthAdvisorBundle:Question:ajouterQuestion }
+afficher_question:
+    path:     /question/{id}
+    defaults: { _controller: HealthAdvisorBundle:Question:afficherQuestion }
+modifier_question:
+    path:     /question/{id}/modifier
+    defaults: { _controller: HealthAdvisorBundle:Question:modifierQuestion }
+liste_reponse:
+    path:     /reponse/liste
+    defaults: { _controller: HealthAdvisorBundle:Reponse:index }
+ajouter_reponse:
+    path:     /reponse/ajouter/{id}
+    defaults: { _controller: HealthAdvisorBundle:Reponse:ajouterReponse }
+afficher_reponse:
+    path:     /reponse/{idReponse}
+    defaults: { _controller: HealthAdvisorBundle:Reponse:afficherReponse }
+modifier_reponse:
+    path:     /reponse/{idReponse}/modifier
+    defaults: { _controller: HealthAdvisorBundle:Reponse:modifierReponse }
+ajoutEvt:
+    path:     /evenement/ajoutEvt
+    defaults: { _controller: HealthAdvisorBundle:Evennement:ajoutEvenement }
+deleteEvt:
+    path:     /evenement/deleteEvt/{id}
+    defaults: { _controller: HealthAdvisorBundle:Evennement:deleteEvt }
+listEvt:
+    path:     /evenement/listEvt
+    defaults: { _controller: HealthAdvisorBundle:Evennement:listEvt }
+navigEvt:
+    path:     /evenement/navigEvt
+    defaults: { _controller: HealthAdvisorBundle:Evennement:navigEvt }
+myEvt:
+    path:     /evenement/myEvt
+    defaults: { _controller: HealthAdvisorBundle:Evennement:myEvt }
+afficheEvt:
+    path:     /evenement/afficheEvt/{id}
+    defaults: { _controller: HealthAdvisorBundle:Evennement:affichEvt }
+validEvt:
+    path:     /evenement/validEvt/{id}
+    defaults: { _controller: HealthAdvisorBundle:Evennement:validEvt }
+invalidEvt:
+    path:     /evenement/invalidEvt/{id}
+    defaults: { _controller: HealthAdvisorBundle:Evennement:invalidEvt }
+ajoutArt:
+    path:     /article/ajoutArt
+    defaults: { _controller: HealthAdvisorBundle:Article:ajoutArt }
+deleteArt:
+    path:     /article/deleteArt/{id}
+    defaults: { _controller: HealthAdvisorBundle:Article:deleteArt }
+listArt:
+    path:     /admin/listArt
+    defaults: { _controller: HealthAdvisorBundle:Article:listArt }
+navigArt:
+    path:     /article/navigArt
+    defaults: { _controller: HealthAdvisorBundle:Article:navigArt }
+myArt:
+    path:     /article/myArt
+    defaults: { _controller: HealthAdvisorBundle:Article:myArt }
+afficheArt:
+    path:     /article/afficheArt/{id}
+    defaults: { _controller: HealthAdvisorBundle:Article:afficheArt }
+validArt:
+    path:     /article/validArt/{id}
+    defaults: { _controller: HealthAdvisorBundle:Article:validArt }
+invalidArt:
+    path:     /article/invalidArt/{id}
+    defaults: { _controller: HealthAdvisorBundle:Article:invalidArt }
+pdfGenerate:
+    path:     /article/pdfGenerate/{id}
+    defaults: { _controller: HealthAdvisorBundle:Article:pdfGenerate }
+ajoutNote:
+    path:     /article/ajoutNote
+    defaults: { _controller: HealthAdvisorBundle:ArticleNote:ajoutNote }
+participEvt:
+    path:     /evenement/participEvt
+    defaults: { _controller: HealthAdvisorBundle:Evennement:participe }
+afficher_aliment:
+    path:     /admin/afficherAliment
+    defaults: { _controller: HealthAdvisorBundle:Aliment:afficherAliment }
+ajouter_aliment:
+    path:     /admin/ajoutAliment
+    defaults: { _controller: HealthAdvisorBundle:Aliment:ajouterAliment }
+modifier_aliment:
+    path:     /admin/modifAliment
+    defaults: { _controller: HealthAdvisorBundle:Aliment:modifierAliment }
+supprimer_aliment:
+    path:     /admin/suppAliment
+    defaults: { _controller: HealthAdvisorBundle:Aliment:supprimerAliment }
+rechercher_aliment:
+    path:     /admin/rechercheAliment
+    defaults: { _controller: HealthAdvisorBundle:Aliment:rechercheAliment }
+afficher_outilBiennetre:
+    path:     /outils
+    defaults: { _controller: HealthAdvisorBundle:Biennetre:indexOutilBiennetre }
+ajouter_infoSante:
+    path:     /outils/ajouterInfoSanter
+    defaults: { _controller: HealthAdvisorBundle:Biennetre:ajouterInfoSante }
+afficher_infoSante:
+    path:     /outils/afficherInfoSante
+    defaults: { _controller: HealthAdvisorBundle:Biennetre:afficherInfoSante }
+gerer_regime:
+    path:     /gestionRegime
+    defaults: { _controller: HealthAdvisorBundle:Aliment:AfficherRegime }
+calculCalorie:
+    path:     /calculCalorie
+    defaults: { _controller: HealthAdvisorBundle:Biennetre:calculCalorie }
+suivreRegime:
+    path:     /regime
+    defaults: { _controller: HealthAdvisorBundle:Biennetre:suivreRegime }
+listeRegime:
+    path:     /listeRegime
+    defaults: { _controller: HealthAdvisorBundle:Biennetre:proposerRegime }
+micronutrition:
+    path:     /micronutrition/
+    defaults: { _controller: HealthAdvisorBundle:Biennetre:regimeMicronutrition }
+regime_dissocie:
+    path:     /regime_dissocie
+    defaults: { _controller: HealthAdvisorBundle:Biennetre:regimeDissocie }
+regime_hyper_proteine:
+    path:     /regime_hyper_proteine
+    defaults: { _controller: HealthAdvisorBundle:Biennetre:regimeHyperProteine }
+regime_hypo_calorique:
+    path:     /regime_hypo_calorique
+    defaults: { _controller: HealthAdvisorBundle:Biennetre:regimeHypoCalorique }
+regime_jeune:
+    path:     /regime_jeune
+    defaults: { _controller: HealthAdvisorBundle:Biennetre:regimeJeune }
+supprimer_Regime:
+    path:     /supprimer_regime/{nomRegime}/
+    defaults: { _controller: HealthAdvisorBundle:Biennetre:supprimerRegime }
+bot_chat:
+    path:     /bot
+    defaults: { _controller: HealthAdvisorBundle:Biennetre:chatbot }
+ResoudreReclamation:
+    path:     /admin/resoudreReclamation
+    defaults: { _controller: HealthAdvisorBundle:Reclamation:Resoudre }
+geo:
+    path:     /geolocalisation
+    defaults: { _controller: HealthAdvisorBundle:Default:Geolocalisation }
+symptomchecker:
+    path:     /symptomechecker
+    defaults: { _controller: HealthAdvisorBundle:Default:AnalyseSympt }
+FindBodyParts:
+    path:     /findbodyparts
+    defaults: { _controller: HealthAdvisorBundle:Default:FindBodyParts }
+FindSubBodyParts:
+    path:     /findsubbodyparts
+    defaults: { _controller: HealthAdvisorBundle:Default:FindSubBodyParts }
+FindSymptoms:
+    path:     /findsymptoms
+    defaults: { _controller: HealthAdvisorBundle:Default:FindSymptoms }
+FindMaladie:
+    path:     /findmaladie
+    defaults: { _controller: HealthAdvisorBundle:Default:FindMaladie }
+Reclamation:
+    path:     /reclamation
+    defaults: { _controller: HealthAdvisorBundle:Reclamation:Reclamation }
+ReclamationBack:
+    path:     /admin/reclamation
+    defaults: { _controller: HealthAdvisorBundle:Reclamation:reclamationBack }
+
+
+

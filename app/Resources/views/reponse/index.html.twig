@@ -1,0 +1,106 @@
+{% extends 'HealthAdvisorBundle:Default:index.html.twig' %}
+
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+    {% block header %}
+        {{ parent() }}
+
+    {% endblock %}
+
+    <div class="page-header">
+        <div class="container">
+            <h1>Questions & Réponses</h1>
+            <br>
+            <ul class="breadcrumb">
+                <li><a href="home-version-1.html">Home</a></li>
+                <li class="active">Questions & Réponses</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="loader-backdrop">           <!-- Loader -->
+        <div class="loader">
+        </div>
+    </div>
+
+    <div class="container mt-60">
+        <div class="row">
+
+            <div class="col-sm-2 mt-20">
+
+            </div>
+
+            <div class="col-sm-8 mt-20">
+                <h3 class="heading">Vous avez une question médicale ?
+                    <span class="color1">Posez la sur Health Advisor !</span>
+                </h3>
+                <p class="justify" style="color: #1696E7">
+                    <b>Question : {{ question }}</b>
+                </p>
+                <br>
+
+                {% for reponse in reponses %}
+                    <blockquote>
+                        <div class="col-sm-12">
+                            <div class="col-sm-9">
+                                <p>
+                                    {{ reponse.reponse }}
+                                </p>
+                            </div>
+
+                            <div class="col-sm-1">
+
+                                {% if app.user.username==reponse.idMedecin.login.login %}
+                                    <a href="{{ path('modifier_reponse', {'idReponse': reponse.idReponse}) }}" class="btn btn-primary btn-sm"><span class="fa fa-pencil" aria-hidden="true"></span></a>
+                                {% else %}
+                                {% endif %}
+                            </div>
+
+
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-1">
+                                {% if app.user.username==reponse.idMedecin.login.login %}
+                                    <a href="{{ path('supprimer_reponse', {'idReponse': reponse.idReponse}) }}" class="btn btn-primary btn-sm"><span class="fa fa-trash"></span></a>
+                                {% else %}
+                                {% endif %}
+                            </div>
+                        </div>
+                        <footer>
+                            <cite title="Cite" style="color: #1696e7">Utilisateur : {{ reponse.idMedecin.login.login }}, publiée le : {{ reponse.datePublication|date('d-m-Y H:i:s') }} </cite>
+                        </footer>
+
+                    </blockquote>
+                {% endfor %}
+
+
+
+            </div>
+
+
+
+
+            <div class="col-sm-2 mt-20">
+
+            </div>
+        </div>
+    </div>
+
+
+
+    {% block footer %}
+        {{ parent() }}
+    {% endblock %}
+
+
+
+    {% block script %}
+        {{ parent() }}
+    {% endblock %}
+
+
+
+{% endblock %}

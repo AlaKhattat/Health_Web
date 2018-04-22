@@ -1,0 +1,265 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style type="text/css">
+        #{section_id} .collection-product .product-details {
+
+            background-color: #F7F8F9;
+
+        }
+    </style>
+{% endblock %}
+
+
+{% block header %}
+    {{ parent() }}
+
+
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+
+    <div id="notify-bar" class="error" style="display: none;">
+        <div class="message" id="msg_notif"></div>
+        <a href="#" class="close" data-close="" onclick="fermerMsg_erreur()">×</a>
+    </div>
+    <header class="page-header row" style="background-color: #F7F8F9">
+        <div class="large-6 columns">
+            <h1 class="title" data-default-text="Products">Products</h1>
+        </div>
+        <div class="large-6 columns text-right-large" style="background-color: #F7F8F9">
+            <div class="separator margin-top-50 no-margin-bottom hide-for-large" aria-hidden="true"></div>
+            <div class="sort-collection inline-block">
+                <select  data-sort-by="" id="orders" >
+                    <option value="">Sort</option>
+                    <option value="price-ascending" >Price: Low to High</option>
+                    <option value="price-descending">Price: High to Low</option>
+                    <option value="title-ascending" >A-Z</option>
+                        <option value="title-descending">Z-A</option>
+                </select>
+            </div>
+            <div class="filter-collection inline-block">
+                <select class="jump-menu" name="filter-collection-by-tag" id="filter-collection-by-tag">
+                    <option value="">Filter</option>
+                    <option value="/collections/all/bath">Bath</option>
+                    <option value="/collections/all/exfoliating">Exfoliating</option>
+                    <option value="/collections/all/gift-set">Gift Set</option>
+                    <option value="/collections/all/on-sale">On Sale</option>
+                    <option value="/collections/all/popular">Popular</option>
+                    <option value="/collections/all/soap">Soap</option>
+                    <option value="/collections/all/under-10">Under $10</option>
+                </select>
+            </div>
+        </div>
+    </header>
+
+    <div class="separator no-margin-top margin-bottom" aria-hidden="true"></div>
+
+
+    <div class="collection-products" id="div" style="background-color: #F7F8F9;margin-bottom: 30px" >
+        <div class="small-item-grid-1 medium-item-grid-3 large-item-grid-4 row-spacing-100" id="grand_div" style="margin-left: 20px;margin-right: 20px;margin-bottom: 30px"  >
+            {% set i=0 %}
+            {% for produit in produits %}
+                <article id="aloe-shower-scrub-moisture-set" class="item collection-product"    >
+                    <div class="image-container " style="max-width: 611px;" data-image-id="299953705" >
+                        <a href="{{ path('produit_afficher',{'id':produit.idProduit}) }}" >
+                            <div class="image-container-position" style="padding-top: 75%;">
+                                <img class="lazyload " src="{{ produit.urlImage }}" data-image-id="299953705"  data-aspectratio="0.7478580171358629" data-sizes="auto" alt=""  >
+                            </div>
+                        </a>
+                    </div>
+                    <noscript>
+                        <div class="text-center">
+                            <img src="{{ produit.urlImage }}" alt="" />
+                        </div>
+                    </noscript>
+                    <div class="product-details">
+                        <div class="title-wrap">
+                            <header>
+                                <h3 class="title font-size-16">
+                                    <a href="{{ path('produit_afficher',{'id':produit.idProduit}) }}" title="Aloe Shower, Scrub & Moisture Set">{{ produit.nom }}</a>
+                                </h3>
+                            </header>
+                            <div class="vendor lht font-size-14">Ref: {{ produit.reference }}</div>
+                            <input type="hidden" id="id" value="{{ produit.idProduit }}">
+                        </div>
+                        {% if produit.promotion == 0 %}
+                            <div class="pricing lht">
+                                <span class="from text-light font-size-14 hidden">from</span>
+                                <span class="price sell-price font-size-14 fw-600 lht inline-block" data-price data-base-price="2900" >${{ produit.prixVente }}</span>
+                            </div>
+                        {% elseif produit.promotion > 0 %}
+                            <div class="pricing lht">
+                                <span class="from text-light font-size-14 hidden">from</span>
+                                <span class="price sell-price font-size-14 fw-600 lht inline-block" data-price data-base-price="2900" >${{ produit.prixVente - ((produit.prixVente * produit.promotion)/100) }}</span>
+                                <span class="price compare-at text-light font-size-14 fw-300 lht inline-block" data-price data-base-price="3900" >${{ produit.prixVente }}</span>
+                            </div>
+                        {% endif %}
+                        <div class="actions">
+                            <form method="post"  action="">
+                                <button class="add-to-cart button small" type="button" onclick="ajoutPanier({{ i }},{{ produit.idProduit}})" id="{{ i}} ">Add to Cart</button>
+                                {% if produit.signalisationEtat == 0 %}
+                                <button class="add-to-cart button small" type="button" onclick="SignalerProduit({{ produit.idProduit }},{{ i }})" id="{{ i }}">Signaler</button>
+                                {% elseif produit.signalisationEtat == 1 %}
+                                <button class="add-to-cart button small" type="button" onclick="SignalerProduit({{ produit.idProduit }},{{ i  }})" id="{{ i }}">Annuler</button>
+                                {% endif %}
+                            </form>
+                        </div>
+                    </div>
+                </article>
+                {%   set i=i+1 %}
+            {% endfor %}
+
+
+        </div>
+    </div>
+
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('jquery-3.2.1.js')}}"></script>
+    <script>
+        function ajoutPanier(id_btn,id_produit) {
+                var link='http://localhost'+'{{ path('add_produit_panier') }}';
+                console.log('working');
+                    var identifiant_btn=id_btn;
+                    var identifiant_prod=id_produit;
+                    console.log(identifiant_btn+"  "+identifiant_prod);
+                    $.ajax({
+                            type:"POST",
+                            data:{'id_produit':identifiant_prod},
+                            url: link,
+                            success:function (data) {
+                                console.log(data);
+                                var cpt=0;
+                                $.each(data,function (key,value) {
+                                 cpt=cpt+1;
+                                });
+                               $('#nb_panier').text(cpt);
+                                $('#notify-bar').fadeIn().fadeOut(10000).css('background-color','#3AA0E0');
+                                $('#msg_erreur').html('Produit ajouté au panier avec succées');
+                            }
+                        }
+                    );
+
+            }
+        function SignalerProduit(id_produit,id_btn) {
+            var link = 'http://localhost' + '{{ path('signaler_produit') }}';
+            console.log('working');
+            console.log('#'+id_btn);
+            var button_value = $('#'+id_btn).text();
+            if (button_value.localeCompare("Signaler") == 0) {
+                $.ajax({
+                        type: "POST",
+                        data: {'id_produit': id_produit, 'btn_value': button_value},
+                        url: link,
+                        success: function (data) {
+                            //console.log(data);
+                            console.log(id_btn);
+                            $('#'+id_btn).html('Annuler');
+                            $('#notify-bar').fadeIn().fadeOut(10000).css('background-color', '#3AA0E0');
+                            $('#msg_notif').html('Produit a été signalé avec succées');
+                        }
+                    }
+                );
+            }
+            else if (button_value.localeCompare("Annuler") == 0) {
+                $.ajax({
+                        type: "POST",
+                        data: {'id_produit': id_produit, 'btn_value': button_value},
+                        url: link,
+                        success: function (data) {
+                            //console.log(data);
+                            console.log(id_btn);
+                            $('#'+id_btn).html('Signaler');
+                            $('#notify-bar').fadeIn().fadeOut(10000).css('background-color', '#3AA0E0');
+                            $('#msg_notif').html('Produit a été annuler de signalisation');
+                        }
+                    }
+                );
+            }
+            }
+        function fermerMsg_erreur() {
+            $('#notify-bar').hide();
+        }
+
+    </script>
+    <script>
+        $(function () {
+            var link='http://localhost'+'{{ path('Sort') }}';
+            var l1="{{ path('produit_afficher',{'id':'id'}) }}";
+            var l2="{{ path('produit_afficher',{'id':'id'}) }}";
+            console.log('working');
+            $('#orders').change(function () {
+                var choix=$( "#orders option:selected" ).text();
+                console.log('haboub   '+choix)
+                $.ajax({
+                        type:"POST",
+                        data:{'choix':choix},
+                        url: link,
+                        success:function (data) {
+                            console.log(data);
+                            $.each(data,function (key,value) {
+                                $('#grand_div').html(
+                                '<article id="aloe-shower-scrub-moisture-set" class="item collection-product">'+
+                                    '<div class="image-container " style="max-width: 611px;" data-image-id="299953705" >'+
+                                    '<a href="" >'+
+                                    '<div class="image-container-position" style="padding-top: 75%;">'+
+                                    '<img class="lazyload " src="" data-image-id="299953705"  data-aspectratio="0.7478580171358629" data-sizes="auto" alt=""  >'+
+                                    '</div>'+
+                                    '</a>'+
+                                    '</div>'+
+                                    '<noscript>'+
+                                    '<div class="text-center">'+
+                                    '<img src="" alt="" />'+
+                                    '</div>'+
+                                    '</noscript>'+
+                                    '<div class="product-details">'+
+                                    '<div class="title-wrap">'+
+                                    '<header>'+
+                                    '<h3 class="title font-size-16">'+
+                                    '<a href="" title="Aloe Shower, Scrub & Moisture Set"></a>'+
+                                    '</h3>'+
+                                    '</header>'+
+                                    '<div class="vendor lht font-size-14">Ref: </div>'+
+                                    '<input type="hidden" id="id" value="">'+
+                                    '</div>'+
+
+                                    '<div class="pricing lht">'+
+                                    '<span class="from text-light font-size-14 hidden">from</span>'+
+                                    '<span class="price sell-price font-size-14 fw-600 lht inline-block" data-price data-base-price="2900" >$</span>'+
+                                    '</div>'+
+
+                                    '<div class="pricing lht">'+
+                                    '<span class="from text-light font-size-14 hidden">from</span>'+
+                                    '<span class="price sell-price font-size-14 fw-600 lht inline-block" data-price data-base-price="2900" >$</span>'+
+                                    '<span class="price compare-at text-light font-size-14 fw-300 lht inline-block" data-price data-base-price="3900" >$</span>'+
+                                    '</div>'+
+
+                                    '<div class="actions">'+
+                                    '<form method="post"  action="">'+
+                                    '<button class="add-to-cart button small" type="button" onclick="" id="">Add to Cart</button>'+
+
+                                '<button class="add-to-cart button small" type="button" onclick="" id="">Signaler</button>'+
+
+                                    '<button class="add-to-cart button small" type="button" onclick="" id="">Annuler</button>'+
+
+                                    '</form>'+
+                                    '</div>'+
+                                    '</div>'+
+                                    '</article>')
+                            });
+
+                        }
+                    }
+                )
+            })
+        })
+
+    </script>
+
+
+
+{% endblock %}

@@ -1,0 +1,76 @@
+{% extends 'HealthAdvisorBundle:Default:index.html.twig' %}
+
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+    {% block header %}
+        {{ parent() }}
+
+    {% endblock %}
+
+    <div class="page-header">
+        <div class="container">
+            <h1>Sondages</h1>
+            <br>
+            <ul class="breadcrumb">
+                <li><a href="home-version-1.html">Home</a></li>
+                <li class="active">Sondages</li>
+            </ul>
+        </div>
+    </div>
+    <div class="container mt-60 mb-80">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2 class="heading text-center">Sondages</h2>
+                <hr class="hr-1">
+            </div>
+            <br><br><br><br><br>
+
+            {% for sondage in sondages %}
+
+                <form>
+                <div class="bgcolor3 pt-40 pb-40">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-12 text-center">
+                                <h3 class="heading inverse font-2 thin font26"><strong>{{ sondage.nomSondage }}</strong></h3>
+                                <br/>
+                                <a href="{{ path('avis', { 'nomSondage': sondage.nomSondage,'idSondage': sondage.idSondage }) }}" class="btn btn-primary"><i class="fa fa-star"></i> Donner votre Avis!</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </form>
+                <br><br>
+
+
+            {% endfor %}
+
+
+
+
+
+
+
+
+
+        </div>
+    </div>
+
+
+    {% block footer %}
+        {{ parent() }}
+    {% endblock %}
+
+
+
+    {% block script %}
+        {{ parent() }}
+    {% endblock %}
+
+
+
+{% endblock %}

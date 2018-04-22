@@ -1,0 +1,122 @@
+{% extends 'HealthAdvisorBundle:Default:index.html.twig' %}
+
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+    {% block header %}
+        {{ parent() }}
+
+    {% endblock %}
+
+    <div class="page-header">
+        <div class="container">
+            <h1>Questions & Réponses</h1>
+            <br>
+            <ul class="breadcrumb">
+                <li><a href="home-version-1.html">Home</a></li>
+                <li class="active">Questions & Réponses</li>
+            </ul>
+        </div>
+    </div>
+    <div class="container mt-60 mb-80">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2 class="heading text-center">Questions</h2>
+                <hr class="hr-1">
+
+                <p align="center"><a href="{{ path('afficher_mes_question') }}" class="btn btn-primary btn-sm"><span class="fa fa-inbox"> Mes questions</span></a></p>
+                <br/>
+                <p align="center"><a href="{{ path('ajouter_question') }}" class="btn btn-primary btn-sm"><span class="fa fa-question-circle"> Posez votre question</span></a></p>
+
+                <br/>
+            </div>
+            <div class="col-sm-8 col-sm-offset-2">
+                <div class="accordion-3">
+                    <div class="panel-group" id="a3" role="tablist" aria-multiselectable="true">
+
+
+                        {% set i= 1 %}
+                        {% for question in questions %}
+
+
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="a3heading1">
+                                <h4 class="panel-title">
+
+                                    <a role="button" data-toggle="collapse" data-parent="#a3" href="{{ "#a3body" ~  i }}" aria-expanded="false" aria-controls="{{ "#a3body" ~  i }}">
+                                        {{ question.question }}
+                                    </a>
+
+                                </h4>
+
+                            </div>
+                            <div style="border-style: solid; border-radius: 0.5rem; border-color: #1696e7" id="{{ "a3body" ~  i }}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="a3heading1">
+                                <div class="panel-body">
+                                    <div class="col-md-11">
+                                        Spécialité : {{ question.specialite }} <br/>
+                                        Date de publication : {{ question.datePublication | date }} <br/>
+                                        Patient : {{ question.idPatient.login }} <br/>
+
+
+                                    </div>
+                                    <div class="col-md-1">
+                                        <div class="row">
+                                            <a href="{{ path('liste_reponse', { 'id': question.id }) }}" class="btn btn-primary btn-sm"><span class="fa fa-list"></span></a>
+                                        </div>
+
+                                        <br>
+
+                                        <div class="row">
+                                            {% if app.user.username==question.idPatient.login %}
+                                                <a href="{{ path('modifier_question', { 'id': question.id }) }}" class="btn btn-primary btn-sm"><span class="fa fa-pencil"></span></a>
+                                            {% else %}
+                                            {% endif %}
+                                        </div>
+
+                                        <br>
+
+                                        <div class="row">
+                                            {% if app.user.username==question.idPatient.login %}
+                                                <a href="{{ path('question_supprimer', { 'id': question.id }) }}" class="btn btn-primary btn-sm"><span class="fa fa-trash"></span></a>
+                                            {% else %}
+                                            {% endif %}
+                                        </div>
+
+                                    </div>
+                                    <p align="center">
+                                        {% if medecin.specialite==question.specialite %}
+                                            <a href="{{ path('ajouter_reponse', { 'id': question.id }) }}" class="btn btn-primary btn-sm"><span class="fa fa-share-square-o"></span></a>
+                                        {% else %}
+                                        {% endif %}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                            {% set i=i+1 %}
+                        {% endfor %}
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    {% block footer %}
+        {{ parent() }}
+    {% endblock %}
+
+
+
+    {% block script %}
+        {{ parent() }}
+    {% endblock %}
+
+
+
+{% endblock %}

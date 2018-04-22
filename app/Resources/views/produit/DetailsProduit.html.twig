@@ -1,0 +1,184 @@
+{% extends 'base.html.twig' %}
+
+
+
+
+
+{% block stylesheets %}
+    {{ parent() }}
+
+{% endblock %}
+
+
+{% block header %}
+    {{ parent() }}
+
+
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+
+
+    <div id="notify-bar" class="error" style="display: none;">
+        <div class="message" id="msg_erreur"></div>
+        <a href="#" class="close" data-close="" onclick="fermerMsg_erreur()">×</a>
+    </div>
+    <div id="app-body">
+        <div id="app-body-inner">
+            <div class="column-max">
+                <nav class="breadcrumbs " role="navigation" aria-label="breadcrumbs">
+                    <a href="../index.html" title="Home">Home</a>
+                    <a href="aloe-shower-scrub-moisture-set.html" title="Aloe Shower, Scrub &amp; Moisture Set">Aloe Shower, Scrub &amp; Moisture Set</a>
+                </nav>
+            </div>
+            <div id="content-wrap" class="row column-max no-padding-top padding-bottom-200">
+                <section class="primary small-12 columns">
+                    <main role="main">
+                        <div id="shopify-section-product-template" class="shopify-section">
+                            <div class=" column-max" data-section-id="product-template" data-section-type="product-template">
+                                <article id="aloe-shower-scrub-moisture-set" class="product-detail" data-section-id="product-template" data-section-type="product" data-enable-history-state="true">
+                                    <div class="row">
+                                        <div class="medium-6 large-6 columns">
+                                            <div class="primary-images"  is-zoomable>
+                                                <div class="image-container primary-image-container" style="max-width: 611px;" data-image-id="299953705" >
+                                                        <div class="image-container-position" style="padding-top: 133.7152209%;">
+                                                            <img class="lazyload primary-image" src="{{ produit.urlImage }}" data-image-id="299953705" data-src="//cdn.shopify.com/s/files/1/0170/3006/products/Stocksy_txpcd4bb35cLY0000_Small_38594_{width}x.jpg?v=1376251963" data-aspectratio="0.7478580171358629" data-sizes="auto" alt="Aloe Shower, Scrub & Moisture Set"  data-src-master="../../cdn.shopify.com/s/files/1/0170/3006/products/Stocksy_txpcd4bb35cLY0000_Small_385946906.jpg?v=1376251963">
+                                                        </div>
+                                                </div>
+                                                <noscript>
+                                                    <div class="text-center">
+                                                        <img src="{{ produit.urlImage }}" alt="Aloe Shower, Scrub &amp; Moisture Set" />
+                                                    </div>
+                                                </noscript>
+                                            </div>
+                                            <div class="separator margin-top-50 margin-bottom-50" aria-hidden="true"></div>
+                                        </div>
+                                        <div class="medium-6 large-6 columns">
+                                            <div class="separator margin-top-150 no-margin-bottom   show-for-small" aria-hidden="true"></div>
+                                            <header class="page-header no-margin-bottom">
+                                                <div class="">
+                                                    <h1 class="title" data-default-text="Aloe Shower, Scrub & Moisture Set">{{ produit.nom }}</h1>
+                                                </div>
+                                            </header>
+                                            <div class="vendor">
+                                                Ref: {{ produit.reference }}
+                                            </div>
+                                            <div class="separator no-margin-top margin-bottom-50" aria-hidden="true"></div>
+                                            <span class="badge sale sale-sticker hidden">Sale!</span>
+                                            {% if produit.promotion == 0 %}
+                                                <div class="pricing lht">
+                                                    <span class="from text-light font-size-14 hidden">from</span>
+                                                    <span class="price sell-price font-size-14 fw-600 lht inline-block" data-price data-base-price="2900" >${{ produit.prixVente }}</span>
+                                                </div>
+                                            {% elseif produit.promotion > 0 %}
+                                                <div class="pricing lht">
+                                                    <span class="from text-light font-size-14 hidden">from</span>
+                                                    <span class="price sell-price font-size-14 fw-600 lht inline-block" data-price data-base-price="2900" >${{ produit.prixVente - ((produit.prixVente * produit.promotion)/100) }}</span>
+                                                    <span class="price compare-at text-light font-size-14 fw-300 lht inline-block" data-price data-base-price="3900" >${{ produit.prixVente }}</span>
+                                                </div>
+                                            {% endif %}
+                                            <div class="separator margin-top-50 no-margin-bottom" aria-hidden="true"></div>
+                                            <div class="variants">
+                                                <div data-section="product-template">
+                                                    <form method="post" action="https://providence-seaside.myshopify.com/cart/add" id="product_form_99154980" accept-charset="UTF-8" class="shopify-product-form" enctype="multipart/form-data"><input type="hidden" name="form_type" value="product" /><input type="hidden" name="utf8" value="✓" />
+                                                        <input type="hidden" name="id" value="231147586">
+                                                        <div class="small-item-grid-1 medium-item-grid-2 large-item-grid-2 row-spacing-50">
+                                                            <div class="item">
+                                                                <label for="quantity">Qty.</label>
+                                                                <input id="quantite" name="quantity" type="number" min="1" value="1">
+                                                            </div>
+                                                        </div>
+                                                        <div class="separator margin-top-50 margin-bottom-50" aria-hidden="true"></div>
+                                                        <div class="small-item-grid-1 medium-item-grid-2 row-spacing-50">
+                                                            <div class="item">
+                                                                <button class="add-to-cart button width-100" type="button" id="btn_addPanier" onclick="AddProduitDetail_Panier({{ produit.idProduit }},{{ produit.quantite }})">Add to Cart</button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <div class="backorder-notice hidden lht">
+                                                <div class="separator lined full margin-top margin-bottom" aria-hidden="true"></div>
+                                                <div class="table">
+                                                    <div class="cell">
+                                                        <i class="fa fa-2x fa-warning"></i>
+                                                    </div>
+                                                    <div class="cell">
+                                                        <span class="text">This item is currently on backorder but you can still purchase it now and we'll ship as soon as more become available.</span>
+                                                    </div>
+                                                </div>
+                                                <div class="separator lined full margin-top no-margin-bottom" aria-hidden="true"></div>
+                                            </div>
+                                            <div class="separator margin-top-50 margin-bottom-50" aria-hidden="true"></div>
+                                            <div class="description">
+
+                                                <p><span></span><span>{{ produit.description }}</span></p>
+                                            </div>
+                                            <div class="separator margin-top-50 no-margin-bottom" aria-hidden="true"></div>
+                                            <span class="quantity-available text-light"><span class="quantity-available-label">Qty available:</span> <span data-quantity-available>{{ produit.quantite }}</span></span>
+                                            <div class="separator " aria-hidden="true"></div>
+                                            <div class="separator " aria-hidden="true"></div>
+                                            <div class="social-media-buttons  " data-permalink="aloe-shower-scrub-moisture-set.html">
+                                                <div class="share-button facebook">
+                                                    <div class="fb-like" data-href="https://providence-seaside.myshopify.com/products/aloe-shower-scrub-moisture-set" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+                        </div>
+                    </main>
+                </section>
+            </div> <!-- #content-wrap -->
+        </div>
+    </div>
+
+
+
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('jquery-3.2.1.js')}}"></script>
+    <script>
+        function AddProduitDetail_Panier(id_produit,Qte_dispo) {
+            var link = 'http://localhost' + '{{ path('update_produit_detail_panier') }}'
+            console.log('working');
+            var qte = $('#quantite').val();
+            console.log(qte);
+            if (qte > Qte_dispo) {
+              $('#quantite').css('border-color','red');
+              $('#notify-bar').fadeIn().fadeOut(10000).css('background-color','red');
+              $('#msg_erreur').html('La Quantite depasse la quantite disponible');
+            }
+            else {
+                $('#quantite').css('border-color','green');
+                $.ajax({
+                    type: "POST",
+                    data: {'id_produit': id_produit, 'quantite': qte},
+                    url: link,
+                    success: function (data) {
+                        console.log(data);
+                        var cpt=0;
+                        $.each(data,function (key,value) {
+                            cpt=cpt+1;
+                        });
+                        $('#nb_panier').text(cpt);
+                        $('#notify-bar').fadeIn().fadeOut(10000).css('background-color','#3AA0E0');
+                        $('#msg_erreur').html('Mis a jour du panier effectuée avec succés');
+                    }
+                })
+            }
+        }
+        function fermerMsg_erreur() {
+            $('#notify-bar').hide();
+        }
+    </script>
+
+
+
+
+
+
+{% endblock %}

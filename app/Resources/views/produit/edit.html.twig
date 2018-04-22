@@ -1,0 +1,122 @@
+{% extends 'base.html.twig' %}
+
+
+{% block stylesheets %}
+    {{ parent() }}
+
+{% endblock %}
+
+{% block header %}
+    {{ parent() }}
+
+{% endblock %}
+{% block body %}
+    {{ parent() }}
+    <form name="search" action="" style="width: 500px">
+        <h2 class="title" data-default-text="Products" style="margin-left: 20px" >Modifier un produit :</h2>
+        <table style="width: 1200px;margin-left: 20px;border-spacing: 10px;background-color: #F7F8F9;margin-bottom: 30px">
+            <tr>
+                <td>
+        <div class="large-20 columns">
+            <h4 class="title" data-default-text="Products">Reference :</h4>
+            <input class="search-text text-center" type="text" name="ref" placeholder="Reference" required id="ref" value="{{ produit.reference }}" disabled>
+        </div>
+                </td>
+                <td>
+        <div class="large-20 columns">
+            <h4 class="title" data-default-text="Products">Nom produit :</h4>
+            <input class="search-text text-center" type="text" name="nom" placeholder="Nom produit" required id="nom" value="{{ produit.nom }}" >
+        </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+        <div class="large-20 columns">
+            <h4 class="title" data-default-text="Products">Description :</h4>
+            <input class="search-text text-center" type="text" name="desc" placeholder="Description" required id="desc" value="{{ produit.description }}">
+        </div>
+                </td>
+                <td>
+        <div class="large-20 columns">
+            <h4 class="title" data-default-text="Products">Image :</h4>
+            <input class="search-text text-center" type="file" name="img"  id="img" value="{{ produit.urlImage }}" >
+        </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+        <div class="large-20 columns">
+            <h4 class="title" data-default-text="Products">Type :</h4>
+            <select id="type">
+                <option value="sante">Sante</option>
+                <option value="bien etre">Bien etre</option>
+            </select>
+        </div>
+                </td>
+                <td>
+                <div class="large-20 columns">
+            <h4 class="title" data-default-text="Products">Prix vente :</h4>
+            <input class="search-text text-center" type="number" name="prix" required id="prix" value="{{ produit.prixVente }}" >
+        </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+        <div class="large-20 columns">
+            <h4 class="title" data-default-text="Products">Promotion :</h4>
+            <input class="search-text text-center" type="number" name="prom" required id="prom" value="{{ produit.promotion }}">
+        </div>
+                </td>
+                <td>
+        <div class="large-20 columns">
+            <h4 class="title" data-default-text="Products">Quantite :</h4>
+            <input class="search-text text-center" type="number" name="qte" required id="qte" value="{{ produit.quantite }}">
+        </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+        <div class="large-20 columns">
+            <button class="add-to-cart button small" type="button" id="modifier" name="modifier">Modifier</button>
+        </div>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <input type="hidden" value="{{ produit.idProduit }}" id="id_produit">
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('jquery-3.2.1.js')}}"></script>
+    <script>
+        $(function () {
+            var link='http://localhost'+'{{ path('produit_modifier') }}'
+            console.log('working');
+            $('#modifier').click(function () {
+                var ref=$('#ref').val();
+                var nom=$('#nom').val();
+                var desc=$('#desc').val();
+                var img=$('#img').val()
+                var type=$('#type option:selected').text()
+                var prix=$('#prix').val();
+                var promotion=$('#prom').val();
+                var qte=$('#qte').val();
+                var id_produit=$('#id_produit').val();
+                $.ajax({
+                        type:"POST",
+                        data:{'ref':ref,'nom':nom,'desc':desc,'img':img,'type':type,'prix':prix,'promotion':promotion,'qte':qte,'id_produit':id_produit},
+                        url: link,
+                        success:function (data) {
+                            //console.log(data);
+
+                        }
+                    }
+                )
+            })
+        })
+    </script>
+
+
+
+{% endblock %}

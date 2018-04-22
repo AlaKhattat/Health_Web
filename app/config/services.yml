@@ -33,3 +33,6 @@ services:
     # AppBundle\Service\ExampleService:
     #     arguments:
     #         $someArgument: 'some_value'
+    payment.plugin.paypal:
+        class: HealthAdvisorBundle\Entity\PaypalPlugin
+        tags: [{name: payment.plugin}]

@@ -1,0 +1,118 @@
+    <div class="col-sm-8">
+        <div class="row">
+            {% for cle,regime in  regimes %}
+            <div class="col-sm-12">
+                <div class="career-box">
+                    <h3 class="heading"> {{ cle }} </h3>
+                    {% for keyRegime,sousRegime in regime  %}
+                     <div class="slots">
+                        <h6 class="heading">Les aliments que vous allez mangé seront</h6>
+                        <ul>
+                            {% for aliment in sousRegime.nomAliment %}
+                                <li>{{ aliment.nomAliment }}</li>
+                            {% endfor %}
+                        </ul>
+                     </div>
+                    <br>
+                    <div class="slots">
+                        <h6 class="heading">Description du regime</h6>
+
+                    </div>
+                    <div class="info">
+                        <p>{{ sousRegime.descriptionRegime }}</p>
+                    </div>
+                    <br>
+
+                    <div class="col-sm-12 " id="{{ keyRegime|split(' ')|join~'div'}}" style="display: none">
+                    {% for sport in sports %}
+                            <form>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <div class="col-sm-4">
+                                                <div class="checkbox" >
+                                                    <label for="laitier">
+                                                        <input type="checkbox" id="{{ keyRegime|split(' ')|join~sport.nomSport }}" value="{{ sport.nomSport }}">{{ sport.nomSport }}
+                                                    </label>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </form>
+
+                    {% endfor %}
+                    </div>
+                    <a href="#" id="{{keyRegime|split(' ')|join~'btnSport'}}  " class="btn btn-primary btn-sm" onclick="cacherBtn('{{keyRegime|split(' ')|join~'div'}}')"><i class="fa fa-plus"></i>+Sports</a>
+                    <a href="#" onclick="suivreRegime('{{ keyRegime}}','{{keyRegime|split(' ')|join~'div'}}')" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i>Suivre Regime</a>
+                </div>
+                {% endfor %}
+            </div>
+            {% endfor %}
+
+
+
+        </div>
+    </div>
+   <script>
+       function cacherBtn(div) {
+          console.log(div);
+           $('#'+div).toggle();
+       }
+       function suivreRegime(idRegime,sport)
+       {
+           var tableauSport= retournerChecked(sport);
+           var allergies = [];
+           var allergiesSupp = [];
+           var maladiesSupp = [];
+           var age = {{ age }};
+           var taille={{ taille }};
+           var poids={{ poids }};
+           var poidsAperdre={{ poidsAPerdre }};
+           var duree = '{{ duree }}';
+           {% for index,allergie in allergies %}
+              allergies.push('{{ index }}');
+           {% endfor %}
+           {% for index,allSup in allergiesSupp %}
+              allergiesSupp.push('{{ allSup }}');
+           {% endfor %}
+           {% for mal in maladiesSupp %}
+               maladiesSupp.push('{{ mal  }}');
+           {% endfor %}
+
+              var link = 'http://localhost' + '{{ path('listeRegime') }}';
+              var action="suivreRegime";
+              $.ajax({
+                  type: 'GET',
+                  data: {'idRegime': idRegime, 'sport': tableauSport,'action':action,'age': age,'taille':taille,'poids':poids,'poidsAperdre':poidsAperdre,'allergies':allergies,'allergiesSupp':allergiesSupp,'maladiesSupp':maladiesSupp,'duree':duree},
+                  url: link,
+                  success: function (data) {
+                  console.log("succes");
+                  var lien = 'http://localhost'+ '{{ path('suivreRegime') }}';
+                  $(location).attr('href',lien);
+                  console.log(data);
+                  }
+              });
+
+
+       }
+       function retournerChecked(sport) {
+           var tableau = [];
+           $("#"+sport).find('input').each(function (index,element) {
+               console.log(element);
+               verifierChecked(element,tableau);
+           });
+           return tableau;
+       }
+       function verifierChecked(input,tableau)
+       {
+           if($(input).is(':checked'))
+           {
+               tableau.push($(input).val());
+           }
+           return tableau;
+       }
+   </script>

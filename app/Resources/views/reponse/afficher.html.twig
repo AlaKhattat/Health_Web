@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Reponse</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Idreponse</th>
+                <td>{{ reponse.idReponse }}</td>
+            </tr>
+            <tr>
+                <th>Reponse</th>
+                <td>{{ reponse.reponse }}</td>
+            </tr>
+            <tr>
+                <th>Datepublication</th>
+                <td>{% if reponse.datePublication %}{{ reponse.datePublication|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Modificationetat</th>
+                <td>{% if reponse.modificationEtat %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Signalisationetat</th>
+                <td>{% if reponse.signalisationEtat %}Yes{% else %}No{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('liste_reponse') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('modifier_reponse', { 'idReponse': reponse.idReponse }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

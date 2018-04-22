@@ -110,4 +110,67 @@ fos_user:
     from_email:
         address: "healthadvisoresprit@gmail.com"
         sender_name: "HealthAdvisor"
-fkdfkdfdkfldfdklfdkfdkfdfkdfdfkldfkdfdkfdlfdk
+cmen_google_charts:
+    version: "current"
+jms_payment_core:
+    encryption:
+        secret: def00000539554ce30eda478218a64c110ce9b704b9bbfc4235e6a79ea5636e5a2c7083bba1149fe6dc6d4898f7c93e514fbf9f20cbf86a3d3199bd204c20b9bac85fd5b
+jms_payment_paypal:
+    username: habib-hentati-facilitator_api1.hotmail.com
+    password: Z3TWMGTTLKMDPMCW
+    signature: AoiCBNGVMlgj2ndAkLS-nFk5d9sfAepkcaSZtRBac0CssiQ1gy2EcNpX
+vresh_twilio:
+    #(Required) Your Account SID from www.twilio.com/user/account
+    sid: 'AC40545fb7cdf182ebe4ab0dadbf86a437'
+    #(Required) Your Auth Token from www.twilio.com/user/account
+    authToken: '7a15199fc32ec77264796e09e6449dfb'
+    #(Optional, default: 1) Number of times to retry failed requests
+    retryAttempts: 3
+nomaya_social:
+    buttons:
+        facebook:
+            url:            null
+            locale:         "fr_FR"
+            send:           false
+            width:          300
+            showFaces:      false
+            layout:         "button_count"
+        twitter:
+            url:            null
+            locale:         "fr"
+            message:        "Je veux partager ça avec vous"
+            text:           "Tweet"
+            via:            "L'Equipe cartedevisitevirtuelle.fr"
+            tag:            "ttot"
+        googleplus:
+            url:            null
+            locale :        "fr"
+            size :          "medium"
+            annotation :    "bubble"
+            width :         300
+        linkedin:
+            url:            null
+            locale:         "fr_FR"
+            counter:        "right"
+        pinterest:
+            url:            null
+    links:
+        facebook:           "http://www.facebook.com/yann.chauvel"
+        googleplus:         "https://plus.google.com/105931415830389032796"
+    theme:                  'default' # optional
+knp_snappy:
+    pdf:
+        enabled:    true
+        binary:     "\"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe\""
+        options:    []
+    image:
+        enabled:    true
+        binary:     "\"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltoimage.exe\""
+        options:    []
+bo_shurik_telegram_bot:
+    api:
+        token: "573801303:AAE7069I5i-dChAn_ZrUnEg7JDe7Ec6vcFk"
+    name: "healthyBot"
+doc_doc_doc_nexmo:
+    api_key: 883a377f
+    api_secret: hYy5tMKp83YmzYgB

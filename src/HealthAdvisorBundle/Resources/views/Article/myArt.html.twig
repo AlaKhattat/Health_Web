@@ -1,0 +1,53 @@
+{% extends 'HealthAdvisorBundle:Default:index.html.twig' %}
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+    {% block header %}
+        {{ parent() }}
+    {% endblock %}
+    <div class="page-header">
+        <div class="container">
+            <h1>Mes articles</h1>
+            <div class="breadcrumb-2">
+                <ul class="breadcrumb">
+                    <li><a href="home-version-1.html">Accueil</a></li>
+                    <li class="active">Mes articles</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container mt-80 mb-60">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2 class="heading text-center">Gérer vos articles</h2>
+                <hr class="hr-1">
+            </div>
+            {% for i in art %}
+
+                <div class="col-sm-6">
+
+                    <div class="event-box" style="background-image:url({{ i.urlImage }})">
+                        <div class="event-header">
+                            <h3 class="heading"><a style="color: #ffffff" href="{{ path('afficheArt',{'id':i.reference}) }}">{{ i.nom }}</a></h3>
+                            <ul class="event-details">
+                                <li><i class="fa fa-hashtag"></i> {{ i.tags }}</li>
+                                <li><i class="fa fa-star"></i> {{ i.moyenneNotes }}</li>
+                            </ul>
+                            <div class="event-text">
+                                <br/>
+                                <p class="justify">{{ i.description }}</p>
+                                <br/>
+                                <a href="{{ path('afficheArt', {'id':i.reference}) }}" class="btn btn-black btn-sm">Consulter</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    </div>
+    {% block footer %}
+        {{ parent() }}
+    {% endblock %}
+{% endblock %}

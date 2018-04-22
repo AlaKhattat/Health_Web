@@ -1,0 +1,57 @@
+{% extends '@HealthAdvisor/Admin_Template/index.html.twig'%}
+
+{% block contenu %}
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Listes Réclamations</h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li><a href="#"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Settings 1</a>
+                            </li>
+                            <li><a href="#">Settings 2</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="#"><i class="fa fa-close"></i></a>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <table id="datatable-buttons" class="table table-striped table-bordered">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Type Reclamation</th>
+                        <th>Objet de Reclamation</th>
+                        <th>Sujet de Réclamation</th>
+                        <th>Message de Réclamation</th>
+                        <th>Envoyer Par</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+
+
+                    <tbody>
+                    {% for r in reclamations %}
+                    <tr>
+                        <td>{{ r.id }}</td>
+                        <td>{{ r.type  }}</td>
+                        <td>{{ r.objet }}</td>
+                        <td>{{ r.sujet }}</td>
+                        <td>{{ r.contenu }}</td>
+                        <td>{{ r.idUtilisateur.nom }}  {{ r.idUtilisateur.prenom }}</td>
+                        <td><a href="{{ path('ResoudreReclamation',{'id':r.id, 'phone': r.idUtilisateur.numTel, 'nom':r.idUtilisateur.nom, 'prenom':r.idUtilisateur.prenom, 'type':r.type, 'objet':r.objet,'email':r.idUtilisateur.email}) }}"><button type="button" class="btn btn-danger">Resoudre</button></a></td>
+                        {% endfor %}
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

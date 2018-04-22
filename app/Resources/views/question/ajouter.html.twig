@@ -1,0 +1,213 @@
+{% extends 'HealthAdvisorBundle:Default:index.html.twig' %}
+
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+    {% block header %}
+        {{ parent() }}
+
+    {% endblock %}
+
+
+
+<div class="page-header">
+    <div class="container">
+        <h1>Posez votre question ici !</h1>
+        <br>
+        <ul class="breadcrumb">
+            <li><a href="home-version-1.html">Home</a></li>
+            <li class="active">Questions & Réponses</li>
+        </ul>
+    </div>
+</div>
+
+<div class="container mt-60 mb-80">
+    <div class="row">
+        <div class="col-sm-12">
+            <h2 class="heading text-center">Posez votre question ici !</h2>
+            <hr class="hr-1">
+        </div>
+    </div>
+</div>
+
+
+
+    <form action="" method="post">
+
+
+        <div class="container mt-80">
+
+
+
+            <div class="row">
+                <div class="col-sm-12">
+
+                    <div class="col-sm-3"></div>
+
+                <div class="col-sm-6">
+                    <div class = "form-group">
+
+                        <select id="specialite" class="form-control" name="specialite">
+
+                            <option value="" selected disabled>Séléctionner une Spécialité</option>
+                            <option value="Allergologie">Allergologie</option>
+                            <option value="Andrologie">Andrologie</option>
+                            <option value="Anesthésiologie">Anesthésiologie</option>
+                            <option value="Chirurgie cardiaque">Chirurgie cardiaque</option>
+                            <option value="Chirurgie colorectale">Chirurgie colorectale</option>
+                            <option value="Chirurgie générale">Chirurgie générale</option>
+                            <option value="Chirurgie générale oncologique">Chirurgie générale oncologique</option>
+                            <option value="Chirurgie générale pédiatrique">Chirurgie générale pédiatrique</option>
+                            <option value="Chirurgie orthopédique">Chirurgie orthopédique</option>
+                            <option value="Chirurgie plastique">Chirurgie plastique</option>
+                            <option value="Chirurgie thoracique">Chirurgie thoracique</option>
+                            <option value="Chirurgie vasculaire">Chirurgie vasculaire</option>
+                            <option value="Cardiologie">Cardiologie</option>
+                            <option value="Chirurgie">Chirurgie</option>
+                            <option value="Dentisterie">Dentisterie</option>
+                            <option value="Dermatologie">Dermatologie</option>
+                            <option value="Endocrinologie">Endocrinologie</option>
+                            <option value="Gastroentérologie">Gastroentérologie</option>
+                            <option value="Gériatrie">Gériatrie</option>
+                            <option value="Gynécologie">Gynécologie</option>
+                            <option value="Hématologie">Hématologie</option>
+                            <option value="Hépatologie">Hépatologie</option>
+                            <option value="Infectiologie">Infectiologie</option>
+                            <option value="Médecine générale">Médecine générale</option>
+                            <option value="Médecine interne">Médecine interne</option>
+                            <option value="Néonatologie">Néonatologie</option>
+                            <option value="Néphrologie">Néphrologie</option>
+                            <option value="Neurologie">Neurologie</option>
+                            <option value="Obstétrique">Obstétrique</option>
+                            <option value="Odontologie">Odontologie</option>
+                            <option value="Oncologie">Oncologie</option>
+                            <option value="Ophtalmologie">Ophtalmologie</option>
+                            <option value="Orthodontie">Orthodontie</option>
+                            <option value="Orthopédie">Orthopédie</option>
+                            <option value="Oto-rhino-laryngologie">Oto-rhino-laryngologie</option>
+                            <option value="Pédiatrie">Pédiatrie</option>
+                            <option value="Pneumologie">Pneumologie</option>
+                            <option value="Psychiatrie">Psychiatrie</option>
+                            <option value="Radiologie">Radiologie</option>
+                            <option value="Radiothérapie">Radiothérapie</option>
+                            <option value="Rhumatologie">Rhumatologie</option>
+                            <option value="Urologie">Urologie</option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class = "form-group">
+                                <h6 id="textSpecialite"></h6>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class = "form-group">
+                                <textarea id="question" name="question" class="form-control" rows="5" placeholder="Tapez votre question ..."></textarea>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class = "form-group">
+                                <h6 id="text"></h6>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class = "form-group">
+                                <button id="btn" class="btn btn-primary btn-sm" type="submit" name="Publier question"><i class="fa fa-paper-plane"></i>Publier question</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                </div>
+                </div>
+            </div>
+
+        </div>
+    </form>
+
+    {% block footer %}
+        {{ parent() }}
+    {% endblock %}
+
+
+    {% block script %}
+        {{ parent() }}
+    {% endblock %}
+
+    <script type="text/javascript">
+        $(function () {
+
+            $('#btn').hide();
+            $('#question').hide();
+            $('#textSpecialite').css('color','red');
+            $('#textSpecialite').text('Vous devez choisir une spécialité...');
+
+
+
+            $('#specialite').change(function () {
+                if ($('#specialite option:selected').text()=="Séléctionner une Spécialité"){
+
+                }
+                else{
+                    $('#textSpecialite').text('Saisissez maintenant votre question...');
+                    $('#textSpecialite').css('color','green');
+                    $('#question').show();
+                }
+            });
+
+
+            $('#question').keyup(function () {
+                if ($('#question').val().length < 30){
+
+                    $('#question').css('color','red');
+                    $('#question').css('border-color','red');
+                    $('#text').css('color','red');
+                    $('#text').text('Votre question doit être détaillée, saisissez au moins 30 caractères...');
+                    $('#btn').hide();
+
+                }
+
+
+                else {
+                    $('#question').css('border-color','green');
+                    $('#question').css('color','green');
+                    $('#text').text('Vous pouvez publier votre question...');
+                    $('#text').css('color','green');
+                    $('#btn').show();
+
+                }
+
+            });
+
+
+
+
+        });
+    </script>
+
+
+
+{% endblock %}
+
+
+
+
+
+

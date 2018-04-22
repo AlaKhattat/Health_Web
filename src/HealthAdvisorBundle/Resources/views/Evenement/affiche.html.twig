@@ -1,0 +1,239 @@
+{% extends 'HealthAdvisorBundle:Default:index.html.twig' %}
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+    {% block header %}
+        {{ parent() }}
+    {% endblock %}
+
+    <div class="doctor-single mt-80 mb-60">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-5">
+                <div class="doctor-img">
+                    <img src="{{ evt.urlImage }}" width="419" height="250" class="img-responsive" alt="Image introuvable">
+                </div>
+                <div class="doctor-contact col-sm-11">
+                    <ul class="contact-list">
+                        <li>
+                            {{ evt.nom }}
+                        </li>
+                        <li>
+                            <i class="fa fa-user"></i> {{ evt.createur }}
+                        </li>
+                        {% if nbrPart > 0 %}
+                        <li>
+                            <i class="fa fa-hand-peace-o"></i> {{ nbrPart }}/{{ evt.maxParticipants }} personne(s) y participe(ent) !
+                        </li>
+                        {% elseif nbrPart == 0 %}
+                        <li>
+                            <i class="fa fa-hand-peace-o"></i> Soyez le premier à y participer !
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-7">
+                <div class="doctor-details">
+                    <h2 class="doctor-name">{{ evt.nom }}</h2>
+                    {% if evt.type is sameas("Evénement sportif") %}
+                        <h4 class="doctor-desig"><i class="fa fa-soccer-ball-o"></i> {{ evt.type }}</h4>
+                    {% elseif evt.type is sameas("Dépistage") %}
+                        <h4 class="doctor-desig"><i class="fa fa-stethoscope"></i> {{ evt.type }}</h4>
+                    {% elseif evt.type is sameas("Sensibilisation") %}
+                        <h4 class="doctor-desig"><i class="fa fa-exclamation-circle"></i> {{ evt.type }}</h4>
+                    {% elseif evt.type is sameas("Conférence") %}
+                        <h4 class="doctor-desig"><i class="fa fa-area-chart"></i> {{ evt.type }}</h4>
+                    {% endif %}
+                    <ul class="doctor-edu">
+                        <li><i class="fa fa-map-marker"></i> {{ evt.location }}</li>
+                        <li><i class="fa fa-calendar"></i> {{ evt.date|date('m/d/Y') }}</li>
+                        <li><i class="fa fa-clock-o"></i> {{ evt.heure|date('H:i') }}</li>
+                        <li><i class="fa fa-users"></i> Max participants : {{ evt.maxParticipants }}</li>
+                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        {% if  app.user.roles[0] != "ROLE_ADMIN" %}
+                            <li id="mod"><button type="button" class="fa fa-edit fa-1x " style="background-color: transparent; border: none" id="btnmodif"></button></li>
+                            <li id="supp"><a href="{{ path('deleteEvt', {'id':evt.id}) }}"><i class="fa fa-remove"></i></a></li>
+                        {% endif %}
+                        {% endif %}
+                    </ul>
+                    <hr class="hr-1 left">
+                    <div style="width: 500px; word-wrap: break-word;" id="article">
+                        <p id="desc">{{ evt.description }}</p>
+                    </div>
+                    <form hidden id="formModif">
+                        <div class="form-group">
+                            <input class="form-control" type="text" placeholder="Nom" name="nom" value="{{ evt.nom }}">
+                            <p id="contTitre"></p>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control date-select" type="text" placeholder="Date" name="date" id="date" value="{{ evt.date|date('m/d/Y') }}">
+                            <p id="contDate"></p>
+                        </div>
+                        <div class="form-group clockpicker" data-placement="right" data-align="top" data-autoclose="true">
+                            <input type="text" class="form-control" name="heure" value="{{ evt.heure|date('H:i') }}">
+                            <p id="contHeure"></p>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" name="location" id="loc" value="{{ evt.location }}" type="text" placeholder="Endroit">
+                            <p id="contLoc" style="color: red"></p>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" name="type" value="{{ evt.type }}" type="text" placeholder="Type">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" name="description" value="{{ evt.description }}" type="text" placeholder="Description">
+                            <p id="contDesc"></p>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="number" name="max" value="{{ evt.maxParticipants }}" placeholder="Nombre max de participants">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control " type="file" name="img" value="{{ evt.urlImage }}">
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary" type="submit" name="modif" value="modif" id="modif"><i class="fa fa-pencil"></i>Modifier</button>
+                        </div>
+                    </form>
+                    <div>
+                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        {% if  app.user.roles[0] != "ROLE_ADMIN" %}
+                        <button hidden class="btn btn-black btn-sm" type="submit" name="particip" value="particip" id="noparticip"><i class="fa fa-times-circle"></i>Je ne participe plus</button>
+                        <button class="btn btn-primary" type="submit" name="particip" value="particip" id="particip"><i class="fa fa-hand-paper-o"></i>Je participe</button>
+                        <p style="color: red" id="complet">Plus de places disponibles pour cet événement !</p>
+                        {% endif %}
+                        {% endif %}
+                    </div>
+                    </br>
+                    <div class="row" id="social">
+                        {{ facebookButton() }}
+                        {{ twitterButton() }}
+                        {{ googleplusButton() }}
+                        {{ linkedinButton() }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('clockpicker-gh-pages/assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('clockpicker-gh-pages/dist/bootstrap-clockpicker.min.css') }}">
+    <script type="text/javascript" src="{{ asset('clockpicker-gh-pages/assets/js/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('clockpicker-gh-pages/assets/js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('clockpicker-gh-pages/dist/bootstrap-clockpicker.min.js') }}"></script>
+    <script type="text/javascript">
+        $('.clockpicker').clockpicker()
+            .find('input').change(function(){
+            console.log(this.value);
+        });
+    </script>
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap-select.min.js') }}"></script>
+    <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.appear.js') }}"></script>
+    <script src="{{ asset('js/jquery.countTo.js') }}"></script>
+    <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('js/script.js') }}"></script>
+    <script>
+        $(function () {
+            $('#btnmodif').click(function () {
+                $('#formModif').toggle();
+                $('#social').toggle();
+                $('#desc').toggle();
+            })
+        })
+    </script>
+    <script>
+        var connect='{{ app.user.username }}';
+        var user='{{ evt.createur }}';
+        var text='{{ text }}';
+        var full='{{ full }}';
+        console.log(text);
+        console.log(full);
+        console.log(connect);
+        console.log(user);
+        if(connect == user){
+            $('#mod').show();
+            $('#supp').show();
+            $('#particip').hide();
+            $('#noparticip').hide();
+            $('#complet').hide();
+        }else{
+            $('#mod').hide();
+            $('#supp').hide();
+            if(text=='non' && full=='oui'){
+                $('#particip').hide();
+                $('#noparticip').hide();
+                $('#complet').show();
+            }else if(text=='oui' && full=='non'){
+                $('#particip').hide();
+                $('#noparticip').show();
+                $('#complet').hide();
+            }else if(text=='oui' && full=='oui'){
+                $('#particip').hide();
+                $('#noparticip').show();
+                $('#complet').hide();
+            }else if(text=='non' && full=='non'){
+                $('#particip').show();
+                $('#noparticip').hide();
+                $('#complet').hide();
+            }
+        }
+    </script>
+    <script>
+        var valid="";
+        $(function () {
+            $('#loc').keyup(function () {
+                if($('#loc').val().length ==0){
+                    $('#contLoc').html("Veuillez remplir ce champ !");
+                    valid="no";
+                }else if($('#loc').val().length >0 && $('#loc').val().length <3){
+                    $('#contLoc').html("Veuillez entrer une indication valide !");
+                    valid="no";
+                }else if($('#loc').val().length >=3){
+                    $('#contLoc').html("");
+                    valid="ok";
+                }
+            })
+        })
+    </script>
+    <script>
+        $(function () {
+            $('#particip').click(function () {
+                var link='http://localhost'+'{{ path('participEvt') }}';
+                var id={{ evt.id }};
+                var login='{{ app.user.username }}';
+                var text="ajout";
+                $.ajax({
+                    type:'POST',
+                    data:{'id':id, 'login':login, 'text':text},
+                    url:link,
+                    success: function (data) {
+                        $('#particip').toggle();
+                        $('#noparticip').toggle();
+                    }
+                })
+            })
+        })
+        $(function () {
+            $('#noparticip').click(function () {
+                var link='http://localhost'+'{{ path('participEvt') }}';
+                var id={{ evt.id }};
+                var login='{{ app.user.username }}';
+                var text="supp";
+                $.ajax({
+                    type:'POST',
+                    data:{'id':id, 'login':login, 'text':text},
+                    url:link,
+                    success: function (data) {
+                        $('#noparticip').toggle();
+                        $('#particip').toggle();
+                    }
+                })
+            })
+        })
+    </script>
+
+{% endblock %}

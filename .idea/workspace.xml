@@ -1,9 +1,244 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="63149b1a-acc3-4a29-abdf-e745ef653a15" name="Default" comment="">
+    <list default="true" id="7ae43fb6-ab13-4f21-9487-b52f8c1f1bfd" name="Default" comment="push33">
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/Resources/views/Sondage/avis.html.twig" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/Resources/views/Sondage/sondage.html.twig" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/Resources/views/payements/ShowAmount.html.twig" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/Resources/views/payements/payement_complet.html.twig" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/Resources/views/produit/AfficherProduits_user.html.twig" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/Resources/views/produit/DetailsProduit.html.twig" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/Resources/views/produit/Panier.html.twig" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/Resources/views/produit/edit.html.twig" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/Resources/views/produit/index.html.twig" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/Resources/views/produit/new.html.twig" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/Resources/views/produit/show.html.twig" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/Resources/views/question/afficher.html.twig" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/Resources/views/question/ajouter.html.twig" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/Resources/views/question/index.html.twig" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/Resources/views/question/mes_questions.html.twig" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/Resources/views/question/modifier.html.twig" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/Resources/views/reponse/afficher.html.twig" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/Resources/views/reponse/ajouter.html.twig" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/Resources/views/reponse/email.html.twig" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/Resources/views/reponse/index.html.twig" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/Resources/views/reponse/modifier.html.twig" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Controller/ArticleController.php" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Controller/ArticleNoteController.php" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Controller/OrderController.php" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Controller/ProduitController.php" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Controller/QuestionController.php" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Controller/ReclamationController.php" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Controller/ReponseController.php" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Controller/SondageController.php" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Entity/ArticleNote.php" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Entity/Conseillesante.php" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Entity/LigneCommande.php" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Entity/Nutritionix.php" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Entity/Orders.php" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Entity/PaypalPlugin.php" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Entity/Reclamation.php" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Entity/RegimeUserSupp.php" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Entity/ReponseSondage.php" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Form/ArticleType.php" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Form/EvennementType.php" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Form/QuestionType.php" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Form/ReponseType.php" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Repository/ArticleNoteRepository.php" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Repository/EvennementRepository.php" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Repository/LigneCommandeRepository.php" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Repository/ProduitRepository.php" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Repository/QuestionRepository.php" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Repository/ReclamationRepository.php" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Repository/ReponseSondageRepository.php" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Admin_Template/AdminChartsProduit.html.twig" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Admin_Template/Biennetre_back/gestionRegime.html.twig" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Admin_Template/Biennetre_back/parcourAliment.html.twig" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Admin_Template/EcommerceBack/Produits_Admin.html.twig" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Admin_Template/ajouter_sondage.html.twig" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Admin_Template/question_admin.html.twig" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Admin_Template/reclamation_back/email.html.twig" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Admin_Template/reclamation_back/index.html.twig" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Admin_Template/reponse_admin.html.twig" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Admin_Template/sondage_admin.html.twig" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Admin_Template/stat.html.twig" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Article/ajout.html.twig" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Article/display.html.twig" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Article/list.html.twig" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Article/myArt.html.twig" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Article/navig.html.twig" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Default/Biennetre_front/botChat.html.twig" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Default/Biennetre_front/calculCalorie.html.twig" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Default/Biennetre_front/etapeSuivuiRegime.html.twig" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Default/Biennetre_front/listeRegime.html.twig" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Default/Biennetre_front/regimeDissocie.html.twig" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Default/Biennetre_front/regimeHyperProteine.html.twig" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Default/Biennetre_front/regimeHypocalorique.html.twig" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Default/Biennetre_front/regimeJeune.html.twig" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Default/Biennetre_front/regimeMicronutrion.html.twig" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Default/Biennetre_front/suivreRegime.html.twig" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Default/notAllowed.html.twig" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Evenement/affiche.html.twig" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Evenement/ajout.html.twig" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Evenement/list.html.twig" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Evenement/myEvt.html.twig" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Evenement/navig.html.twig" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Reclamation/index.html.twig" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/vendor/telegram-bot/api/src/cacert.pem" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/Ecommerce/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/Ecommerce/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/Ecommerce/ajax/libs/flickity/1.2.1/flickity.min.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/Ecommerce/ajax/libs/flickity/2.0.10/flickity.pkgd.min.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/Ecommerce/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/Ecommerce/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/Ecommerce/ajax/libs/jquery-zoom/1.7.18/jquery.zoom.min.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/Ecommerce/ajax/libs/jquery.matchHeight/0.7.0/jquery.matchHeight-min.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/Ecommerce/ajax/libs/jquery/3.1.1/jquery.min.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/Ecommerce/ajax/libs/lazysizes/4.0.1/lazysizes.min.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/Ecommerce/ajax/libs/lazysizes/4.0.1/plugins/bgset/ls.bgset.min.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/Ecommerce/ajax/libs/lazysizes/4.0.1/plugins/parent-fit/ls.parent-fit.min.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/Ecommerce/ajax/libs/lazysizes/4.0.1/plugins/rias/ls.rias.min.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/Ecommerce/ajax/libs/lodash.js/4.17.4/lodash.min.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/Ecommerce/ajax/libs/modernizr/2.8.3/modernizr.min.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/Ecommerce/ajax/libs/normalize/3.0.3/normalize.min.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/Ecommerce/ajax/libs/velocity/1.3.1/velocity.min.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/Ecommerce/assets/shop_events_listener-f2c5800305098f0ebebdfa7d980c9abf56514c46d5305e97a7c476f7c9116163.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/Ecommerce/assets/storefront/express_buttons-e0bae3f44aadd06802859ca34c0a8849493bce3430cf53b01bfaebe3fac0eda6.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/Ecommerce/assets/themes_support/customer_area-4beccea87758d91106a581ba89341d9b51842f6da79209258c8297239e950343.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/Ecommerce/assets/themes_support/ga_urchin_forms-68ca1924c495cfc55dac65f4853e0c9a395387ffedc8fe58e0f2e677f95d7f23.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/Ecommerce/assets/themes_support/shopify_common-040322ee69221c50a47032355f2f7e6cbae505567e2157d53dfb0a2e7701839c.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/Ecommerce/files/1/0170/3006/articles/ucbf1omm3r4-madison-rios4626.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/Ecommerce/files/1/0170/3006/articles/ucbf1omm3r4-madison-rios_medium4626.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/Ecommerce/files/1/0170/3006/articles/vigsqyux_-8-sarah-burvenich_mediumf8cd.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/Ecommerce/files/1/0170/3006/articles/vigsqyux_-8-sarah-burvenichf8cd.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/Ecommerce/files/1/0170/3006/files/seaside-logo_bb584e7a-411c-4bbe-b9e9-d5183f264f5f_medium781d.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/Ecommerce/files/1/0170/3006/files/seaside-slide-hero_ec2e8e8b-5a4f-4e46-a090-2e72d6db27a283fc.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/Ecommerce/files/1/0170/3006/files/seaside-slide-hero_ec2e8e8b-5a4f-4e46-a090-2e72d6db27a2_medium83fc.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/Ecommerce/files/1/0170/3006/products/Stocksy_txpcd4bb35cLY0000_Small_382933273.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/Ecommerce/files/1/0170/3006/products/Stocksy_txpcd4bb35cLY0000_Small_38293_medium3273.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/Ecommerce/files/1/0170/3006/products/Stocksy_txpcd4bb35cLY0000_Small_38586_mediume31f.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/Ecommerce/files/1/0170/3006/products/Stocksy_txpcd4bb35cLY0000_Small_38586e31f.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/Ecommerce/files/1/0170/3006/products/Stocksy_txpcd4bb35cLY0000_Small_385946906.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/Ecommerce/files/1/0170/3006/products/Stocksy_txpcd4bb35cLY0000_Small_38594_b79a6f03-93d8-40e7-a79c-39763edeb1a8_mediumfb72.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/Ecommerce/files/1/0170/3006/products/Stocksy_txpcd4bb35cLY0000_Small_38594_b79a6f03-93d8-40e7-a79c-39763edeb1a8fb72.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/Ecommerce/files/1/0170/3006/products/Stocksy_txpcd4bb35cLY0000_Small_38594_medium6906.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/Ecommerce/files/1/0170/3006/products/Stocksy_txpcd4bb35cLY0000_Small_39102_mediumffb4.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/Ecommerce/files/1/0170/3006/products/Stocksy_txpcd4bb35cLY0000_Small_39102ffb4.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/Ecommerce/files/1/0170/3006/products/Stocksy_txpcd4bb35cLY0000_Small_39719_mediumf461.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/Ecommerce/files/1/0170/3006/products/Stocksy_txpcd4bb35cLY0000_Small_39719f461.jpg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/Ecommerce/files/1/0170/3006/t/13/assets/jquery.currencies.min32dd.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/Ecommerce/files/1/0170/3006/t/13/assets/jquery.currencies.mind89b.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/Ecommerce/files/1/0170/3006/t/13/assets/theme-custom.scss32dd.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/Ecommerce/files/1/0170/3006/t/13/assets/theme-custom.scssd89b.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/Ecommerce/files/1/0170/3006/t/13/assets/theme-custom32dd.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/Ecommerce/files/1/0170/3006/t/13/assets/theme-customd89b.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/Ecommerce/files/1/0170/3006/t/13/assets/theme.scss32dd.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/Ecommerce/files/1/0170/3006/t/13/assets/theme.scssd89b.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/Ecommerce/files/1/0170/3006/t/13/assets/theme32dd.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/Ecommerce/files/1/0170/3006/t/13/assets/themed89b.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/Ecommerce/global/searcheeeb.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/Ecommerce/images/badges/shopify-secure-badge-light-shadow.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/Ecommerce/javascripts/currencies.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/Ecommerce/javascripts/tricorder/trekkie.storefront.min97e4.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/clockpicker-gh-pages/.gitignore" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/clockpicker-gh-pages/.travis.yml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/clockpicker-gh-pages/LICENSE" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/clockpicker-gh-pages/README.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/clockpicker-gh-pages/assets/css/bootstrap-theme.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/clockpicker-gh-pages/assets/css/bootstrap-theme.css.map" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/clockpicker-gh-pages/assets/css/bootstrap-theme.min.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/clockpicker-gh-pages/assets/css/bootstrap.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/clockpicker-gh-pages/assets/css/bootstrap.css.map" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/clockpicker-gh-pages/assets/css/bootstrap.min.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/clockpicker-gh-pages/assets/css/github.min.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/clockpicker-gh-pages/assets/fonts/glyphicons-halflings-regular.eot" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/clockpicker-gh-pages/assets/fonts/glyphicons-halflings-regular.svg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/clockpicker-gh-pages/assets/fonts/glyphicons-halflings-regular.ttf" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/clockpicker-gh-pages/assets/fonts/glyphicons-halflings-regular.woff" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/clockpicker-gh-pages/assets/images/screenshot-1.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/clockpicker-gh-pages/assets/js/bootstrap.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/clockpicker-gh-pages/assets/js/bootstrap.min.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/clockpicker-gh-pages/assets/js/highlight.min.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/clockpicker-gh-pages/assets/js/html5shiv.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/clockpicker-gh-pages/assets/js/jquery.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/clockpicker-gh-pages/assets/js/jquery.min.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/clockpicker-gh-pages/assets/js/respond.min.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/clockpicker-gh-pages/bower.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/clockpicker-gh-pages/dist/bootstrap-clockpicker.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/clockpicker-gh-pages/dist/bootstrap-clockpicker.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/clockpicker-gh-pages/dist/bootstrap-clockpicker.min.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/clockpicker-gh-pages/dist/bootstrap-clockpicker.min.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/clockpicker-gh-pages/dist/jquery-clockpicker.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/clockpicker-gh-pages/dist/jquery-clockpicker.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/clockpicker-gh-pages/dist/jquery-clockpicker.min.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/clockpicker-gh-pages/dist/jquery-clockpicker.min.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/clockpicker-gh-pages/gulpfile.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/clockpicker-gh-pages/index.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/clockpicker-gh-pages/jquery.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/clockpicker-gh-pages/package.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/clockpicker-gh-pages/src/clockpicker.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/clockpicker-gh-pages/src/clockpicker.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/clockpicker-gh-pages/src/standalone.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/clockpicker-gh-pages/test/all.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/clockpicker-gh-pages/test/assets/qunit-1.14.0.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/clockpicker-gh-pages/test/assets/qunit-1.14.0.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/clockpicker-gh-pages/test/assets/utils.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/clockpicker-gh-pages/test/suites/basic.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/clockpicker-gh-pages/test/suites/data-api.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/css/StarRating.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/css/biennetre.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/css/bot.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/js/StarRating.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/js/bootstrap-clockpicker.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/js/bootstrap-clockpicker.min.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/js/botScript.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/js/jquery-clockpicker.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/js/jquery-clockpicker.min.js" />
+      <change beforePath="$PROJECT_DIR$/.idea/HealthAdvisor.iml" afterPath="$PROJECT_DIR$/.idea/HealthAdvisor.iml" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" afterPath="$PROJECT_DIR$/.idea/php.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/app/AppKernel.php" afterPath="$PROJECT_DIR$/app/AppKernel.php" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/views/base.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
+      <change beforePath="$PROJECT_DIR$/app/config/config.yml" afterPath="$PROJECT_DIR$/app/config/config.yml" />
+      <change beforePath="$PROJECT_DIR$/app/config/parameters.yml" afterPath="$PROJECT_DIR$/app/config/parameters.yml" />
+      <change beforePath="$PROJECT_DIR$/app/config/routing.yml" afterPath="$PROJECT_DIR$/app/config/routing.yml" />
+      <change beforePath="$PROJECT_DIR$/app/config/services.yml" afterPath="$PROJECT_DIR$/app/config/services.yml" />
+      <change beforePath="$PROJECT_DIR$/composer.json" afterPath="$PROJECT_DIR$/composer.json" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" afterPath="$PROJECT_DIR$/composer.lock" />
+      <change beforePath="$PROJECT_DIR$/src/HealthAdvisorBundle/Controller/Admin_TemplateController.php" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Controller/Admin_TemplateController.php" />
+      <change beforePath="$PROJECT_DIR$/src/HealthAdvisorBundle/Controller/AlimentController.php" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Controller/AlimentController.php" />
+      <change beforePath="$PROJECT_DIR$/src/HealthAdvisorBundle/Controller/BiennetreController.php" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Controller/BiennetreController.php" />
+      <change beforePath="$PROJECT_DIR$/src/HealthAdvisorBundle/Controller/DefaultController.php" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Controller/DefaultController.php" />
+      <change beforePath="$PROJECT_DIR$/src/HealthAdvisorBundle/Controller/EvennementController.php" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Controller/EvennementController.php" />
+      <change beforePath="$PROJECT_DIR$/src/HealthAdvisorBundle/Controller/MedecinController.php" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Controller/MedecinController.php" />
+      <change beforePath="$PROJECT_DIR$/src/HealthAdvisorBundle/Controller/RendezVousController.php" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Controller/RendezVousController.php" />
+      <change beforePath="$PROJECT_DIR$/src/HealthAdvisorBundle/Entity/Aliment.php" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Entity/Aliment.php" />
+      <change beforePath="$PROJECT_DIR$/src/HealthAdvisorBundle/Entity/Article.php" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Entity/Article.php" />
+      <change beforePath="$PROJECT_DIR$/src/HealthAdvisorBundle/Entity/Commande.php" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Entity/Commande.php" />
+      <change beforePath="$PROJECT_DIR$/src/HealthAdvisorBundle/Entity/Evennement.php" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Entity/Evennement.php" />
+      <change beforePath="$PROJECT_DIR$/src/HealthAdvisorBundle/Entity/InformationSante.php" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Entity/InformationSante.php" />
+      <change beforePath="$PROJECT_DIR$/src/HealthAdvisorBundle/Entity/Produit.php" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Entity/Produit.php" />
+      <change beforePath="$PROJECT_DIR$/src/HealthAdvisorBundle/Entity/ProgrammeRegime.php" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Entity/ProgrammeRegime.php" />
+      <change beforePath="$PROJECT_DIR$/src/HealthAdvisorBundle/Entity/Question.php" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Entity/Question.php" />
+      <change beforePath="$PROJECT_DIR$/src/HealthAdvisorBundle/Entity/Regime.php" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Entity/Regime.php" />
+      <change beforePath="$PROJECT_DIR$/src/HealthAdvisorBundle/Entity/Reponse.php" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Entity/Reponse.php" />
+      <change beforePath="$PROJECT_DIR$/src/HealthAdvisorBundle/Entity/Sondage.php" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Entity/Sondage.php" />
+      <change beforePath="$PROJECT_DIR$/src/HealthAdvisorBundle/Entity/Sport.php" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Entity/Sport.php" />
+      <change beforePath="$PROJECT_DIR$/src/HealthAdvisorBundle/Entity/Type_Aliment.php" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Entity/Type_Aliment.php" />
       <change beforePath="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/config/routing.yml" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/config/routing.yml" />
+      <change beforePath="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Admin_Template/Biennetre_back/afficherAliment.html.twig" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Admin_Template/Biennetre_back/afficherAliment.html.twig" />
+      <change beforePath="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Admin_Template/Biennetre_back/ajouterAliment.html.twig" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Admin_Template/Biennetre_back/ajouterAliment.html.twig" />
+      <change beforePath="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Admin_Template/index.html.twig" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Admin_Template/index.html.twig" />
+      <change beforePath="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Analyse_symptome/index.html.twig" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Analyse_symptome/index.html.twig" />
+      <change beforePath="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Default/Biennetre_front/outilsBiennetre.html.twig" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Default/Biennetre_front/outilsBiennetre.html.twig" />
+      <change beforePath="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Default/index.html.twig" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Default/index.html.twig" />
+      <change beforePath="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Geolocalisation/index.html.twig" afterPath="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Geolocalisation/index.html.twig" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_files.php" afterPath="$PROJECT_DIR$/vendor/composer/autoload_files.php" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_namespaces.php" afterPath="$PROJECT_DIR$/vendor/composer/autoload_namespaces.php" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" afterPath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.json" afterPath="$PROJECT_DIR$/vendor/composer/installed.json" />
+      <change beforePath="$PROJECT_DIR$/web/js/biennetre.js" afterPath="$PROJECT_DIR$/web/js/biennetre.js" />
     </list>
     <ignored path="$PROJECT_DIR$/vendor/composer/" />
     <ignored path="$PROJECT_DIR$/vendor/doctrine/annotations/" />
@@ -52,109 +287,115 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" doNotAsk="true">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="new.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Resources/views/medecin/new.html.twig">
+      <file leaf-file-name="NotificationRepository.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/HealthAdvisorBundle/Repository/NotificationRepository.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="595">
-              <caret line="35" column="99" lean-forward="false" selection-start-line="35" selection-start-column="77" selection-end-line="35" selection-end-column="99" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="routing.yml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/config/routing.yml">
+      <file leaf-file-name="MedecinRepository.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/HealthAdvisorBundle/Repository/MedecinRepository.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="45" column="69" lean-forward="false" selection-start-line="45" selection-start-column="69" selection-end-line="45" selection-end-column="69" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SubBodyParts.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/HealthAdvisorBundle/Entity/SubBodyParts.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="28" column="13" lean-forward="false" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="23" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DefaultController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/HealthAdvisorBundle/Controller/DefaultController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="736">
-              <caret line="55" column="105" lean-forward="false" selection-start-line="55" selection-start-column="105" selection-end-line="55" selection-end-column="105" />
+            <state relative-caret-position="272">
+              <caret line="21" column="84" lean-forward="false" selection-start-line="21" selection-start-column="65" selection-end-line="21" selection-end-column="84" />
               <folding>
-                <element signature="e#50#91#0#PHP" expanded="true" />
-                <element signature="e#1883#1925#1#PHP" expanded="true" />
+                <marker date="1522352280723" expanded="true" signature="316:392" ph="select m fro... HealthAdvisorBundle" />
+                <marker date="1522352280723" expanded="true" signature="573:685" ph="select m fro... HealthAdvisorBundle" />
+                <marker date="1522352280723" expanded="true" signature="838:920" ph="select m fro... HealthAdvisorBundle" />
+                <marker date="1522352280723" expanded="true" signature="1063:1509" ph="SELECT medec... HealthAdvisorBundle" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SubBodyPartsSymptome.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/HealthAdvisorBundle/Entity/SubBodyPartsSymptome.php">
+      <file leaf-file-name="MessageMetadataRepository.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/HealthAdvisorBundle/Repository/MessageMetadataRepository.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="884">
-              <caret line="52" column="13" lean-forward="false" selection-start-line="52" selection-start-column="13" selection-end-line="52" selection-end-column="23" />
+            <state relative-caret-position="170">
+              <caret line="15" column="100" lean-forward="false" selection-start-line="15" selection-start-column="85" selection-end-line="15" selection-end-column="100" />
+              <folding>
+                <marker date="1522681959844" expanded="true" signature="306:402" ph="select m fro... HealthAdvisorBundle" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Geolocalisation/index.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Analyse_symptome/index.html.twig">
+        <entry file="file://$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Default/index.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="12" column="53" lean-forward="false" selection-start-line="12" selection-start-column="53" selection-end-line="12" selection-end-column="53" />
+            <state relative-caret-position="23426">
+              <caret line="1378" column="37" lean-forward="false" selection-start-line="1378" selection-start-column="24" selection-end-line="1378" selection-end-column="37" />
+              <folding>
+                <marker date="1524414122627" expanded="true" signature="75376:75397" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Reclamation/index.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="396">
+              <caret line="276" column="52" lean-forward="false" selection-start-line="276" selection-start-column="52" selection-end-line="276" selection-end-column="52" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="components.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/css/components.css">
+      <file leaf-file-name="QuestionController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/HealthAdvisorBundle/Controller/QuestionController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="20485">
-              <caret line="1205" column="8" lean-forward="false" selection-start-line="1205" selection-start-column="5" selection-end-line="1205" selection-end-column="8" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/css/style.css">
+      <file leaf-file-name="ReponseController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/HealthAdvisorBundle/Controller/ReponseController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1700">
-              <caret line="100" column="0" lean-forward="false" selection-start-line="100" selection-start-column="0" selection-end-line="108" selection-end-column="1" />
+            <state relative-caret-position="350">
+              <caret line="139" column="2" lean-forward="false" selection-start-line="139" selection-start-column="2" selection-end-line="139" selection-end-column="2" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="script.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/js/script.js">
+      <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Resources/views/question/index.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="4" lean-forward="false" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="36" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Symptome.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/HealthAdvisorBundle/Entity/Symptome.php">
+      <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Resources/views/reponse/index.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="13" lean-forward="false" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="23" />
+            <state relative-caret-position="119">
+              <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -162,45 +403,38 @@
       </file>
     </leaf>
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="CSS File" />
-      </list>
-    </option>
-  </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>picker</find>
-      <find>image</find>
-      <find>datepicker</find>
-      <find>form</find>
-      <find>css</find>
-      <find>date</find>
-      <find>script</find>
-      <find>calenda</find>
-      <find>script.j</find>
-      <find>pharma</find>
-      <find>info</find>
-      <find>close</find>
-      <find>initMap</find>
-      <find>auto</find>
-      <find>radius</find>
-      <find>scrip</find>
-      <find>disabled</find>
-      <find>common-symptom-button</find>
-      <find>btn-info</find>
-      <find>block sc</find>
-      <find>form-</find>
-      <find>selec</find>
-      <find>noth</find>
-      <find>selecte</find>
-      <find>spin</find>
-      <find>lege</find>
-      <find>load</find>
-      <find>container</find>
-      <find>loader</find>
-      <find>loade</find>
+      <find>.navbar-right</find>
+      <find>navbar</find>
+      <find>.nav</find>
+      <find>navbar-nav</find>
+      <find>menu1</find>
+      <find>bg-dark</find>
+      <find>top_nav</find>
+      <find>img</find>
+      <find>nos</find>
+      <find>role</find>
+      <find>+</find>
+      <find>sondage</find>
+      <find>logi</find>
+      <find>list</find>
+      <find>execute</find>
+      <find>listA</find>
+      <find>ajouter</find>
+      <find>/admin</find>
+      <find>messe</find>
+      <find>para</find>
+      <find>mess</find>
+      <find>messen</find>
+      <find>blog</find>
+      <find>elements</find>
+      <find>bienne</find>
+      <find>made</find>
+      <find>admin</find>
+      <find>admin/quest</find>
+      <find>new</find>
+      <find>Mon</find>
     </findStrings>
   </component>
   <component name="FrameworkCommandLineHistory">
@@ -214,6 +448,11 @@
       <command text="s generate:controller" />
       <command text="s doctrine:generate:form HealthAdvisorBundle:Evennement" />
       <command text="s generate:controller" />
+      <command text="c dump-autoload" />
+      <command text="s doctrine:schema:update --force " />
+      <command text="c dump-autoload" />
+      <command text="s doctrine:schema:update --force" />
+      <command text="s doctrine:schema:update --force " />
     </commandsHistory>
   </component>
   <component name="Git.Rebase.Settings">
@@ -230,27 +469,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Default/index.html.twig" />
-        <option value="$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/Resources/views/Registration/register_content.html.twig" />
-        <option value="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Evenement/ajout.html.twig" />
-        <option value="$PROJECT_DIR$/src/HealthAdvisorBundle/Form/EvennementType.php" />
-        <option value="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Evenement/list.html.twig" />
+        <option value="$PROJECT_DIR$/vendor/friendsofsymfony/message-bundle/FOS/MessageBundle/Resources/views/Message/newThread.html.twig" />
+        <option value="$PROJECT_DIR$/vendor/friendsofsymfony/message-bundle/FOS/MessageBundle/Event/MessageEvent.php" />
+        <option value="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Admin_Template/users_profile.html.twig" />
+        <option value="$PROJECT_DIR$/app/Resources/views/rendezvous/new.html.twig" />
+        <option value="$PROJECT_DIR$/app/Resources/views/medecin/suivie_rdv.html.twig" />
+        <option value="$PROJECT_DIR$/src/HealthAdvisorBundle/Entity/Medecin.php" />
+        <option value="$PROJECT_DIR$/vendor/friendsofsymfony/message-bundle/FOS/MessageBundle/FormType/NewThreadMessageFormType.php" />
+        <option value="$PROJECT_DIR$/src/HealthAdvisorBundle/Entity/RendezVous.php" />
+        <option value="$PROJECT_DIR$/app/config/config_dev.yml" />
+        <option value="$PROJECT_DIR$/src/HealthAdvisorBundle/Repository/RendezVousRepository.php" />
+        <option value="$PROJECT_DIR$/src/HealthAdvisorBundle/Controller/PatientController.php" />
+        <option value="$PROJECT_DIR$/app/Resources/views/patient/list_rdv_patient.html.twig" />
+        <option value="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Admin_Template/afficher_profile_medecin.html.twig" />
+        <option value="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Admin_Template/list_rendez_vous.html.twig" />
+        <option value="$PROJECT_DIR$/app/Resources/views/medecin/recherche_medecin.html.twig" />
+        <option value="$PROJECT_DIR$/app/Resources/views/medecin/emailrdv.html.twig" />
+        <option value="$PROJECT_DIR$/app/config/security.yml" />
+        <option value="$PROJECT_DIR$/app/Resources/views/medecin/afficher_medecin_specialite.html.twig" />
+        <option value="$PROJECT_DIR$/app/config/services.yml" />
+        <option value="$PROJECT_DIR$/src/HealthAdvisorBundle/Controller/ProduitController.php" />
+        <option value="$PROJECT_DIR$/src/HealthAdvisorBundle/Controller/RendezVousController.php" />
+        <option value="$PROJECT_DIR$/src/HealthAdvisorBundle/Controller/Admin_TemplateController.php" />
+        <option value="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Admin_Template/sondage_admin.html.twig" />
+        <option value="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Admin_Template/question_admin.html.twig" />
+        <option value="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Admin_Template/reponse_admin.html.twig" />
+        <option value="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Admin_Template/ajouter_sondage.html.twig" />
+        <option value="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Admin_Template/stat.html.twig" />
+        <option value="$PROJECT_DIR$/app/config/parameters.yml" />
+        <option value="$PROJECT_DIR$/src/HealthAdvisorBundle/Controller/ArticleController.php" />
+        <option value="$PROJECT_DIR$/src/HealthAdvisorBundle/Entity/Article.php" />
+        <option value="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Article/myArt.html.twig" />
         <option value="$PROJECT_DIR$/src/HealthAdvisorBundle/Controller/EvennementController.php" />
-        <option value="$PROJECT_DIR$/web/js/script.js" />
-        <option value="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Geolocalisation/index.html.twig" />
-        <option value="$PROJECT_DIR$/app/Resources/views/medecin/new.html.twig" />
-        <option value="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Default/findbodyparts.html.twig" />
-        <option value="$PROJECT_DIR$/src/HealthAdvisorBundle/Entity/BodyParts.php" />
-        <option value="$PROJECT_DIR$/src/HealthAdvisorBundle/Entity/SubBodyParts.php" />
-        <option value="$PROJECT_DIR$/web/css/symptomes.css" />
-        <option value="$PROJECT_DIR$/web/css/bootstrap4.min.css" />
-        <option value="$PROJECT_DIR$/web/css/symptoms.css" />
+        <option value="$PROJECT_DIR$/vendor/telegram-bot/api/src/BotApi.php" />
+        <option value="$PROJECT_DIR$/vendor/boshurik/telegram-bot-bundle/Telegram/Command/CommandInterface.php" />
+        <option value="$PROJECT_DIR$/app/config/routing.yml" />
+        <option value="$PROJECT_DIR$/src/HealthAdvisorBundle/Controller/AlimentController.php" />
+        <option value="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Admin_Template/Biennetre_back/afficherAliment.html.twig" />
+        <option value="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Admin_Template/Biennetre_back/ajouterAliment.html.twig" />
+        <option value="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Admin_Template/Biennetre_back/gestionRegime.html.twig" />
+        <option value="$PROJECT_DIR$/vendor/boshurik/telegram-bot-bundle/Controller/WebhookController.php" />
+        <option value="$PROJECT_DIR$/app/AppKernel.php" />
+        <option value="$PROJECT_DIR$/app/config/config.yml" />
         <option value="$PROJECT_DIR$/src/HealthAdvisorBundle/Controller/DefaultController.php" />
-        <option value="$PROJECT_DIR$/src/HealthAdvisorBundle/Entity/Symptome.php" />
-        <option value="$PROJECT_DIR$/src/HealthAdvisorBundle/Entity/SubBodyPartsSymptome.php" />
-        <option value="$PROJECT_DIR$/web/css/style.css" />
-        <option value="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Analyse_symptome/index.html.twig" />
         <option value="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/config/routing.yml" />
+        <option value="$PROJECT_DIR$/src/HealthAdvisorBundle/Controller/ReclamationController.php" />
+        <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
+        <option value="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Default/index.html.twig" />
+        <option value="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Admin_Template/index.html.twig" />
+        <option value="$PROJECT_DIR$/src/HealthAdvisorBundle/Controller/MedecinController.php" />
+        <option value="$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Reclamation/index.html.twig" />
+        <option value="$PROJECT_DIR$/src/HealthAdvisorBundle/Controller/ReponseController.php" />
       </list>
     </option>
   </component>
@@ -302,13 +571,40 @@
       <path value="$PROJECT_DIR$/vendor/sensio/generator-bundle" />
       <path value="$PROJECT_DIR$/vendor/friendsofsymfony/message-bundle" />
       <path value="$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle" />
+      <path value="$PROJECT_DIR$/vendor/jms/metadata" />
+      <path value="$PROJECT_DIR$/vendor/jms/serializer-bundle" />
+      <path value="$PROJECT_DIR$/vendor/jms/serializer" />
+      <path value="$PROJECT_DIR$/vendor/jms/parser-lib" />
+      <path value="$PROJECT_DIR$/vendor/phpoption/phpoption" />
+      <path value="$PROJECT_DIR$/vendor/phpcollection/phpcollection" />
+      <path value="$PROJECT_DIR$/vendor/nette/mail" />
+      <path value="$PROJECT_DIR$/vendor/nette/utils" />
+      <path value="$PROJECT_DIR$/vendor/beberlei/DoctrineExtensions" />
+      <path value="$PROJECT_DIR$/vendor/cmen/google-charts-bundle" />
+      <path value="$PROJECT_DIR$/vendor/jms/payment-core-bundle" />
+      <path value="$PROJECT_DIR$/vendor/defuse/php-encryption" />
+      <path value="$PROJECT_DIR$/vendor/jms/payment-paypal-bundle" />
+      <path value="$PROJECT_DIR$/vendor/vresh/twilio-bundle" />
+      <path value="$PROJECT_DIR$/vendor/twilio/sdk" />
+      <path value="$PROJECT_DIR$/vendor/nomaya/social-bundle" />
+      <path value="$PROJECT_DIR$/vendor/knplabs/knp-snappy-bundle" />
+      <path value="$PROJECT_DIR$/vendor/knplabs/knp-snappy" />
+      <path value="$PROJECT_DIR$/vendor/boshurik/telegram-bot-bundle" />
+      <path value="$PROJECT_DIR$/vendor/telegram-bot/api" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/vendor/docdocdoc/nexmo-bundle" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/guzzle" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/psr7" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/promises" />
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-7" />
-    <option name="width" value="814" />
-    <option name="height" value="867" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1616" />
+    <option name="height" value="876" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
@@ -324,72 +620,136 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="Health_Web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Health_Web" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="HealthIntege" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HealthIntege" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
-              <item name="Health_Web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Health_Web" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="HealthIntege" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HealthIntege" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
-              <item name="Health_Web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Health_Web" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="HealthIntege" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HealthIntege" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="config" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="HealthIntege" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HealthIntege" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Resources" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="HealthIntege" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HealthIntege" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Resources" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="HealthIntege" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HealthIntege" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Resources" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="medecin" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="HealthIntege" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HealthIntege" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Resources" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="produit" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="HealthIntege" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HealthIntege" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Resources" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="question" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="HealthIntege" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HealthIntege" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Resources" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="reponse" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="HealthIntege" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HealthIntege" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
-              <item name="Health_Web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Health_Web" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="HealthIntege" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HealthIntege" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="HealthAdvisorBundle" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
-              <item name="Health_Web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Health_Web" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="HealthIntege" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HealthIntege" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="HealthAdvisorBundle" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="Controller" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
-              <item name="Health_Web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Health_Web" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="HealthIntege" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HealthIntege" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="HealthAdvisorBundle" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Entity" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="HealthIntege" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HealthIntege" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="HealthAdvisorBundle" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Repository" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="HealthIntege" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HealthIntege" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="HealthAdvisorBundle" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="Resources" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
-              <item name="Health_Web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Health_Web" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="HealthIntege" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HealthIntege" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="HealthAdvisorBundle" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="Resources" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="config" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
-              <item name="Health_Web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Health_Web" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="HealthIntege" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HealthIntege" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="HealthAdvisorBundle" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="Resources" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
-              <item name="Health_Web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Health_Web" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="HealthIntege" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HealthIntege" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="HealthAdvisorBundle" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="Resources" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Analyse_symptome" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Admin_Template" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
-              <item name="Health_Web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Health_Web" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="HealthIntege" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HealthIntege" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="HealthAdvisorBundle" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="Resources" type="2a2b976b:PhpTreeStructureProvider$1" />
@@ -397,42 +757,56 @@
               <item name="Default" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
-              <item name="Health_Web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Health_Web" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="HealthIntege" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HealthIntege" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="HealthAdvisorBundle" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="Resources" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Geolocalisation" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Reclamation" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
-              <item name="Health_Web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Health_Web" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="HealthIntege" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HealthIntege" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="web" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
-              <item name="Health_Web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Health_Web" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="HealthIntege" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HealthIntege" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="web" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="css" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Ecommerce" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="HealthIntege" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HealthIntege" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="web" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Ecommerce" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="assets" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="vcs.CVS" />
-    <property name="list.type.of.created.stylesheet" value="CSS" />
-    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="last_opened_file_path" value="F:/firas/Health_Web" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="SearchEverywhereHistoryKey" value="env&#9;null&#9;null&#10;.env&#9;null&#9;null&#10;notification-box&#9;null&#9;null&#10;image&#9;FILE&#9;file://C:/wamp64/www/HealthAdvisor/web/admin/images&#10;dropdown-menu&#9;null&#9;null&#10;animated&#9;null&#9;null&#10;msg_list&#9;null&#9;null&#10;dropdown&#9;null&#9;null&#10;time&#9;null&#9;null" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\wamp64\www\Health_Web\web\css" />
+      <recent name="C:\wamp64\www\HealthIntege\app\Resources\views\reponse" />
+      <recent name="C:\wamp64\www\HealthIntege\app\Resources\views\question" />
+      <recent name="C:\wamp64\www\HealthIntege\src\HealthAdvisorBundle\Controller" />
+      <recent name="C:\wamp64\www\HealthIntege\src\HealthAdvisorBundle\Repository" />
+      <recent name="C:\wamp64\www\HealthIntege\src\HealthAdvisorBundle\Resources\views" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\HealthIntege\src\HealthAdvisorBundle\Resources\views\Default" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -455,7 +829,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="63149b1a-acc3-4a29-abdf-e745ef653a15" name="Default" comment="" />
+      <changelist id="7ae43fb6-ab13-4f21-9487-b52f8c1f1bfd" name="Default" comment="push33" />
       <created>1521642848691</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -473,8 +847,17 @@
       <workItem from="1522081002487" duration="6335000" />
       <workItem from="1522153234010" duration="2635000" />
       <workItem from="1522157018965" duration="1391000" />
-      <workItem from="1522171559290" duration="37914000" />
-      <workItem from="1522673346051" duration="823000" />
+      <workItem from="1522679171315" duration="8438000" />
+      <workItem from="1522689495208" duration="4990000" />
+      <workItem from="1522756649654" duration="9843000" />
+      <workItem from="1522848194545" duration="34936000" />
+      <workItem from="1523283851888" duration="4122000" />
+      <workItem from="1523297627327" duration="77655000" />
+      <workItem from="1523554373013" duration="2422000" />
+      <workItem from="1523556966838" duration="5683000" />
+      <workItem from="1523563681870" duration="25134000" />
+      <workItem from="1523746565512" duration="85000" />
+      <workItem from="1524408402008" duration="1573000" />
     </task>
     <task id="LOCAL-00001" summary="push1">
       <created>1521811541168</created>
@@ -539,43 +922,56 @@
       <option name="project" value="LOCAL" />
       <updated>1522157567464</updated>
     </task>
-    <task id="LOCAL-00010" summary="correct calendar.png not found">
-      <created>1522186576863</created>
+    <task id="LOCAL-00010" summary="push33">
+      <created>1522412527834</created>
       <option name="number" value="00010" />
       <option name="presentableId" value="LOCAL-00010" />
       <option name="project" value="LOCAL" />
-      <updated>1522186576863</updated>
+      <updated>1522412527834</updated>
     </task>
-    <task id="LOCAL-00011" summary="Geolocalistion Completed (Need some refinements)">
-      <created>1522247601534</created>
+    <task id="LOCAL-00011" summary="push33">
+      <created>1523130509748</created>
       <option name="number" value="00011" />
       <option name="presentableId" value="LOCAL-00011" />
       <option name="project" value="LOCAL" />
-      <updated>1522247601534</updated>
+      <updated>1523130509748</updated>
     </task>
-    <task id="LOCAL-00012" summary="Analyse Symptomes almost done">
-      <created>1522673484051</created>
+    <task id="LOCAL-00012" summary="push33">
+      <created>1523130839595</created>
       <option name="number" value="00012" />
       <option name="presentableId" value="LOCAL-00012" />
       <option name="project" value="LOCAL" />
-      <updated>1522673484051</updated>
+      <updated>1523130839595</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="push33">
+      <created>1523531954823</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1523531954823</updated>
+    </task>
+    <task id="LOCAL-00014" summary="new commit">
+      <created>1523552982877</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1523552982877</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="80170000" />
+    <option name="totallyTimeSpent" value="244042000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20790629" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32896462" sideWeight="0.508125" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3279743" sideWeight="0.50292826" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32896462" sideWeight="0.491875" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290735" sideWeight="0.49151292" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -584,10 +980,12 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="92" y="92" width="1182" height="544" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296355" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3280507" sideWeight="0.49707174" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32896462" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -595,16 +993,18 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296355" sideWeight="0.50292826" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296355" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32913387" sideWeight="0.50292826" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="92" y="92" width="1182" height="544" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296355" sideWeight="0.49707174" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32913387" sideWeight="0.49707174" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290735" sideWeight="0.49151292" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24963397" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24450952" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -615,32 +1015,6 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State>
-              <option name="RECENTLY_FILTERED_USER_GROUPS">
-                <collection />
-              </option>
-              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
-                <collection />
-              </option>
-              <option name="COLUMN_ORDER">
-                <list>
-                  <option value="0" />
-                  <option value="1" />
-                  <option value="2" />
-                  <option value="3" />
-                </list>
-              </option>
-            </State>
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
@@ -649,309 +1023,391 @@
     <MESSAGE value="push2" />
     <MESSAGE value="push3" />
     <MESSAGE value="push33" />
-    <MESSAGE value="correct calendar.png not found" />
-    <MESSAGE value="Geolocalistion Completed (Need some refinements)" />
-    <MESSAGE value="Analyse Symptomes almost done" />
-    <option name="LAST_COMMIT_MESSAGE" value="Analyse Symptomes almost done" />
+    <MESSAGE value="new commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="new commit" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/config/parameters.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Admin_Template/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="12580">
-          <caret line="740" column="61" lean-forward="false" selection-start-line="740" selection-start-column="56" selection-end-line="740" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/medecin/edit.html.twig" />
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/patient/index.html.twig" />
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/patient/new.html.twig" />
-    <entry file="file://$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/Resources/config/routing/registration.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/patient/choixuser.html.twig" />
-    <entry file="file://$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/Resources/views/layout.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="45" lean-forward="false" selection-start-line="0" selection-start-column="45" selection-end-line="0" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/Resources/views/Registration/register.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="28" lean-forward="false" selection-start-line="0" selection-start-column="28" selection-end-line="0" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/patient/show.html.twig" />
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/patient/edit.html.twig" />
-    <entry file="file://$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/Resources/views/Registration/register_content.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="9" column="49" lean-forward="false" selection-start-line="9" selection-start-column="49" selection-end-line="9" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/Doctrine/UserManager.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="109" column="30" lean-forward="false" selection-start-line="109" selection-start-column="30" selection-end-line="109" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/Controller/RegistrationController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2021">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/Controller/ChangePasswordController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/Controller/ResettingController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2610">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/HealthAdvisorBundle/Controller/UtilisateurController.php" />
-    <entry file="file://$PROJECT_DIR$/app/config/config.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="32" lean-forward="true" selection-start-line="3" selection-start-column="32" selection-end-line="3" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/Controller/ProfileController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-924">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/HealthAdvisorBundle/Form/EvennementType.php" />
-    <entry file="file://$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Evenement/list.html.twig" />
     <entry file="file://$PROJECT_DIR$/src/HealthAdvisorBundle/Entity/Evennement.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="47" column="24" lean-forward="false" selection-start-line="47" selection-start-column="24" selection-end-line="47" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Evenement/ajout.html.twig" />
-    <entry file="file://$PROJECT_DIR$/src/HealthAdvisorBundle/Controller/PatientController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1326">
-          <caret line="82" column="9" lean-forward="false" selection-start-line="82" selection-start-column="9" selection-end-line="82" selection-end-column="9" />
-          <folding />
+        <state relative-caret-position="-5967">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/HealthAdvisorBundle/Controller/EvennementController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="52" column="35" lean-forward="false" selection-start-line="52" selection-start-column="35" selection-end-line="52" selection-end-column="35" />
-          <folding />
+        <state relative-caret-position="102">
+          <caret line="22" column="97" lean-forward="false" selection-start-line="22" selection-start-column="97" selection-end-line="22" selection-end-column="97" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/telegram-bot/api/src/BotApi.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="257" column="23" lean-forward="false" selection-start-line="257" selection-start-column="23" selection-end-line="257" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/boshurik/telegram-bot-bundle/Telegram/Command/CommandInterface.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="27" column="62" lean-forward="false" selection-start-line="27" selection-start-column="62" selection-end-line="27" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HealthAdvisorBundle/Entity/Aliment.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Default/Biennetre_front/new.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HealthAdvisorBundle/Form/AlimentType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/config/routing.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="430">
-          <caret line="41" column="12" lean-forward="false" selection-start-line="41" selection-start-column="11" selection-end-line="41" selection-end-column="12" />
+        <state relative-caret-position="986">
+          <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/js/jquery-ui.min.js">
+    <entry file="file://$PROJECT_DIR$/vendor/telegram-bot/api/src/cacert.pem">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="5" column="2875" lean-forward="false" selection-start-line="5" selection-start-column="2868" selection-end-line="5" selection-end-column="2875" />
+        <state relative-caret-position="289">
+          <caret line="17" column="2" lean-forward="false" selection-start-line="17" selection-start-column="2" selection-end-line="17" selection-end-column="2" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/css/materialdesignicons.min.css">
+    <entry file="file://$PROJECT_DIR$/src/HealthAdvisorBundle/Controller/AlimentController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="12" lean-forward="false" selection-start-line="0" selection-start-column="11" selection-end-line="0" selection-end-column="12" />
+        <state relative-caret-position="187">
+          <caret line="26" column="89" lean-forward="false" selection-start-line="26" selection-start-column="89" selection-end-line="26" selection-end-column="89" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/css/vendors.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="581" column="5" lean-forward="false" selection-start-line="581" selection-start-column="4" selection-end-line="581" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/scss/_animated.scss">
+    <entry file="file://$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Admin_Template/Biennetre_back/afficherAliment.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="0" column="38" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/HealthAdvisorBundle/Form/MedecinType.php">
+    <entry file="file://$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Admin_Template/Biennetre_back/ajouterAliment.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="2652">
+          <caret line="156" column="4" lean-forward="false" selection-start-line="156" selection-start-column="4" selection-end-line="156" selection-end-column="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/HealthAdvisorBundle/Entity/BodyParts.php">
+    <entry file="file://$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Admin_Template/Biennetre_back/gestionRegime.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="969">
+          <caret line="57" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Default/findbodyparts.html.twig" />
-    <entry file="file://$PROJECT_DIR$/web/css/symptomes.css" />
-    <entry file="file://$PROJECT_DIR$/web/css/bootstrap4.min.css" />
-    <entry file="file://$PROJECT_DIR$/web/css/bootstrap.min.css">
+    <entry file="file://$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Admin_Template/Biennetre_back/parcourAliment.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="12" lean-forward="false" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/css/biennetre.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/css/symptoms.css">
+    <entry file="file://$PROJECT_DIR$/web/js/biennetre.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="30" column="12" lean-forward="false" selection-start-line="30" selection-start-column="11" selection-end-line="30" selection-end-column="12" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/js/bootstrap-select.min.js">
+    <entry file="file://$PROJECT_DIR$/vendor/boshurik/telegram-bot-bundle/Controller/WebhookController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2673">
-          <caret line="6" column="4725" lean-forward="false" selection-start-line="6" selection-start-column="4721" selection-end-line="6" selection-end-column="4725" />
+        <state relative-caret-position="136">
+          <caret line="28" column="38" lean-forward="false" selection-start-line="28" selection-start-column="38" selection-end-line="28" selection-end-column="38" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Geolocalisation/index.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Default/Biennetre_front/botChat.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="305" column="0" lean-forward="false" selection-start-line="305" selection-start-column="0" selection-end-line="307" selection-end-column="22" />
+        <state relative-caret-position="34">
+          <caret line="107" column="70" lean-forward="false" selection-start-line="107" selection-start-column="70" selection-end-line="107" selection-end-column="70" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Default/index.html.twig">
+    <entry file="file://$PROJECT_DIR$/app/AppKernel.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="1254" column="81" lean-forward="false" selection-start-line="1250" selection-start-column="0" selection-end-line="1254" selection-end-column="81" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/medecin/new.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="35" column="99" lean-forward="false" selection-start-line="35" selection-start-column="77" selection-end-line="35" selection-end-column="99" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/HealthAdvisorBundle/Entity/SubBodyParts.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="13" lean-forward="false" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/HealthAdvisorBundle/Entity/Symptome.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="13" lean-forward="false" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/doctrine/common/lib/Doctrine/Common/Persistence/ObjectRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="63" column="20" lean-forward="false" selection-start-line="63" selection-start-column="20" selection-end-line="63" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/HealthAdvisorBundle/Entity/SubBodyPartsSymptome.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="884">
-          <caret line="52" column="13" lean-forward="false" selection-start-line="52" selection-start-column="13" selection-end-line="52" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/css/components.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20485">
-          <caret line="1205" column="8" lean-forward="false" selection-start-line="1205" selection-start-column="5" selection-end-line="1205" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/js/script.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="4" lean-forward="false" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1700">
-          <caret line="100" column="0" lean-forward="false" selection-start-line="100" selection-start-column="0" selection-end-line="108" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Analyse_symptome/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="12" column="53" lean-forward="false" selection-start-line="12" selection-start-column="53" selection-end-line="12" selection-end-column="53" />
-          <folding />
+        <state relative-caret-position="272">
+          <caret line="29" column="61" lean-forward="false" selection-start-line="29" selection-start-column="61" selection-end-line="29" selection-end-column="61" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/HealthAdvisorBundle/Controller/DefaultController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="736">
-          <caret line="55" column="105" lean-forward="false" selection-start-line="55" selection-start-column="105" selection-end-line="55" selection-end-column="105" />
-          <folding>
-            <element signature="e#50#91#0#PHP" expanded="true" />
-            <element signature="e#1883#1925#1#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="138">
+          <caret line="115" column="5" lean-forward="false" selection-start-line="115" selection-start-column="5" selection-end-line="115" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HealthAdvisorBundle/Entity/Reclamation.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Admin_Template/reclamation_back/email.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Analyse_symptome/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Default/notAllowed.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HealthAdvisorBundle/Repository/ReclamationRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HealthAdvisorBundle/Controller/ReclamationController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="101" column="45" lean-forward="false" selection-start-line="101" selection-start-column="45" selection-end-line="101" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/medecin/new.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-816">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/parameters.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="52" lean-forward="false" selection-start-line="9" selection-start-column="52" selection-end-line="9" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/images/diplomesimg/4001ba5f5ff954fd2c3d6dd380454096.jpeg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="22" lean-forward="false" selection-start-line="1" selection-start-column="18" selection-end-line="1" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/Controller/RegistrationController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2244">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HealthAdvisorBundle/Controller/ProduitController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="34" column="46" lean-forward="false" selection-start-line="34" selection-start-column="46" selection-end-line="34" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/produit/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="21" lean-forward="false" selection-start-line="0" selection-start-column="21" selection-end-line="0" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/Ecommerce/global/searcheeeb.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="782">
+          <caret line="67" column="112" lean-forward="false" selection-start-line="67" selection-start-column="112" selection-end-line="67" selection-end-column="112" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/phpstorm.jar!/resources/html5-schema/html5/block.rnc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="267" column="24" lean-forward="true" selection-start-line="267" selection-start-column="24" selection-end-line="267" selection-end-column="24" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/config/routing.yml">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="167">
+          <caret line="131" column="0" lean-forward="false" selection-start-line="131" selection-start-column="0" selection-end-line="131" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Admin_Template/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2703">
+          <caret line="159" column="37" lean-forward="false" selection-start-line="159" selection-start-column="37" selection-end-line="159" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HealthAdvisorBundle/Controller/RendezVousController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HealthAdvisorBundle/Controller/MedecinController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1615">
+          <caret line="105" column="45" lean-forward="false" selection-start-line="105" selection-start-column="45" selection-end-line="105" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HealthAdvisorBundle/Entity/Notification.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HealthAdvisorBundle/Repository/NotificationRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HealthAdvisorBundle/Repository/MedecinRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="21" column="84" lean-forward="false" selection-start-line="21" selection-start-column="65" selection-end-line="21" selection-end-column="84" />
+          <folding>
+            <marker date="1522352280723" expanded="true" signature="316:392" ph="select m fro... HealthAdvisorBundle" />
+            <marker date="1522352280723" expanded="true" signature="573:685" ph="select m fro... HealthAdvisorBundle" />
+            <marker date="1522352280723" expanded="true" signature="838:920" ph="select m fro... HealthAdvisorBundle" />
+            <marker date="1522352280723" expanded="true" signature="1063:1509" ph="SELECT medec... HealthAdvisorBundle" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HealthAdvisorBundle/Repository/MessageMetadataRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="15" column="100" lean-forward="false" selection-start-line="15" selection-start-column="85" selection-end-line="15" selection-end-column="100" />
+          <folding>
+            <marker date="1522681959844" expanded="true" signature="306:402" ph="select m fro... HealthAdvisorBundle" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Geolocalisation/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Default/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23426">
+          <caret line="1378" column="37" lean-forward="false" selection-start-line="1378" selection-start-column="24" selection-end-line="1378" selection-end-column="37" />
+          <folding>
+            <marker date="1524414122627" expanded="true" signature="75376:75397" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HealthAdvisorBundle/Resources/views/Reclamation/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
-          <caret line="45" column="69" lean-forward="false" selection-start-line="45" selection-start-column="69" selection-end-line="45" selection-end-column="69" />
+          <caret line="276" column="52" lean-forward="false" selection-start-line="276" selection-start-column="52" selection-end-line="276" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HealthAdvisorBundle/Controller/QuestionController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/question/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/reponse/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HealthAdvisorBundle/Controller/ReponseController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="350">
+          <caret line="139" column="2" lean-forward="false" selection-start-line="139" selection-start-column="2" selection-end-line="139" selection-end-column="2" />
           <folding />
         </state>
       </provider>

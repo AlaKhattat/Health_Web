@@ -64,6 +64,95 @@
         ]
     },
     {
+        "name": "boshurik/telegram-bot-bundle",
+        "version": "2.3.1",
+        "version_normalized": "2.3.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/BoShurik/TelegramBotBundle.git",
+            "reference": "ff5871ac70174401bb7bb58114b8d79402a75664"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/BoShurik/TelegramBotBundle/zipball/ff5871ac70174401bb7bb58114b8d79402a75664",
+            "reference": "ff5871ac70174401bb7bb58114b8d79402a75664",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.5.9",
+            "symfony/framework-bundle": "~2.7 || ~3.0 || ~4.0",
+            "telegram-bot/api": "^2.2.6"
+        },
+        "time": "2018-01-03T12:32:22+00:00",
+        "type": "symfony-bundle",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "BoShurik\\TelegramBotBundle\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "description": "Telegram bot bundle"
+    },
+    {
+        "name": "cmen/google-charts-bundle",
+        "version": "3.0.1",
+        "version_normalized": "3.0.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/cmen/CMENGoogleChartsBundle.git",
+            "reference": "df3e48f2e2423329105af4b9b8070e34c8fa4d6f"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/cmen/CMENGoogleChartsBundle/zipball/df3e48f2e2423329105af4b9b8070e34c8fa4d6f",
+            "reference": "df3e48f2e2423329105af4b9b8070e34c8fa4d6f",
+            "shasum": ""
+        },
+        "require": {
+            "php": "^5.6 || ^7.0",
+            "symfony/framework-bundle": "^2.7 || ^3.0 || ^4.0"
+        },
+        "require-dev": {
+            "friendsofphp/php-cs-fixer": "^2.9",
+            "phpunit/phpunit": "^5.7"
+        },
+        "time": "2018-01-16T12:51:23+00:00",
+        "type": "symfony-bundle",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "CMEN\\GoogleChartsBundle\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Christophe Meneses"
+            }
+        ],
+        "description": "This Bundle provides a Twig extension and PHP objects to display Google charts in your Symfony application.",
+        "keywords": [
+            "chart",
+            "charts",
+            "google",
+            "graph",
+            "graphs",
+            "map"
+        ]
+    },
+    {
         "name": "composer/ca-bundle",
         "version": "1.1.0",
         "version_normalized": "1.1.0.0",
@@ -119,6 +208,114 @@
             "certificate",
             "ssl",
             "tls"
+        ]
+    },
+    {
+        "name": "defuse/php-encryption",
+        "version": "v2.1.0",
+        "version_normalized": "2.1.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/defuse/php-encryption.git",
+            "reference": "5176f5abb38d3ea8a6e3ac6cd3bbb54d8185a689"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/defuse/php-encryption/zipball/5176f5abb38d3ea8a6e3ac6cd3bbb54d8185a689",
+            "reference": "5176f5abb38d3ea8a6e3ac6cd3bbb54d8185a689",
+            "shasum": ""
+        },
+        "require": {
+            "ext-openssl": "*",
+            "paragonie/random_compat": "~2.0",
+            "php": ">=5.4.0"
+        },
+        "require-dev": {
+            "nikic/php-parser": "^2.0|^3.0",
+            "phpunit/phpunit": "^4|^5"
+        },
+        "time": "2017-05-18T21:28:48+00:00",
+        "bin": [
+            "bin/generate-defuse-key"
+        ],
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Defuse\\Crypto\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Taylor Hornby",
+                "email": "taylor@defuse.ca",
+                "homepage": "https://defuse.ca/"
+            },
+            {
+                "name": "Scott Arciszewski",
+                "email": "info@paragonie.com",
+                "homepage": "https://paragonie.com"
+            }
+        ],
+        "description": "Secure PHP Encryption Library",
+        "keywords": [
+            "aes",
+            "authenticated encryption",
+            "cipher",
+            "crypto",
+            "cryptography",
+            "encrypt",
+            "encryption",
+            "openssl",
+            "security",
+            "symmetric key cryptography"
+        ]
+    },
+    {
+        "name": "docdocdoc/nexmo-bundle",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "target-dir": "DocDocDoc/NexmoBundle",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/docdocdoc/NexmoBundle.git",
+            "reference": "22186b759b7fb7ea871426428f81dfdfd0dd0478"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/docdocdoc/NexmoBundle/zipball/22186b759b7fb7ea871426428f81dfdfd0dd0478",
+            "reference": "22186b759b7fb7ea871426428f81dfdfd0dd0478",
+            "shasum": ""
+        },
+        "require": {
+            "guzzlehttp/guzzle": "*"
+        },
+        "time": "2017-06-06T15:12:19+00:00",
+        "type": "symfony-bundle",
+        "installation-source": "source",
+        "autoload": {
+            "psr-0": {
+                "DocDocDoc\\NexmoBundle": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Cedric LOMBARDOT",
+                "email": "cedric.lombardot@gmail.com"
+            }
+        ],
+        "description": "Send SMS with nexmo.com and symfony",
+        "keywords": [
+            "nexmo",
+            "sms"
         ]
     },
     {
@@ -1118,6 +1315,193 @@
         ]
     },
     {
+        "name": "guzzlehttp/guzzle",
+        "version": "6.3.2",
+        "version_normalized": "6.3.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/guzzle/guzzle.git",
+            "reference": "68d0ea14d5a3f42a20e87632a5f84931e2709c90"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/guzzle/guzzle/zipball/68d0ea14d5a3f42a20e87632a5f84931e2709c90",
+            "reference": "68d0ea14d5a3f42a20e87632a5f84931e2709c90",
+            "shasum": ""
+        },
+        "require": {
+            "guzzlehttp/promises": "^1.0",
+            "guzzlehttp/psr7": "^1.4",
+            "php": ">=5.5"
+        },
+        "require-dev": {
+            "ext-curl": "*",
+            "phpunit/phpunit": "^4.8.35 || ^5.7 || ^6.4",
+            "psr/log": "^1.0"
+        },
+        "suggest": {
+            "psr/log": "Required for using the Log middleware"
+        },
+        "time": "2018-03-26T16:33:04+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "6.3-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "src/functions_include.php"
+            ],
+            "psr-4": {
+                "GuzzleHttp\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Michael Dowling",
+                "email": "mtdowling@gmail.com",
+                "homepage": "https://github.com/mtdowling"
+            }
+        ],
+        "description": "Guzzle is a PHP HTTP client library",
+        "homepage": "http://guzzlephp.org/",
+        "keywords": [
+            "client",
+            "curl",
+            "framework",
+            "http",
+            "http client",
+            "rest",
+            "web service"
+        ]
+    },
+    {
+        "name": "guzzlehttp/promises",
+        "version": "v1.3.1",
+        "version_normalized": "1.3.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/guzzle/promises.git",
+            "reference": "a59da6cf61d80060647ff4d3eb2c03a2bc694646"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/guzzle/promises/zipball/a59da6cf61d80060647ff4d3eb2c03a2bc694646",
+            "reference": "a59da6cf61d80060647ff4d3eb2c03a2bc694646",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.5.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "^4.0"
+        },
+        "time": "2016-12-20T10:07:11+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.4-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "GuzzleHttp\\Promise\\": "src/"
+            },
+            "files": [
+                "src/functions_include.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Michael Dowling",
+                "email": "mtdowling@gmail.com",
+                "homepage": "https://github.com/mtdowling"
+            }
+        ],
+        "description": "Guzzle promises library",
+        "keywords": [
+            "promise"
+        ]
+    },
+    {
+        "name": "guzzlehttp/psr7",
+        "version": "1.4.2",
+        "version_normalized": "1.4.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/guzzle/psr7.git",
+            "reference": "f5b8a8512e2b58b0071a7280e39f14f72e05d87c"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/guzzle/psr7/zipball/f5b8a8512e2b58b0071a7280e39f14f72e05d87c",
+            "reference": "f5b8a8512e2b58b0071a7280e39f14f72e05d87c",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.4.0",
+            "psr/http-message": "~1.0"
+        },
+        "provide": {
+            "psr/http-message-implementation": "1.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "~4.0"
+        },
+        "time": "2017-03-20T17:10:46+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.4-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "GuzzleHttp\\Psr7\\": "src/"
+            },
+            "files": [
+                "src/functions_include.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Michael Dowling",
+                "email": "mtdowling@gmail.com",
+                "homepage": "https://github.com/mtdowling"
+            },
+            {
+                "name": "Tobias Schultze",
+                "homepage": "https://github.com/Tobion"
+            }
+        ],
+        "description": "PSR-7 message implementation that also provides common utility methods",
+        "keywords": [
+            "http",
+            "message",
+            "request",
+            "response",
+            "stream",
+            "uri",
+            "url"
+        ]
+    },
+    {
         "name": "incenteev/composer-parameter-handler",
         "version": "v2.1.3",
         "version_normalized": "2.1.3.0",
@@ -1313,6 +1697,146 @@
         "description": "A library for easily creating recursive-descent parsers."
     },
     {
+        "name": "jms/payment-core-bundle",
+        "version": "1.3.0",
+        "version_normalized": "1.3.0.0",
+        "target-dir": "JMS/Payment/CoreBundle",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/schmittjoh/JMSPaymentCoreBundle.git",
+            "reference": "8ea0b3a10cba35af038ce63713ac7d27b0d01f8d"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/schmittjoh/JMSPaymentCoreBundle/zipball/8ea0b3a10cba35af038ce63713ac7d27b0d01f8d",
+            "reference": "8ea0b3a10cba35af038ce63713ac7d27b0d01f8d",
+            "shasum": ""
+        },
+        "require": {
+            "defuse/php-encryption": "~2.0",
+            "doctrine/common": "~2.3",
+            "doctrine/dbal": "~2.3",
+            "doctrine/orm": "~2.3",
+            "php": ">=5.4",
+            "symfony/browser-kit": "~2.3|~3.0",
+            "symfony/config": "~2.3|~3.0",
+            "symfony/dependency-injection": "~2.3|~3.0",
+            "symfony/event-dispatcher": "~2.3|~3.0",
+            "symfony/form": "~2.3|~3.0",
+            "symfony/http-foundation": "~2.3|~3.0",
+            "symfony/http-kernel": "~2.3|~3.0",
+            "symfony/options-resolver": "~2.3|~3.0",
+            "symfony/validator": "~2.3|~3.0"
+        },
+        "require-dev": {
+            "doctrine/doctrine-bundle": "~1.6",
+            "jms/payment-paypal-bundle": "~1.0",
+            "matthiasnoback/symfony-config-test": "^2.1",
+            "phpunit/phpunit": "~4.8|~5.4",
+            "sensio/framework-extra-bundle": "~3.0",
+            "symfony/doctrine-bridge": "~2.3|~3.0",
+            "symfony/dom-crawler": "~2.3|~3.0",
+            "symfony/framework-bundle": "~2.3|~3.0",
+            "symfony/phpunit-bridge": "~2.7",
+            "symfony/routing": "~2.3|~3.0",
+            "symfony/templating": "~2.3|~3.0",
+            "symfony/twig-bridge": "~2.3|~3.0",
+            "symfony/twig-bundle": "~2.3|~3.0",
+            "twig/twig": "~1.0"
+        },
+        "time": "2017-01-22T17:49:09+00:00",
+        "type": "symfony-bundle",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.3-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "JMS\\Payment\\CoreBundle": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Apache2"
+        ],
+        "authors": [
+            {
+                "name": "Paulo Rodrigues Pinto",
+                "email": "regularjack@gmail.com"
+            },
+            {
+                "name": "Johannes M. Schmitt",
+                "email": "schmittjoh@gmail.com"
+            },
+            {
+                "name": "Contributors",
+                "homepage": "https://github.com/schmittjoh/JMSPaymentCoreBundle/contributors"
+            }
+        ],
+        "description": "A unified API for processing payments with Symfony",
+        "homepage": "http://jmspaymentcorebundle.readthedocs.io",
+        "keywords": [
+            "payment"
+        ]
+    },
+    {
+        "name": "jms/payment-paypal-bundle",
+        "version": "1.1.2",
+        "version_normalized": "1.1.2.0",
+        "target-dir": "JMS/Payment/PaypalBundle",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/schmittjoh/JMSPaymentPaypalBundle.git",
+            "reference": "8986862ac94ddfbbbb47473a7bb8f96ad14f595c"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/schmittjoh/JMSPaymentPaypalBundle/zipball/8986862ac94ddfbbbb47473a7bb8f96ad14f595c",
+            "reference": "8986862ac94ddfbbbb47473a7bb8f96ad14f595c",
+            "shasum": ""
+        },
+        "require": {
+            "jms/payment-core-bundle": "~1.0",
+            "php": ">=5.3.2",
+            "symfony/browser-kit": "~2.0|~3.0",
+            "symfony/config": "~2.0|~3.0",
+            "symfony/dependency-injection": "~2.0|~3.0",
+            "symfony/form": "~2.0|~3.0",
+            "symfony/http-foundation": "~2.0|~3.0",
+            "symfony/http-kernel": "~2.0|~3.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "~4.8|~5.4",
+            "symfony/phpunit-bridge": "~2.7"
+        },
+        "time": "2017-04-09T12:34:22+00:00",
+        "type": "symfony-bundle",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "JMS\\Payment\\PaypalBundle": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Apache2"
+        ],
+        "authors": [
+            {
+                "name": "Johannes M. Schmitt",
+                "email": "schmittjoh@gmail.com"
+            }
+        ],
+        "description": "Payment Bundle providing access to the PayPal API",
+        "homepage": "http://jmsyst.com/bundles/JMSPaymentPaypalBundle",
+        "keywords": [
+            "payment",
+            "paypal"
+        ]
+    },
+    {
         "name": "jms/serializer",
         "version": "1.11.0",
         "version_normalized": "1.11.0.0",
@@ -1472,6 +1996,140 @@
             "json",
             "serialization",
             "xml"
+        ]
+    },
+    {
+        "name": "knplabs/knp-snappy",
+        "version": "v1.0.4",
+        "version_normalized": "1.0.4.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/KnpLabs/snappy.git",
+            "reference": "144c4ecd1ccaeda936bf832b93079efc490e6850"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/KnpLabs/snappy/zipball/144c4ecd1ccaeda936bf832b93079efc490e6850",
+            "reference": "144c4ecd1ccaeda936bf832b93079efc490e6850",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.6",
+            "psr/log": "^1.0",
+            "symfony/process": "~2.3 || ~3.0 || ~4.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "~4.8.36"
+        },
+        "suggest": {
+            "h4cc/wkhtmltoimage-amd64": "Provides wkhtmltoimage-amd64 binary for Linux-compatible machines, use version `~0.12` as dependency",
+            "h4cc/wkhtmltoimage-i386": "Provides wkhtmltoimage-i386 binary for Linux-compatible machines, use version `~0.12` as dependency",
+            "h4cc/wkhtmltopdf-amd64": "Provides wkhtmltopdf-amd64 binary for Linux-compatible machines, use version `~0.12` as dependency",
+            "h4cc/wkhtmltopdf-i386": "Provides wkhtmltopdf-i386 binary for Linux-compatible machines, use version `~0.12` as dependency",
+            "wemersonjanuario/wkhtmltopdf-windows": "Provides wkhtmltopdf executable for Windows, use version `~0.12` as dependency"
+        },
+        "time": "2018-01-22T19:40:51+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.0.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Knp\\Snappy\\": "src/Knp/Snappy"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "KnpLabs Team",
+                "homepage": "http://knplabs.com"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "http://github.com/KnpLabs/snappy/contributors"
+            }
+        ],
+        "description": "PHP5 library allowing thumbnail, snapshot or PDF generation from a url or a html page. Wrapper for wkhtmltopdf/wkhtmltoimage.",
+        "homepage": "http://github.com/KnpLabs/snappy",
+        "keywords": [
+            "knp",
+            "knplabs",
+            "pdf",
+            "snapshot",
+            "thumbnail",
+            "wkhtmltopdf"
+        ]
+    },
+    {
+        "name": "knplabs/knp-snappy-bundle",
+        "version": "v1.5.2",
+        "version_normalized": "1.5.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/KnpLabs/KnpSnappyBundle.git",
+            "reference": "f7c2541008525bb621a0bd492e1d83a6d2b48adf"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/KnpLabs/KnpSnappyBundle/zipball/f7c2541008525bb621a0bd492e1d83a6d2b48adf",
+            "reference": "f7c2541008525bb621a0bd492e1d83a6d2b48adf",
+            "shasum": ""
+        },
+        "require": {
+            "knplabs/knp-snappy": "~1.0,>=1.0.1",
+            "php": ">=5.6",
+            "symfony/framework-bundle": "~2.7|~3.0|^4.0"
+        },
+        "require-dev": {
+            "doctrine/annotations": "~1.0",
+            "phpunit/phpunit": "~4.8.35",
+            "symfony/asset": "~2.7|~3.0|^4.0",
+            "symfony/finder": "~2.7|~3.0|^4.0",
+            "symfony/security-csrf": "~2.7|~3.0|^4.0",
+            "symfony/templating": "~2.7|~3.0|^4.0",
+            "symfony/validator": "~2.7|~3.0|^4.0"
+        },
+        "time": "2017-12-06T16:31:47+00:00",
+        "type": "symfony-bundle",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Knp\\Bundle\\SnappyBundle\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "KnpLabs Team",
+                "homepage": "http://knplabs.com"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "http://github.com/KnpLabs/KnpSnappyBundle/contributors"
+            }
+        ],
+        "description": "Easily create PDF and images in Symfony2 by converting Twig/HTML templates.",
+        "homepage": "http://github.com/KnpLabs/KnpSnappyBundle",
+        "keywords": [
+            "bundle",
+            "knp",
+            "knplabs",
+            "pdf",
+            "snappy"
         ]
     },
     {
@@ -1706,6 +2364,71 @@
             "utf-8",
             "utility",
             "validation"
+        ]
+    },
+    {
+        "name": "nomaya/social-bundle",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "target-dir": "Nomaya/SocialBundle",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/nomayann/NomayaSocialButtonsBundle.git",
+            "reference": "5a8a24954189e6f2d39368f755498bc2e13e0e6f"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/nomayann/NomayaSocialButtonsBundle/zipball/5a8a24954189e6f2d39368f755498bc2e13e0e6f",
+            "reference": "5a8a24954189e6f2d39368f755498bc2e13e0e6f",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.2",
+            "twig/twig": "*"
+        },
+        "require-dev": {
+            "matthiasnoback/symfony-config-test": "0.*",
+            "symfony/framework-bundle": ">=2.1"
+        },
+        "time": "2016-01-28T15:39:34+00:00",
+        "type": "symfony-bundle",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.0-dev"
+            }
+        },
+        "installation-source": "source",
+        "autoload": {
+            "psr-0": {
+                "Nomaya\\SocialBundle\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Yann Chauvel",
+                "email": "yann@nomaya.net",
+                "homepage": "http://www.nomaya.net/"
+            }
+        ],
+        "description": "A bundle to easily add facebook, twitter, G+, Linkedin buttons to your templates",
+        "homepage": "http://github.com/nomayann/NomayaSocialButtonsBundle",
+        "keywords": [
+            "Symfony2",
+            "bundle",
+            "buttons",
+            "facebook",
+            "google plus",
+            "like",
+            "linkedin",
+            "share",
+            "social",
+            "symfony",
+            "symfony2bundle",
+            "twitter"
         ]
     },
     {
@@ -1957,6 +2680,58 @@
             "container-interface",
             "container-interop",
             "psr"
+        ]
+    },
+    {
+        "name": "psr/http-message",
+        "version": "1.0.1",
+        "version_normalized": "1.0.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/php-fig/http-message.git",
+            "reference": "f6561bf28d520154e4b0ec72be95418abe6d9363"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/php-fig/http-message/zipball/f6561bf28d520154e4b0ec72be95418abe6d9363",
+            "reference": "f6561bf28d520154e4b0ec72be95418abe6d9363",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "time": "2016-08-06T14:39:51+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.0.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Psr\\Http\\Message\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "PHP-FIG",
+                "homepage": "http://www.php-fig.org/"
+            }
+        ],
+        "description": "Common interface for HTTP messages",
+        "homepage": "https://github.com/php-fig/http-message",
+        "keywords": [
+            "http",
+            "http-message",
+            "psr",
+            "psr-7",
+            "request",
+            "response"
         ]
     },
     {
@@ -3096,6 +3871,63 @@
         ]
     },
     {
+        "name": "telegram-bot/api",
+        "version": "v2.3.9",
+        "version_normalized": "2.3.9.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/TelegramBot/Api.git",
+            "reference": "b93506b10daf5c783d6654dadc0aa7652b6d342d"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/TelegramBot/Api/zipball/b93506b10daf5c783d6654dadc0aa7652b6d342d",
+            "reference": "b93506b10daf5c783d6654dadc0aa7652b6d342d",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.5.0"
+        },
+        "require-dev": {
+            "codeception/codeception": "*",
+            "phpunit/phpunit": "~4.0",
+            "squizlabs/php_codesniffer": "2.*"
+        },
+        "time": "2018-03-29T12:23:39+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.0-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "TelegramBot\\Api\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Ilya Gusev",
+                "email": "mail@igusev.ru",
+                "homepage": "https://php-cat.com",
+                "role": "Developer"
+            }
+        ],
+        "description": "PHP Wrapper for Telegram Bot API",
+        "homepage": "https://github.com/TelegramBot/Api",
+        "keywords": [
+            "bot",
+            "bot api",
+            "php",
+            "telegram"
+        ]
+    },
+    {
         "name": "twig/twig",
         "version": "v1.35.3",
         "version_normalized": "1.35.3.0",
@@ -3160,6 +3992,106 @@
         "homepage": "http://twig.sensiolabs.org",
         "keywords": [
             "templating"
+        ]
+    },
+    {
+        "name": "twilio/sdk",
+        "version": "4.12.1",
+        "version_normalized": "4.12.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/twilio/twilio-php.git",
+            "reference": "0a88c48262fbee1c3841f721f46439d3de450b95"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/twilio/twilio-php/zipball/0a88c48262fbee1c3841f721f46439d3de450b95",
+            "reference": "0a88c48262fbee1c3841f721f46439d3de450b95",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.2.1"
+        },
+        "require-dev": {
+            "mockery/mockery": ">=0.7.2",
+            "phpunit/phpunit": "4.5.*"
+        },
+        "time": "2017-11-17T22:59:03+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "Services/Twilio.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Kevin Burke",
+                "email": "kevin@twilio.com"
+            },
+            {
+                "name": "Kyle Conroy",
+                "email": "kyle+pear@twilio.com"
+            }
+        ],
+        "description": "A PHP wrapper for Twilio's API",
+        "homepage": "http://github.com/twilio/twilio-php",
+        "keywords": [
+            "api",
+            "sms",
+            "twilio"
+        ]
+    },
+    {
+        "name": "vresh/twilio-bundle",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/fridolin-koch/VreshTwilioBundle.git",
+            "reference": "95b432962d3dd1e430d6a012348a31b97bf03181"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/fridolin-koch/VreshTwilioBundle/zipball/95b432962d3dd1e430d6a012348a31b97bf03181",
+            "reference": "95b432962d3dd1e430d6a012348a31b97bf03181",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.2",
+            "symfony/framework-bundle": "~2.1|~3.0",
+            "twilio/sdk": ">=4.0.2 <5.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "~4.1",
+            "satooshi/php-coveralls": "~1.0"
+        },
+        "time": "2016-08-17T18:09:02+00:00",
+        "type": "symfony-bundle",
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "Vresh\\TwilioBundle\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Fridolin Koch",
+                "email": "info@fridokoch.de"
+            }
+        ],
+        "description": "A simple Symfony 2, 3 bundle for the official sdk provided by Twilio.",
+        "homepage": "https://github.com/fridolin-koch/VreshTwilioBundle",
+        "keywords": [
+            "twilio"
         ]
     }
 ]

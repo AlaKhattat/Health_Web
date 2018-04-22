@@ -1,0 +1,98 @@
+{% extends '@HealthAdvisor/Default/index.html.twig' %}
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+    {% block header %}
+        {{ parent() }}
+    {% endblock %}
+    <div class="col-sm-8 mt-20">
+        <h3 class="heading"><span class="color1">Ajoutez un événement</span></h3>
+        {{ form_start(form) }}
+        <form>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        {{ form_widget(form.nom, { 'attr' : {'class': 'form-control','placeholder':'Nom'}}) }}
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        {{ form_widget(form.location, { 'attr' : {'class': 'form-control','placeholder':'Endroit'}}) }}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        {{ form_widget(form.date,{'attr':{ 'class':'form-control date-select','placeholder':'Date'}}) }}
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group clockpicker" data-placement="right" data-align="top" data-autoclose="true">
+                        {{ form_widget(form.heure,{'attr':{ 'class':'form-control','placeholder':'Heure'}}) }}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        {{ form_widget(form.type, { 'attr' : {'class': 'form-control','placeholder':'Type'}}) }}
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        {{ form_widget(form.description, { 'attr' : {'class': 'form-control','placeholder':'Description'}}) }}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        {{ form_widget(form.maxParticipants, { 'attr' : {'class': 'form-control','placeholder':'Nombre max de participants'}}) }}
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <input type="file" id="img" name="img">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        {{ form_widget(form.Valider, { 'attr' : {'class': 'btn btn-primary'}}) }}
+                    </div>
+                </div>
+            </div>
+            {{ form_rest(form) }}
+        </form>
+        {{ form_end(form) }}
+    </div>
+    {% block footer %}
+        {{ parent() }}
+    {% endblock %}
+
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('clockpicker-gh-pages/assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('clockpicker-gh-pages/dist/bootstrap-clockpicker.min.css') }}">
+    <script type="text/javascript" src="{{ asset('clockpicker-gh-pages/assets/js/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('clockpicker-gh-pages/assets/js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('clockpicker-gh-pages/dist/bootstrap-clockpicker.min.js') }}"></script>
+    <script type="text/javascript">
+        $('.clockpicker').clockpicker()
+            .find('input').change(function(){
+            console.log(this.value);
+        });
+    </script>
+
+
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap-select.min.js') }}"></script>
+    <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.appear.js') }}"></script>
+    <script src="{{ asset('js/jquery.countTo.js') }}"></script>
+    <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('js/script.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,152 @@
+{% extends 'HealthAdvisorBundle:Default:index.html.twig' %}
+
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+    {% block header %}
+        {{ parent() }}
+
+    {% endblock %}
+
+
+
+<div class="page-header">
+    <div class="container">
+        <h1>Posez votre question ici !</h1>
+        <br>
+        <ul class="breadcrumb">
+            <li><a href="home-version-1.html">Home</a></li>
+            <li class="active">Questions & Réponses</li>
+        </ul>
+    </div>
+</div>
+
+<div class="container mt-60 mb-80">
+    <div class="row">
+        <div class="col-sm-12">
+            <h2 class="heading text-center">Répondre à une question</h2>
+            <hr class="hr-1">
+        </div>
+    </div>
+</div>
+
+
+
+    {{ form_start(form) }}
+
+<form>
+    <div class="container mt-80">
+
+
+
+
+
+
+
+        <div class="row">
+
+            <div class="col-sm-12">
+
+                <div class="col-sm-3"></div>
+
+                <p class="justify" style="color: #1696E7">
+                    <b>Question : {{ question }}</b>
+                </p>
+                <br>
+
+                <div class="row">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-6">
+                        <div class = "form-group">
+                            {{ form_widget(form.reponse) }}
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class = "form-group">
+                            <h6 id="text" align="center"></h6>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row" align="center">
+                    <div class = "form-group">
+                        <a href="{{ path('liste_reponse' ,{'reponse':form.reponse}) }}"><button type="submit" id="btn" class="btn btn-primary btn-sm" name="Publier réponse"><i class="fa fa-paper-plane"></i>Publier réponse</button></a>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+
+    {{ form_end(form) }}
+    </div>
+</form>
+
+
+
+
+
+
+
+    {% block footer %}
+        {{ parent() }}
+    {% endblock %}
+
+
+    {% block script %}
+        {{ parent() }}
+    {% endblock %}
+
+
+
+<script type="text/javascript">
+    $(function () {
+
+        $('#btn').hide();
+
+        $('#healthadvisorbundle_reponse_reponse').keyup(function () {
+            if ($('#healthadvisorbundle_reponse_reponse').val().length < 30){
+
+                $('#healthadvisorbundle_reponse_reponse').css('color','red');
+                $('#healthadvisorbundle_reponse_reponse').css('border-color','red');
+                $('#text').css('color','red');
+                $('#text').text('Votre réponse doit être détaillée, saisissez au moins 30 caractères...');
+                $('#btn').hide();
+
+            }
+
+
+            else {
+                $('#healthadvisorbundle_reponse_reponse').css('border-color','green');
+                $('#healthadvisorbundle_reponse_reponse').css('color','green');
+                $('#text').text('Vous pouvez publier votre réponse...');
+                $('#text').css('color','green');
+                $('#btn').show();
+
+            }
+
+        });
+
+
+
+
+    });
+</script>
+
+
+
+
+
+
+{% endblock %}
+
+
